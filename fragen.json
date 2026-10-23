@@ -1,0 +1,822 @@
+{
+  "stand": "2026-10-23",
+  "fragen": [
+    {
+      "id": "q001",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wie lang ist ein NFL-Spielfeld inklusive beider Endzonen?",
+      "antworten": ["100 Yards", "110 Yards", "120 Yards", "130 Yards"],
+      "richtig": 2,
+      "erklaerung": "100 Yards zwischen den Goal Lines plus zweimal 10 Yards Endzone."
+    },
+    {
+      "id": "q002",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Die Defense erzielt einen Safety. Wer bekommt danach den Ball?",
+      "antworten": [
+        "Das Team, das den Safety zugelassen hat, behält den Ball",
+        "Das Team, das den Safety erzielt hat",
+        "Das Heimteam",
+        "Das entscheidet ein neuer Münzwurf"
+      ],
+      "richtig": 1,
+      "erklaerung": "Das Team mit dem Safety bekommt 2 Punkte und den Ball: Der Gegner muss von der eigenen 20-Yard-Linie per Free Kick anstoßen."
+    },
+    {
+      "id": "q003",
+      "stufe": 3,
+      "kategorie": "Regeln",
+      "frage": "Von welcher Linie aus wird in der NFL der Extrapunkt gespielt? (Der Kick ist dadurch rund 33 Yards lang.)",
+      "antworten": ["2-Yard-Linie", "10-Yard-Linie", "15-Yard-Linie", "25-Yard-Linie"],
+      "richtig": 2,
+      "erklaerung": "Seit 2015 von der 15-Yard-Linie. Der Zwei-Punkte-Versuch kommt von der 2-Yard-Linie."
+    },
+    {
+      "id": "q004",
+      "stufe": 3,
+      "kategorie": "Regeln",
+      "frage": "Welche Strafe gilt in der NFL bei Defensive Pass Interference?",
+      "antworten": [
+        "Immer 5 Yards",
+        "Immer 10 Yards",
+        "Immer 15 Yards",
+        "Der Ball kommt an die Stelle des Fouls, dazu gibt es ein automatisches First Down"
+      ],
+      "richtig": 3,
+      "erklaerung": "In der NFL ein Spot Foul ohne feste Yardzahl (in der Endzone kommt der Ball an die 1-Yard-Linie). In der NCAA sind es 15 Yards."
+    },
+    {
+      "id": "q005",
+      "stufe": 3,
+      "kategorie": "Regeln",
+      "frage": "Wie viele Spieler der Offense müssen beim Snap mindestens an der Line of Scrimmage stehen?",
+      "antworten": ["5", "6", "7", "8"],
+      "richtig": 2,
+      "erklaerung": "Üblich sind fünf Linemen plus zwei Tight Ends oder Receiver. Die anderen vier stehen dahinter."
+    },
+    {
+      "id": "q006",
+      "stufe": 2,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Warum gilt der Left Tackle oft als wichtigster Offensive Lineman?",
+      "antworten": [
+        "Er schützt die „blinde Seite“ eines rechtshändigen Quarterbacks",
+        "Er snappt den Ball",
+        "Er darf als einziger Lineman Pässe fangen",
+        "Er ruft die Spielzüge aus"
+      ],
+      "richtig": 0,
+      "erklaerung": "Die meisten Quarterbacks sind Rechtshänder und sehen Rusher von links schlechter."
+    },
+    {
+      "id": "q007",
+      "stufe": 2,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Wie viele Defensive Backs stehen in der Nickel-Formation auf dem Feld?",
+      "antworten": ["3", "4", "5", "6"],
+      "richtig": 2,
+      "erklaerung": "Nickel steht für fünf Defensive Backs (Fünf-Cent-Münze). Dime sind sechs."
+    },
+    {
+      "id": "q008",
+      "stufe": 2,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Was bedeutet „3-4-Defense“?",
+      "antworten": [
+        "3 Defensive Linemen und 4 Linebacker",
+        "3 Linebacker und 4 Defensive Linemen",
+        "3 Safeties und 4 Cornerbacks",
+        "3 Pass Rusher und 4 Spieler in Man Coverage"
+      ],
+      "richtig": 0,
+      "erklaerung": "Drei Linemen und vier Linebacker, dazu meist vier Defensive Backs. Mit vier Linemen und drei Linebackern spielt die 4-3-Defense."
+    },
+    {
+      "id": "q009",
+      "stufe": 3,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Wie viele Verteidiger sichern in „Cover 3“ die tiefen Zonen?",
+      "antworten": ["1", "2", "3", "4"],
+      "richtig": 2,
+      "erklaerung": "Meist beide Cornerbacks und ein Safety teilen das tiefe Feld in Drittel. In Cover 2 sind es zwei Safeties, die sich die Hälften teilen."
+    },
+    {
+      "id": "q010",
+      "stufe": 2,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Was ist ein RPO (Run-Pass-Option)?",
+      "antworten": [
+        "Der Quarterback entscheidet nach dem Snap anhand eines Verteidigers, ob er übergibt oder wirft",
+        "Ein Trickspielzug, bei dem der Punter wirft",
+        "Eine Verteidigung, die Lauf und Pass gleichzeitig deckt",
+        "Eine Strafe für zu viele Spieler auf dem Feld"
+      ],
+      "richtig": 0,
+      "erklaerung": "Der Quarterback liest nach dem Snap einen bestimmten Verteidiger und wählt dann Handoff oder schnellen Pass."
+    },
+    {
+      "id": "q011",
+      "stufe": 2,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Wer gewann den ersten Super Bowl (Januar 1967)?",
+      "antworten": ["Dallas Cowboys", "Green Bay Packers", "New York Jets", "Pittsburgh Steelers"],
+      "richtig": 1,
+      "erklaerung": "Green Bay Packers gegen Kansas City Chiefs, 35:10. Die Jets gewannen erst den dritten Super Bowl (1969)."
+    },
+    {
+      "id": "q012",
+      "stufe": 2,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welches Team schloss als einziges eine komplette Saison inklusive Super Bowl ungeschlagen ab (17:0)?",
+      "antworten": [
+        "Miami Dolphins 1972",
+        "New England Patriots 2007",
+        "Chicago Bears 1985",
+        "San Francisco 49ers 1984"
+      ],
+      "richtig": 0,
+      "erklaerung": "14 Siege in der Hauptrunde plus 3 in den Playoffs. Die Patriots 2007 gingen 18:0 in den Super Bowl, verloren aber 14:17 gegen die Giants."
+    },
+    {
+      "id": "q013",
+      "stufe": 2,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welches Team führte im Super Bowl LI (2017) schon mit 28:3 und verlor trotzdem?",
+      "antworten": ["Atlanta Falcons", "Seattle Seahawks", "Carolina Panthers", "Denver Broncos"],
+      "richtig": 0,
+      "erklaerung": "Die Patriots gewannen 34:28 in der Verlängerung, der ersten Overtime der Super-Bowl-Geschichte."
+    },
+    {
+      "id": "q014",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Wer fing 1972 die berühmte „Immaculate Reception“ für die Pittsburgh Steelers?",
+      "antworten": ["Lynn Swann", "Franco Harris", "Terry Bradshaw", "Joe Greene"],
+      "richtig": 1,
+      "erklaerung": "Playoff gegen die Oakland Raiders: Bradshaws Pass prallte ab, Harris fing ihn kurz vor dem Boden und lief zum Touchdown."
+    },
+    {
+      "id": "q015",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welche deutsche Stadt war 2022 Gastgeber des ersten NFL-Punktspiels in Deutschland?",
+      "antworten": ["Frankfurt", "Berlin", "München", "Köln"],
+      "richtig": 2,
+      "erklaerung": "Allianz Arena in München, Tampa Bay Buccaneers gegen Seattle Seahawks, 21:16."
+    },
+    {
+      "id": "q016",
+      "stufe": 3,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Wie viele Sekunden hat die Offense normalerweise Zeit, nach dem Ende des letzten Spielzugs den nächsten zu starten (Play Clock)?",
+      "antworten": ["15", "25", "30", "40"],
+      "richtig": 3,
+      "erklaerung": "40 Sekunden ab dem Ende des letzten Spielzugs. Nach Unterbrechungen wie einem Timeout sind es nur 25. Wer die Uhr überzieht, bekommt Delay of Game: 5 Yards zurück."
+    },
+    {
+      "id": "q017",
+      "stufe": 2,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Wie viele Yards kostet ein Offensive Holding in der NFL?",
+      "antworten": ["5", "10", "15", "20"],
+      "richtig": 1,
+      "erklaerung": "10 Yards zurück, der Down wird wiederholt. Defensive Holding kostet dagegen 5 Yards und gibt der Offense automatisch ein First Down."
+    },
+    {
+      "id": "q018",
+      "stufe": 2,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Was versteht man unter „Intentional Grounding“?",
+      "antworten": [
+        "Der Quarterback wirft den Ball ohne Empfänger in Reichweite weg, um einen Sack zu vermeiden",
+        "Ein Spieler bleibt nach einem Tackle absichtlich liegen, um die Uhr anzuhalten",
+        "Die Defense hält den Ball am Boden fest, damit er nicht gefangen wird",
+        "Ein Receiver lässt den Ball absichtlich fallen"
+      ],
+      "richtig": 0,
+      "erklaerung": "Strafe: Verlust eines Downs und mindestens 10 Yards. Erlaubt ist das Wegwerfen, wenn der Quarterback die Tackle Box verlassen hat und der Ball die Line of Scrimmage erreicht."
+    },
+    {
+      "id": "q019",
+      "stufe": 3,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Die Offense steht an der gegnerischen 30-Yard-Linie und versucht ein Field Goal. Wie lang ist der Kick?",
+      "antworten": ["30 Yards", "37 Yards", "40 Yards", "47 Yards"],
+      "richtig": 3,
+      "erklaerung": "Zur Yard-Linie kommen 10 Yards Endzone (die Torstangen stehen an der Endlinie) und etwa 7 Yards bis zum Holder: 30 + 17 = 47. Faustregel: Linie plus 17."
+    },
+    {
+      "id": "q020",
+      "stufe": 2,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Was passiert bei der „Two-Minute Warning“?",
+      "antworten": [
+        "Das Spiel ist vorbei, wenn ein Team mit 20 Punkten führt",
+        "Die Uhr wird automatisch angehalten, sobald in einer Halbzeit noch zwei Minuten zu spielen sind",
+        "Die Offense muss innerhalb von zwei Minuten punkten",
+        "Jeder Trainer bekommt eine zusätzliche Challenge"
+      ],
+      "richtig": 1,
+      "erklaerung": "Automatische Pause bei 2:00 im zweiten und im vierten Viertel. Kein Team verbraucht dafür eines seiner drei Timeouts pro Halbzeit."
+    },
+    {
+      "id": "q021",
+      "stufe": 1,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Was ist eine „Play Action“?",
+      "antworten": [
+        "Ein Kurzpass direkt hinter die Line of Scrimmage",
+        "Ein Spielzug, der direkt nach einem Timeout angesagt wird",
+        "Der Quarterback täuscht eine Ballübergabe an den Runningback an und wirft dann",
+        "Ein Kick, der absichtlich über die Mitte geschlagen wird"
+      ],
+      "richtig": 2,
+      "erklaerung": "Der Lauf-Fake zieht Linebacker und Safeties nach vorn, hinter ihnen entsteht Platz für den Pass."
+    },
+    {
+      "id": "q022",
+      "stufe": 1,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Was bedeutet ein „Blitz“ in der Defense?",
+      "antworten": [
+        "Die Defense schickt zusätzlich zur Line weitere Spieler, etwa Linebacker oder Safeties, auf den Quarterback",
+        "Die Offense spielt ohne Huddle und besonders schnell",
+        "Die Defense wechselt alle elf Spieler gleichzeitig aus",
+        "Alle Verteidiger ziehen sich tief in die Endzone zurück"
+      ],
+      "richtig": 0,
+      "erklaerung": "Mehr Druck auf den Quarterback, aber hinten fehlen Verteidiger in der Coverage: hohes Risiko, hoher Ertrag. Der Name kommt vom deutschen Wort „Blitz“."
+    },
+    {
+      "id": "q023",
+      "stufe": 2,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Was ist ein „Screen Pass“?",
+      "antworten": [
+        "Ein langer Pass in die Endzone, den mehrere Receiver gleichzeitig anlaufen",
+        "Ein kurzer Pass hinter oder knapp an der Line of Scrimmage, bei dem Blocker einen Korridor vor dem Fänger bilden",
+        "Ein Pass, bei dem der Quarterback den Ball vom Boden aufnimmt",
+        "Ein Pass vom Receiver zurück zum Quarterback"
+      ],
+      "richtig": 1,
+      "erklaerung": "Die Defensive Line wird bewusst durchgelassen, der Ball landet bei einem Runningback oder Receiver, der hinter seinen Blockern losläuft."
+    },
+    {
+      "id": "q024",
+      "stufe": 1,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Was unterscheidet Man-Coverage von Zone-Coverage?",
+      "antworten": [
+        "Man-Coverage gibt es nur an der Defensive Line, Zone-Coverage nur bei den Safeties",
+        "Man-Coverage spielt die Defense nur gegen Läufe, Zone-Coverage nur gegen Pässe",
+        "In der Man-Coverage deckt jeder Verteidiger einen bestimmten Gegenspieler, in der Zone-Coverage einen bestimmten Raum",
+        "Man-Coverage wird nur bei Punts gespielt, Zone-Coverage nur bei Kickoffs"
+      ],
+      "richtig": 2,
+      "erklaerung": "In der Zone-Coverage bleiben die Verteidiger in ihrem Raum und reagieren auf den Ball. In der Man-Coverage folgt der Verteidiger seinem Mann überallhin."
+    },
+    {
+      "id": "q025",
+      "stufe": 2,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Welche Aufgabe hat ein Fullback?",
+      "antworten": [
+        "Er hält bei Field Goals den Ball",
+        "Er verteidigt als letzter Mann hinter der Defense",
+        "Er ersetzt den Quarterback bei Kurzpässen",
+        "Er blockt als Lead Blocker vor dem Runningback und trägt den Ball nur selten"
+      ],
+      "richtig": 3,
+      "erklaerung": "Der Fullback steht im Backfield vor oder neben dem Runningback und räumt den Weg frei. Heute sieht man ihn seltener, weil viele Teams lieber mit drei Receivern spielen."
+    },
+    {
+      "id": "q026",
+      "stufe": 2,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wie viele Teams pro Conference erreichen die NFL-Playoffs?",
+      "antworten": ["4", "6", "7", "8"],
+      "richtig": 2,
+      "erklaerung": "Sieben Teams pro Conference, also 14 insgesamt. Nur der Erste jeder Conference bekommt in der ersten Runde ein Freilos (Bye). Bis 2019 waren es sechs."
+    },
+    {
+      "id": "q027",
+      "stufe": 1,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wie heißt die Trophäe für den Super-Bowl-Sieger?",
+      "antworten": [
+        "George Halas Trophy",
+        "Vince Lombardi Trophy",
+        "Lamar Hunt Trophy",
+        "Pete Rozelle Trophy"
+      ],
+      "richtig": 1,
+      "erklaerung": "Die George Halas Trophy bekommt der NFC-Meister, die Lamar Hunt Trophy der AFC-Meister, die Pete Rozelle Trophy der wertvollste Spieler des Super Bowls."
+    },
+    {
+      "id": "q028",
+      "stufe": 1,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wie viele Super-Bowl-Siege hat Tom Brady als Spieler geholt?",
+      "antworten": ["4", "5", "6", "7"],
+      "richtig": 3,
+      "erklaerung": "Sechs mit den New England Patriots, einer mit den Tampa Bay Buccaneers (2021). Das sind mehr Titel, als jedes einzelne Team gewonnen hat."
+    },
+    {
+      "id": "q029",
+      "stufe": 1,
+      "kategorie": "Liga und Rekorde",
+      "frage": "In welcher Reihenfolge wählen die Teams in der ersten Runde des NFL Drafts?",
+      "antworten": [
+        "Das Team mit der schlechtesten Bilanz wählt zuerst, der Super-Bowl-Sieger zuletzt",
+        "Der Super-Bowl-Sieger wählt zuerst, das schlechteste Team zuletzt",
+        "Die Reihenfolge wird vorher ausgelost",
+        "Die Teams wählen in alphabetischer Reihenfolge"
+      ],
+      "richtig": 0,
+      "erklaerung": "Das Team mit der schlechtesten Bilanz hat den ersten Pick, der Super-Bowl-Sieger wählt als 32. Der Draft hat sieben Runden, Picks lassen sich tauschen."
+    },
+    {
+      "id": "q030",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wer hält den Rekord für die meisten Rushing Yards in einer einzelnen Saison?",
+      "antworten": ["Barry Sanders", "Adrian Peterson", "Emmitt Smith", "Eric Dickerson"],
+      "richtig": 3,
+      "erklaerung": "2.105 Yards 1984 für die Los Angeles Rams. Adrian Peterson kam 2012 auf 2.097. Emmitt Smith führt die Liste der Karriere-Yards an, nicht die der Saison. Stand nach der Saison 2025.",
+      "quelle": { "text": "Eric Dickerson bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Eric_Dickerson" }
+    },
+    {
+      "id": "q031",
+      "stufe": 3,
+      "kategorie": "Bonusfrage",
+      "frage": "Wie hoch ist das maximal mögliche Passer Rating in der NFL?",
+      "antworten": ["100,0", "125,0", "158,3", "200,0"],
+      "richtig": 2,
+      "erklaerung": "158,3 braucht in jeder der vier Wertungen den Höchstwert: hohe Fangquote, viele Yards pro Wurf, viele Touchdowns, keine Interception."
+    },
+    {
+      "id": "q032",
+      "stufe": 3,
+      "kategorie": "Bonusfrage",
+      "frage": "Wie viele Punkte bekommt die Defense, wenn sie bei einem Zwei-Punkte-Versuch den Ball erobert und in die gegnerische Endzone trägt?",
+      "antworten": ["0", "1", "2", "6"],
+      "richtig": 2,
+      "erklaerung": "Eine Defensive Conversion zählt 2 Punkte."
+    },
+    {
+      "id": "q033",
+      "stufe": 3,
+      "kategorie": "Bonusfrage",
+      "frage": "Wie lang ist das längste Field Goal der NFL-Geschichte (Stand: Saison 2025)?",
+      "antworten": ["63 Yards", "64 Yards", "66 Yards", "68 Yards"],
+      "richtig": 3,
+      "erklaerung": "Cam Little (Jacksonville Jaguars) traf im November 2025 gegen die Las Vegas Raiders aus 68 Yards. Den Rekord hielt vorher Justin Tucker mit 66 Yards (2021).",
+      "quelle": {
+        "text": "Pro Football Hall of Fame zum 68-Yard-Rekord",
+        "url": "https://www.profootballhof.com/news/jaguars-kicker-cam-little-sets-nfl-record-with-68-yard-field-goal-vs-raiders"
+      }
+    },
+    {
+      "id": "q034",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wie viele Versuche (Downs) hat die Offense, um mindestens 10 Yards Raumgewinn zu schaffen?",
+      "antworten": ["3", "4", "5", "6"],
+      "richtig": 1,
+      "erklaerung": "Schafft sie die 10 Yards, gibt es vier neue Versuche, sonst bekommt der Gegner den Ball, oft nach einem Punt im vierten Down. Im kanadischen Football sind es nur drei Downs.",
+      "quelle": { "text": "Down im Gridiron Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Down_(gridiron_football)" }
+    },
+    {
+      "id": "q035",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Ein Team erzielt einen Touchdown und verwandelt danach den Extrapunkt per Kick. Wie viele Punkte sind das zusammen?",
+      "antworten": ["6", "7", "8", "9"],
+      "richtig": 1,
+      "erklaerung": "Der Touchdown zählt 6 Punkte, der Extrapunkt 1 Punkt. Wer statt des Kicks einen Zwei-Punkte-Versuch schafft, kommt auf insgesamt 8.",
+      "quelle": { "text": "Regeln im American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_football_rules" }
+    },
+    {
+      "id": "q036",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welches Team gewann im Februar 2026 den Super Bowl LX?",
+      "antworten": ["New England Patriots", "Los Angeles Rams", "Philadelphia Eagles", "Seattle Seahawks"],
+      "richtig": 3,
+      "erklaerung": "Seattle schlug New England im Levi's Stadium in Santa Clara mit 29:13. Es war der zweite Titel der Seahawks, MVP wurde Runningback Kenneth Walker III.",
+      "quelle": { "text": "Super Bowl LX bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_LX" }
+    },
+    {
+      "id": "q037",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "In welche zwei Conferences ist die NFL aufgeteilt?",
+      "antworten": ["AFC und NFC", "ACC und SEC", "AFL und NFL", "East und West"],
+      "richtig": 0,
+      "erklaerung": "Die 32 Teams spielen in der American Football Conference und der National Football Conference, je 16 Teams in vier Divisions. ACC und SEC sind Conferences im College Football.",
+      "quelle": { "text": "National Football League bei Wikipedia", "url": "https://en.wikipedia.org/wiki/National_Football_League" }
+    },
+    {
+      "id": "q038",
+      "stufe": 2,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wer hat in der NFL-Hauptrunde die meisten Touchdown-Pässe der Geschichte geworfen?",
+      "antworten": ["Peyton Manning", "Drew Brees", "Tom Brady", "Brett Favre"],
+      "richtig": 2,
+      "erklaerung": "Tom Brady kommt auf 649 Touchdown-Pässe, dahinter folgen Drew Brees mit 571 und Peyton Manning mit 539. Stand: Oktober 2026.",
+      "quelle": { "text": "Karriere-Touchdown-Pässe bei Pro-Football-Reference", "url": "https://www.pro-football-reference.com/leaders/pass_td_career.htm" }
+    },
+    {
+      "id": "q039",
+      "stufe": 2,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wer hält den NFL-Rekord für die meisten Receiving Yards in der Karriere?",
+      "antworten": ["Jerry Rice", "Larry Fitzgerald", "Randy Moss", "Terrell Owens"],
+      "richtig": 0,
+      "erklaerung": "Jerry Rice kommt auf 22.895 Yards und ist der einzige Spieler über 18.000. Larry Fitzgerald ist mit 17.492 Zweiter. Stand: Oktober 2026.",
+      "quelle": { "text": "Rekordliste Receiving Yards bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_career_receiving_yards_leaders" }
+    },
+    {
+      "id": "q040",
+      "stufe": 2,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welcher Quarterback machte 1975 mit einem Touchdown-Pass im Playoff gegen die Vikings den Begriff „Hail Mary“ berühmt?",
+      "antworten": ["Joe Namath", "Terry Bradshaw", "Roger Staubach", "Fran Tarkenton"],
+      "richtig": 2,
+      "erklaerung": "Roger Staubach warf für die Dallas Cowboys rund 50 Yards auf Drew Pearson und sagte danach, er habe die Augen geschlossen und ein „Hail Mary“ gebetet. Den Ausdruck gab es schon früher, bekannt wurde er durch diesen Pass.",
+      "quelle": { "text": "Hail Mary Pass bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Hail_Mary_pass" }
+    },
+    {
+      "id": "q041",
+      "stufe": 2,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wie viele Hauptrundenspiele bestreitet jedes NFL-Team seit der Saison 2021?",
+      "antworten": ["14", "16", "17", "18"],
+      "richtig": 2,
+      "erklaerung": "Seit 2021 spielt jedes Team 17 Spiele in 18 Wochen und hat eine spielfreie Woche (Bye). Vorher waren es 16 Spiele.",
+      "quelle": { "text": "NFL-Saison mit 17 Spielen ab 2021 bei NFL.com", "url": "https://www.nfl.com/news/nfl-plans-to-expand-regular-season-to-17-games-per-team-in-2021" }
+    },
+    {
+      "id": "q042",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Wer fing im NFC-Finale im Januar 1982 den Touchdown-Pass von Joe Montana, der als „The Catch“ bekannt wurde?",
+      "antworten": ["Jerry Rice", "Freddie Solomon", "Roger Craig", "Dwight Clark"],
+      "richtig": 3,
+      "erklaerung": "Dwight Clark sprang 58 Sekunden vor Schluss in der Endzone hoch und fing den Sechs-Yard-Pass. Die 49ers schlugen die Cowboys mit 28:27 und erreichten erstmals den Super Bowl.",
+      "quelle": { "text": "The Catch bei Wikipedia", "url": "https://en.wikipedia.org/wiki/The_Catch_(American_football)" }
+    },
+    {
+      "id": "q043",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Beim „Philly Special“ im Super Bowl LII warf Tight End Trey Burton einen Touchdown-Pass. Wer fing ihn?",
+      "antworten": ["Nick Foles", "Zach Ertz", "Alshon Jeffery", "Corey Clement"],
+      "richtig": 0,
+      "erklaerung": "Quarterback Nick Foles fing den Pass im vierten Versuch an der 1-Yard-Linie. Die Eagles führten damit zur Pause 22:12 und gewannen 41:33 gegen die Patriots.",
+      "quelle": { "text": "Philly Special bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Philly_Special" }
+    },
+    {
+      "id": "q044",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wer ist der erfolgreichste Punktesammler der NFL-Geschichte?",
+      "antworten": ["Morten Andersen", "Adam Vinatieri", "Gary Anderson", "Justin Tucker"],
+      "richtig": 1,
+      "erklaerung": "Kicker Adam Vinatieri sammelte 2.673 Punkte und überholte 2018 Morten Andersen (2.544). Er hält auch den Rekord für verwandelte Field Goals (599).",
+      "quelle": { "text": "Rekordliste Karrierepunkte bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_career_scoring_leaders" }
+    },
+    {
+      "id": "q045",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welche beiden Teams haben mit je sechs Titeln die meisten Super-Bowl-Siege?",
+      "antworten": [
+        "Dallas Cowboys und San Francisco 49ers",
+        "Green Bay Packers und New York Giants",
+        "Kansas City Chiefs und Denver Broncos",
+        "New England Patriots und Pittsburgh Steelers"
+      ],
+      "richtig": 3,
+      "erklaerung": "Patriots und Steelers haben je sechs Titel, Cowboys und 49ers je fünf. Stand: nach dem Super Bowl LX im Februar 2026.",
+      "quelle": { "text": "Super-Bowl-Sieger bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_Super_Bowl_champions" }
+    },
+    {
+      "id": "q046",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welcher Quarterback wurde bei den ersten beiden Super Bowls (1967 und 1968) jeweils zum MVP gewählt?",
+      "antworten": ["Bart Starr", "Johnny Unitas", "Joe Namath", "Len Dawson"],
+      "richtig": 0,
+      "erklaerung": "Bart Starr war der erste Super-Bowl-MVP und bekam die Auszeichnung auch im zweiten Super Bowl. Im Super Bowl I warf er für 250 Yards und zwei Touchdowns.",
+      "quelle": { "text": "Bart Starr bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Bart_Starr" }
+    },
+    {
+      "id": "q047",
+      "stufe": 3,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Was gilt seit der Saison 2025 in der Verlängerung der NFL-Hauptrunde?",
+      "antworten": [
+        "Das Team mit dem ersten Touchdown gewinnt sofort",
+        "Die Verlängerung dauert 15 Minuten",
+        "Beide Teams bekommen mindestens einen Ballbesitz, auch nach einem Touchdown im ersten",
+        "Es wird gespielt, bis ein Sieger feststeht, ein Unentschieden gibt es nicht mehr"
+      ],
+      "richtig": 2,
+      "erklaerung": "Die Clubs beschlossen die Regel im April 2025. Die Verlängerung dauert weiter höchstens 10 Minuten, danach bleibt ein Unentschieden möglich.",
+      "quelle": { "text": "Beschlossene Regeländerungen 2025 bei NFL.com", "url": "https://media.nfl.com/football-information/2025/approved-2025-playing-rules--bylaws-and-resolutions" }
+    },
+    {
+      "id": "q048",
+      "stufe": 1,
+      "kategorie": "College-Football",
+      "frage": "Wofür steht die Abkürzung NCAA?",
+      "antworten": [
+        "National Collegiate Athletic Association",
+        "North American College Athletic Alliance",
+        "National Conference of American Athletes",
+        "New College Athletics Association"
+      ],
+      "richtig": 0,
+      "erklaerung": "Der Verband regelt den Sport an mehr als 1.000 Hochschulen der USA und sitzt in Indianapolis. Gegründet wurde er 1906, den Namen NCAA trägt er seit 1910.",
+      "quelle": { "text": "NCAA bei Wikipedia", "url": "https://en.wikipedia.org/wiki/National_Collegiate_Athletic_Association" }
+    },
+    {
+      "id": "q049",
+      "stufe": 1,
+      "kategorie": "College-Football",
+      "frage": "Wofür wird die Heisman Trophy jedes Jahr vergeben?",
+      "antworten": [
+        "Für den wertvollsten Spieler des Super Bowls",
+        "Für den herausragenden Spieler im College Football",
+        "Für den besten Neuling der NFL",
+        "Für den besten Highschool-Spieler der USA"
+      ],
+      "richtig": 1,
+      "erklaerung": "Die Heisman Trophy ist die wichtigste Einzelauszeichnung im College Football und geht jedes Jahr an den herausragenden Spieler der Saison.",
+      "quelle": { "text": "Heisman Trophy bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Heisman_Memorial_Trophy" }
+    },
+    {
+      "id": "q050",
+      "stufe": 1,
+      "kategorie": "College-Football",
+      "frage": "Wie viele Teams spielen seit der Saison 2024/25 im College Football Playoff um den nationalen Titel?",
+      "antworten": ["4", "8", "12", "16"],
+      "richtig": 2,
+      "erklaerung": "Bis zur Saison 2023/24 waren es vier Teams. Den ersten Titel im Zwölf-Teams-Format holte Ohio State im Januar 2025 mit 34:23 gegen Notre Dame.",
+      "quelle": { "text": "College Football Playoff 2024/25 bei Wikipedia", "url": "https://en.wikipedia.org/wiki/2024%E2%80%9325_College_Football_Playoff" }
+    },
+    {
+      "id": "q051",
+      "stufe": 2,
+      "kategorie": "College-Football",
+      "frage": "Welches Bowl-Spiel trägt den Spitznamen „The Granddaddy of Them All“?",
+      "antworten": ["Sugar Bowl", "Orange Bowl", "Cotton Bowl", "Rose Bowl"],
+      "richtig": 3,
+      "erklaerung": "Der Rose Bowl in Pasadena (Kalifornien) ist das älteste noch ausgetragene Bowl-Spiel. Das erste Spiel am 1. Januar 1902 gewann Michigan mit 49:0 gegen Stanford.",
+      "quelle": { "text": "Rose Bowl Game bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Rose_Bowl_Game" }
+    },
+    {
+      "id": "q052",
+      "stufe": 2,
+      "kategorie": "College-Football",
+      "frage": "Wer ist bisher der einzige Spieler, der die Heisman Trophy zweimal gewonnen hat?",
+      "antworten": ["Archie Griffin", "Tim Tebow", "Herschel Walker", "Barry Sanders"],
+      "richtig": 0,
+      "erklaerung": "Archie Griffin von Ohio State gewann die Trophäe 1974 und 1975. Wiederholen konnte das bisher kein anderer Spieler. Stand: Oktober 2026.",
+      "quelle": { "text": "Heisman-Meilensteine bei heisman.com", "url": "https://www.heisman.com/about-the-heisman/milestones/" }
+    },
+    {
+      "id": "q053",
+      "stufe": 2,
+      "kategorie": "College-Football",
+      "frage": "Wie viele Jahre müssen seit dem Highschool-Abschluss vergangen sein, bevor ein Spieler am NFL Draft teilnehmen darf?",
+      "antworten": ["Zwei Jahre", "Drei Jahre", "Vier Jahre", "Fünf Jahre"],
+      "richtig": 1,
+      "erklaerung": "Verlangt sind drei Jahre Abstand zur Highschool, egal, was der Spieler dazwischen gemacht hat. Wer das erfüllt, aber noch College-Jahre übrig hat, braucht die Zulassung der Liga.",
+      "quelle": { "text": "NFL Draft bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_draft" }
+    },
+    {
+      "id": "q054",
+      "stufe": 2,
+      "kategorie": "College-Football",
+      "frage": "Von welcher Stelle aus startet im College Football jedes Team in der ersten Verlängerung seinen Ballbesitz?",
+      "antworten": [
+        "Von der eigenen 25-Yard-Linie",
+        "Von der Mittellinie",
+        "Von der 25-Yard-Linie des Gegners",
+        "Von der 3-Yard-Linie des Gegners"
+      ],
+      "richtig": 2,
+      "erklaerung": "Jedes Team bekommt einen Ballbesitz ab der gegnerischen 25-Yard-Linie, ohne Spieluhr. Ab der dritten Verlängerung gibt es nur noch Zwei-Punkte-Versuche im Wechsel.",
+      "quelle": { "text": "So funktioniert die Verlängerung im College Football bei NCAA.com", "url": "https://www.ncaa.com/news/football/2025-01-01/how-college-football-overtime-works" }
+    },
+    {
+      "id": "q055",
+      "stufe": 2,
+      "kategorie": "College-Football",
+      "frage": "Welches Team gewann im Januar 2026 ungeschlagen den College-Football-Titel und feierte damit seine erste nationale Meisterschaft?",
+      "antworten": ["Ohio State", "Notre Dame", "Georgia", "Indiana"],
+      "richtig": 3,
+      "erklaerung": "Indiana schlug Miami im Finale mit 27:21 und beendete die Saison mit 16:0. Quarterback Fernando Mendoza wurde als bester Offensivspieler des Spiels ausgezeichnet.",
+      "quelle": { "text": "Indiana gegen Miami bei ESPN", "url": "https://www.espn.com/college-football/game/_/gameId/401769076/miami-indiana" }
+    },
+    {
+      "id": "q056",
+      "stufe": 2,
+      "kategorie": "College-Football",
+      "frage": "Das Army–Navy Game wird meist an einem neutralen Ort gespielt. Welche Stadt war bisher am häufigsten Gastgeber?",
+      "antworten": ["Philadelphia", "New York", "Washington, D.C.", "Baltimore"],
+      "richtig": 0,
+      "erklaerung": "Philadelphia liegt ungefähr auf halber Strecke zwischen West Point und Annapolis und war häufiger Gastgeber als jede andere Stadt. Das erste Spiel gab es 1890 in West Point: Navy gewann 24:0.",
+      "quelle": { "text": "Army–Navy Game bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Army%E2%80%93Navy_Game" }
+    },
+    {
+      "id": "q057",
+      "stufe": 3,
+      "kategorie": "College-Football",
+      "frage": "Was unterscheidet einen gültigen Fang im College Football von dem in der NFL?",
+      "antworten": [
+        "Im College müssen beide Füße im Feld sein, in der NFL genügt einer",
+        "Im College genügt ein Fuß im Spielfeld, in der NFL braucht es zwei",
+        "Im College zählt ein Fang erst nach drei Schritten mit dem Ball",
+        "Es gibt keinen Unterschied, beide Regeln sind gleich"
+      ],
+      "richtig": 1,
+      "erklaerung": "Im College reicht ein Fuß in bounds, in der NFL müssen es zwei Füße oder ein anderer Körperteil sein. Das macht Fänge am Spielfeldrand im College leichter.",
+      "quelle": { "text": "NFL und NCAA im Vergleich bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Comparisons_between_the_National_Football_League_and_NCAA_football" }
+    },
+    {
+      "id": "q058",
+      "stufe": 3,
+      "kategorie": "College-Football",
+      "frage": "Welcher Quarterback gewann 1984 mit einem Hail-Mary-Pass im letzten Spielzug mit 47:45 gegen Miami und erhielt im selben Jahr die Heisman Trophy?",
+      "antworten": ["Bernie Kosar", "Vinny Testaverde", "Doug Flutie", "Jim Kelly"],
+      "richtig": 2,
+      "erklaerung": "Doug Flutie von Boston College warf den Ball auf Gerard Phelan in die Endzone. Das Spiel ging als „Hail Flutie“ in die Geschichte ein.",
+      "quelle": { "text": "Boston College Eagles 1984 bei Wikipedia", "url": "https://en.wikipedia.org/wiki/1984_Boston_College_Eagles_football_team" }
+    },
+    {
+      "id": "q059",
+      "stufe": 3,
+      "kategorie": "College-Football",
+      "frage": "Welches Stadion ist das größte der USA?",
+      "antworten": [
+        "Ohio Stadium (Ohio State)",
+        "Beaver Stadium (Penn State)",
+        "Neyland Stadium (Tennessee)",
+        "Michigan Stadium (Michigan)"
+      ],
+      "richtig": 3,
+      "erklaerung": "Das „Big House“ in Ann Arbor fasst offiziell 107.601 Zuschauer und ist das größte Stadion der USA und der westlichen Hemisphäre. Stand: Oktober 2026 laut Wikipedia.",
+      "quelle": { "text": "Michigan Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Michigan_Stadium" }
+    },
+    {
+      "id": "q060",
+      "stufe": 1,
+      "kategorie": "Football in Europa",
+      "frage": "Wie heißt die höchste nationale Spielklasse im deutschen American Football?",
+      "antworten": ["ELF", "GFL", "DFL", "AFVD"],
+      "richtig": 1,
+      "erklaerung": "Die German Football League (GFL) gibt es seit 1979, damals als American Football Bundesliga. Die ELF ist eine europäische Liga, der AFVD ist der Dachverband.",
+      "quelle": { "text": "German Football League bei Wikipedia", "url": "https://en.wikipedia.org/wiki/German_Football_League" }
+    },
+    {
+      "id": "q061",
+      "stufe": 1,
+      "kategorie": "Football in Europa",
+      "frage": "Wie heißt das Endspiel um die deutsche Meisterschaft im American Football?",
+      "antworten": ["Euro Bowl", "World Bowl", "German Bowl", "Berlin Bowl"],
+      "richtig": 2,
+      "erklaerung": "Der German Bowl entscheidet seit 1979 über den Deutschen Meister, der erste wurde am 10. November 1979 in Frankfurt gespielt. Der World Bowl war das Finale der NFL Europe.",
+      "quelle": { "text": "German Bowl bei Wikipedia", "url": "https://en.wikipedia.org/wiki/German_Bowl" }
+    },
+    {
+      "id": "q062",
+      "stufe": 1,
+      "kategorie": "Football international",
+      "frage": "Bei welchen Olympischen Spielen wird Flag Football erstmals olympisch?",
+      "antworten": ["Paris 2024", "Los Angeles 2028", "Brisbane 2032", "Tokio 2020"],
+      "richtig": 1,
+      "erklaerung": "Das IOC nahm Flag Football im Oktober 2023 ins Programm auf. Gespielt wird vom 15. bis 22. Juli 2028, je ein Turnier mit sechs Teams für Männer und Frauen.",
+      "quelle": { "text": "Flag Football bei Olympics.com", "url": "https://www.olympics.com/en/news/flag-football-faq-sport-debut-los-angeles-2028" }
+    },
+    {
+      "id": "q063",
+      "stufe": 1,
+      "kategorie": "Football in Europa",
+      "frage": "In welcher Stadt spielte die NFL 2025 erstmals ein Hauptrundenspiel in Spanien?",
+      "antworten": ["Madrid", "Barcelona", "Sevilla", "Valencia"],
+      "richtig": 0,
+      "erklaerung": "Die Miami Dolphins schlugen die Washington Commanders am 16. November 2025 im Estadio Santiago Bernabéu mit 16:13 nach Verlängerung.",
+      "quelle": { "text": "NFL International Series bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_International_Series" }
+    },
+    {
+      "id": "q064",
+      "stufe": 2,
+      "kategorie": "Football in Europa",
+      "frage": "Unter welchem Namen startete 1991 die Liga, aus der später die NFL Europe wurde?",
+      "antworten": [
+        "American Bowl League",
+        "International Football League",
+        "Euro Bowl League",
+        "World League of American Football"
+      ],
+      "richtig": 3,
+      "erklaerung": "Die World League of American Football (WLAF) begann 1991 mit Teams aus Nordamerika und Europa. Seit 1998 hieß sie NFL Europe, 2007 wurde sie eingestellt.",
+      "quelle": { "text": "NFL Europe bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_Europe" }
+    },
+    {
+      "id": "q065",
+      "stufe": 2,
+      "kategorie": "Football in Europa",
+      "frage": "In welcher Stadt fand 2007 das erste NFL-Hauptrundenspiel außerhalb Nordamerikas statt?",
+      "antworten": ["London", "Frankfurt", "Tokio", "Paris"],
+      "richtig": 0,
+      "erklaerung": "Die New York Giants schlugen die Miami Dolphins am 28. Oktober 2007 im Wembley-Stadion mit 13:10. Damit begann die NFL International Series.",
+      "quelle": { "text": "NFL International Series bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_International_Series" }
+    },
+    {
+      "id": "q066",
+      "stufe": 2,
+      "kategorie": "Football in Europa",
+      "frage": "In welchem Stadion spielten die Colts und die Falcons im November 2025 das erste NFL-Hauptrundenspiel in Berlin?",
+      "antworten": [
+        "Stadion An der Alten Försterei",
+        "Mommsenstadion",
+        "Olympiastadion",
+        "Friedrich-Ludwig-Jahn-Sportpark"
+      ],
+      "richtig": 2,
+      "erklaerung": "Die Indianapolis Colts gewannen am 9. November 2025 im Olympiastadion mit 31:25 nach Verlängerung gegen die Atlanta Falcons.",
+      "quelle": { "text": "NFL International Series bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_International_Series" }
+    },
+    {
+      "id": "q067",
+      "stufe": 2,
+      "kategorie": "Football international",
+      "frage": "Wie viele Spieler pro Team stehen beim olympischen Flag Football gleichzeitig auf dem Feld?",
+      "antworten": ["3", "5", "7", "11"],
+      "richtig": 1,
+      "erklaerung": "Es wird fünf gegen fünf gespielt. Jedes Team hat einen Kader von zehn Spielern, in Los Angeles treten je sechs Männer- und Frauenteams an.",
+      "quelle": { "text": "Flag Football bei Olympics.com", "url": "https://www.olympics.com/en/news/flag-football-faq-sport-debut-los-angeles-2028" }
+    },
+    {
+      "id": "q068",
+      "stufe": 3,
+      "kategorie": "Football in Europa",
+      "frage": "Welches Team gewann 2007 den letzten World Bowl der NFL Europe?",
+      "antworten": ["Frankfurt Galaxy", "Rhein Fire", "Berlin Thunder", "Hamburg Sea Devils"],
+      "richtig": 3,
+      "erklaerung": "Hamburg schlug Frankfurt am 23. Juni 2007 in Frankfurt mit 37:28 und holte den ersten Titel. Wenige Tage später gab die NFL das Aus der Liga bekannt.",
+      "quelle": { "text": "World Bowl XV bei Wikipedia", "url": "https://en.wikipedia.org/wiki/World_Bowl_XV" }
+    },
+    {
+      "id": "q069",
+      "stufe": 3,
+      "kategorie": "Football in Europa",
+      "frage": "Wie viele World-Bowl-Titel holte Frankfurt Galaxy in der Geschichte der NFL Europe?",
+      "antworten": ["Zwei", "Drei", "Vier", "Fünf"],
+      "richtig": 2,
+      "erklaerung": "Die Galaxy siegte 1995, 1999, 2003 und 2006. Kein anderes Team gewann in der Geschichte der Liga so viele World Bowls.",
+      "quelle": { "text": "Frankfurt Galaxy (NFL Europe) bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Frankfurt_Galaxy_(NFL_Europe)" }
+    },
+    {
+      "id": "q070",
+      "stufe": 3,
+      "kategorie": "Football in Europa",
+      "frage": "Welcher Verein hat die meisten German-Bowl-Titel gewonnen?",
+      "antworten": [
+        "Braunschweig Lions (New Yorker Lions)",
+        "Berlin Adler",
+        "Düsseldorf Panther",
+        "Schwäbisch Hall Unicorns"
+      ],
+      "richtig": 0,
+      "erklaerung": "Die Braunschweig Lions, unter Sponsorennamen als New Yorker Lions bekannt, holten zwölf Titel, den letzten 2019. Stand: Oktober 2026 laut Wikipedia.",
+      "quelle": { "text": "German Bowl bei Wikipedia", "url": "https://en.wikipedia.org/wiki/German_Bowl" }
+    },
+    {
+      "id": "q071",
+      "stufe": 3,
+      "kategorie": "Football in Europa",
+      "frage": "Welches Team gewann 2021 die erste Meisterschaft der European League of Football?",
+      "antworten": ["Hamburg Sea Devils", "Cologne Centurions", "Barcelona Dragons", "Frankfurt Galaxy"],
+      "richtig": 3,
+      "erklaerung": "Frankfurt Galaxy schlug die Hamburg Sea Devils am 26. September 2021 in Düsseldorf mit 32:30. Quarterback Jakeb Sullivan wurde zum MVP des Finales gewählt.",
+      "quelle": { "text": "Das erste ELF-Finale bei europeanleague.football", "url": "https://europeanleague.football/news/throwback-first-championship-game-in-elf-history-2486" }
+    },
+    {
+      "id": "q072",
+      "stufe": 3,
+      "kategorie": "Football in Europa",
+      "frage": "Welches Berliner Team gewann 2001, 2002 und 2004 den World Bowl der NFL Europe?",
+      "antworten": ["Berlin Adler", "Berlin Thunder", "Berlin Rebels", "Berlin Kobras"],
+      "richtig": 1,
+      "erklaerung": "Berlin Thunder siegte 2001 gegen Barcelona (24:17), 2002 gegen Rhein Fire (26:20) und 2004 gegen Frankfurt (30:24). 2005 verlor das Team das Finale gegen Amsterdam.",
+      "quelle": { "text": "Berlin Thunder (NFL Europe) bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Berlin_Thunder_(NFL_Europe)" }
+    }
+  ]
+}
