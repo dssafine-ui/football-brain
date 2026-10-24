@@ -1282,6 +1282,471 @@
       "richtig": 1,
       "erklaerung": "Elf Clubs verließen die ELF, um die EFA zu gründen. Vier von ihnen, darunter Berlin Thunder und Rhein Fire, spielen 2026 stattdessen in der American Football League Europe. Die ELF selbst ist seit März 2026 im Insolvenzverfahren. Stand: Oktober 2026 laut Wikipedia.",
       "quelle": { "text": "European League of Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/European_League_of_Football" }
+    },
+    {
+      "id": "q111",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Welche Position führt die Offense an, gibt im Huddle die Spielzüge durch und bekommt den Ball vom Center?",
+      "antworten": ["Running Back", "Tight End", "Quarterback", "Safety"],
+      "richtig": 2,
+      "erklaerung": "Der Quarterback ist der Anführer der Offense. Nach dem Snap übergibt er den Ball an einen Running Back, wirft ihn zu einem Receiver oder läuft selbst los.",
+      "quelle": { "text": "Football Terms (Quarterback) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q112",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Wer schnappt den Ball (Snap) und startet damit jeden Spielzug der Offense?",
+      "antworten": ["Der Center", "Der Quarterback", "Der Fullback", "Der Holder"],
+      "richtig": 0,
+      "erklaerung": "Der Center steht in der Mitte der Offensive Line und gibt den Ball durch seine Beine an den Quarterback. Außerdem sagt er den anderen Linemen, wen sie blocken sollen.",
+      "quelle": { "text": "Football Terms (Center, Snap) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q113",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Welche Position trägt den Ball am häufigsten, wenn der Quarterback ihn per Handoff weitergibt?",
+      "antworten": ["Wide Receiver", "Running Back", "Kicker", "Cornerback"],
+      "richtig": 1,
+      "erklaerung": "Der Running Back, auch Halfback oder Tailback genannt, ist meist der wichtigste Ballträger der Offense. Zusätzlich kann er Pässe fangen.",
+      "quelle": { "text": "Football Terms (Running Back, Handoff) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q114",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Welche Spieler stehen weit außen nahe der Seitenlinie und fangen vor allem die Pässe des Quarterbacks?",
+      "antworten": ["Defensive Tackles", "Guards", "Wide Receiver", "Linebacker"],
+      "richtig": 2,
+      "erklaerung": "Wide Receiver sind für Tempo und sichere Hände bekannt. In einer Standardformation stehen zwei auf dem Feld, manche Offenses setzen drei oder vier ein.",
+      "quelle": { "text": "Football Terms (Wide Receiver) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q115",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Was macht einen Tight End aus?",
+      "antworten": [
+        "Er verteidigt tief im Feld und deckt die schnellsten Receiver",
+        "Er hält bei Field Goals den Ball und setzt ihn für den Kicker auf",
+        "Er tritt bei Kickoffs und Punts und spielt nur in den Special Teams",
+        "Er blockt am Ende der Offensive Line und fängt auch Pässe"
+      ],
+      "richtig": 3,
+      "erklaerung": "Der Tight End ist ein Mischtyp aus Wide Receiver und Offensive Lineman. Er steht außen neben dem Tackle, blockt im Laufspiel und ist bei Pässen ein möglicher Fänger. Eine Standardformation hat einen Tight End, manche Offenses setzen zwei ein.",
+      "quelle": { "text": "Football Terms (Tight End) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q116",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Wie viele Offensive Linemen stehen in der Standardformation der Offense auf dem Feld?",
+      "antworten": ["4", "5", "6", "7"],
+      "richtig": 1,
+      "erklaerung": "Fünf Spieler bilden die Offensive Line: der Center in der Mitte, links und rechts davon je ein Guard und außen je ein Tackle. Sie schützen den Quarterback und öffnen Lücken für den Running Back.",
+      "quelle": { "text": "Positionen im American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_football_positions" }
+    },
+    {
+      "id": "q117",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Was ist die Hauptaufgabe der Defensive Line?",
+      "antworten": [
+        "Den Ball bei Kickoffs weit in die gegnerische Endzone treten",
+        "Läufe stoppen und den Quarterback unter Druck setzen",
+        "Die Receiver tief im Feld eins gegen eins decken",
+        "Den Quarterback vor den gegnerischen Verteidigern schützen"
+      ],
+      "richtig": 1,
+      "erklaerung": "Defensive Tackles und Defensive Ends stehen direkt an der Line of Scrimmage. Sie wollen in die Backfield der Gegner eindringen, den Quarterback sacken oder den Ballträger aufhalten, bevor er Raum gewinnt.",
+      "quelle": { "text": "Football Terms (Defensive End, Defensive Tackle) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q118",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Wo stehen die Linebacker normalerweise?",
+      "antworten": [
+        "Direkt hinter der Defensive Line, vor den Defensive Backs",
+        "Am äußeren Ende der Offensive Line neben dem Tight End",
+        "Ganz tief im Feld, weit hinter allen anderen Verteidigern",
+        "Neben dem Quarterback im Backfield der Offense"
+      ],
+      "richtig": 0,
+      "erklaerung": "Linebacker stehen drei bis fünf Yards hinter den Defensive Linemen. Sie helfen gegen den Lauf, fallen bei Pässen in die Coverage zurück oder stürmen selbst auf den Quarterback.",
+      "quelle": { "text": "Football Terms (Linebacker) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q119",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Welche Verteidiger decken in der Regel die Wide Receiver?",
+      "antworten": ["Die Cornerbacks", "Die Defensive Tackles", "Die Guards", "Die Long Snapper"],
+      "richtig": 0,
+      "erklaerung": "Cornerbacks stehen im Defensive Backfield den Wide Receivern gegenüber, meist ganz außen. In einer Standardformation spielen zwei Cornerbacks.",
+      "quelle": { "text": "Football Terms (Cornerback) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q120",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Welche Verteidiger stehen am weitesten von der Line of Scrimmage entfernt und gelten als letzte Linie der Defense?",
+      "antworten": ["Die Defensive Ends", "Die Nose Tackles", "Die Linebacker", "Die Safeties"],
+      "richtig": 3,
+      "erklaerung": "Safeties stehen etwa 10 bis 15 Yards hinter der Line of Scrimmage. Sie verteidigen gegen Pässe und helfen gegen den Lauf. Es gibt Free Safeties und Strong Safeties. Nicht zu verwechseln mit dem Safety als Punktgewinn für die Defense.",
+      "quelle": { "text": "Football Terms (Safety als Position) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q121",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Welcher Spezialist tritt den ruhenden Ball bei Field Goals und Extrapunkten?",
+      "antworten": ["Der Punter", "Der Holder", "Der Placekicker", "Der Long Snapper"],
+      "richtig": 2,
+      "erklaerung": "Der Placekicker, meist einfach Kicker genannt, tritt auch die Kickoffs. Bei Field Goals und Extrapunkten setzt ein Holder den Ball auf, den ihm der Long Snapper zuvor zuspielt.",
+      "quelle": { "text": "Positionen im American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_football_positions" }
+    },
+    {
+      "id": "q122",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Wann kommt ein Punter normalerweise aufs Feld?",
+      "antworten": [
+        "Nach jedem Touchdown, um den Extrapunkt per Kick zu spielen",
+        "Im ersten Down, um den Ball möglichst weit nach vorn zu werfen",
+        "Nur in der Verlängerung, wenn das Spiel unentschieden steht",
+        "Im vierten Down, wenn weder First Down noch Field Goal realistisch sind"
+      ],
+      "richtig": 3,
+      "erklaerung": "Der Punter lässt den Ball fallen und tritt ihn, bevor er den Boden berührt, so weit wie möglich zum Gegner. Das passiert fast immer im vierten Down, wenn die Offense kaum noch punkten oder ein First Down schaffen kann und für ein Field Goal zu weit entfernt ist.",
+      "quelle": { "text": "Football Terms (Punt, Punter) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q123",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Aus welchen drei Einheiten besteht ein Football-Team?",
+      "antworten": ["Offense, Defense und Special Teams", "Angriff, Mittelfeld und Verteidigung", "Quarterbacks, Linemen und Kicker", "Starter, Wechselspieler und Ersatzbank"],
+      "richtig": 0,
+      "erklaerung": "Weil bei toten Bällen beliebig viele Spieler ausgewechselt werden dürfen, haben sich drei Einheiten entwickelt: die Offense mit dem Ball, die Defense ohne Ball und die Special Teams, die bei allen Kicks aufs Feld kommen.",
+      "quelle": { "text": "Positionen im American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_football_positions" }
+    },
+    {
+      "id": "q124",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Zu welcher Gruppe gehören die Cornerbacks und die Safeties?",
+      "antworten": ["Zur Defensive Line", "Zu den Linebackern", "Zu den Defensive Backs (Secondary)", "Zu den Special Teams"],
+      "richtig": 2,
+      "erklaerung": "Die Defensive Backs, auch Secondary genannt, stehen hinter den Linebackern oder außen an der Seitenlinie und verteidigen vor allem gegen Pässe. Eine normale Defense hat zwei Cornerbacks und zwei Safeties.",
+      "quelle": { "text": "Positionen im American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_football_positions" }
+    },
+    {
+      "id": "q125",
+      "stufe": 1,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Wie nennt man den geschützten Bereich, den die Offensive Line um den Quarterback bildet?",
+      "antworten": ["Huddle", "Pocket", "Neutral Zone", "End Zone"],
+      "richtig": 1,
+      "erklaerung": "Die Offensive Line bildet einen Schutzraum, die Pocket, in dem der Quarterback in Ruhe werfen soll. Kommt die Defense durch, droht ein Sack.",
+      "quelle": { "text": "Football Terms (Pocket) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q126",
+      "stufe": 1,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Wie nennt man es, wenn der Quarterback den Ball direkt einem Mitspieler in die Hand gibt, statt ihn zu werfen?",
+      "antworten": ["Snap", "Punt", "Fumble", "Handoff"],
+      "richtig": 3,
+      "erklaerung": "Beim Handoff übergibt der Quarterback den Ball meist an den Running Back, der damit das Laufspiel eröffnet. Die Alternativen sind ein Pass oder ein Lauf des Quarterbacks.",
+      "quelle": { "text": "Football Terms (Handoff) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q127",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wie erzielt ein Team einen Touchdown?",
+      "antworten": [
+        "Es tritt den Ball durch die gegnerischen Torstangen",
+        "Es trägt den Ball in die gegnerische Endzone oder fängt ihn dort",
+        "Es bringt den gegnerischen Quarterback hinter dessen Linie zu Boden",
+        "Es schafft vier First Downs hintereinander"
+      ],
+      "richtig": 1,
+      "erklaerung": "Ein Touchdown ist mit sechs Punkten die wertvollste Punktart in der NFL. Der Ball muss über die Goal Line in die Endzone getragen oder dort gefangen werden. Danach darf das Team einen Extrapunkt kicken oder einen Zwei-Punkte-Versuch spielen.",
+      "quelle": { "text": "Football Terms (Touchdown, End Zone) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q128",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wann bekommt die Defense zwei Punkte durch einen Safety?",
+      "antworten": [
+        "Wenn sie einen Pass abfängt und in die Endzone trägt",
+        "Wenn sie ein Field Goal des Gegners blockt",
+        "Wenn sie einen Ballträger in dessen eigener Endzone zu Boden bringt",
+        "Wenn sie den Quarterback mitten auf dem Feld sackt"
+      ],
+      "richtig": 2,
+      "erklaerung": "Ein Safety entsteht, wenn der Ballträger hinter seiner eigenen Goal Line zu Boden gebracht wird oder den Ball dort ins Aus trägt oder verliert. Auch ein Foul der Offense in der eigenen Endzone führt zum Safety.",
+      "quelle": { "text": "Football Terms (Safety als Punktgewinn) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q129",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Womit beginnt jede Halbzeit eines NFL-Spiels?",
+      "antworten": ["Mit einem Kickoff", "Mit einem Punt", "Mit einem Münzwurf", "Mit einem Snap an der Mittellinie"],
+      "richtig": 0,
+      "erklaerung": "Der Kickoff bringt den Ball zu Beginn jeder Halbzeit und der Verlängerung ins Spiel. Außerdem folgt er nach jedem Extrapunkt-Versuch und nach jedem erfolgreichen Field Goal.",
+      "quelle": { "text": "Football Terms (Kickoff) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q130",
+      "stufe": 1,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Was ist ein Sack?",
+      "antworten": [
+        "Ein Verteidiger fängt einen Pass ab und trägt ihn in Richtung Endzone",
+        "Die Defense blockt einen Field-Goal-Versuch mit den Händen",
+        "Der Quarterback wird hinter der Line of Scrimmage getackelt, bevor er werfen kann",
+        "Ein Running Back wird kurz vor der gegnerischen Endzone gestoppt"
+      ],
+      "richtig": 2,
+      "erklaerung": "Beim Sack verliert die Offense Raum, weil der Spielzug mehrere Yards hinter der Line of Scrimmage endet. Besonders bitter ist ein Sack mit Fumble (Strip Sack), denn dann kann die Defense den Ball erobern. Wird der Quarterback in der eigenen Endzone gesackt, ist das ein Safety.",
+      "quelle": { "text": "Quarterback Sack bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Quarterback_sack" }
+    },
+    {
+      "id": "q131",
+      "stufe": 1,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Was ist eine Interception?",
+      "antworten": [
+        "Ein Receiver lässt einen Pass aus den Händen fallen",
+        "Der Quarterback wirft den Ball absichtlich ins Seitenaus",
+        "Die Offense kickt den Ball im vierten Down zum Gegner",
+        "Ein Verteidiger fängt einen Pass ab, der Ballbesitz wechselt"
+      ],
+      "richtig": 3,
+      "erklaerung": "Die Interception ist ein Turnover: Die Defense fängt einen Vorwärtspass der Offense, und der Ballbesitz wechselt sofort. Der Verteidiger darf mit dem Ball losrennen, im besten Fall trägt er ihn sogar zum Touchdown.",
+      "quelle": { "text": "Football Terms (Interception, Turnover) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q132",
+      "stufe": 1,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Was passiert bei einem Fumble?",
+      "antworten": [
+        "Der Ball ist sofort tot, und die Offense behält ihn",
+        "Die Defense bekommt dafür sofort zwei Punkte",
+        "Ein Spieler verliert den Ball, und beide Teams dürfen ihn erobern",
+        "Der Schiedsrichter unterbricht das Spiel für zwei Minuten"
+      ],
+      "richtig": 2,
+      "erklaerung": "Bei einem Fumble verliert ein Spieler den Ball im laufenden Spielzug. Erobert die Defense den freien Ball, ist das ein Turnover. Holt ihn sich die Offense zurück, geht das Spiel für sie weiter.",
+      "quelle": { "text": "Football Terms (Fumble, Turnover) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q133",
+      "stufe": 1,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Was passiert, wenn die Offense auch im vierten Down kein First Down schafft?",
+      "antworten": [
+        "Der Gegner bekommt den Ball dort, wo der letzte Spielzug endete",
+        "Die Offense bekommt noch zwei weitere Versuche",
+        "Ein Münzwurf entscheidet über den Ballbesitz",
+        "Die Offense muss den Ball an der eigenen 20-Yard-Linie abgeben"
+      ],
+      "richtig": 0,
+      "erklaerung": "Das nennt man Turnover on Downs. Deshalb punten Teams im vierten Down meist oder versuchen ein Field Goal, statt ihren Ballbesitz zu riskieren.",
+      "quelle": { "text": "Football Terms (Turnover on Downs, Punt) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q134",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Was ist die Line of Scrimmage?",
+      "antworten": [
+        "Die Linie in der Mitte des Spielfelds, an der jedes Team startet",
+        "Eine gedachte Linie von Seitenlinie zu Seitenlinie an der Spitze des Balls",
+        "Die Linie hinter der Endzone, an der das Spielfeld endet",
+        "Die Linie am Spielfeldrand, hinter der die Trainer stehen müssen"
+      ],
+      "richtig": 1,
+      "erklaerung": "Die Line of Scrimmage verläuft quer über das Feld durch die vordere Spitze des bereitgelegten Balls. Offense und Defense stellen sich auf den beiden Seiten auf und dürfen sie erst nach dem Snap überschreiten.",
+      "quelle": { "text": "Football Terms (Line of Scrimmage) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q135",
+      "stufe": 1,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Welche Farbe hat die Flagge, die ein Schiedsrichter bei einer Strafe auf das Feld wirft?",
+      "antworten": ["Rot", "Weiß", "Blau", "Gelb"],
+      "richtig": 3,
+      "erklaerung": "Wirft ein Offizieller eine gelbe Flagge, wissen Teams und Fans: Es gab ein Foul, und eine Strafe wird verhängt. Beispiele sind Holding oder False Start.",
+      "quelle": { "text": "Football Terms (Penalty) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q136",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wie viele Timeouts hat jedes Team pro Halbzeit?",
+      "antworten": ["1", "2", "3", "4"],
+      "richtig": 2,
+      "erklaerung": "Mit einem Timeout kann ein Team die Uhr taktisch anhalten. Jedes Team bekommt drei pro Halbzeit. Außerdem können die Offiziellen selbst Timeouts nehmen, zum Beispiel bei einer Verletzung.",
+      "quelle": { "text": "Football Terms (Timeout) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q137",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wann gilt ein Spieler als im Aus (Out of Bounds)?",
+      "antworten": [
+        "Erst wenn beide Füße außerhalb der Linie stehen",
+        "Sobald er eine Begrenzungslinie des Feldes berührt",
+        "Erst nach zwei Schritten hinter der Seitenlinie",
+        "Wenn er die Hash Marks überläuft"
+      ],
+      "richtig": 1,
+      "erklaerung": "Schon die Berührung einer Seiten- oder Endlinie genügt. Wer dagegen nur einen Spieler, einen Offiziellen oder eine Pylone berührt, die auf oder hinter der Linie stehen, ist nicht automatisch im Aus.",
+      "quelle": { "text": "Football Terms (Out of Bounds) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q138",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Welche Regel gilt für den Pass nach vorn (Forward Pass) in jedem Down?",
+      "antworten": [
+        "Er darf von jeder Stelle des Feldes aus geworfen werden, auch mehrmals im selben Down",
+        "Er muss aus der eigenen Endzone heraus geworfen werden, sonst zählt er nicht",
+        "Der Werfer muss hinter der Line of Scrimmage stehen; nur ein Pass nach vorn ist erlaubt",
+        "Er ist nur im vierten Down erlaubt, davor darf die Offense nur laufen"
+      ],
+      "richtig": 2,
+      "erklaerung": "Ein Vorwärtspass darf nur geworfen werden, solange der Werfer hinter der Line of Scrimmage steht, und nur einmal pro Down. Nach hinten oder zur Seite (Lateral) darf der Ball dagegen so oft weitergegeben werden, wie das Team will.",
+      "quelle": { "text": "American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_football" }
+    },
+    {
+      "id": "q139",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Was passiert, wenn ein Pass nach vorn den Boden berührt, ohne dass ihn ein Spieler gefangen hat?",
+      "antworten": [
+        "Der Ball bleibt im Spiel, und jeder darf ihn aufheben",
+        "Die Defense bekommt sofort den Ball",
+        "Die Offense bekommt automatisch ein First Down",
+        "Der Spielzug ist zu Ende, der Pass gilt als unvollständig"
+      ],
+      "richtig": 3,
+      "erklaerung": "Ein nicht gefangener Vorwärtspass beendet den Spielzug. Man nennt ihn Incomplete Pass. Es gibt keinen Raumgewinn, und der Down ist für die Offense trotzdem verbraucht.",
+      "quelle": { "text": "American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_football" }
+    },
+    {
+      "id": "q140",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Der Super Bowl wird mit römischen Ziffern nummeriert. Der wievielte Super Bowl war der Super Bowl LX im Februar 2026?",
+      "antworten": ["Der 16.", "Der 40.", "Der 50.", "Der 60."],
+      "richtig": 3,
+      "erklaerung": "L steht für 50 und X für 10, zusammen 60. Der erste Super Bowl fand im Januar 1967 statt, seitdem wird jedes Jahr einer gespielt. Den Super Bowl LX gewannen die Seattle Seahawks gegen die New England Patriots mit 29:13.",
+      "quelle": { "text": "Super Bowl LX bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_LX" }
+    },
+    {
+      "id": "q141",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "In welchem Monat wird der Super Bowl gespielt?",
+      "antworten": ["Februar", "September", "November", "Mai"],
+      "richtig": 0,
+      "erklaerung": "Der Super Bowl krönt die NFL-Saison Anfang Februar und wird zwischen den Siegern der AFC und der NFC gespielt. Der Super Bowl LX fand am 8. Februar 2026 im Levi's Stadium in Santa Clara statt.",
+      "quelle": { "text": "National Football League bei Wikipedia", "url": "https://en.wikipedia.org/wiki/National_Football_League" }
+    },
+    {
+      "id": "q142",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Wie viele Teams spielen in der NFL?",
+      "antworten": ["24", "28", "30", "32"],
+      "richtig": 3,
+      "erklaerung": "Die 32 Teams sind gleichmäßig auf die AFC und die NFC verteilt: je 16 pro Conference und vier Teams pro Division. Auf 32 Teams wuchs die Liga im Jahr 2002.",
+      "quelle": { "text": "National Football League bei Wikipedia", "url": "https://en.wikipedia.org/wiki/National_Football_League" }
+    },
+    {
+      "id": "q143",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Aus welchen beiden Sportarten hat sich American Football im 19. Jahrhundert entwickelt?",
+      "antworten": ["Aus Rugby und Fußball (Soccer)", "Aus Baseball und Basketball", "Aus Eishockey und Lacrosse", "Aus Handball und Volleyball"],
+      "richtig": 0,
+      "erklaerung": "Das erste Spiel, das als American Football gilt, spielten Rutgers und Princeton am 6. November 1869, damals noch nach Regeln, die dem Fußball ähnelten. Walter Camp, der „Vater des American Football“, schuf ab 1880 Regeln wie den Snap, die Line of Scrimmage, Teams mit elf Spielern und die Downs.",
+      "quelle": { "text": "American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_football" }
+    },
+    {
+      "id": "q144",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Warum nennt man American Football auch „Gridiron“?",
+      "antworten": [
+        "Weil die Sportart auf einem Grillplatz erfunden wurde",
+        "Weil die ersten Helme aus Eisen gegossen waren",
+        "Weil der Ball früher wie ein Rost geflochten war",
+        "Weil die Yardlinien das Feld wie einen Grillrost aussehen lassen"
+      ],
+      "richtig": 3,
+      "erklaerung": "Seit Walter Camp 1882 die Downs einführte, markieren Linien im Abstand von fünf Yards das Feld. Dadurch sah es aus wie ein Gridiron, also ein Bratrost. Heute sind „Football“, „American Football“ und „Gridiron“ gängige Namen für dieselbe Sportart.",
+      "quelle": { "text": "American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_football" }
+    },
+    {
+      "id": "q145",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Was macht man bei Fantasy Football?",
+      "antworten": [
+        "Man steuert Football-Spieler als Spielfiguren in einem Videospiel",
+        "Man stellt ein virtuelles Team aus echten NFL-Profis auf und sammelt Punkte",
+        "Man tippt vor jedem NFL-Spiel nur auf das Endergebnis der Partie",
+        "Man trainiert ein echtes Team in einer Nachwuchsliga und wählt die Spielzüge"
+      ],
+      "richtig": 1,
+      "erklaerung": "Die Mitspieler wählen ihre Teams in einem Draft aus allen NFL-Profis. Punkte gibt es jede Woche für die tatsächlichen Leistungen der Spieler im Spiel, etwa für Touchdowns und Yards. Am verbreitetsten sind Ligen, in denen jede Woche zwei Teams gegeneinander antreten.",
+      "quelle": { "text": "Fantasy Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Fantasy_football_(gridiron)" }
+    },
+    {
+      "id": "q146",
+      "stufe": 1,
+      "kategorie": "College-Football",
+      "frage": "Wie nennt man im College Football die großen Spiele nach der regulären Saison, zu denen auch der Rose Bowl gehört?",
+      "antworten": ["Bowl Games", "Playoff-Camps", "Draft Games", "Pro Bowls"],
+      "richtig": 0,
+      "erklaerung": "Die Teams der Football Bowl Subdivision spielen traditionell in Bowl Games, wenn die reguläre Saison vorbei ist. Seit 2014 ermittelt das College Football Playoff den nationalen Meister.",
+      "quelle": { "text": "American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_football" }
+    },
+    {
+      "id": "q147",
+      "stufe": 1,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Wie lange dauert ein NFL-Spiel in der Realität ungefähr, obwohl nur 60 Minuten gespielt werden?",
+      "antworten": ["Etwa 60 Minuten", "Knapp zwei Stunden", "Etwas mehr als drei Stunden", "Rund fünf Stunden"],
+      "richtig": 2,
+      "erklaerung": "Die Uhr steht bei vielen Unterbrechungen still, zum Beispiel bei Timeouts, Strafen, Verletzungen und Fernsehpausen. Darum dauert ein durchschnittliches NFL-Spiel etwas mehr als drei Stunden.",
+      "quelle": { "text": "American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_football" }
+    },
+    {
+      "id": "q148",
+      "stufe": 1,
+      "kategorie": "Football international",
+      "frage": "Wie wird beim Flag Football der Ballträger gestoppt?",
+      "antworten": [
+        "Er wird wie beim normalen Football zu Boden gebracht",
+        "Ein Verteidiger zieht ihm eine Flagge vom Gürtel",
+        "Er muss nach drei Schritten stehen bleiben",
+        "Ein Gegner muss ihn mit beiden Händen berühren"
+      ],
+      "richtig": 1,
+      "erklaerung": "Statt den Ballträger zu tackeln, zieht ihm die Defense eine Flagge vom Gürtel („Deflagging“). Das beendet den Spielzug. Kontakt ist beim Flag Football stark eingeschränkt. Flag Football wird 2028 in Los Angeles erstmals olympisch.",
+      "quelle": { "text": "Flag Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Flag_football" }
     }
   ]
 }
