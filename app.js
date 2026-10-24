@@ -15,6 +15,8 @@
     { nummer: 2, name: 'College', hinweis: 'mittel' },
     { nummer: 3, name: 'NFL', hinweis: 'schwer' },
   ];
+  // Neue Spieler starten bei den leichten Fragen (Highschool). STANDARD_STUFE gilt nur für Fragen, in denen die Stufe fehlt.
+  const START_STUFE = 1;
   const STANDARD_STUFE = 2;
   // Neue Fragen (Tagesquiz und weitere Fragen) zählen voll, Wiederholungen in der Übungsrunde halb.
   const PUNKTE_NEU = 10;
@@ -74,7 +76,7 @@
   // ---------- Speicher ----------
 
   function leererSpeicher() {
-    return { v: 1, fragen: {}, tage: {}, runde: null, stufe: STANDARD_STUFE, punkte: 0 };
+    return { v: 1, fragen: {}, tage: {}, runde: null, stufe: START_STUFE, punkte: 0 };
   }
 
   function speicherLaden() {
