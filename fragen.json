@@ -26,7 +26,7 @@
     },
     {
       "id": "q003",
-      "stufe": 3,
+      "stufe": 2,
       "kategorie": "Regeln",
       "frage": "Von welcher Linie aus wird in der NFL der Extrapunkt gespielt? (Der Kick ist dadurch rund 33 Yards lang.)",
       "antworten": ["2-Yard-Linie", "10-Yard-Linie", "15-Yard-Linie", "25-Yard-Linie"],
@@ -35,7 +35,7 @@
     },
     {
       "id": "q004",
-      "stufe": 3,
+      "stufe": 2,
       "kategorie": "Regeln",
       "frage": "Welche Strafe gilt in der NFL bei Defensive Pass Interference?",
       "antworten": [
@@ -58,7 +58,7 @@
     },
     {
       "id": "q006",
-      "stufe": 2,
+      "stufe": 1,
       "kategorie": "Taktik und Positionen",
       "frage": "Warum gilt der Left Tackle oft als wichtigster Offensive Lineman?",
       "antworten": [
@@ -95,7 +95,7 @@
     },
     {
       "id": "q009",
-      "stufe": 3,
+      "stufe": 2,
       "kategorie": "Taktik und Positionen",
       "frage": "Wie viele Verteidiger sichern in „Cover 3“ die tiefen Zonen?",
       "antworten": ["1", "2", "3", "4"],
@@ -159,7 +159,7 @@
     },
     {
       "id": "q015",
-      "stufe": 1,
+      "stufe": 2,
       "kategorie": "Geschichte und Liga",
       "frage": "Welche deutsche Stadt war 2022 Gastgeber des ersten NFL-Punktspiels in Deutschland?",
       "antworten": ["Frankfurt", "Berlin", "München", "Köln"],
@@ -168,7 +168,7 @@
     },
     {
       "id": "q016",
-      "stufe": 3,
+      "stufe": 2,
       "kategorie": "Spielablauf und Strafen",
       "frage": "Wie viele Sekunden hat die Offense normalerweise Zeit, nach dem Ende des letzten Spielzugs den nächsten zu starten (Play Clock)?",
       "antworten": ["15", "25", "30", "40"],
@@ -223,7 +223,7 @@
     },
     {
       "id": "q021",
-      "stufe": 1,
+      "stufe": 2,
       "kategorie": "Spielzüge, Defense und Positionen",
       "frage": "Was ist eine „Play Action“?",
       "antworten": [
@@ -237,7 +237,7 @@
     },
     {
       "id": "q022",
-      "stufe": 1,
+      "stufe": 2,
       "kategorie": "Spielzüge, Defense und Positionen",
       "frage": "Was bedeutet ein „Blitz“ in der Defense?",
       "antworten": [
@@ -265,7 +265,7 @@
     },
     {
       "id": "q024",
-      "stufe": 1,
+      "stufe": 2,
       "kategorie": "Spielzüge, Defense und Positionen",
       "frage": "Was unterscheidet Man-Coverage von Zone-Coverage?",
       "antworten": [
@@ -279,7 +279,7 @@
     },
     {
       "id": "q025",
-      "stufe": 2,
+      "stufe": 1,
       "kategorie": "Spielzüge, Defense und Positionen",
       "frage": "Welche Aufgabe hat ein Fullback?",
       "antworten": [
@@ -316,7 +316,7 @@
     },
     {
       "id": "q028",
-      "stufe": 1,
+      "stufe": 2,
       "kategorie": "Liga und Rekorde",
       "frage": "Wie viele Super-Bowl-Siege hat Tom Brady als Spieler geholt?",
       "antworten": ["4", "5", "6", "7"],
@@ -440,7 +440,7 @@
     },
     {
       "id": "q040",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "Geschichte und Liga",
       "frage": "Welcher Quarterback machte 1975 mit einem Touchdown-Pass im Playoff gegen die Vikings den Begriff „Hail Mary“ berühmt?",
       "antworten": ["Joe Namath", "Terry Bradshaw", "Roger Staubach", "Fran Tarkenton"],
@@ -490,7 +490,7 @@
     },
     {
       "id": "q045",
-      "stufe": 3,
+      "stufe": 2,
       "kategorie": "Geschichte und Liga",
       "frage": "Welche beiden Teams haben mit je sechs Titeln die meisten Super-Bowl-Siege?",
       "antworten": [
@@ -560,7 +560,7 @@
     },
     {
       "id": "q050",
-      "stufe": 1,
+      "stufe": 2,
       "kategorie": "College-Football",
       "frage": "Wie viele Teams spielen seit der Saison 2024/25 im College Football Playoff um den nationalen Titel?",
       "antworten": ["4", "8", "12", "16"],
@@ -580,7 +580,7 @@
     },
     {
       "id": "q052",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "College-Football",
       "frage": "Wer ist bisher der einzige Spieler, der die Heisman Trophy zweimal gewonnen hat?",
       "antworten": ["Archie Griffin", "Tim Tebow", "Herschel Walker", "Barry Sanders"],
@@ -625,7 +625,7 @@
     },
     {
       "id": "q056",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "College-Football",
       "frage": "Das Army–Navy Game wird meist an einem neutralen Ort gespielt. Welche Stadt war bisher am häufigsten Gastgeber?",
       "antworten": ["Philadelphia", "New York", "Washington, D.C.", "Baltimore"],
@@ -635,7 +635,7 @@
     },
     {
       "id": "q057",
-      "stufe": 3,
+      "stufe": 2,
       "kategorie": "College-Football",
       "frage": "Was unterscheidet einen gültigen Fang im College Football von dem in der NFL?",
       "antworten": [
@@ -675,7 +675,7 @@
     },
     {
       "id": "q060",
-      "stufe": 1,
+      "stufe": 2,
       "kategorie": "Football in Europa",
       "frage": "Wie heißt die höchste nationale Spielklasse im deutschen American Football?",
       "antworten": ["ELF", "GFL", "DFL", "AFVD"],
@@ -695,7 +695,7 @@
     },
     {
       "id": "q062",
-      "stufe": 1,
+      "stufe": 2,
       "kategorie": "Football international",
       "frage": "Bei welchen Olympischen Spielen wird Flag Football erstmals olympisch?",
       "antworten": ["Paris 2024", "Los Angeles 2028", "Brisbane 2032", "Tokio 2020"],
@@ -715,7 +715,7 @@
     },
     {
       "id": "q064",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "Football in Europa",
       "frage": "Unter welchem Namen startete 1991 die Liga, aus der später die NFL Europe wurde?",
       "antworten": [
@@ -740,7 +740,7 @@
     },
     {
       "id": "q066",
-      "stufe": 2,
+      "stufe": 1,
       "kategorie": "Football in Europa",
       "frage": "In welchem Stadion spielten die Colts und die Falcons im November 2025 das erste NFL-Hauptrundenspiel in Berlin?",
       "antworten": [
@@ -840,7 +840,7 @@
     },
     {
       "id": "q075",
-      "stufe": 1,
+      "stufe": 2,
       "kategorie": "Spielablauf und Strafen",
       "frage": "Ein Team hat beim Snap zwölf Spieler auf dem Feld („Too many players“). Welche Strafe folgt?",
       "antworten": ["5 Yards", "10 Yards", "15 Yards", "Der Ballbesitz wechselt"],
@@ -850,7 +850,7 @@
     },
     {
       "id": "q076",
-      "stufe": 1,
+      "stufe": 2,
       "kategorie": "Spielablauf und Strafen",
       "frage": "Welcher dieser Verstöße kostet in der NFL 15 Yards?",
       "antworten": ["False Start", "Delay of Game", "Offside", "Face Mask (am Helmgitter ziehen)"],
@@ -860,7 +860,7 @@
     },
     {
       "id": "q077",
-      "stufe": 1,
+      "stufe": 2,
       "kategorie": "Regeln",
       "frage": "Wie zeigt ein Returner an, dass er einen Fair Catch machen will?",
       "antworten": [
@@ -900,7 +900,7 @@
     },
     {
       "id": "q080",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "Regeln",
       "frage": "Wie breit ist ein NFL-Spielfeld?",
       "antworten": ["40 Yards", "50 Yards", "53⅓ Yards", "60 Yards"],
@@ -910,7 +910,7 @@
     },
     {
       "id": "q081",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "Regeln",
       "frage": "Wie hoch über dem Boden liegt die Querlatte der NFL-Torstangen?",
       "antworten": ["8 Fuß (rund 2,4 Meter)", "10 Fuß (rund 3 Meter)", "12 Fuß (rund 3,7 Meter)", "15 Fuß (rund 4,6 Meter)"],
@@ -920,7 +920,7 @@
     },
     {
       "id": "q082",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "Regeln",
       "frage": "Wie viele Offizielle stehen in einem NFL-Spiel auf dem Feld?",
       "antworten": ["6", "7", "8", "9"],
@@ -975,7 +975,7 @@
     },
     {
       "id": "q087",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "Spielablauf und Strafen",
       "frage": "Ein Kickoff landet in der Endzone und der Returner legt dort den Ball ab (Touchback). Auf welcher Linie beginnt seit 2025 die Offense?",
       "antworten": ["20-Yard-Linie", "25-Yard-Linie", "30-Yard-Linie", "35-Yard-Linie"],
@@ -985,7 +985,7 @@
     },
     {
       "id": "q088",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "Regeln",
       "frage": "Wie heißt der offizielle Spielball der NFL, benannt nach dem früheren Giants-Besitzer Wellington Mara?",
       "antworten": ["The Duke", "The Champ", "The Rocket", "The Commissioner"],
@@ -995,7 +995,7 @@
     },
     {
       "id": "q089",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "Regeln",
       "frage": "Was ist ein Drop Kick?",
       "antworten": [
@@ -1010,7 +1010,7 @@
     },
     {
       "id": "q090",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "Regeln",
       "frage": "Wodurch wird die Neutral Zone begrenzt?",
       "antworten": [
@@ -1025,7 +1025,7 @@
     },
     {
       "id": "q091",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "College-Football",
       "frage": "Seit 2023 läuft im College Football (Division I) die Uhr nach einem First Down weiter. Wann wird sie trotzdem angehalten?",
       "antworten": [
@@ -1215,7 +1215,7 @@
     },
     {
       "id": "q106",
-      "stufe": 3,
+      "stufe": 2,
       "kategorie": "Regeln",
       "frage": "Ein Offensive Lineman mit der Nummer 72 meldet sich vor dem Spielzug beim Referee. Was bedeutet das?",
       "antworten": [
@@ -1245,7 +1245,7 @@
     },
     {
       "id": "q108",
-      "stufe": 2,
+      "stufe": 3,
       "kategorie": "Football in Europa",
       "frage": "Auf welchen Regeln basiert das offizielle Regelwerk des deutschen Verbands AFVD?",
       "antworten": ["Auf den NFL-Regeln", "Auf den kanadischen CFL-Regeln", "Auf den NCAA-College-Regeln", "Auf einem komplett eigenen deutschen Regelwerk"],
