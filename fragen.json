@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-23",
+  "stand": "2026-10-24",
   "fragen": [
     {
       "id": "q001",
@@ -680,7 +680,7 @@
       "frage": "Wie heißt die höchste nationale Spielklasse im deutschen American Football?",
       "antworten": ["ELF", "GFL", "DFL", "AFVD"],
       "richtig": 1,
-      "erklaerung": "Die German Football League (GFL) gibt es seit 1979, damals als American Football Bundesliga. Die ELF ist eine europäische Liga, der AFVD ist der Dachverband.",
+      "erklaerung": "Die German Football League (GFL) gibt es seit 1979, damals als American Football Bundesliga. Die ELF spielte von 2021 bis 2025 als europäische Liga und ist seit März 2026 im Insolvenzverfahren, der AFVD ist der Dachverband.",
       "quelle": { "text": "German Football League bei Wikipedia", "url": "https://en.wikipedia.org/wiki/German_Football_League" }
     },
     {
@@ -817,6 +817,471 @@
       "richtig": 1,
       "erklaerung": "Berlin Thunder siegte 2001 gegen Barcelona (24:17), 2002 gegen Rhein Fire (26:20) und 2004 gegen Frankfurt (30:24). 2005 verlor das Team das Finale gegen Amsterdam.",
       "quelle": { "text": "Berlin Thunder (NFL Europe) bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Berlin_Thunder_(NFL_Europe)" }
+    },
+    {
+      "id": "q073",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wie ist die reguläre Spielzeit eines NFL-Spiels aufgeteilt?",
+      "antworten": ["Zwei Hälften zu je 30 Minuten", "Vier Viertel zu je 12 Minuten", "Vier Viertel zu je 15 Minuten", "Drei Drittel zu je 20 Minuten"],
+      "richtig": 2,
+      "erklaerung": "Ein NFL-Spiel dauert regulär 60 Minuten, aufgeteilt in vier Viertel zu je 15 Minuten. Weil die Uhr bei Unterbrechungen wie Timeouts stillsteht, zieht sich ein Spiel real deutlich länger.",
+      "quelle": { "text": "Football Terms (Quarters) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q074",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wie viele Spieler darf ein Team in der NFL gleichzeitig auf dem Feld haben?",
+      "antworten": ["10", "11", "12", "13"],
+      "richtig": 1,
+      "erklaerung": "Jedes Team spielt mit elf Spielern. Gewechselt wird, solange der Ball tot ist, und der Wechsel muss vor dem nächsten Spielzug abgeschlossen sein. Laut AFVD geht die Teamgröße von elf Spielern auf Walter Camp zurück.",
+      "quelle": { "text": "Football Terms (Substitution) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q075",
+      "stufe": 1,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Ein Team hat beim Snap zwölf Spieler auf dem Feld („Too many players“). Welche Strafe folgt?",
+      "antworten": ["5 Yards", "10 Yards", "15 Yards", "Der Ballbesitz wechselt"],
+      "richtig": 0,
+      "erklaerung": "Zu viele Spieler auf dem Feld kosten 5 Yards (Regel 5-1-1). Ebenfalls 5 Yards kosten False Start, Offside, Encroachment und Delay of Game.",
+      "quelle": { "text": "Strafentabelle im NFL-Regelbuch 2026", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q076",
+      "stufe": 1,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Welcher dieser Verstöße kostet in der NFL 15 Yards?",
+      "antworten": ["False Start", "Delay of Game", "Offside", "Face Mask (am Helmgitter ziehen)"],
+      "richtig": 3,
+      "erklaerung": "Wer einen Gegner am Gitter seines Helms packt oder zieht, bekommt 15 Yards Strafe (Regel 12-2-15). False Start, Delay of Game und Offside kosten dagegen jeweils nur 5 Yards.",
+      "quelle": { "text": "Football Terms (Facemask) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q077",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wie zeigt ein Returner an, dass er einen Fair Catch machen will?",
+      "antworten": [
+        "Er hebt einen Arm über den Kopf und schwenkt ihn hin und her",
+        "Er hebt beide Fäuste vor die Brust",
+        "Er legt sich den Ball auf die Brust und bleibt stehen",
+        "Er ruft dem Referee laut „Fair!“ zu"
+      ],
+      "richtig": 0,
+      "erklaerung": "Nach dem Signal darf er den Ball nicht mehr vortragen, und der Gegner darf ihn weder behindern noch angreifen. Ein ungültiges Signal („Invalid Fair Catch Signal“) kostet 5 Yards (Regel 10-2-2).",
+      "quelle": { "text": "Football Terms (Fair Catch) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q078",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wofür steht die 10 Yards lange Kette, die die Chain Crew am Spielfeldrand trägt?",
+      "antworten": [
+        "Sie begrenzt den Bereich für die Trainer",
+        "Sie misst die Länge eines Field Goals",
+        "Sie zeigt, wie weit die Offense für ein neues First Down kommen muss",
+        "Sie markiert die Neutral Zone"
+      ],
+      "richtig": 2,
+      "erklaerung": "Acht Mitarbeiter des Heimteams bilden die Chain Crew. Die Kette verbindet zwei Stangen und zeigt die Linie, die die Offense erreichen muss, um vier neue Versuche zu bekommen.",
+      "quelle": { "text": "Football Terms (Chain Crew) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q079",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wie viele Punkte bringt ein erfolgreiches Field Goal?",
+      "antworten": ["1", "2", "3", "6"],
+      "richtig": 2,
+      "erklaerung": "Ein Field Goal zählt 3 Punkte. Zum Vergleich: Touchdown 6, Safety 2, Extrapunkt 1, Zwei-Punkte-Versuch 2.",
+      "quelle": { "text": "Football Terms (Field Goal) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q080",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Wie breit ist ein NFL-Spielfeld?",
+      "antworten": ["40 Yards", "50 Yards", "53⅓ Yards", "60 Yards"],
+      "richtig": 2,
+      "erklaerung": "Das Feld ist 53⅓ Yards (160 Fuß) breit. Jede Endzone misst 10 mal 53⅓ Yards, mit beiden Endzonen ist das Feld 120 Yards lang.",
+      "quelle": { "text": "Football Terms (End Zone) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q081",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Wie hoch über dem Boden liegt die Querlatte der NFL-Torstangen?",
+      "antworten": ["8 Fuß (rund 2,4 Meter)", "10 Fuß (rund 3 Meter)", "12 Fuß (rund 3,7 Meter)", "15 Fuß (rund 4,6 Meter)"],
+      "richtig": 1,
+      "erklaerung": "Die Querlatte liegt 10 Fuß über dem Boden. Die beiden gelben Uprights sind 35 Fuß hoch und stehen 18 Fuß 6 Zoll auseinander. Die Pfosten stehen hinter der Endlinie.",
+      "quelle": { "text": "Football Terms (Goalposts) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q082",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Wie viele Offizielle stehen in einem NFL-Spiel auf dem Feld?",
+      "antworten": ["6", "7", "8", "9"],
+      "richtig": 1,
+      "erklaerung": "Es sind sieben Offizielle: Referee, Umpire, Down Judge, Line Judge, Field Judge, Side Judge und Back Judge. Der Referee leitet die Crew und trägt als Einziger eine weiße Mütze.",
+      "quelle": { "text": "Football Terms (Officials, Referee) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q083",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Welche Trikotnummern tragen Guards und Tackles der Offense in der NFL?",
+      "antworten": ["1 bis 19", "20 bis 49", "50 bis 79", "80 bis 99"],
+      "richtig": 2,
+      "erklaerung": "Die Nummer verrät die Position: Quarterbacks, Punter und Kicker tragen 1 bis 19, Receiver, Tight Ends und Running Backs 1 bis 49 und 80 bis 89. Offense-Spieler mit 50 bis 79 sind normalerweise nicht anspielbar.",
+      "quelle": { "text": "Football Terms (Jersey numbers) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q084",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Wie oft darf ein Team in einem Spielzug den Ball per Lateral (seitlich oder nach hinten) weitergeben?",
+      "antworten": ["Nur einmal", "Höchstens zweimal", "Höchstens dreimal", "So oft es will"],
+      "richtig": 3,
+      "erklaerung": "Ein Lateral geht seitwärts oder nach hinten und darf in einem Spielzug beliebig oft und überall auf dem Feld gespielt werden. Anders als beim Pass nach vorn gibt es dafür keine Begrenzung.",
+      "quelle": { "text": "Football Terms (Lateral) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q085",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Wer ruft beim Münzwurf einer NFL-Partie die Münzseite aus?",
+      "antworten": [
+        "Ein Captain des Heimteams",
+        "Der Referee",
+        "Der Trainer des besser platzierten Teams",
+        "Ein Captain des Auswärtsteams"
+      ],
+      "richtig": 3,
+      "erklaerung": "Pro Team dürfen bis zu sechs Captains zum Münzwurf, aber nur ein Captain des Auswärtsteams ruft die Münzseite. Der Gewinner lässt anschließend ebenfalls nur einen Captain seine Wahl nennen.",
+      "quelle": { "text": "Football Terms (Coin Toss) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q086",
+      "stufe": 2,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Wie viele Yards kostet ein Block in den Rücken (Illegal Block in the Back)?",
+      "antworten": ["5 Yards", "10 Yards", "15 Yards", "20 Yards"],
+      "richtig": 1,
+      "erklaerung": "Der Block in den Rücken kostet 10 Yards (Regel 12-1-3(b)), genau wie Offensive Holding. Clipping und der Chop Block kosten dagegen 15 Yards.",
+      "quelle": { "text": "Strafentabelle im NFL-Regelbuch 2026", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q087",
+      "stufe": 2,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Ein Kickoff landet in der Endzone und der Returner legt dort den Ball ab (Touchback). Auf welcher Linie beginnt seit 2025 die Offense?",
+      "antworten": ["20-Yard-Linie", "25-Yard-Linie", "30-Yard-Linie", "35-Yard-Linie"],
+      "richtig": 3,
+      "erklaerung": "Die Clubs beschlossen am 1. April 2025, den Ballpunkt nach einem solchen Touchback auf die 35-Yard-Linie zu legen. Das gehört zur Kickoff-Form mit eng aufgestellten Teams, die die Liga 2024 einführte und 2025 dauerhaft machte. Vorher lag der Ballpunkt tiefer.",
+      "quelle": { "text": "Beschlossene Regeländerungen 2025 bei NFL.com", "url": "https://media.nfl.com/football-information/2025/approved-2025-playing-rules--bylaws-and-resolutions" }
+    },
+    {
+      "id": "q088",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Wie heißt der offizielle Spielball der NFL, benannt nach dem früheren Giants-Besitzer Wellington Mara?",
+      "antworten": ["The Duke", "The Champ", "The Rocket", "The Commissioner"],
+      "richtig": 0,
+      "erklaerung": "Wellington Mara trug den Spitznamen „Duke“. Laut NFL stammt jeder Ball, der seit 1941 in einem Spiel benutzt wurde, von Wilson aus Ada im US-Bundesstaat Ohio. Wilson liefert den Clubs pro Saison mindestens 24.960 Bälle für Spiele und Training.",
+      "quelle": { "text": "Football Terms (Wilson) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q089",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Was ist ein Drop Kick?",
+      "antworten": [
+        "Der Kicker lässt den Ball fallen und tritt ihn, direkt nachdem er den Boden berührt hat",
+        "Ein Kick, bei dem der Ball auf einem Tee steht",
+        "Ein Punt, der direkt in die Endzone fliegt",
+        "Ein Kickoff, der absichtlich nur kurz fliegt"
+      ],
+      "richtig": 0,
+      "erklaerung": "Der Drop Kick ist selten geworden, weil der Ball vor dem Tritt unberechenbar vom Boden abspringt. Der einzige erfolgreiche seit 1941 gelang Patriots-Quarterback Doug Flutie am 1. Januar 2006.",
+      "quelle": { "text": "Football Terms (Drop Kick) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q090",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Wodurch wird die Neutral Zone begrenzt?",
+      "antworten": [
+        "Durch die beiden Hash Marks",
+        "Durch die Positionen der beiden Tackles",
+        "Durch die beiden 5-Yard-Linien vor und hinter dem Ball",
+        "Durch die vordere und die hintere Spitze des Balls"
+      ],
+      "richtig": 3,
+      "erklaerung": "Die Neutral Zone reicht von Seitenlinie zu Seitenlinie. Bis zum Snap darf keine Seite sie betreten. Offside und Encroachment kosten je 5 Yards, bei Encroachment ist der Spielzug sofort tot.",
+      "quelle": { "text": "Football Terms (Neutral Zone, Encroachment) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q091",
+      "stufe": 2,
+      "kategorie": "College-Football",
+      "frage": "Seit 2023 läuft im College Football (Division I) die Uhr nach einem First Down weiter. Wann wird sie trotzdem angehalten?",
+      "antworten": [
+        "In den letzten zwei Minuten jeder Halbzeit",
+        "In den letzten fünf Minuten des Spiels",
+        "Nur im vierten Viertel",
+        "Nie, auch am Spielende nicht"
+      ],
+      "richtig": 0,
+      "erklaerung": "Früher stand die Uhr nach jedem First Down still, bis die Kette neu gesetzt war. Die Änderung soll das Spiel straffen und die Zahl der Spielzüge senken. Sie ähnelt einer Uhrregel der NFL.",
+      "quelle": { "text": "Die College-Regeländerungen 2023 bei NCAA.com", "url": "https://www.ncaa.com/news/football/article/2023-08-25/fewer-clock-stoppages-first-downs-and-more-2023-college-football-rule-changes" }
+    },
+    {
+      "id": "q092",
+      "stufe": 3,
+      "kategorie": "College-Football",
+      "frage": "Was ist im College Football seit 2023 verboten, um einen Kicker zu „einfrieren“ („Icing the Kicker“)?",
+      "antworten": [
+        "Zwei Timeouts direkt hintereinander",
+        "Jedes Timeout in der zweiten Halbzeit",
+        "Ein Timeout, bevor der Ball bereit ist",
+        "Der Wechsel des Kickers kurz vor dem Snap"
+      ],
+      "richtig": 0,
+      "erklaerung": "Teams dürfen keine Timeouts mehr unmittelbar nacheinander nehmen. Der Trick sollte den gegnerischen Kicker aus dem Rhythmus bringen. In der NFL kostet der Versuch, den Kicker mit einem unerlaubten Timeout zu „freezen“, 15 Yards (Regel 12-3-1(v)).",
+      "quelle": { "text": "Die College-Regeländerungen 2023 bei NCAA.com", "url": "https://www.ncaa.com/news/football/article/2023-08-25/fewer-clock-stoppages-first-downs-and-more-2023-college-football-rule-changes" }
+    },
+    {
+      "id": "q093",
+      "stufe": 3,
+      "kategorie": "College-Football",
+      "frage": "Welche Strafe gilt seit 2026 im College Football (Division I FBS) für Offensive Pass Interference?",
+      "antworten": ["5 Yards", "10 Yards", "15 Yards", "20 Yards"],
+      "richtig": 1,
+      "erklaerung": "Das Oversight Committee der Division I FBS senkte die Strafe im März 2026 von 15 auf 10 Yards. Damit liegt das College gleichauf mit der NFL, wo Offensive Pass Interference ebenfalls 10 Yards kostet (Regel 8-5-2).",
+      "quelle": { "text": "Beschlossene Regeländerungen 2026 bei NCAA.org", "url": "https://www.ncaa.org/news/media-center-changes-to-penalty-structure-for-targeting-in-di-football-approved/" }
+    },
+    {
+      "id": "q094",
+      "stufe": 3,
+      "kategorie": "College-Football",
+      "frage": "Was ist seit 2026 im College Football der Division I nach einem Fair Catch zusätzlich erlaubt?",
+      "antworten": [
+        "Ein Zwei-Punkte-Versuch von der Stelle des Fangs",
+        "Ein automatisches First Down für das fangende Team",
+        "Ein zweiter Fangversuch nach einem Fehlkick",
+        "Ein Field-Goal-Versuch von der Stelle des Fangs (Platzkick mit Holder oder Drop Kick)"
+      ],
+      "richtig": 3,
+      "erklaerung": "Der Kick bringt bei Erfolg 3 Punkte, die Defense muss mindestens 10 Yards vom Kickpunkt entfernt stehen. Ein Platzkick läuft mit Holder und ohne Tee. Laut NCAA gleicht die Division I damit ihre Regeln an ähnliche Regeln der NFL und des High-School-Footballs an.",
+      "quelle": { "text": "Beschlossene Regeländerungen 2026 bei NCAA.org", "url": "https://www.ncaa.org/news/media-center-changes-to-penalty-structure-for-targeting-in-di-football-approved/" }
+    },
+    {
+      "id": "q095",
+      "stufe": 3,
+      "kategorie": "College-Football",
+      "frage": "Wie wird im Testjahr 2026 ein Spieler der Division I FBS nach seiner ersten Targeting-Disqualifikation der Saison bestraft?",
+      "antworten": [
+        "Er verpasst das gesamte nächste Spiel",
+        "Er verpasst die erste Hälfte des nächsten Spiels",
+        "Er darf im nächsten Spiel normal mitspielen",
+        "Er wird für die restliche Saison gesperrt"
+      ],
+      "richtig": 2,
+      "erklaerung": "Ausgeschlossen ist er nur für den Rest des laufenden Spiels. Bei der zweiten Disqualifikation fehlt er in der ersten Hälfte des nächsten Spiels, bei der dritten im ganzen nächsten Spiel. Vorher musste jeder in der zweiten Halbzeit Disqualifizierte die erste Hälfte des Folgespiels aussetzen.",
+      "quelle": { "text": "Targeting-Strafen 2026 bei NCAA.org", "url": "https://www.ncaa.org/news/media-center-changes-to-penalty-structure-for-targeting-in-di-football-approved/" }
+    },
+    {
+      "id": "q096",
+      "stufe": 3,
+      "kategorie": "College-Football",
+      "frage": "Was gilt für den Gewinner des Münzwurfs vor der College-Verlängerung?",
+      "antworten": [
+        "Er darf seine Wahl nicht auf später verschieben („Defer“)",
+        "Er muss immer zuerst angreifen",
+        "Er darf beide Wahlmöglichkeiten gleichzeitig treffen",
+        "Er bekommt ein zusätzliches Timeout"
+      ],
+      "richtig": 0,
+      "erklaerung": "Der Gewinner entscheidet entweder über Offense oder Defense oder über das Feldende, der Verlierer bekommt die übrige Wahl. Jedes Team erhält in jeder Verlängerung ein Timeout.",
+      "quelle": { "text": "So funktioniert die Verlängerung im College Football bei NCAA.com", "url": "https://www.ncaa.com/news/football/2025-01-01/how-college-football-overtime-works" }
+    },
+    {
+      "id": "q097",
+      "stufe": 3,
+      "kategorie": "College-Football",
+      "frage": "Ab welcher Verlängerung muss ein College-Team nach einem Touchdown seit 2021 einen Zwei-Punkte-Versuch spielen?",
+      "antworten": ["Ab der ersten", "Ab der zweiten", "Ab der dritten", "Ab der fünften"],
+      "richtig": 1,
+      "erklaerung": "Seit 2021 gilt der Zwei-Punkte-Zwang ab der zweiten Verlängerung. Ab der dritten gibt es keine Ballbesitze ab der 25-Yard-Linie mehr, sondern nur noch Zwei-Punkte-Versuche im Wechsel. Vorher galt das erst ab der dritten beziehungsweise fünften Verlängerung.",
+      "quelle": { "text": "So funktioniert die Verlängerung im College Football bei NCAA.com", "url": "https://www.ncaa.com/news/football/2025-01-01/how-college-football-overtime-works" }
+    },
+    {
+      "id": "q098",
+      "stufe": 3,
+      "kategorie": "College-Football",
+      "frage": "Von welcher Linie aus werden im College Football Extrapunkt- und Zwei-Punkte-Versuch gespielt?",
+      "antworten": ["Von der 1-Yard-Linie", "Von der 2-Yard-Linie", "Von der 3-Yard-Linie", "Von der 15-Yard-Linie"],
+      "richtig": 2,
+      "erklaerung": "Im College starten beide Versuche an der 3-Yard-Linie. Die NFL trennt: Der Extrapunkt wird von der 15-Yard-Linie gekickt, der Zwei-Punkte-Versuch kommt von der 2-Yard-Linie.",
+      "quelle": { "text": "NFL und NCAA im Vergleich bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Comparisons_between_the_National_Football_League_and_NCAA_football" }
+    },
+    {
+      "id": "q099",
+      "stufe": 3,
+      "kategorie": "Regeln",
+      "frage": "Wie weit stehen die Hash Marks auf einem NFL-Feld voneinander entfernt?",
+      "antworten": ["6 Fuß 6 Zoll", "18 Fuß 6 Zoll", "40 Fuß", "53 Fuß 4 Zoll"],
+      "richtig": 1,
+      "erklaerung": "Die NFL setzt die Hash Marks 70 Fuß 9 Zoll von jeder Seitenlinie. Bei 160 Fuß Feldbreite bleiben 18 Fuß 6 Zoll dazwischen, so viel wie zwischen den Torstangen. Im College stehen sie 60 Fuß von der Seitenlinie, also 40 Fuß auseinander.",
+      "quelle": { "text": "Feldmarkierung im NFL-Regelbuch 2026", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q100",
+      "stufe": 3,
+      "kategorie": "Regeln",
+      "frage": "Auf welchen Luftdruck wird ein NFL-Football aufgepumpt?",
+      "antworten": ["8,5 bis 10,5 psi", "10,5 bis 12,5 psi", "12,5 bis 13,5 psi", "14,5 bis 15,5 psi"],
+      "richtig": 2,
+      "erklaerung": "Der Lederball wiegt 14 bis 15 Unzen (rund 400 Gramm) und ist 11 bis 11¼ Zoll lang.",
+      "quelle": { "text": "Football Terms (Football) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q101",
+      "stufe": 3,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Was ist beim Onside Kick in der NFL-Saison 2026 neu?",
+      "antworten": [
+        "Er ist komplett verboten",
+        "Er darf nur noch nach einem Touchdown versucht werden",
+        "Er wird bei jedem Kickoff automatisch ausgeführt",
+        "Das kickende Team darf ihn jederzeit im Spiel ansagen"
+      ],
+      "richtig": 3,
+      "erklaerung": "Die Clubs beschlossen die Änderung beim Annual League Meeting 2026 in Phoenix (Regel 6-1-6). Bei einem Onside Kick versucht das kickende Team, den kurzen Kick selbst zurückzuerobern.",
+      "quelle": { "text": "Beschlossene Regeländerungen 2026 bei NFL.com", "url": "https://www.nfl.com/news/nfl-announces-new-playing-rules-bylaws-resolutions-for-2026" }
+    },
+    {
+      "id": "q102",
+      "stufe": 3,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Welche Strafe gilt in der NFL für den 2024 verbotenen Hip-Drop-Tackle?",
+      "antworten": ["5 Yards", "10 Yards", "15 Yards und ein automatisches First Down", "Nur eine Geldstrafe, keine Spielstrafe"],
+      "richtig": 2,
+      "erklaerung": "Verboten ist, den Ballträger zu packen, die Hüfte schwenkend abzusenken und auf seinen Beinen auf oder unter dem Knie zu landen (Regel 12-2-18). Die Liga beschloss das Verbot im März 2024 wegen der hohen Verletzungsrate.",
+      "quelle": { "text": "Hip-Drop-Verbot 2024 bei NFL.com", "url": "https://www.nfl.com/news/nfl-owners-vote-to-ban-hip-drop-tackle-at-annual-league-meeting" }
+    },
+    {
+      "id": "q103",
+      "stufe": 3,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Ein Verteidiger rennt in den Kicker, ohne ihn grob zu treffen („Running into the Kicker“). Wie viele Yards kostet das?",
+      "antworten": ["5 Yards", "10 Yards", "15 Yards", "20 Yards"],
+      "richtig": 0,
+      "erklaerung": "Running into the Kicker kostet 5 Yards. Grobes Einwirken („Roughing the Kicker“) kostet 15 Yards, ebenso Roughing the Holder und Roughing the Passer (Regeln 12-2-11 bis 12-2-13).",
+      "quelle": { "text": "Strafentabelle im NFL-Regelbuch 2026", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q104",
+      "stufe": 3,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Ein Quarterback wirft in der eigenen Endzone den Ball absichtlich weg, ohne dass ein Receiver in der Nähe ist (Intentional Grounding). Was folgt?",
+      "antworten": [
+        "5 Yards Strafe und Wiederholung des Downs",
+        "Ein Safety: 2 Punkte für die Defense",
+        "Ein Touchback für die Defense",
+        "Nur der Verlust des Downs, ohne Punkte"
+      ],
+      "richtig": 1,
+      "erklaerung": "Außerhalb der eigenen Endzone kostet Intentional Grounding einen Down und Yards (Regel 8-2-1). In der eigenen Endzone ist es ein Safety. Laut NFL ist es auch ein Safety, wenn die Offense in der eigenen Endzone ein Foul begeht.",
+      "quelle": { "text": "Strafentabelle im NFL-Regelbuch 2026", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q105",
+      "stufe": 3,
+      "kategorie": "Regeln",
+      "frage": "Ein Ballträger rutscht ohne Gegnerkontakt aus und sein Knie berührt den Boden. Was gilt in der NFL?",
+      "antworten": [
+        "Der Spielzug ist sofort beendet",
+        "Er darf aufstehen und weiterlaufen",
+        "Der Ball gehört automatisch dem Gegner",
+        "Der Referee entscheidet erst nach einem Videobeweis"
+      ],
+      "richtig": 1,
+      "erklaerung": "In der NFL ist ein Läufer erst „down by contact“, wenn er als direkte Folge eines Gegnerkontakts mit einem anderen Körperteil als Füßen, Händen oder Armen den Boden berührt. Ausnahme: Er kniet sich absichtlich hin. Im College genügt dagegen jede solche Bodenberührung.",
+      "quelle": { "text": "Football Terms (Down by Contact) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q106",
+      "stufe": 3,
+      "kategorie": "Regeln",
+      "frage": "Ein Offensive Lineman mit der Nummer 72 meldet sich vor dem Spielzug beim Referee. Was bedeutet das?",
+      "antworten": [
+        "Er bittet um einen Spielerwechsel",
+        "Er beantragt ein Timeout",
+        "Er meldet sich als anspielbarer Receiver an (eligible)",
+        "Er meldet einen Defekt an seiner Ausrüstung"
+      ],
+      "richtig": 2,
+      "erklaerung": "Offense-Spieler mit den Nummern 50 bis 79 sind normalerweise nicht anspielbar (ineligible). Nach der Meldung beim Referee dürfen sie ausnahmsweise einen Pass fangen. Sonst sind Spieler mit 1 bis 49 und 80 bis 89 anspielbar.",
+      "quelle": { "text": "Football Terms (Eligible Receiver) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q107",
+      "stufe": 3,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Wann bekommt ein NFL-Coach seit 2024 eine dritte Challenge?",
+      "antworten": [
+        "Immer nach dem Two-Minute Warning",
+        "Wenn beide ersten Challenges erfolgreich waren",
+        "Nur in der zweiten Halbzeit",
+        "Wenn mindestens eine der ersten beiden Challenges erfolgreich war"
+      ],
+      "richtig": 3,
+      "erklaerung": "Jedes Team startet mit zwei Challenges. Früher musste ein Coach beide gewinnen, um eine dritte zu bekommen. Seit dem Beschluss vom März 2024 genügt ein Erfolg (Regel 15, Abschnitt 1, Artikel 1).",
+      "quelle": { "text": "Challenge-Regel 2024 bei NFL.com", "url": "https://www.nfl.com/news/nfl-owners-vote-to-ban-hip-drop-tackle-at-annual-league-meeting" }
+    },
+    {
+      "id": "q108",
+      "stufe": 2,
+      "kategorie": "Football in Europa",
+      "frage": "Auf welchen Regeln basiert das offizielle Regelwerk des deutschen Verbands AFVD?",
+      "antworten": ["Auf den NFL-Regeln", "Auf den kanadischen CFL-Regeln", "Auf den NCAA-College-Regeln", "Auf einem komplett eigenen deutschen Regelwerk"],
+      "richtig": 2,
+      "erklaerung": "Laut Vorwort des AFVD-Regelwerks 2025 ist es das einzige offiziell anerkannte Regelwerk und stützt sich auf die amerikanischen NCAA-College-Regeln. Auch die GFL-Verlängerung folgt seit 2023 dem NCAA-Vorbild.",
+      "quelle": { "text": "AFVD-Regelwerk 2025 (Vorwort)", "url": "https://afvd.de/wp-content/uploads/2025/08/AFVD_AMERICAN-FOOTBALL-REGELN_2025.pdf" }
+    },
+    {
+      "id": "q109",
+      "stufe": 2,
+      "kategorie": "Football in Europa",
+      "frage": "Warum gibt es in der GFL seit 2023 auch in der Hauptrunde kein Unentschieden mehr?",
+      "antworten": [
+        "Weil bei Gleichstand das Auswärtsteam gewinnt",
+        "Weil ein Münzwurf den Sieger bestimmt",
+        "Weil die Overtime-Regel der NCAA übernommen wurde",
+        "Weil die Spielzeit bei Gleichstand auf 90 Minuten verlängert wird"
+      ],
+      "richtig": 2,
+      "erklaerung": "Bei Gleichstand bekommt jedes Team einen Ballbesitz ab der gegnerischen 25-Yard-Linie. Steht es nach zwei Serien weiter unentschieden, kommt die Zwei-Punkte-Regel: Jedes Team hat dann nur noch einen Versuch. Vorher gab es Verlängerungen nur in den Playoffs.",
+      "quelle": { "text": "Bundesspielordnung und Spielregeln 2023 bei GFL.info", "url": "https://gfl.info/bundespielordnung-und-spielregeln-fuer-2023-stehen-fest/" }
+    },
+    {
+      "id": "q110",
+      "stufe": 3,
+      "kategorie": "Football in Europa",
+      "frage": "Welche neue Liga gründeten elf Teams der European League of Football nach der Saison 2025?",
+      "antworten": [
+        "American Football League Europe (AFLE)",
+        "European Football Alliance (EFA)",
+        "Euro Bowl League",
+        "World League of American Football"
+      ],
+      "richtig": 1,
+      "erklaerung": "Elf Clubs verließen die ELF, um die EFA zu gründen. Vier von ihnen, darunter Berlin Thunder und Rhein Fire, spielen 2026 stattdessen in der American Football League Europe. Die ELF selbst ist seit März 2026 im Insolvenzverfahren. Stand: Oktober 2026 laut Wikipedia.",
+      "quelle": { "text": "European League of Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/European_League_of_Football" }
     }
   ]
 }
