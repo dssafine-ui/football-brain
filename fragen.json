@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-24",
+  "stand": "2026-10-25",
   "fragen": [
     {
       "id": "q001",
@@ -690,7 +690,7 @@
       "frage": "Wie heißt das Endspiel um die deutsche Meisterschaft im American Football?",
       "antworten": ["Euro Bowl", "World Bowl", "German Bowl", "Berlin Bowl"],
       "richtig": 2,
-      "erklaerung": "Der German Bowl entscheidet seit 1979 über den Deutschen Meister, der erste wurde am 10. November 1979 in Frankfurt gespielt. Der World Bowl war das Finale der NFL Europe.",
+      "erklaerung": "Der German Bowl entscheidet seit 1979 über den Deutschen Meister, der erste wurde am 10. November 1979 in Frankfurt gespielt. Seit 2023 heißt das Finale offiziell GFL Bowl. Der World Bowl war das Finale der NFL Europe.",
       "quelle": { "text": "German Bowl bei Wikipedia", "url": "https://en.wikipedia.org/wiki/German_Bowl" }
     },
     {
@@ -1747,6 +1747,696 @@
       "richtig": 1,
       "erklaerung": "Statt den Ballträger zu tackeln, zieht ihm die Defense eine Flagge vom Gürtel („Deflagging“). Das beendet den Spielzug. Kontakt ist beim Flag Football stark eingeschränkt. Flag Football wird 2028 in Los Angeles erstmals olympisch.",
       "quelle": { "text": "Flag Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Flag_football" }
+    },
+    {
+      "id": "q149",
+      "stufe": 1,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Für welches NFL-Team spielt Quarterback Patrick Mahomes?",
+      "antworten": ["Buffalo Bills", "Baltimore Ravens", "Kansas City Chiefs", "Philadelphia Eagles"],
+      "richtig": 2,
+      "erklaerung": "Die Kansas City Chiefs wählten Mahomes 2017 an zehnter Stelle im Draft. Seit 2018 ist er ihr Stamm-Quarterback und führte sie zu fünf Super-Bowl-Teilnahmen. Stand: Oktober 2026.",
+      "quelle": { "text": "Patrick Mahomes bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Patrick_Mahomes" }
+    },
+    {
+      "id": "q150",
+      "stufe": 2,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wie viele Super Bowls hat Patrick Mahomes mit den Kansas City Chiefs bisher gewonnen?",
+      "antworten": ["Zwei", "Drei", "Vier", "Fünf"],
+      "richtig": 1,
+      "erklaerung": "Mahomes gewann die Super Bowls LIV (Saison 2019), LVII (2022) und LVIII (2023) und wurde jedes Mal zum Super-Bowl-MVP gewählt. Die Super Bowls LV und LIX gingen verloren. Stand: Oktober 2026.",
+      "quelle": { "text": "Patrick Mahomes bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Patrick_Mahomes" }
+    },
+    {
+      "id": "q151",
+      "stufe": 2,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wer ist seit 2006 Commissioner der NFL, also der oberste Chef der Liga?",
+      "antworten": ["Pete Rozelle", "Paul Tagliabue", "Jerry Jones", "Roger Goodell"],
+      "richtig": 3,
+      "erklaerung": "Roger Goodell begann 1982 als Praktikant in der Liga-Zentrale und ist seit 2006 Commissioner. Seine Vorgänger waren unter anderem Paul Tagliabue und Pete Rozelle. Jerry Jones ist Besitzer der Dallas Cowboys. Stand: Oktober 2026.",
+      "quelle": { "text": "Roger Goodell bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Roger_Goodell" }
+    },
+    {
+      "id": "q152",
+      "stufe": 2,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Welcher Head Coach hat die meisten Super Bowls gewonnen?",
+      "antworten": ["Bill Belichick", "Vince Lombardi", "Don Shula", "Tom Landry"],
+      "richtig": 0,
+      "erklaerung": "Belichick gewann sechs Super Bowls als Head Coach, alle mit den New England Patriots. Dazu kommen zwei Titel als Defensive Coordinator der New York Giants, insgesamt also acht. Stand Oktober 2026 trainiert er das College-Team North Carolina.",
+      "quelle": { "text": "Bill Belichick bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Bill_Belichick" }
+    },
+    {
+      "id": "q153",
+      "stufe": 2,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wer hat in der NFL-Geschichte die meisten Rushing Yards in der Karriere erlaufen?",
+      "antworten": ["Walter Payton", "Emmitt Smith", "Barry Sanders", "Eric Dickerson"],
+      "richtig": 1,
+      "erklaerung": "Emmitt Smith lief von 1990 bis 2004 für 18.355 Yards, vor allem für die Dallas Cowboys, und überholte dabei Walter Payton. Er hält auch den Rekord für Rushing-Touchdowns in der Karriere (164). Stand: Oktober 2026.",
+      "quelle": { "text": "NFL-Einzelrekorde bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_records_(individual)" }
+    },
+    {
+      "id": "q154",
+      "stufe": 2,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Wer wurde im Super Bowl LX im Februar 2026 zum wertvollsten Spieler (MVP) gewählt?",
+      "antworten": ["Kenneth Walker III", "Sam Darnold", "Drake Maye", "Jaxon Smith-Njigba"],
+      "richtig": 0,
+      "erklaerung": "Running Back Kenneth Walker III lief beim 29:13 der Seattle Seahawks gegen die New England Patriots für 135 Yards. Er war der erste Running Back als Super-Bowl-MVP seit Terrell Davis im Super Bowl XXXII (Saison 1997).",
+      "quelle": { "text": "Super Bowl LX bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_LX" }
+    },
+    {
+      "id": "q155",
+      "stufe": 2,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Welcher Quarterback wurde für die Saison 2025 von der Associated Press zum wertvollsten Spieler der NFL (MVP) gewählt?",
+      "antworten": ["Josh Allen", "Lamar Jackson", "Matthew Stafford", "Drake Maye"],
+      "richtig": 2,
+      "erklaerung": "Matthew Stafford von den Los Angeles Rams führte die Liga 2025 erstmals in Passing Yards und Touchdown-Pässen an. Die MVPs davor waren Josh Allen (2024), Lamar Jackson (2023) und Patrick Mahomes (2022).",
+      "quelle": { "text": "NFL-MVP-Gewinner bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_Most_Valuable_Player_Award" }
+    },
+    {
+      "id": "q156",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Welcher Quarterback wurde fünfmal zum MVP der NFL gewählt und hält damit den Rekord?",
+      "antworten": ["Tom Brady", "Peyton Manning", "Aaron Rodgers", "Johnny Unitas"],
+      "richtig": 1,
+      "erklaerung": "Peyton Manning gewann die Auszeichnung der Associated Press 2003 (geteilt mit Steve McNair), 2004, 2008, 2009 und 2013. Aaron Rodgers kommt auf vier MVPs, Tom Brady und Johnny Unitas auf je drei.",
+      "quelle": { "text": "NFL-MVP-Gewinner bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_Most_Valuable_Player_Award" }
+    },
+    {
+      "id": "q157",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welcher Quarterback war der erste Starter, der den Super Bowl mit zwei verschiedenen Teams gewann?",
+      "antworten": ["Tom Brady", "Kurt Warner", "Joe Montana", "Peyton Manning"],
+      "richtig": 3,
+      "erklaerung": "Manning siegte im Super Bowl XLI (Saison 2006) mit den Indianapolis Colts und im Super Bowl 50 (Saison 2015) mit den Denver Broncos. Tom Brady schaffte es später mit den New England Patriots und den Tampa Bay Buccaneers ebenfalls.",
+      "quelle": { "text": "Peyton Manning bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Peyton_Manning" }
+    },
+    {
+      "id": "q158",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welcher Trainer ist mit 347 Siegen der siegreichste Head Coach der NFL-Geschichte und führte 1972 die Miami Dolphins zur perfekten Saison?",
+      "antworten": ["Tom Landry", "George Halas", "Bill Parcells", "Don Shula"],
+      "richtig": 3,
+      "erklaerung": "Don Shula gewann zwischen 1963 und 1995 mit den Baltimore Colts und den Miami Dolphins 347 Spiele, davon 328 in der Hauptrunde. Die Saison 1972 mit dem Titel im Super Bowl VII ist bis heute die einzige perfekte Saison der NFL-Geschichte.",
+      "quelle": { "text": "Don Shula bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Don_Shula" }
+    },
+    {
+      "id": "q159",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welcher Linebacker der New York Giants wurde 1986 von der Associated Press zum MVP der NFL gewählt?",
+      "antworten": ["Mike Singletary", "Lawrence Taylor", "Ray Lewis", "Dick Butkus"],
+      "richtig": 1,
+      "erklaerung": "Lawrence Taylor ist neben Alan Page (1971) der einzige Verteidiger in der Liste der AP-MVPs seit 1957. Die Giants gewannen damals den Super Bowl XXI.",
+      "quelle": { "text": "NFL-MVP-Gewinner bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_Most_Valuable_Player_Award" }
+    },
+    {
+      "id": "q160",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Wer prägte den Namen „Super Bowl“, angeblich inspiriert vom Spielzeug „Super Ball“ seiner Kinder?",
+      "antworten": ["Lamar Hunt", "Pete Rozelle", "Vince Lombardi", "George Halas"],
+      "richtig": 0,
+      "erklaerung": "Lamar Hunt, Gründer der Kansas City Chiefs und der American Football League, nannte das Finale 1966 in einem Brief an Liga-Chef Pete Rozelle scherzhaft „Super Bowl“. Rozelle mochte den Namen nicht, das Spiel hieß zunächst offiziell AFL-NFL Championship Game. Die Trophäe für den AFC-Meister trägt heute Hunts Namen.",
+      "quelle": { "text": "Wie der Super Bowl zu seinem Namen kam, bei CBS Sports", "url": "https://www.cbssports.com/nfl/news/why-is-it-called-the-super-bowl-how-name-of-nfls-signature-game-was-birthed-by-childs-toy-lamar-hunts-wit/" }
+    },
+    {
+      "id": "q161",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welches Unternehmen fertigt die Vince Lombardi Trophy für den Super-Bowl-Sieger an?",
+      "antworten": ["Wilson Sporting Goods", "Cartier", "Tiffany & Co.", "Swarovski"],
+      "richtig": 2,
+      "erklaerung": "Tiffany & Co. fertigt die Trophäe seit dem ersten Super Bowl 1967. Jedes Jahr wird eine neue gegossen, die der Sieger dauerhaft behält. Wilson stellt dagegen die offiziellen Spielbälle der NFL her.",
+      "quelle": { "text": "Vince Lombardi Trophy bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Vince_Lombardi_Trophy" }
+    },
+    {
+      "id": "q162",
+      "stufe": 3,
+      "kategorie": "College-Football",
+      "frage": "Wer gewann 1935 als Erster die Auszeichnung, die heute Heisman Trophy heißt?",
+      "antworten": ["Red Grange", "Jay Berwanger", "Archie Griffin", "Doak Walker"],
+      "richtig": 1,
+      "erklaerung": "Der Halfback der University of Chicago bekam 1935 die „Downtown Athletic Club Trophy“, die ab 1936 nach John Heisman benannt wurde. 1936 war Berwanger außerdem der erste Spieler, der im NFL Draft gewählt wurde. Profi wurde er nie, weil er sich nicht über das Gehalt einigen konnte.",
+      "quelle": { "text": "Jay Berwanger bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Jay_Berwanger" }
+    },
+    {
+      "id": "q163",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Wie nennt man den Spieler, der im NFL Draft als allerletzter ausgewählt wird?",
+      "antworten": ["Mr. Irrelevant", "Last Pick Larry", "Mr. Seventh", "The Final Rookie"],
+      "richtig": 0,
+      "erklaerung": "Diese Spieler werden oft schon vor dem Saisonstart wieder entlassen. Einige setzten sich trotzdem durch, zum Beispiel Quarterback Brock Purdy von den San Francisco 49ers, der 2022 als Letzter gewählt wurde.",
+      "quelle": { "text": "Mr. Irrelevant bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Mr._Irrelevant" }
+    },
+    {
+      "id": "q164",
+      "stufe": 3,
+      "kategorie": "Regeln",
+      "frage": "Was ist ein „Franchise Tag“ in der NFL?",
+      "antworten": [
+        "Ein Spieler darf sich nach Vertragsende seinen neuen Verein frei aussuchen",
+        "Ein Team tauscht einen Spieler gegen einen Draft-Pick eines anderen Teams",
+        "Ein Team darf einen verletzten Spieler aus dem Kader nehmen, ohne ihn weiter zu bezahlen",
+        "Ein Team bindet einen Spieler mit auslaufendem Vertrag für ein Jahr zu einem festgelegten, garantierten Gehalt"
+      ],
+      "richtig": 3,
+      "erklaerung": "Jedes Team kann pro Jahr einen Franchise Tag vergeben und so einen wertvollen Spieler halten, der sonst Free Agent würde. Das Gehalt für dieses eine Jahr ist nicht verhandelbar.",
+      "quelle": { "text": "Franchise Tag bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Franchise_tag" }
+    },
+    {
+      "id": "q165",
+      "stufe": 2,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Was ist das Besondere an den Green Bay Packers?",
+      "antworten": [
+        "Sie spielen als einziges Team nie auswärts",
+        "Sie gehören direkt der NFL",
+        "Sie gehören der Gemeinschaft statt einem einzelnen Besitzer, das Team ist gemeinnützig",
+        "Sie sind das jüngste Team der Liga"
+      ],
+      "richtig": 2,
+      "erklaerung": "Die Packers (gegründet 1919) sind das einzige gemeinnützige Profiteam der großen US-Ligen, das einer Gemeinschaft gehört. Green Bay ist zugleich der kleinste Markt unter den großen Profiteams Nordamerikas. Stand: Oktober 2026.",
+      "quelle": { "text": "Green Bay Packers bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Green_Bay_Packers" }
+    },
+    {
+      "id": "q166",
+      "stufe": 2,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Wie heißt das Heimstadion der Green Bay Packers, das nach dem Gründer des Teams benannt ist?",
+      "antworten": ["Soldier Field", "Arrowhead Stadium", "Lambeau Field", "Lincoln Financial Field"],
+      "richtig": 2,
+      "erklaerung": "Lambeau Field (eröffnet 1957, seit 1965 nach Curly Lambeau benannt) ist das dienstälteste durchgehend genutzte NFL-Stadion. Es fasst gut 81.000 Zuschauer und ist das zweitgrößte der Liga.",
+      "quelle": { "text": "Lambeau Field bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Lambeau_Field" }
+    },
+    {
+      "id": "q167",
+      "stufe": 2,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welche beiden Teams tragen traditionell an Thanksgiving ein Heimspiel aus?",
+      "antworten": [
+        "Detroit Lions und Dallas Cowboys",
+        "Green Bay Packers und Chicago Bears",
+        "New York Giants und New York Jets",
+        "Philadelphia Eagles und Washington Commanders"
+      ],
+      "richtig": 0,
+      "erklaerung": "Detroit spielt seit 1934 an Thanksgiving zu Hause (Pause von 1939 bis 1944), Dallas seit 1966 (außer 1975 und 1977). Seit 2006 gibt es abends ein drittes Spiel ohne festen Gastgeber.",
+      "quelle": { "text": "Thanksgiving-Spiele der NFL bei ESPN", "url": "https://africa.espn.com/nfl/story/_/id/32646037/nfl-thanksgiving-day-games-history-lions-cowboys-play-every-year-moments-traditions-records" }
+    },
+    {
+      "id": "q168",
+      "stufe": 2,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Wer richtet seit 2004 normalerweise das erste Spiel der NFL-Saison (Kickoff Game) aus?",
+      "antworten": [
+        "Der Super-Bowl-Verlierer des Vorjahres",
+        "Der aktuelle Super-Bowl-Sieger",
+        "Das Team mit dem ersten Draft-Pick",
+        "Ein Team, das per Los bestimmt wird"
+      ],
+      "richtig": 1,
+      "erklaerung": "Das Kickoff Game gibt es seit 2002, es steht meist am Donnerstag nach dem Labor Day an. Seit 2004 ist normalerweise der Titelverteidiger Gastgeber, Ausnahmen gab es 2013 und 2019.",
+      "quelle": { "text": "NFL Kickoff Game bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_Kickoff_Game" }
+    },
+    {
+      "id": "q169",
+      "stufe": 2,
+      "kategorie": "Geschichte und Liga",
+      "frage": "In welchem Ort steht die Pro Football Hall of Fame, die Ruhmeshalle des American Football?",
+      "antworten": ["Indianapolis, Indiana", "Green Bay, Wisconsin", "Dallas, Texas", "Canton, Ohio"],
+      "richtig": 3,
+      "erklaerung": "Die Pro Football Hall of Fame in Canton, Ohio, wurde am 7. September 1963 eröffnet. Stand 2026 hat sie 387 Mitglieder. Offiziell mit der NFL verbunden ist sie nicht.",
+      "quelle": { "text": "Pro Football Hall of Fame bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Pro_Football_Hall_of_Fame" }
+    },
+    {
+      "id": "q170",
+      "stufe": 2,
+      "kategorie": "Geschichte und Liga",
+      "frage": "In welcher Stadt testen College-Spieler jedes Jahr im Februar beim NFL Scouting Combine ihre Fähigkeiten vor den Teams?",
+      "antworten": ["Dallas", "Canton", "Las Vegas", "Indianapolis"],
+      "richtig": 3,
+      "erklaerung": "Der Combine findet im Lucas Oil Stadium in Indianapolis statt. Die Spieler absolvieren dort körperliche und geistige Tests vor Trainern, Managern und Scouts der Teams.",
+      "quelle": { "text": "NFL Scouting Combine bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_Scouting_Combine" }
+    },
+    {
+      "id": "q171",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Was ist die Practice Squad eines NFL-Teams?",
+      "antworten": [
+        "Die Spieler, die nur bei den Special Teams eingesetzt werden",
+        "Eine Gruppe von Nachwuchsspielern der Highschools, die bei Trainingslagern aushelfen",
+        "Vertraglich gebundene Spieler außerhalb des Hauptkaders, die im Training den Gegner nachahmen und bei Bedarf nachrücken",
+        "Die Spieler, die für die ganze Saison verletzt ausfallen"
+      ],
+      "richtig": 2,
+      "erklaerung": "Die Spieler der Practice Squad (auch Taxi Squad) stehen unter Vertrag, gehören aber nicht zum Hauptkader. Sie bilden im Training oft das Scout Team, das den Spielstil des nächsten Gegners nachahmt, und sind Ersatz bei Verletzungen.",
+      "quelle": { "text": "Practice Squad bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Practice_squad" }
+    },
+    {
+      "id": "q172",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Welcher Offizielle trägt als Einziger eine weiße Mütze und leitet das Schiedsrichterteam?",
+      "antworten": ["Referee", "Umpire", "Line Judge", "Back Judge"],
+      "richtig": 0,
+      "erklaerung": "Der Referee ist der Chef des Teams (Crew Chief) und hat das letzte Wort bei Entscheidungen auf dem Feld. Er zeigt alle Strafen an und spricht bei Videobeweisen mit der Liga-Zentrale in New York.",
+      "quelle": { "text": "Football Terms (Referee) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q173",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Welcher Quarterback warf in einer Saison die meisten Touchdown-Pässe (55) und die meisten Passing Yards (5.477)?",
+      "antworten": ["Tom Brady", "Peyton Manning", "Patrick Mahomes", "Drew Brees"],
+      "richtig": 1,
+      "erklaerung": "Peyton Manning stellte beide Rekorde 2013 mit den Denver Broncos auf. Drew Brees kam 2011 auf 5.476 Yards, also nur einen Yard weniger. Tom Brady warf 2007 als Erster 50 Touchdown-Pässe, Patrick Mahomes 2018 ebenfalls 50 (bei 5.097 Yards).",
+      "quelle": { "text": "NFL-Quarterback-Rekorde bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_quarterback_records" }
+    },
+    {
+      "id": "q174",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wer warf 1984 als erster Quarterback der NFL-Geschichte mehr als 5.000 Yards in einer Saison?",
+      "antworten": ["Dan Marino", "Joe Montana", "John Elway", "Joe Namath"],
+      "richtig": 0,
+      "erklaerung": "Dan Marino kam 1984 mit den Miami Dolphins auf 5.084 Yards und 48 Touchdown-Pässe. Er war auch der erste Quarterback mit mehr als 40 Touchdown-Pässen in einer Saison, gewann aber nie einen Super Bowl.",
+      "quelle": { "text": "Dan Marino bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Dan_Marino" }
+    },
+    {
+      "id": "q175",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wer hält den NFL-Rekord für die meisten Receiving Yards in einer einzelnen Saison?",
+      "antworten": ["Jerry Rice", "Randy Moss", "Julio Jones", "Calvin Johnson"],
+      "richtig": 3,
+      "erklaerung": "Calvin Johnson („Megatron“) von den Detroit Lions fing 2012 für 1.964 Yards. Jerry Rice hält dagegen den Rekord für die gesamte Karriere (22.895 Yards).",
+      "quelle": { "text": "NFL-Einzelrekorde bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_records_(individual)" }
+    },
+    {
+      "id": "q176",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wer hält den NFL-Rekord für die meisten Sacks in einer Saison?",
+      "antworten": ["Michael Strahan", "Myles Garrett", "T. J. Watt", "Reggie White"],
+      "richtig": 1,
+      "erklaerung": "Myles Garrett von den Cleveland Browns kam 2025 auf 23 Sacks. Den Rekord brach er im letzten Hauptrundenspiel gegen die Cincinnati Bengals; der alte Wert von 22,5 stammte von Michael Strahan (2001) und T. J. Watt (2021).",
+      "quelle": { "text": "Garrett bricht den Sack-Rekord, bei den Cleveland Browns", "url": "https://www.clevelandbrowns.com/news/myles-garrett-breaks-nfl-single-season-sack-record" }
+    },
+    {
+      "id": "q177",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wer hat in der NFL die meisten Sacks in der Karriere erzielt? (Sacks werden offiziell erst seit 1982 gezählt.)",
+      "antworten": ["Reggie White", "Michael Strahan", "Bruce Smith", "J. J. Watt"],
+      "richtig": 2,
+      "erklaerung": "Bruce Smith kam zwischen 1985 und 2003 auf 200 Sacks, den größten Teil davon für die Buffalo Bills.",
+      "quelle": { "text": "NFL-Einzelrekorde bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_records_(individual)" }
+    },
+    {
+      "id": "q178",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wie viele Sacks gelangen Derrick Thomas von den Kansas City Chiefs am 11. November 1990 in einem einzigen Spiel?",
+      "antworten": ["5", "6", "7", "8"],
+      "richtig": 2,
+      "erklaerung": "Thomas erzielte sieben Sacks in einer Partie. Mehr hat seit der offiziellen Zählung (ab 1982) niemand geschafft. Stand: Oktober 2026.",
+      "quelle": { "text": "NFL-Einzelrekorde bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_records_(individual)" }
+    },
+    {
+      "id": "q179",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Welcher Quarterback bestritt 297 Hauptrundenspiele in Folge als Starter?",
+      "antworten": ["Peyton Manning", "Brett Favre", "Tom Brady", "Eli Manning"],
+      "richtig": 1,
+      "erklaerung": "Brett Favre startete von 1992 bis 2010 ohne Unterbrechung, mit den Playoffs sind es 321 Spiele am Stück. Peyton Manning hält den Rekord für die meisten Starts in Folge zu Beginn einer Karriere (208).",
+      "quelle": { "text": "NFL-Quarterback-Rekorde bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_quarterback_records" }
+    },
+    {
+      "id": "q180",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wie lang ist der längste Kickoff-Return der NFL-Geschichte?",
+      "antworten": ["99 Yards", "100 Yards", "105 Yards", "109 Yards"],
+      "richtig": 3,
+      "erklaerung": "Cordarrelle Patterson trug am 27. Oktober 2013 für die Minnesota Vikings gegen die Green Bay Packers einen Kickoff 109 Yards zum Touchdown zurück, die längste mögliche Distanz. Er hält auch den Rekord für Kickoff-Return-Touchdowns in der Karriere (neun). Stand: Oktober 2026.",
+      "quelle": { "text": "Cordarrelle Patterson bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Cordarrelle_Patterson" }
+    },
+    {
+      "id": "q181",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wer hält den Rekord für die meisten Touchdown-Fänge in einer Saison (23 im Jahr 2007)?",
+      "antworten": ["Jerry Rice", "Terrell Owens", "Randy Moss", "Rob Gronkowski"],
+      "richtig": 2,
+      "erklaerung": "Randy Moss fing 2007 für die New England Patriots 23 Touchdown-Pässe. Jerry Rice hält mit 197 den Rekord für die Karriere, Rob Gronkowski mit 17 (2011) den für Tight Ends in einer Saison.",
+      "quelle": { "text": "NFL-Einzelrekorde bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_records_(individual)" }
+    },
+    {
+      "id": "q182",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welcher Spieler trug im Super Bowl XLI (2007) den Eröffnungs-Kickoff 92 Yards zum Touchdown zurück?",
+      "antworten": ["Desmond Howard", "Cordarrelle Patterson", "Dante Hall", "Devin Hester"],
+      "richtig": 3,
+      "erklaerung": "Devin Hester von den Chicago Bears brachte sein Team schon nach 14 Sekunden in Führung. Bisher ist er der einzige Spieler, der den Eröffnungs-Kickoff eines Super Bowls zum Touchdown zurücktrug. Die Colts gewannen trotzdem 29:17, Peyton Manning wurde zum MVP gewählt. Stand: Oktober 2026.",
+      "quelle": { "text": "Super Bowl XLI bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_XLI" }
+    },
+    {
+      "id": "q183",
+      "stufe": 2,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Wie nennt man eine Interception, die ein Verteidiger bis in die Endzone zum Touchdown zurückträgt?",
+      "antworten": ["Pick Six", "Sack Six", "Fumble Six", "Safety Six"],
+      "richtig": 0,
+      "erklaerung": "„Pick“ steht für die Interception, „Six“ für die sechs Punkte des Touchdowns. Für Quarterbacks ist es einer der schlimmsten Fehler: Jameis Winston warf 2019 sieben Pick Sixes in einer Saison, so viele wie kein anderer.",
+      "quelle": { "text": "NFL-Quarterback-Rekorde (Pick Sixes) bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_quarterback_records" }
+    },
+    {
+      "id": "q184",
+      "stufe": 2,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Warum lässt sich ein Quarterback am Spielende manchmal direkt nach dem Snap auf ein Knie fallen („Victory Formation“)?",
+      "antworten": [
+        "Um einen Timeout zu bekommen",
+        "Weil er sich verletzt hat",
+        "Um die Defense zu einem Offside zu verleiten",
+        "Um die Uhr herunterlaufen zu lassen, ohne einen Fumble zu riskieren"
+      ],
+      "richtig": 3,
+      "erklaerung": "Der Spielzug ist sofort beendet, die Uhr läuft aber weiter. So kann ein führendes Team die Zeit herunterspielen. Man muss den Down im Blick haben: Ein Kniefall im vierten Down würde den Ball an den Gegner geben.",
+      "quelle": { "text": "Quarterback Kneel bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Quarterback_kneel" }
+    },
+    {
+      "id": "q185",
+      "stufe": 2,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Wo steht der Quarterback in der Shotgun-Formation?",
+      "antworten": [
+        "Etwa fünf bis sieben Yards hinter der Line of Scrimmage",
+        "Direkt hinter dem Center, in Kontakt mit ihm",
+        "Neben dem Tight End an der Line of Scrimmage",
+        "Auf der Seitenlinie neben dem Trainer"
+      ],
+      "richtig": 0,
+      "erklaerung": "Statt den Ball direkt vom Center zu nehmen, steht der Quarterback weiter hinten und bekommt den Snap zugeworfen. Er hat mehr Zeit und einen besseren Überblick, die Defense erwartet aber eher einen Pass.",
+      "quelle": { "text": "Shotgun-Formation bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Shotgun_formation" }
+    },
+    {
+      "id": "q186",
+      "stufe": 2,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Was bedeutet „No-Huddle Offense“?",
+      "antworten": [
+        "Die Offense spielt ohne Quarterback",
+        "Die Offense darf in diesem Down nur laufen",
+        "Die Offense startet den nächsten Spielzug ohne Besprechung im Huddle",
+        "Die Offense verzichtet auf alle Timeouts"
+      ],
+      "richtig": 2,
+      "erklaerung": "Ohne Huddle spart die Offense Zeit oder überrascht die Defense, die dann schlechter auswechseln kann. Die Spielzüge werden per Signal an der Line of Scrimmage angesagt.",
+      "quelle": { "text": "Football Terms (No-Huddle Offense) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q187",
+      "stufe": 2,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Was ist ein „Draw Play“?",
+      "antworten": [
+        "Ein Passspielzug, der wie ein Lauf aussieht",
+        "Ein Laufspielzug, der wie ein Passspielzug aussieht",
+        "Ein Trick-Field-Goal",
+        "Ein Spielzug, bei dem der Kicker läuft"
+      ],
+      "richtig": 1,
+      "erklaerung": "Die Offense lockt die Pass-Rusher nach vorn, während Linebacker und Defensive Backs sich auf einen Pass einstellen. Dadurch entstehen Lücken für den Lauf. Der Spielzug wird oft in langen Down-Situationen eingesetzt.",
+      "quelle": { "text": "Draw Play bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Draw_play" }
+    },
+    {
+      "id": "q188",
+      "stufe": 2,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "In welcher Situation setzt eine Offense typischerweise einen „Quarterback Sneak“ ein?",
+      "antworten": [
+        "Direkt nach einem Fair Catch",
+        "Wenn noch 25 Yards zum First Down fehlen",
+        "Wenn nur sehr wenig Raumgewinn nötig ist, zum Beispiel bei 4th & 1",
+        "Bei einem Kickoff"
+      ],
+      "richtig": 2,
+      "erklaerung": "Der Quarterback nimmt den Snap und läuft sofort geradeaus, während die Offensive Line nach vorn drückt. Es gibt keinen weiteren Ballwechsel, daher ist das Risiko eines Raumverlusts klein. Berühmt wurde der Sneak von Bart Starr im „Ice Bowl“ 1967 gegen die Dallas Cowboys.",
+      "quelle": { "text": "Quarterback Sneak bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Quarterback_sneak" }
+    },
+    {
+      "id": "q189",
+      "stufe": 3,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Wie läuft ein „Flea Flicker“ ab?",
+      "antworten": [
+        "Der Kicker täuscht ein Field Goal an und wirft den Ball zu einem Receiver",
+        "Der Quarterback gibt den Ball an einen Running Back, der ihn zurückwirft, und der Quarterback passt dann",
+        "Der Center schnappt den Ball direkt zum Running Back, der allein läuft",
+        "Der Quarterback wirft den Ball hoch in die Luft, damit mehrere Receiver ihn gleichzeitig jagen"
+      ],
+      "richtig": 1,
+      "erklaerung": "Der Spielzug soll wie ein Lauf aussehen, damit die Defense nach vorn drängt, und endet in einem langen Pass. Er ist riskant, weil er lange dauert. Die Patriots verwandelten ihn im AFC-Finale 2017: Tom Brady gab an Dion Lewis, der zurückpitchte, und Chris Hogan fing einen 34-Yard-Touchdown.",
+      "quelle": { "text": "Flea Flicker bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Flea_flicker" }
+    },
+    {
+      "id": "q190",
+      "stufe": 3,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Was passiert beim Trickspielzug „Statue of Liberty“?",
+      "antworten": [
+        "Der Quarterback täuscht einen Pass an und gibt den Ball hinter dem Rücken an einen Läufer weiter",
+        "Alle Receiver bleiben stehen und der Quarterback wirft den Ball ins Aus",
+        "Der Kicker wirft den Ball nach hinten zum Holder",
+        "Der Quarterback hält den Ball hoch und ruft ein Signal"
+      ],
+      "richtig": 0,
+      "erklaerung": "Der Quarterback hebt den Wurfarm wie die New Yorker Freiheitsstatue, während seine andere Hand den Ball hinter dem Rücken weitergibt. Berühmt wurde die Variante, mit der Boise State im Fiesta Bowl im Januar 2007 gegen Oklahoma in der Verlängerung per Two-Point-Conversion gewann.",
+      "quelle": { "text": "Statue of Liberty play bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Statue_of_Liberty_play" }
+    },
+    {
+      "id": "q191",
+      "stufe": 3,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Was kennzeichnet die Wildcat-Formation?",
+      "antworten": [
+        "Die Offense spielt mit zwei Quarterbacks gleichzeitig",
+        "Die Offense spielt ohne Offensive Line",
+        "Alle Receiver stehen auf derselben Seite des Feldes",
+        "Der Snap geht direkt an einen anderen Spieler als den Quarterback, meist den Running Back"
+      ],
+      "richtig": 3,
+      "erklaerung": "Dazu stellt sich die Offense oft unausgewogen auf, und ein Spieler bewegt sich vor dem Snap über die Formation. In der NFL setzten die Miami Dolphins die Wildcat mit den Running Backs Ronnie Brown und Ricky Williams ein.",
+      "quelle": { "text": "Wildcat-Formation bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Wildcat_formation" }
+    },
+    {
+      "id": "q192",
+      "stufe": 3,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Wie weit hinter dem Center steht der Quarterback in der Pistol-Formation?",
+      "antworten": ["Zwei Yards", "Vier Yards", "Sieben Yards", "Zehn Yards"],
+      "richtig": 1,
+      "erklaerung": "In der Pistol steht der Quarterback etwa vier Yards hinter dem Center, der Running Back drei Yards direkt hinter ihm. Sie liegt zwischen der Shotgun (rund sieben Yards) und der klassischen Aufstellung und wurde von Chris Ault an der University of Nevada bekannt gemacht.",
+      "quelle": { "text": "Pistol-Offense bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Pistol_offense" }
+    },
+    {
+      "id": "q193",
+      "stufe": 3,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Welches Team machte in den 1990er-Jahren die No-Huddle-Offense unter dem Namen „K-Gun“ berühmt?",
+      "antworten": ["Buffalo Bills", "Dallas Cowboys", "San Francisco 49ers", "Pittsburgh Steelers"],
+      "richtig": 0,
+      "erklaerung": "Als Wegbereiter der No-Huddle-Offense gelten die Cincinnati Bengals. Ihre bekannteste Form hatten die Buffalo Bills in den 1990ern unter Head Coach Marv Levy: die „K-Gun“.",
+      "quelle": { "text": "Hurry-up-Offense bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Hurry-up_offense" }
+    },
+    {
+      "id": "q194",
+      "stufe": 3,
+      "kategorie": "Regeln",
+      "frage": "Wer verwandelte im Dezember 2024 als erster NFL-Kicker seit 1976 einen Fair Catch Kick, also ein Field Goal direkt nach einem Fair Catch?",
+      "antworten": ["Justin Tucker", "Brandon Aubrey", "Cam Little", "Cameron Dicker"],
+      "richtig": 3,
+      "erklaerung": "Beim Fair Catch Kick darf das fangende Team nach einem Fair Catch vom Fangpunkt aus ein Field Goal (Place Kick oder Drop Kick) für drei Punkte versuchen. Cameron Dicker von den Los Angeles Chargers traf am 19. Dezember 2024 gegen die Denver Broncos. Zuvor war der Kick zuletzt 1976 gelungen. Stand: Oktober 2026.",
+      "quelle": { "text": "Fair Catch Kick bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Fair_catch_kick" }
+    },
+    {
+      "id": "q195",
+      "stufe": 3,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Wie nennt die NFL es, wenn ein Verteidiger vor dem Snap in die Neutral Zone eindringt und dort einen Gegner oder den Ball berührt?",
+      "antworten": ["False Start", "Encroachment", "Offside", "Delay of Game"],
+      "richtig": 1,
+      "erklaerung": "Bei Encroachment ist der Spielzug sofort tot, die Strafe beträgt 5 Yards. Offside liegt dagegen schon vor, wenn nur ein Körperteil des Verteidigers vor dem Snap in der Neutral Zone steht.",
+      "quelle": { "text": "Football Terms (Encroachment, Offside) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q196",
+      "stufe": 2,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Wie viele Yards kostet „Roughing the Passer“, also unnötig harter Kontakt zum Quarterback?",
+      "antworten": ["5 Yards", "10 Yards", "15 Yards", "20 Yards"],
+      "richtig": 2,
+      "erklaerung": "Roughing the Passer, Roughing the Kicker und Roughing the Holder kosten jeweils 15 Yards. Zum Vergleich: Offside und False Start kosten 5 Yards, Offensive Holding 10 Yards.",
+      "quelle": { "text": "NFL-Regelbuch 2026 (Strafentabelle) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q197",
+      "stufe": 2,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Was unterscheidet den Free Safety vom Strong Safety?",
+      "antworten": [
+        "Nur der Strong Safety darf den Quarterback sacken",
+        "Der Free Safety deckt ausschließlich den Tight End",
+        "Der Free Safety steht meist weiter hinten und folgt dem Ball; der Strong Safety steht näher an der Line auf der Seite des Tight Ends",
+        "Es gibt keinen Unterschied außer der Trikotnummer"
+      ],
+      "richtig": 2,
+      "erklaerung": "Der Free Safety steht weiter von der Line of Scrimmage entfernt, folgt dem Ball und hilft den Cornerbacks. Der Strong Safety steht näher an der Line auf der „starken“ Seite der Offense, wo der Tight End steht, und unterstützt auch gegen den Lauf.",
+      "quelle": { "text": "Football Terms (Safety) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q198",
+      "stufe": 2,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Welche Position steht in der 3-4-Defense direkt gegenüber dem Center?",
+      "antworten": ["Strong Safety", "Nose Tackle", "Fullback", "Cornerback"],
+      "richtig": 1,
+      "erklaerung": "Der Nose Tackle (auch Nose Guard) drückt in die Offensive Line, stört den Spielzug im gegnerischen Backfield und verhindert Raumgewinn bei Läufen. Er wird nur in der 3-4-Defense eingesetzt: drei Linemen, vier Linebacker.",
+      "quelle": { "text": "Football Terms (Nose Guard) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q199",
+      "stufe": 2,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Wer fängt bei einem Field-Goal- oder Extrapunkt-Versuch den Snap und setzt den Ball für den Kicker auf?",
+      "antworten": ["Der Holder", "Der Long Snapper", "Der Punter", "Der Returner"],
+      "richtig": 0,
+      "erklaerung": "Der Long Snapper, die Special-Teams-Version des Centers, schnappt den Ball nach hinten. Der Holder fängt ihn und stellt ihn so auf, dass der Placekicker ihn durch die Stangen treten kann.",
+      "quelle": { "text": "Football Terms (Holder, Long Snapper) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q200",
+      "stufe": 3,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Welcher Linebacker der 4-3-Defense gibt die Ansage der Trainer weiter und sagt den Mitspielern, wo sie sich aufstellen sollen?",
+      "antworten": ["Der Sam-Linebacker", "Der Will-Linebacker", "Der Mike-Linebacker", "Der Nose-Linebacker"],
+      "richtig": 2,
+      "erklaerung": "Der mittlere Linebacker („Mike“) übermittelt den Spielzug und weist die Aufstellung ein. Der „Sam“ steht gegenüber dem Tight End, der „Will“ gegenüber dem Sam, auf der Seite ohne Tight End.",
+      "quelle": { "text": "Football Terms (Linebacker) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q201",
+      "stufe": 3,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Was ist ein H-Back?",
+      "antworten": [
+        "Ein Verteidiger, der hinter den Safeties steht",
+        "Ein Kicker für sehr lange Field Goals",
+        "Ein zweiter Quarterback für Trickspielzüge",
+        "Ein Spieler ähnlich dem Tight End, der ein paar Yards hinter der Line im Slot steht, blockt und Pässe fängt"
+      ],
+      "richtig": 3,
+      "erklaerung": "Ein Tight End steht am Ende der Offensive Line. Der H-Back (auch Slot Back) steht dagegen ein paar Yards hinter der Line im „Slot“ zwischen Line und nächstem Wide Receiver, blockt bei Läufen und fängt Pässe.",
+      "quelle": { "text": "Football Terms (H-Back) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q202",
+      "stufe": 2,
+      "kategorie": "College-Football",
+      "frage": "Welcher Trainer hat im College Football die meisten nationalen Meisterschaften gewonnen?",
+      "antworten": ["Bear Bryant", "Urban Meyer", "Nick Saban", "Pete Carroll"],
+      "richtig": 2,
+      "erklaerung": "Nick Saban gewann sieben anerkannte Titel: 2003 mit LSU sowie 2009, 2011, 2012, 2015, 2017 und 2020 mit Alabama. Dort trainierte er von 2007 bis 2023, heute arbeitet er als Analyst bei ESPN. Stand: Oktober 2026.",
+      "quelle": { "text": "Nick Saban bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Nick_Saban" }
+    },
+    {
+      "id": "q203",
+      "stufe": 2,
+      "kategorie": "College-Football",
+      "frage": "Welche vier Conferences gelten im College Football als „Power Four“?",
+      "antworten": [
+        "Pac-12, Big Ten, Big East und SEC",
+        "ACC, Big Ten, Big 12 und SEC",
+        "ACC, Big Ten, Mountain West und SEC",
+        "AAC, Big 12, Pac-12 und SEC"
+      ],
+      "richtig": 1,
+      "erklaerung": "Die Pac-12 schrumpfte nach der Saison 2023 auf zwei Mitglieder. Heute bilden ACC, Big Ten, Big 12 und SEC die Power Four, aus denen die meisten Teilnehmer des College Football Playoff kommen.",
+      "quelle": { "text": "Power Conferences bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Power_conferences" }
+    },
+    {
+      "id": "q204",
+      "stufe": 2,
+      "kategorie": "Football in Europa",
+      "frage": "Wer ist der Dachverband des American Football in Deutschland?",
+      "antworten": ["DFB", "DOSB", "IFAF", "AFVD"],
+      "richtig": 3,
+      "erklaerung": "AFVD steht für American Football Verband Deutschland. Er wurde 1982 gegründet und betreut das Ligasystem, die Deutschen Meisterschaften („Bowls“) und die Nationalmannschaften.",
+      "quelle": { "text": "American Football Verband Deutschland bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_Football_Association_of_Germany" }
+    },
+    {
+      "id": "q205",
+      "stufe": 2,
+      "kategorie": "Football in Europa",
+      "frage": "Wie heißt die höchste Spielklasse im österreichischen American Football?",
+      "antworten": ["Austrian Football League (AFL)", "Alpen Bowl League", "Austria Gridiron Liga", "Vienna Super League"],
+      "richtig": 0,
+      "erklaerung": "Die AFL wurde 1982 gegründet und hat derzeit acht Teams mit Auf- und Abstieg. Gespielt wird nach Regeln, die auf denen des College Football (NCAA) basieren. Sie gilt als eine der stärksten Ligen Europas.",
+      "quelle": { "text": "Austrian Football League bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Austrian_Football_League" }
+    },
+    {
+      "id": "q206",
+      "stufe": 3,
+      "kategorie": "Football in Europa",
+      "frage": "Wie heißt das Finale um die deutsche Meisterschaft im American Football seit 2023 offiziell?",
+      "antworten": ["Euro Bowl", "Berlin Bowl", "Super Bowl Germany", "GFL Bowl"],
+      "richtig": 3,
+      "erklaerung": "Das Finale, früher als German Bowl bekannt, heißt seit 2023 GFL Bowl, nach der German Football League. Rekordsieger sind die Braunschweig Lions (New Yorker Lions) mit zwölf Titeln.",
+      "quelle": { "text": "German Bowl bei Wikipedia", "url": "https://en.wikipedia.org/wiki/German_Bowl" }
+    },
+    {
+      "id": "q207",
+      "stufe": 3,
+      "kategorie": "Football in Europa",
+      "frage": "Welches Team gewann 2023 im GFL Bowl in Essen erstmals die deutsche Meisterschaft?",
+      "antworten": ["Dresden Monarchs", "Braunschweig Lions", "Potsdam Royals", "Schwäbisch Hall Unicorns"],
+      "richtig": 2,
+      "erklaerung": "Die Potsdam Royals holten am 14. Oktober 2023 in Essen ihren ersten nationalen Titel. 2026 standen sie zum dritten Mal in Folge im Finale gegen die Dresden Monarchs.",
+      "quelle": { "text": "GFL-Saison 2023 bei Wikipedia", "url": "https://en.wikipedia.org/wiki/2023_German_Football_League" }
+    },
+    {
+      "id": "q208",
+      "stufe": 3,
+      "kategorie": "Football in Europa",
+      "frage": "Welches Team wurde 2026 deutscher Meister (GFL Bowl in Dresden)?",
+      "antworten": ["Dresden Monarchs", "Potsdam Royals", "Schwäbisch Hall Unicorns", "Hildesheim Invaders"],
+      "richtig": 0,
+      "erklaerung": "Die Dresden Monarchs gewannen den GFL Bowl 2026 mit 27:19 gegen die Potsdam Royals, es war das dritte Finale in Folge dieser beiden Teams. Schwäbisch Hall hatte die Hauptrunde im Süden ohne Niederlage beendet, verlor aber das Halbfinale gegen Potsdam.",
+      "quelle": { "text": "GFL-Saison 2026 bei Wikipedia", "url": "https://en.wikipedia.org/wiki/2026_German_Football_League" }
+    },
+    {
+      "id": "q209",
+      "stufe": 3,
+      "kategorie": "Football in Europa",
+      "frage": "Welcher gebürtige Deutsche spielte acht Jahre als Offensive Tackle für die New England Patriots und gehört zu den Siegern der Super Bowls XLIX und LI?",
+      "antworten": ["Björn Werner", "Sebastian Vollmer", "Markus Kuhn", "Moritz Böhringer"],
+      "richtig": 1,
+      "erklaerung": "Sebastian Vollmer (geboren in Kaarst, früher bei den Düsseldorf Panther) wurde 2009 in der zweiten Runde gedraftet. Im Super Bowl XLIX stand er in der Startelf, im Super Bowl LI fehlte er verletzt. Als erster Deutscher mit Super-Bowl-Titel wird er oft fälschlich genannt: Markus Koch gewann schon 1988 mit Washington den Super Bowl XXII.",
+      "quelle": { "text": "Sebastian Vollmer bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Sebastian_Vollmer" }
     }
   ]
 }
