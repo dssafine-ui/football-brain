@@ -581,6 +581,45 @@ body[data-ansicht="start"] #start {
   color: #ffffff;
 }
 
+/* Gesperrte Stufe: Schloss statt Symbol und etwas blasser. Ein Tipp darauf zeigt, was noch fehlt. */
+
+.stufe.zu {
+  color: var(--leise);
+  opacity: 0.7;
+}
+
+.stufe.zu[data-stufe]::before {
+  content: "🔒";
+  content: "🔒" / "";
+}
+
+.stufe.wackelt {
+  animation: wackeln 0.4s ease;
+}
+
+/* Fortschritt bis zur nächsten gesperrten Stufe: ein Satz und ein schmaler Balken. */
+
+.stufen-ziel {
+  margin-top: 0.75rem;
+}
+
+.stufen-ziel p {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--titel);
+}
+
+.stufen-ziel .balken {
+  height: 10px;
+  margin-bottom: 0;
+}
+
+.stufen-ziel .balken > div::after {
+  top: 2px;
+  height: 3px;
+}
+
 .stufen-info {
   margin: 0.55rem 0 0;
   font-size: 0.85rem;
@@ -908,6 +947,25 @@ body[data-ansicht="start"] #start {
   box-shadow: 0 3px 0 var(--gold-kante);
 }
 
+/* „Neue Stufe frei“ steht unter den Punkten, wenn die Runde eine Stufe freigeschaltet hat. */
+
+.ergebnis-kopf .freigabe {
+  display: inline-block;
+  margin: 0.3rem 0.25rem;
+  padding: 0.3rem 1rem;
+  font-weight: 800;
+  color: var(--richtig-text);
+  background: var(--richtig-bg);
+  border: 2px solid var(--richtig-rand);
+  border-radius: 99px;
+  animation: pop 0.5s ease;
+}
+
+.freigabe::before {
+  content: "🔓 ";
+  content: "🔓 " / "";
+}
+
 .serie-zeile {
   font-weight: 700;
 }
@@ -979,7 +1037,7 @@ body[data-ansicht="start"] #start {
     box-shadow: 0 4px 0 var(--blau);
   }
 
-  .stufe:hover:not(:disabled):not(.aktiv) {
+  .stufe:hover:not(:disabled):not(.aktiv):not(.zu) {
     border-color: var(--blau);
     box-shadow: 0 4px 0 var(--blau);
   }

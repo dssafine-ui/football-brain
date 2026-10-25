@@ -1,6 +1,7 @@
 // Football Brain: lädt die Fragen aus fragen.json und merkt sich den Fortschritt auf diesem Gerät (localStorage).
-// Kein Konto, kein Server: Wissensstufe, Punkte, Serie, gesehene Fragen und Ergebnisse bleiben im Browser.
+// Kein Konto, kein Server: Wissensstufe, freigeschaltete Stufen, Punkte, Serie, gesehene Fragen und Ergebnisse bleiben im Browser.
 // Das Tagesquiz hat fünf Fragen. Danach lassen sich ohne Obergrenze weitere neue Fragen spielen, immer zufällig aus allen Themen.
+// Highschool ist von Anfang an offen. College und NFL werden frei, sobald man auf der Stufe davor genug Punkte gesammelt hat.
 (function () {
   'use strict';
 
@@ -10,10 +11,11 @@
   const ABSCHNITTE = ['laden', 'start', 'frage', 'ergebnis', 'fehler'];
   const NEULADEN_NACH_MS = 30 * 60 * 1000;
   // Die Wissensstufe sagt, wie schwer eine Frage ist. Mit dem Thema (Kategorie) hat sie nichts zu tun.
+  // freiAb: So viele Punkte braucht man auf der Stufe davor, damit diese Stufe frei wird. Die erste Stufe ist von Anfang an offen.
   const STUFEN = [
-    { nummer: 1, name: 'Highschool', hinweis: 'leicht' },
-    { nummer: 2, name: 'College', hinweis: 'mittel' },
-    { nummer: 3, name: 'NFL', hinweis: 'schwer' },
+    { nummer: 1, name: 'Highschool', hinweis: 'leicht', freiAb: 0 },
+    { nummer: 2, name: 'College', hinweis: 'mittel', freiAb: 100 },
+    { nummer: 3, name: 'NFL', hinweis: 'schwer', freiAb: 200 },
   ];
   // Neue Spieler starten bei den leichten Fragen (Highschool). STANDARD_STUFE gilt nur für Fragen, in denen die Stufe fehlt.
   const START_STUFE = 1;
@@ -76,7 +78,8 @@
   // ---------- Speicher ----------
 
   function leererSpeicher() {
-    return { v: 1, fragen: {}, tage: {}, runde: null, stufe: START_STUFE, punkte: 0 };
+    // stufenPunkte: Punkte je Wissensstufe (Stelle 0 = Stufe 1). freigabe: die höchste Stufe, die schon spielbar ist.
+    return { v: 1, fragen: {}, tage: {}, runde: null, stufe: START_STUFE, punkte: 0, stufenPunkte: STUFEN.map(() => 0), freigabe: START_STUFE };
   }
 
   function speicherLaden() {
@@ -90,6 +93,17 @@
         if (istObjekt(daten.runde)) frisch.runde = daten.runde;
         if (stufeGueltig(daten.stufe)) frisch.stufe = daten.stufe;
         if (Number.isFinite(daten.punkte) && daten.punkte >= 0) frisch.punkte = Math.floor(daten.punkte);
+        if (Array.isArray(daten.stufenPunkte)) {
+          STUFEN.forEach((stufe, i) => {
+            const wert = daten.stufenPunkte[i];
+            if (Number.isFinite(wert) && wert >= 0) frisch.stufenPunkte[i] = Math.floor(wert);
+          });
+        }
+        // Ein Stand von vor der Freischaltung kennt keine Freigabe: Die Stufe, auf der schon gespielt wurde, bleibt offen.
+        if (stufeGueltig(daten.freigabe)) frisch.freigabe = daten.freigabe;
+        else frisch.freigabe = Math.max(START_STUFE, frisch.stufe);
+        // Gespeichert ist nie eine gesperrte Stufe als gewählte Stufe; sollte es doch so sein, gilt die höchste freie.
+        if (frisch.stufe > frisch.freigabe) frisch.stufe = frisch.freigabe;
       }
     } catch (fehler) {
       // Lesen nicht erlaubt oder Daten kaputt: sauber von vorn anfangen.
@@ -132,6 +146,24 @@
   // Fehlt die Stufe in der Fragenliste, gilt die Frage als mittelschwer.
   function stufeVon(frage) {
     return stufeGueltig(frage.stufe) ? frage.stufe : STANDARD_STUFE;
+  }
+
+  // Die nächste Stufe, die noch gesperrt ist. 0, wenn alle Stufen frei sind.
+  function naechsteGesperrte() {
+    return speicher.freigabe < STUFEN.length ? speicher.freigabe + 1 : 0;
+  }
+
+  // Stufe n + 1 wird frei, sobald die Punkte auf Stufe n die Schwelle (freiAb) erreichen. Was frei ist, bleibt frei.
+  // Gibt die höchste neu freigeschaltete Stufe zurück, sonst 0.
+  function freischaltenPruefen() {
+    const vorher = speicher.freigabe;
+    while (
+      speicher.freigabe < STUFEN.length &&
+      speicher.stufenPunkte[speicher.freigabe - 1] >= STUFEN[speicher.freigabe].freiAb
+    ) {
+      speicher.freigabe += 1;
+    }
+    return speicher.freigabe > vorher ? speicher.freigabe : 0;
   }
 
   function punkteJeFrage(art) {
@@ -227,6 +259,10 @@
   }
 
   function leerHinweis() {
+    // Ist die nächste Stufe noch gesperrt, bringt hier nur die Übungsrunde weitere Punkte dafür.
+    if (naechsteGesperrte() === speicher.stufe + 1) {
+      return 'Auf dieser Stufe sind alle Fragen durch. Die Übungsrunde bringt Punkte für ' + STUFEN[speicher.stufe].name + '.';
+    }
     return ungeseheneInsgesamt() > 0
       ? 'Auf dieser Stufe sind alle Fragen durch. Wechsle die Stufe oder nutze die Übungsrunde.'
       : 'Alle Fragen sind durch. Neue gibt es, sobald die Fragenliste ergänzt wird. Bis dahin hilft die Übungsrunde.';
@@ -337,7 +373,14 @@
     const alt = istObjekt(speicher.fragen[frage.id]) ? speicher.fragen[frage.id] : {};
     const richtig = index === frage.richtig;
     speicher.fragen[frage.id] = { tag: alt.tag || runde.tag, richtig: richtig };
-    if (richtig) speicher.punkte += punkteJeFrage(runde.art);
+    if (richtig) {
+      const gewinn = punkteJeFrage(runde.art);
+      speicher.punkte += gewinn;
+      speicher.stufenPunkte[stufeVon(frage) - 1] += gewinn;
+      // Reichen die Punkte, wird die nächste Stufe frei. Die Runde merkt es sich für die Meldung im Ergebnis.
+      const neu = freischaltenPruefen();
+      if (neu) runde.freigabe = neu;
+    }
     speicher.runde = runde;
     speicherSichern();
     rueckmeldungZeigen(frage, index);
@@ -353,10 +396,8 @@
   }
 
   function zuruecksetzen() {
-    if (!window.confirm('Fortschritt wirklich löschen? Serie, Punkte, Ergebnisse und gesehene Fragen fangen wieder bei null an. Die gewählte Wissensstufe bleibt.')) return;
-    const stufe = speicher.stufe;
+    if (!window.confirm('Fortschritt wirklich löschen? Serie, Punkte, Ergebnisse, gesehene Fragen und freigeschaltete Stufen fangen wieder bei null an.')) return;
     speicher = leererSpeicher();
-    speicher.stufe = stufe;
     runde = null;
     ergebnisRunde = null;
     speicherSichern();
@@ -457,10 +498,60 @@
       knopf.addEventListener('click', () => stufeWaehlen(stufe.nummer));
       box.appendChild(knopf);
     });
+
+    // Unter den Knöpfen steht, wie weit es bis zur nächsten gesperrten Stufe ist. Text und Balken füllt stufenZeigen.
+    const ziel = document.createElement('div');
+    ziel.className = 'stufen-ziel';
+    ziel.id = 'stufen-ziel';
+    ziel.hidden = true;
+    const zielText = document.createElement('p');
+    zielText.id = 'stufen-ziel-text';
+    const zielBalken = document.createElement('div');
+    zielBalken.className = 'balken';
+    zielBalken.setAttribute('aria-hidden', 'true');
+    const zielFuellung = document.createElement('div');
+    zielFuellung.id = 'stufen-ziel-balken';
+    zielBalken.appendChild(zielFuellung);
+    ziel.append(zielText, zielBalken);
+    box.after(ziel);
+    $('stufen-info').setAttribute('aria-live', 'polite');
+  }
+
+  // Die Meldung „Neue Stufe frei“ im Ergebnis. Sie entsteht hier, damit index.html unverändert bleibt.
+  function freigabeZeileAufbauen() {
+    const zeile = document.createElement('p');
+    zeile.className = 'freigabe';
+    zeile.id = 'ergebnis-freigabe';
+    zeile.hidden = true;
+    $('ergebnis-gewinn').after(zeile);
+  }
+
+  // Tippt jemand auf eine gesperrte Stufe, steht unter den Knöpfen, was dafür noch fehlt.
+  function sperreZeigen(nummer) {
+    const stufe = STUFEN[nummer - 1];
+    const davor = STUFEN[nummer - 2];
+    let text;
+    if (nummer === speicher.freigabe + 1) {
+      const fehlt = Math.max(0, stufe.freiAb - speicher.stufenPunkte[nummer - 2]);
+      text = stufe.name + ' ist noch gesperrt. Sammle ' + stufe.freiAb + ' Punkte auf ' + davor.name + ', dir fehlen noch ' + fehlt + '.';
+    } else {
+      text = stufe.name + ' ist noch gesperrt. Schalte erst ' + davor.name + ' frei.';
+    }
+    $('stufen-info').textContent = text;
+    $('stufen-info').hidden = false;
+    const knopf = document.querySelector('#stufen .stufe[data-stufe="' + nummer + '"]');
+    if (knopf) {
+      knopf.classList.add('wackelt');
+      knopf.addEventListener('animationend', () => knopf.classList.remove('wackelt'), { once: true });
+    }
   }
 
   function stufeWaehlen(nummer) {
     if (!stufeGueltig(nummer) || nummer === speicher.stufe || rundeOffen()) return;
+    if (nummer > speicher.freigabe) {
+      sperreZeigen(nummer);
+      return;
+    }
     speicher.stufe = nummer;
     speicherSichern();
     startZeigen();
@@ -469,9 +560,19 @@
   function stufenZeigen() {
     const gesperrt = rundeOffen();
     document.querySelectorAll('#stufen .stufe').forEach((knopf) => {
-      const aktiv = Number(knopf.dataset.stufe) === speicher.stufe;
+      const nummer = Number(knopf.dataset.stufe);
+      const stufe = STUFEN[nummer - 1];
+      const aktiv = nummer === speicher.stufe;
+      // Eine Stufe, für die noch Punkte fehlen, bleibt antippbar (sie erklärt dann, was fehlt), wirkt aber gesperrt.
+      const zu = nummer > speicher.freigabe;
+      const hinweis = zu ? 'gesperrt' : stufe.hinweis;
       knopf.classList.toggle('aktiv', aktiv);
+      knopf.classList.toggle('zu', zu);
       knopf.setAttribute('aria-pressed', aktiv ? 'true' : 'false');
+      if (zu) knopf.setAttribute('aria-disabled', 'true');
+      else knopf.removeAttribute('aria-disabled');
+      knopf.setAttribute('aria-label', stufe.name + ', ' + hinweis);
+      knopf.querySelector('.stufe-hinweis').textContent = hinweis;
       knopf.disabled = gesperrt;
     });
     let info = '';
@@ -479,6 +580,17 @@
     else if (tagZustand() === 'erledigt') info = 'Die gewählte Stufe gilt ab morgen, für weitere Fragen und für die Übungsrunde.';
     $('stufen-info').textContent = info;
     $('stufen-info').hidden = info === '';
+
+    // Weg zur nächsten gesperrten Stufe: Punkte auf der höchsten freien Stufe gegen die Schwelle.
+    const ziel = naechsteGesperrte();
+    $('stufen-ziel').hidden = ziel === 0;
+    if (ziel) {
+      const stufe = STUFEN[ziel - 1];
+      const habe = Math.min(speicher.stufenPunkte[ziel - 2], stufe.freiAb);
+      $('stufen-ziel-text').textContent =
+        stufe.name + ' wird frei: ' + habe + ' von ' + stufe.freiAb + ' Punkten auf ' + STUFEN[ziel - 2].name + '.';
+      $('stufen-ziel-balken').style.width = (stufe.freiAb > 0 ? (habe / stufe.freiAb) * 100 : 100) + '%';
+    }
   }
 
   function frageZeigen() {
@@ -597,6 +709,11 @@
     const gewinnZeile = $('ergebnis-gewinn');
     gewinnZeile.textContent = gewinn > 0 ? '+' + gewinn + ' Punkte' : '';
     gewinnZeile.hidden = !(gewinn > 0);
+    // Hat diese Runde die nächste Stufe freigeschaltet, steht das direkt unter den Punkten.
+    const frei = stufeGueltig(r.freigabe) ? STUFEN[r.freigabe - 1].name : '';
+    const freiZeile = $('ergebnis-freigabe');
+    freiZeile.textContent = frei ? 'Neue Stufe frei: ' + frei : '';
+    freiZeile.hidden = frei === '';
 
     // Direkt unter dem Ergebnis geht es mit der nächsten Runde neuer Fragen weiter, solange auf der Stufe welche übrig sind.
     const mehr = mehrZustand();
@@ -770,11 +887,14 @@
 
   function init() {
     speicher = speicherLaden();
+    // Falls die Schwellen kleiner geworden sind, reichen die Punkte vielleicht schon für die nächste Stufe.
+    freischaltenPruefen();
     speicherSichern();
     $('datum').textContent = datumLang(new Date());
     const alsApp = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches;
     if (alsApp || window.navigator.standalone) $('installieren').hidden = true;
     stufenAufbauen();
+    freigabeZeileAufbauen();
     ereignisseAnmelden();
     fragenLaden();
     symbolFuerIphone();
