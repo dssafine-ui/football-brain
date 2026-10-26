@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-25",
+  "stand": "2026-10-26",
   "fragen": [
     {
       "id": "q001",
@@ -8,7 +8,8 @@
       "frage": "Wie lang ist ein NFL-Spielfeld inklusive beider Endzonen?",
       "antworten": ["100 Yards", "110 Yards", "120 Yards", "130 Yards"],
       "richtig": 2,
-      "erklaerung": "100 Yards zwischen den Goal Lines plus zweimal 10 Yards Endzone."
+      "erklaerung": "100 Yards zwischen den Goal Lines plus zweimal 10 Yards Endzone.",
+      "quelle": { "text": "Spielfeld im American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_football_field" }
     },
     {
       "id": "q002",
@@ -22,7 +23,8 @@
         "Das entscheidet ein neuer Münzwurf"
       ],
       "richtig": 1,
-      "erklaerung": "Das Team mit dem Safety bekommt 2 Punkte und den Ball: Der Gegner muss von der eigenen 20-Yard-Linie per Free Kick anstoßen."
+      "erklaerung": "Das Team mit dem Safety bekommt 2 Punkte und den Ball: Der Gegner muss von der eigenen 20-Yard-Linie per Free Kick anstoßen.",
+      "quelle": { "text": "Safety bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Safety_(gridiron_football_score)" }
     },
     {
       "id": "q003",
@@ -31,7 +33,8 @@
       "frage": "Von welcher Linie aus wird in der NFL der Extrapunkt gespielt? (Der Kick ist dadurch rund 33 Yards lang.)",
       "antworten": ["2-Yard-Linie", "10-Yard-Linie", "15-Yard-Linie", "25-Yard-Linie"],
       "richtig": 2,
-      "erklaerung": "Seit 2015 von der 15-Yard-Linie. Der Zwei-Punkte-Versuch kommt von der 2-Yard-Linie."
+      "erklaerung": "Seit 2015 von der 15-Yard-Linie. Der Zwei-Punkte-Versuch kommt von der 2-Yard-Linie.",
+      "quelle": { "text": "NFL.com zur Regeländerung beim Extrapunkt 2015", "url": "https://www.nfl.com/news/nfl-moves-extra-point-to-15-yard-line-for-2015-season-0ap3000000493347" }
     },
     {
       "id": "q004",
@@ -45,7 +48,8 @@
         "Der Ball kommt an die Stelle des Fouls, dazu gibt es ein automatisches First Down"
       ],
       "richtig": 3,
-      "erklaerung": "In der NFL ein Spot Foul ohne feste Yardzahl (in der Endzone kommt der Ball an die 1-Yard-Linie). In der NCAA sind es 15 Yards."
+      "erklaerung": "In der NFL ein Spot Foul ohne feste Yardzahl (in der Endzone kommt der Ball an die 1-Yard-Linie). In der NCAA gibt es höchstens 15 Yards.",
+      "quelle": { "text": "Pass Interference bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Pass_interference" }
     },
     {
       "id": "q005",
@@ -54,7 +58,8 @@
       "frage": "Wie viele Spieler der Offense müssen beim Snap mindestens an der Line of Scrimmage stehen?",
       "antworten": ["5", "6", "7", "8"],
       "richtig": 2,
-      "erklaerung": "Üblich sind fünf Linemen plus zwei Tight Ends oder Receiver. Die anderen vier stehen dahinter."
+      "erklaerung": "Üblich sind fünf Linemen plus zwei Tight Ends oder Receiver. Die anderen vier stehen dahinter.",
+      "quelle": { "text": "Line of Scrimmage bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Line_of_scrimmage" }
     },
     {
       "id": "q006",
@@ -68,7 +73,8 @@
         "Er ruft die Spielzüge aus"
       ],
       "richtig": 0,
-      "erklaerung": "Die meisten Quarterbacks sind Rechtshänder und sehen Rusher von links schlechter."
+      "erklaerung": "Die meisten Quarterbacks sind Rechtshänder und sehen Rusher von links schlechter.",
+      "quelle": { "text": "Tackle (Position) bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Tackle_(gridiron_football_position)" }
     },
     {
       "id": "q007",
@@ -77,7 +83,8 @@
       "frage": "Wie viele Defensive Backs stehen in der Nickel-Formation auf dem Feld?",
       "antworten": ["3", "4", "5", "6"],
       "richtig": 2,
-      "erklaerung": "Nickel steht für fünf Defensive Backs (Fünf-Cent-Münze). Dime sind sechs."
+      "erklaerung": "Nickel steht für fünf Defensive Backs (Fünf-Cent-Münze). Dime sind sechs.",
+      "quelle": { "text": "Football-Glossar der NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
     },
     {
       "id": "q008",
@@ -91,7 +98,8 @@
         "3 Pass Rusher und 4 Spieler in Man Coverage"
       ],
       "richtig": 0,
-      "erklaerung": "Drei Linemen und vier Linebacker, dazu meist vier Defensive Backs. Mit vier Linemen und drei Linebackern spielt die 4-3-Defense."
+      "erklaerung": "Drei Linemen und vier Linebacker, dazu meist vier Defensive Backs. Mit vier Linemen und drei Linebackern spielt die 4-3-Defense.",
+      "quelle": { "text": "Football-Glossar der NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
     },
     {
       "id": "q009",
@@ -100,7 +108,8 @@
       "frage": "Wie viele Verteidiger sichern in „Cover 3“ die tiefen Zonen?",
       "antworten": ["1", "2", "3", "4"],
       "richtig": 2,
-      "erklaerung": "Meist beide Cornerbacks und ein Safety teilen das tiefe Feld in Drittel. In Cover 2 sind es zwei Safeties, die sich die Hälften teilen."
+      "erklaerung": "Meist beide Cornerbacks und ein Safety teilen das tiefe Feld in Drittel. In Cover 2 sind es zwei Safeties, die sich die Hälften teilen.",
+      "quelle": { "text": "Zone Defense bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Zone_defense_in_American_football" }
     },
     {
       "id": "q010",
@@ -114,7 +123,8 @@
         "Eine Strafe für zu viele Spieler auf dem Feld"
       ],
       "richtig": 0,
-      "erklaerung": "Der Quarterback liest nach dem Snap einen bestimmten Verteidiger und wählt dann Handoff oder schnellen Pass."
+      "erklaerung": "Der Quarterback liest nach dem Snap einen bestimmten Verteidiger und wählt dann Handoff oder schnellen Pass.",
+      "quelle": { "text": "Run-pass option bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Run-pass_option" }
     },
     {
       "id": "q011",
@@ -123,7 +133,8 @@
       "frage": "Wer gewann den ersten Super Bowl (Januar 1967)?",
       "antworten": ["Dallas Cowboys", "Green Bay Packers", "New York Jets", "Pittsburgh Steelers"],
       "richtig": 1,
-      "erklaerung": "Green Bay Packers gegen Kansas City Chiefs, 35:10. Die Jets gewannen erst den dritten Super Bowl (1969)."
+      "erklaerung": "Green Bay Packers gegen Kansas City Chiefs, 35:10. Die Jets gewannen erst den dritten Super Bowl (1969).",
+      "quelle": { "text": "Super Bowl I bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_I" }
     },
     {
       "id": "q012",
@@ -137,7 +148,8 @@
         "San Francisco 49ers 1984"
       ],
       "richtig": 0,
-      "erklaerung": "14 Siege in der Hauptrunde plus 3 in den Playoffs. Die Patriots 2007 gingen 18:0 in den Super Bowl, verloren aber 14:17 gegen die Giants."
+      "erklaerung": "14 Siege in der Hauptrunde plus 3 in den Playoffs. Die Patriots 2007 gingen 18:0 in den Super Bowl, verloren aber 14:17 gegen die Giants.",
+      "quelle": { "text": "Miami Dolphins 1972 bei Wikipedia", "url": "https://en.wikipedia.org/wiki/1972_Miami_Dolphins_season" }
     },
     {
       "id": "q013",
@@ -146,7 +158,8 @@
       "frage": "Welches Team führte im Super Bowl LI (2017) schon mit 28:3 und verlor trotzdem?",
       "antworten": ["Atlanta Falcons", "Seattle Seahawks", "Carolina Panthers", "Denver Broncos"],
       "richtig": 0,
-      "erklaerung": "Die Patriots gewannen 34:28 in der Verlängerung, der ersten Overtime der Super-Bowl-Geschichte."
+      "erklaerung": "Die Patriots gewannen 34:28 in der Verlängerung, der ersten Overtime der Super-Bowl-Geschichte.",
+      "quelle": { "text": "Super Bowl LI bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_LI" }
     },
     {
       "id": "q014",
@@ -155,7 +168,8 @@
       "frage": "Wer fing 1972 die berühmte „Immaculate Reception“ für die Pittsburgh Steelers?",
       "antworten": ["Lynn Swann", "Franco Harris", "Terry Bradshaw", "Joe Greene"],
       "richtig": 1,
-      "erklaerung": "Playoff gegen die Oakland Raiders: Bradshaws Pass prallte ab, Harris fing ihn kurz vor dem Boden und lief zum Touchdown."
+      "erklaerung": "Playoff gegen die Oakland Raiders: Bradshaws Pass prallte ab, Harris fing ihn kurz vor dem Boden und lief zum Touchdown.",
+      "quelle": { "text": "Immaculate Reception bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Immaculate_Reception" }
     },
     {
       "id": "q015",
@@ -164,7 +178,8 @@
       "frage": "Welche deutsche Stadt war 2022 Gastgeber des ersten NFL-Punktspiels in Deutschland?",
       "antworten": ["Frankfurt", "Berlin", "München", "Köln"],
       "richtig": 2,
-      "erklaerung": "Allianz Arena in München, Tampa Bay Buccaneers gegen Seattle Seahawks, 21:16."
+      "erklaerung": "Allianz Arena in München, Tampa Bay Buccaneers gegen Seattle Seahawks, 21:16.",
+      "quelle": { "text": "Allianz Arena bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Allianz_Arena" }
     },
     {
       "id": "q016",
@@ -173,7 +188,8 @@
       "frage": "Wie viele Sekunden hat die Offense normalerweise Zeit, nach dem Ende des letzten Spielzugs den nächsten zu starten (Play Clock)?",
       "antworten": ["15", "25", "30", "40"],
       "richtig": 3,
-      "erklaerung": "40 Sekunden ab dem Ende des letzten Spielzugs. Nach Unterbrechungen wie einem Timeout sind es nur 25. Wer die Uhr überzieht, bekommt Delay of Game: 5 Yards zurück."
+      "erklaerung": "40 Sekunden ab dem Ende des letzten Spielzugs. Nach Unterbrechungen wie einem Timeout sind es nur 25. Wer die Uhr überzieht, bekommt Delay of Game: 5 Yards zurück.",
+      "quelle": { "text": "Football-Glossar der NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
     },
     {
       "id": "q017",
@@ -182,7 +198,8 @@
       "frage": "Wie viele Yards kostet ein Offensive Holding in der NFL?",
       "antworten": ["5", "10", "15", "20"],
       "richtig": 1,
-      "erklaerung": "10 Yards zurück, der Down wird wiederholt. Defensive Holding kostet dagegen 5 Yards und gibt der Offense automatisch ein First Down."
+      "erklaerung": "10 Yards zurück, der Down wird wiederholt. Defensive Holding kostet dagegen 5 Yards und gibt der Offense automatisch ein First Down.",
+      "quelle": { "text": "Holding bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Holding_(American_football)" }
     },
     {
       "id": "q018",
@@ -196,7 +213,8 @@
         "Ein Receiver lässt den Ball absichtlich fallen"
       ],
       "richtig": 0,
-      "erklaerung": "Strafe: Verlust eines Downs und mindestens 10 Yards. Erlaubt ist das Wegwerfen, wenn der Quarterback die Tackle Box verlassen hat und der Ball die Line of Scrimmage erreicht."
+      "erklaerung": "Strafe: Verlust eines Downs und mindestens 10 Yards. Erlaubt ist das Wegwerfen, wenn der Quarterback die Tackle Box verlassen hat und der Ball die Line of Scrimmage erreicht.",
+      "quelle": { "text": "Intentional Grounding bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Intentional_grounding" }
     },
     {
       "id": "q019",
@@ -205,7 +223,8 @@
       "frage": "Die Offense steht an der gegnerischen 30-Yard-Linie und versucht ein Field Goal. Wie lang ist der Kick?",
       "antworten": ["30 Yards", "37 Yards", "40 Yards", "47 Yards"],
       "richtig": 3,
-      "erklaerung": "Zur Yard-Linie kommen 10 Yards Endzone (die Torstangen stehen an der Endlinie) und etwa 7 Yards bis zum Holder: 30 + 17 = 47. Faustregel: Linie plus 17."
+      "erklaerung": "Zur Yard-Linie kommen 10 Yards Endzone (die Torstangen stehen an der Endlinie) und etwa 7 Yards bis zum Holder: 30 + 17 = 47. Faustregel: Linie plus 17.",
+      "quelle": { "text": "Field Goal bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Field_goal" }
     },
     {
       "id": "q020",
@@ -219,7 +238,8 @@
         "Jeder Trainer bekommt eine zusätzliche Challenge"
       ],
       "richtig": 1,
-      "erklaerung": "Automatische Pause bei 2:00 im zweiten und im vierten Viertel. Kein Team verbraucht dafür eines seiner drei Timeouts pro Halbzeit."
+      "erklaerung": "Automatische Pause bei 2:00 im zweiten und im vierten Viertel. Kein Team verbraucht dafür eines seiner drei Timeouts pro Halbzeit.",
+      "quelle": { "text": "Football-Glossar der NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
     },
     {
       "id": "q021",
@@ -233,7 +253,8 @@
         "Ein Kick, der absichtlich über die Mitte geschlagen wird"
       ],
       "richtig": 2,
-      "erklaerung": "Der Lauf-Fake zieht Linebacker und Safeties nach vorn, hinter ihnen entsteht Platz für den Pass."
+      "erklaerung": "Der Lauf-Fake zieht Linebacker und Safeties nach vorn, hinter ihnen entsteht Platz für den Pass.",
+      "quelle": { "text": "Play-action pass bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Play-action_pass" }
     },
     {
       "id": "q022",
@@ -247,7 +268,8 @@
         "Alle Verteidiger ziehen sich tief in die Endzone zurück"
       ],
       "richtig": 0,
-      "erklaerung": "Mehr Druck auf den Quarterback, aber hinten fehlen Verteidiger in der Coverage: hohes Risiko, hoher Ertrag. Der Name kommt vom deutschen Wort „Blitz“."
+      "erklaerung": "Mehr Druck auf den Quarterback, aber hinten fehlen Verteidiger in der Coverage: hohes Risiko, hoher Ertrag. Der Name kommt vom deutschen Wort „Blitz“.",
+      "quelle": { "text": "Blitz bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Blitz_(gridiron_football)" }
     },
     {
       "id": "q023",
@@ -261,7 +283,8 @@
         "Ein Pass vom Receiver zurück zum Quarterback"
       ],
       "richtig": 1,
-      "erklaerung": "Die Defensive Line wird bewusst durchgelassen, der Ball landet bei einem Runningback oder Receiver, der hinter seinen Blockern losläuft."
+      "erklaerung": "Die Defensive Line wird bewusst durchgelassen, der Ball landet bei einem Runningback oder Receiver, der hinter seinen Blockern losläuft.",
+      "quelle": { "text": "Screen pass bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Screen_pass" }
     },
     {
       "id": "q024",
@@ -275,7 +298,8 @@
         "Man-Coverage wird nur bei Punts gespielt, Zone-Coverage nur bei Kickoffs"
       ],
       "richtig": 2,
-      "erklaerung": "In der Zone-Coverage bleiben die Verteidiger in ihrem Raum und reagieren auf den Ball. In der Man-Coverage folgt der Verteidiger seinem Mann überallhin."
+      "erklaerung": "In der Zone-Coverage bleiben die Verteidiger in ihrem Raum und reagieren auf den Ball. In der Man-Coverage folgt der Verteidiger seinem Mann überallhin.",
+      "quelle": { "text": "Zone Defense bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Zone_defense_in_American_football" }
     },
     {
       "id": "q025",
@@ -289,7 +313,8 @@
         "Er blockt als Lead Blocker vor dem Runningback und trägt den Ball nur selten"
       ],
       "richtig": 3,
-      "erklaerung": "Der Fullback steht im Backfield vor oder neben dem Runningback und räumt den Weg frei. Heute sieht man ihn seltener, weil viele Teams lieber mit drei Receivern spielen."
+      "erklaerung": "Der Fullback steht im Backfield vor oder neben dem Runningback und räumt den Weg frei. Heute sieht man ihn seltener, weil viele Teams lieber mit drei Receivern spielen.",
+      "quelle": { "text": "Football-Glossar der NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
     },
     {
       "id": "q026",
@@ -298,7 +323,8 @@
       "frage": "Wie viele Teams pro Conference erreichen die NFL-Playoffs?",
       "antworten": ["4", "6", "7", "8"],
       "richtig": 2,
-      "erklaerung": "Sieben Teams pro Conference, also 14 insgesamt. Nur der Erste jeder Conference bekommt in der ersten Runde ein Freilos (Bye). Bis 2019 waren es sechs."
+      "erklaerung": "Sieben Teams pro Conference, also 14 insgesamt. Nur der Erste jeder Conference bekommt in der ersten Runde ein Freilos (Bye). Bis 2019 waren es sechs.",
+      "quelle": { "text": "NFL-Playoffs bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_playoffs" }
     },
     {
       "id": "q027",
@@ -312,7 +338,8 @@
         "Pete Rozelle Trophy"
       ],
       "richtig": 1,
-      "erklaerung": "Die George Halas Trophy bekommt der NFC-Meister, die Lamar Hunt Trophy der AFC-Meister, die Pete Rozelle Trophy der wertvollste Spieler des Super Bowls."
+      "erklaerung": "Die George Halas Trophy bekommt der NFC-Meister, die Lamar Hunt Trophy der AFC-Meister, die Pete Rozelle Trophy der wertvollste Spieler des Super Bowls.",
+      "quelle": { "text": "NFL-Auszeichnungen bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_awards" }
     },
     {
       "id": "q028",
@@ -321,7 +348,8 @@
       "frage": "Wie viele Super-Bowl-Siege hat Tom Brady als Spieler geholt?",
       "antworten": ["4", "5", "6", "7"],
       "richtig": 3,
-      "erklaerung": "Sechs mit den New England Patriots, einer mit den Tampa Bay Buccaneers (2021). Das sind mehr Titel, als jedes einzelne Team gewonnen hat."
+      "erklaerung": "Sechs mit den New England Patriots, einer mit den Tampa Bay Buccaneers (2021). Das sind mehr Titel, als jedes einzelne Team gewonnen hat.",
+      "quelle": { "text": "Tom Brady bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Tom_Brady" }
     },
     {
       "id": "q029",
@@ -335,7 +363,8 @@
         "Die Teams wählen in alphabetischer Reihenfolge"
       ],
       "richtig": 0,
-      "erklaerung": "Das Team mit der schlechtesten Bilanz hat den ersten Pick, der Super-Bowl-Sieger wählt als 32. Der Draft hat sieben Runden, Picks lassen sich tauschen."
+      "erklaerung": "Das Team mit der schlechtesten Bilanz hat den ersten Pick, der Super-Bowl-Sieger wählt als 32. Der Draft hat sieben Runden, Picks lassen sich tauschen.",
+      "quelle": { "text": "NFL Draft bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_draft" }
     },
     {
       "id": "q030",
@@ -354,7 +383,8 @@
       "frage": "Wie hoch ist das maximal mögliche Passer Rating in der NFL?",
       "antworten": ["100,0", "125,0", "158,3", "200,0"],
       "richtig": 2,
-      "erklaerung": "158,3 braucht in jeder der vier Wertungen den Höchstwert: hohe Fangquote, viele Yards pro Wurf, viele Touchdowns, keine Interception."
+      "erklaerung": "158,3 braucht in jeder der vier Wertungen den Höchstwert: hohe Fangquote, viele Yards pro Wurf, viele Touchdowns, keine Interception.",
+      "quelle": { "text": "Passer Rating bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Passer_rating" }
     },
     {
       "id": "q032",
@@ -363,7 +393,8 @@
       "frage": "Wie viele Punkte bekommt die Defense, wenn sie bei einem Zwei-Punkte-Versuch den Ball erobert und in die gegnerische Endzone trägt?",
       "antworten": ["0", "1", "2", "6"],
       "richtig": 2,
-      "erklaerung": "Eine Defensive Conversion zählt 2 Punkte."
+      "erklaerung": "Eine Defensive Conversion zählt 2 Punkte.",
+      "quelle": { "text": "NFL.com zur Regeländerung beim Extrapunkt 2015", "url": "https://www.nfl.com/news/nfl-moves-extra-point-to-15-yard-line-for-2015-season-0ap3000000493347" }
     },
     {
       "id": "q033",

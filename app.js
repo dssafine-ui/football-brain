@@ -2,20 +2,27 @@
 // Kein Konto, kein Server: Wissensstufe, freigeschaltete Stufen, Punkte, Serie, gesehene Fragen und Ergebnisse bleiben im Browser.
 // Das Tagesquiz hat fünf Fragen. Danach lassen sich ohne Obergrenze weitere neue Fragen spielen, immer zufällig aus allen Themen.
 // Highschool ist von Anfang an offen. College und NFL werden frei, sobald man auf der Stufe davor genug Punkte gesammelt hat.
+// Neue Fragen zählen immer für die nächste Stufe, Wiederholungen in der Übungsrunde nur, wenn auf der Stufe alle neuen Fragen durch sind.
+// Dazu: Einführung beim ersten Start, Fortschritt per Code auf ein anderes Gerät mitnehmen, Fragen melden.
 (function () {
   'use strict';
 
   const SPEICHER_KEY = 'football-tagesquiz-fortschritt-v1';
+  // Stand der App-Dateien (steht unten auf der Startseite, damit sich nach einem Upload nachprüfen lässt, ob die neue Fassung läuft).
+  const APP_STAND = '2026-10-26';
+  // Der Code zum Mitnehmen des Fortschritts beginnt immer so. Daran erkennt die App, ob ein eingefügter Text überhaupt ein Code ist.
+  const CODE_KOPF = 'FB1:';
   const FRAGEN_PRO_RUNDE = 5;
   const BUCHSTABEN = ['A', 'B', 'C', 'D', 'E', 'F'];
   const ABSCHNITTE = ['laden', 'start', 'frage', 'ergebnis', 'fehler'];
   const NEULADEN_NACH_MS = 30 * 60 * 1000;
   // Die Wissensstufe sagt, wie schwer eine Frage ist. Mit dem Thema (Kategorie) hat sie nichts zu tun.
   // freiAb: So viele Punkte braucht man auf der Stufe davor, damit diese Stufe frei wird. Die erste Stufe ist von Anfang an offen.
+  // thema: Wofür die Stufe steht. Das steht in der Einführung und folgt den Kriterien für die Einstufung der Fragen.
   const STUFEN = [
-    { nummer: 1, name: 'Highschool', hinweis: 'leicht', freiAb: 0 },
-    { nummer: 2, name: 'College', hinweis: 'mittel', freiAb: 100 },
-    { nummer: 3, name: 'NFL', hinweis: 'schwer', freiAb: 200 },
+    { nummer: 1, name: 'Highschool', hinweis: 'leicht', thema: 'Grundregeln, Positionen und leichtes Allgemeinwissen', freiAb: 0 },
+    { nummer: 2, name: 'College', hinweis: 'mittel', thema: 'Spezialregeln, Spielzüge und wichtige Personen', freiAb: 100 },
+    { nummer: 3, name: 'NFL', hinweis: 'schwer', thema: 'besondere Spielzüge, Personen und hohes Allgemeinwissen', freiAb: 200 },
   ];
   // Neue Spieler starten bei den leichten Fragen (Highschool). STANDARD_STUFE gilt nur für Fragen, in denen die Stufe fehlt.
   const START_STUFE = 1;
@@ -79,36 +86,43 @@
 
   function leererSpeicher() {
     // stufenPunkte: Punkte je Wissensstufe (Stelle 0 = Stufe 1). freigabe: die höchste Stufe, die schon spielbar ist.
-    return { v: 1, fragen: {}, tage: {}, runde: null, stufe: START_STUFE, punkte: 0, stufenPunkte: STUFEN.map(() => 0), freigabe: START_STUFE };
+    // erklaert: Die Einführung auf der Startseite wurde schon gesehen.
+    return { v: 1, fragen: {}, tage: {}, runde: null, stufe: START_STUFE, punkte: 0, stufenPunkte: STUFEN.map(() => 0), freigabe: START_STUFE, erklaert: false };
+  }
+
+  // Macht aus gespeicherten oder eingefügten Daten einen sauberen Stand. Was nicht passt, bleibt auf dem Anfangswert.
+  function standAusDaten(daten) {
+    const frisch = leererSpeicher();
+    if (istObjekt(daten.fragen)) frisch.fragen = daten.fragen;
+    if (istObjekt(daten.tage)) frisch.tage = daten.tage;
+    if (istObjekt(daten.runde)) frisch.runde = daten.runde;
+    if (stufeGueltig(daten.stufe)) frisch.stufe = daten.stufe;
+    if (Number.isFinite(daten.punkte) && daten.punkte >= 0) frisch.punkte = Math.floor(daten.punkte);
+    if (Array.isArray(daten.stufenPunkte)) {
+      STUFEN.forEach((stufe, i) => {
+        const wert = daten.stufenPunkte[i];
+        if (Number.isFinite(wert) && wert >= 0) frisch.stufenPunkte[i] = Math.floor(wert);
+      });
+    }
+    // Ein Stand von vor der Freischaltung kennt keine Freigabe: Die Stufe, auf der schon gespielt wurde, bleibt offen.
+    if (stufeGueltig(daten.freigabe)) frisch.freigabe = daten.freigabe;
+    else frisch.freigabe = Math.max(START_STUFE, frisch.stufe);
+    // Gespeichert ist nie eine gesperrte Stufe als gewählte Stufe; sollte es doch so sein, gilt die höchste freie.
+    if (frisch.stufe > frisch.freigabe) frisch.stufe = frisch.freigabe;
+    // Wer schon gespielt hat, braucht die Einführung nicht mehr.
+    frisch.erklaert = daten.erklaert === true || frisch.punkte > 0 || Object.keys(frisch.tage).length > 0;
+    return frisch;
   }
 
   function speicherLaden() {
-    const frisch = leererSpeicher();
     try {
       const roh = window.localStorage.getItem(SPEICHER_KEY);
       const daten = roh ? JSON.parse(roh) : null;
-      if (istObjekt(daten)) {
-        if (istObjekt(daten.fragen)) frisch.fragen = daten.fragen;
-        if (istObjekt(daten.tage)) frisch.tage = daten.tage;
-        if (istObjekt(daten.runde)) frisch.runde = daten.runde;
-        if (stufeGueltig(daten.stufe)) frisch.stufe = daten.stufe;
-        if (Number.isFinite(daten.punkte) && daten.punkte >= 0) frisch.punkte = Math.floor(daten.punkte);
-        if (Array.isArray(daten.stufenPunkte)) {
-          STUFEN.forEach((stufe, i) => {
-            const wert = daten.stufenPunkte[i];
-            if (Number.isFinite(wert) && wert >= 0) frisch.stufenPunkte[i] = Math.floor(wert);
-          });
-        }
-        // Ein Stand von vor der Freischaltung kennt keine Freigabe: Die Stufe, auf der schon gespielt wurde, bleibt offen.
-        if (stufeGueltig(daten.freigabe)) frisch.freigabe = daten.freigabe;
-        else frisch.freigabe = Math.max(START_STUFE, frisch.stufe);
-        // Gespeichert ist nie eine gesperrte Stufe als gewählte Stufe; sollte es doch so sein, gilt die höchste freie.
-        if (frisch.stufe > frisch.freigabe) frisch.stufe = frisch.freigabe;
-      }
+      if (istObjekt(daten)) return standAusDaten(daten);
     } catch (fehler) {
       // Lesen nicht erlaubt oder Daten kaputt: sauber von vorn anfangen.
     }
-    return frisch;
+    return leererSpeicher();
   }
 
   function speicherSichern() {
@@ -118,6 +132,54 @@
     } catch (fehler) {
       speicherGeht = false;
     }
+  }
+
+  // ---------- Fortschritt mitnehmen ----------
+
+  function textZuBase64(text) {
+    let binaer = '';
+    new TextEncoder().encode(text).forEach((byte) => {
+      binaer += String.fromCharCode(byte);
+    });
+    return window.btoa(binaer);
+  }
+
+  function base64ZuText(base64) {
+    const binaer = window.atob(base64);
+    const bytes = new Uint8Array(binaer.length);
+    for (let i = 0; i < binaer.length; i++) bytes[i] = binaer.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+  }
+
+  // Der Code hält den Stand ohne die Einzelheiten alter Tage und ohne laufende Runde. So bleibt er kurz.
+  // Von alten Tagen zählt nur, dass an ihnen gespielt wurde (für die Serie); die Einzelheiten von heute bleiben dabei.
+  function fortschrittCode() {
+    const heuteTag = heute();
+    const tage = {};
+    Object.keys(speicher.tage).forEach((tag) => {
+      const eintrag = speicher.tage[tag];
+      const runden = istObjekt(eintrag) && Number.isFinite(eintrag.runden) ? eintrag.runden : 1;
+      tage[tag] = tag === heuteTag ? eintrag : { runden: runden };
+    });
+    const stand = Object.assign({}, speicher, { tage: tage, runde: null });
+    return CODE_KOPF + textZuBase64(JSON.stringify(stand));
+  }
+
+  // Gibt den Stand aus einem eingefügten Code zurück, oder null, wenn der Text kein vollständiger Code ist.
+  function fortschrittAusCode(text) {
+    const code = String(text || '').replace(/\s+/g, '');
+    if (code.indexOf(CODE_KOPF) !== 0) return null;
+    try {
+      const daten = JSON.parse(base64ZuText(code.slice(CODE_KOPF.length)));
+      return istObjekt(daten) && daten.v === 1 ? standAusDaten(daten) : null;
+    } catch (fehler) {
+      return null;
+    }
+  }
+
+  function standKurz(stand) {
+    const serie = serieBerechnen(stand);
+    return stand.punkte.toLocaleString('de-DE') + ' Punkte, ' + serie + (serie === 1 ? ' Tag' : ' Tage') + ' in Serie';
   }
 
   // ---------- Fragen und Runden ----------
@@ -151,6 +213,11 @@
   // Die nächste Stufe, die noch gesperrt ist. 0, wenn alle Stufen frei sind.
   function naechsteGesperrte() {
     return speicher.freigabe < STUFEN.length ? speicher.freigabe + 1 : 0;
+  }
+
+  // Eine Stufe ist leer gespielt, wenn alle ihre Fragen schon einmal beantwortet wurden.
+  function stufeLeer(nummer) {
+    return !fragen.some((frage) => stufeVon(frage) === nummer && !istGesehen(frage));
   }
 
   // Stufe n + 1 wird frei, sobald die Punkte auf Stufe n die Schwelle (freiAb) erreichen. Was frei ist, bleibt frei.
@@ -218,6 +285,22 @@
     return !!(aktiveRunde('tag') || aktiveRunde('mehr') || aktiveRunde('ueben'));
   }
 
+  // Die Reihenfolge, in der die Antworten einer Frage in dieser Runde stehen: Stelle für Stelle der Platz in der Fragenliste.
+  // Nur die Übungsrunde mischt (siehe rundeStarten). Fehlt eine brauchbare gemerkte Reihenfolge, bleibt es bei der Reihenfolge der Liste.
+  function antwortOrdnung(r, stelle) {
+    const anzahl = fragenNachId[r.ids[stelle]].antworten.length;
+    const gemerkt = Array.isArray(r.ordnung) ? r.ordnung[stelle] : null;
+    const brauchbar =
+      Array.isArray(gemerkt) &&
+      gemerkt.length === anzahl &&
+      gemerkt.every((wert) => Number.isInteger(wert) && wert >= 0 && wert < anzahl) &&
+      new Set(gemerkt).size === anzahl;
+    if (brauchbar) return gemerkt;
+    const reihe = [];
+    for (let i = 0; i < anzahl; i++) reihe.push(i);
+    return reihe;
+  }
+
   // erledigt: Tagesquiz von heute ist durch. laeuft: angefangen. offen: kann starten. leer: keine neuen Fragen mehr auf der gewählten Stufe.
   function tagZustand() {
     const eintrag = speicher.tage[heute()];
@@ -269,11 +352,13 @@
   }
 
   // Tage in Folge mit mindestens einer beendeten Runde. Ist heute noch nichts gespielt, zählt gestern noch.
-  function serieBerechnen() {
+  // Ohne Angabe gilt der Stand dieses Geräts; mit Angabe lässt sich auch ein eingelesener Stand ansehen.
+  function serieBerechnen(stand) {
+    const tage = (stand || speicher).tage;
     let tag = heute();
-    if (!speicher.tage[tag]) tag = tagDavor(tag);
+    if (!tage[tag]) tag = tagDavor(tag);
     let serie = 0;
-    while (speicher.tage[tag] && serie < 3650) {
+    while (tage[tag] && serie < 3650) {
       serie += 1;
       tag = tagDavor(tag);
     }
@@ -313,8 +398,14 @@
       startZeigen();
       return;
     }
-    runde = { art: art, tag: heute(), ids: ids, antworten: ids.map(() => -1), fertig: false };
+    runde = { art: art, tag: heute(), stufe: speicher.stufe, ids: ids, antworten: ids.map(() => -1), fertig: false };
+    // In der Übungsrunde stehen die Antworten jedes Mal anders, damit niemand nur den Platz der richtigen Antwort lernt.
+    // Die Reihenfolge wird mit der Runde gespeichert und bleibt nach einer Pause gleich.
+    if (art === 'ueben') {
+      runde.ordnung = ids.map((id) => mischen(fragenNachId[id].antworten.map((text, i) => i)));
+    }
     speicher.runde = runde;
+    speicher.erklaert = true;
     speicherSichern();
     position = 0;
     frageZeigen();
@@ -366,20 +457,30 @@
     ergebnisZeigen(r, auswerten(r).richtig * punkteJeFrage(r.art));
   }
 
-  function antwortWaehlen(index) {
+  // anzeige: An welcher Stelle der Knopf steht. Gespeichert wird immer der Platz der Antwort in der Fragenliste.
+  function antwortWaehlen(anzeige) {
     if (!runde || runde.fertig || runde.antworten[position] !== -1) return;
     const frage = fragenNachId[runde.ids[position]];
+    const index = antwortOrdnung(runde, position)[anzeige];
+    if (index === undefined) return;
     runde.antworten[position] = index;
     const alt = istObjekt(speicher.fragen[frage.id]) ? speicher.fragen[frage.id] : {};
     const richtig = index === frage.richtig;
     speicher.fragen[frage.id] = { tag: alt.tag || runde.tag, richtig: richtig };
     if (richtig) {
       const gewinn = punkteJeFrage(runde.art);
+      const stufe = stufeVon(frage);
       speicher.punkte += gewinn;
-      speicher.stufenPunkte[stufeVon(frage) - 1] += gewinn;
-      // Reichen die Punkte, wird die nächste Stufe frei. Die Runde merkt es sich für die Meldung im Ergebnis.
-      const neu = freischaltenPruefen();
-      if (neu) runde.freigabe = neu;
+      // Neue Fragen zählen immer für die nächste Stufe. Wiederholungen zählen nur, wenn auf der Stufe keine neuen Fragen mehr übrig sind;
+      // sonst ließe sich eine Stufe mit denselben Fragen freispielen. Gingen Punkte nur aufs Konto, merkt sich die Runde das für das Ergebnis.
+      if (runde.art !== 'ueben' || stufeLeer(stufe)) {
+        speicher.stufenPunkte[stufe - 1] += gewinn;
+        // Reichen die Punkte, wird die nächste Stufe frei. Die Runde merkt es sich für die Meldung im Ergebnis.
+        const neu = freischaltenPruefen();
+        if (neu) runde.freigabe = neu;
+      } else {
+        runde.nurGesamt = true;
+      }
     }
     speicher.runde = runde;
     speicherSichern();
@@ -396,7 +497,7 @@
   }
 
   function zuruecksetzen() {
-    if (!window.confirm('Fortschritt wirklich löschen? Serie, Punkte, Ergebnisse, gesehene Fragen und freigeschaltete Stufen fangen wieder bei null an.')) return;
+    if (!window.confirm('Fortschritt wirklich löschen? Serie, Punkte, Ergebnisse, gesehene Fragen und freigeschaltete Stufen fangen wieder bei null an. Einen Code zum Sichern gibt es vorher unter „Fortschritt aufs andere Gerät mitnehmen“.')) return;
     speicher = leererSpeicher();
     runde = null;
     ergebnisRunde = null;
@@ -429,6 +530,7 @@
     $('vorrat').textContent = String(vorrat);
     $('punkte-gesamt').textContent = speicher.punkte.toLocaleString('de-DE');
     stufenZeigen();
+    einfuehrungZeigen();
 
     let heuteText = 'offen';
     let knopfText = '';
@@ -477,7 +579,7 @@
     $('hinweis').hidden = hinweise.length === 0;
 
     const stand = listenStand ? 'Fragenliste vom ' + datumKurz(listenStand) + ' · ' : '';
-    $('stand').textContent = stand + fragen.length + ' Fragen';
+    $('stand').textContent = stand + fragen.length + ' Fragen · App vom ' + datumKurz(APP_STAND);
   }
 
   function stufenAufbauen() {
@@ -517,13 +619,203 @@
     $('stufen-info').setAttribute('aria-live', 'polite');
   }
 
-  // Die Meldung „Neue Stufe frei“ im Ergebnis. Sie entsteht hier, damit index.html unverändert bleibt.
-  function freigabeZeileAufbauen() {
+  // Die Zeilen unter den Punkten im Ergebnis: „Neue Stufe frei“ mit Knopf zum Wechseln, dazu ein Hinweis zu Übungspunkten.
+  // Sie entstehen hier, damit index.html unverändert bleibt.
+  function ergebnisZeilenAufbauen() {
     const zeile = document.createElement('p');
     zeile.className = 'freigabe';
     zeile.id = 'ergebnis-freigabe';
     zeile.hidden = true;
-    $('ergebnis-gewinn').after(zeile);
+
+    const wechselZeile = document.createElement('div');
+    wechselZeile.className = 'wechsel-zeile';
+    wechselZeile.id = 'ergebnis-wechsel-zeile';
+    wechselZeile.hidden = true;
+    const wechsel = document.createElement('button');
+    wechsel.type = 'button';
+    wechsel.className = 'wechsel';
+    wechsel.id = 'ergebnis-wechsel';
+    wechsel.addEventListener('click', ergebnisStufeWaehlen);
+    wechselZeile.appendChild(wechsel);
+
+    const uebung = document.createElement('p');
+    uebung.className = 'quelle';
+    uebung.id = 'ergebnis-uebungshinweis';
+    uebung.hidden = true;
+
+    $('ergebnis-gewinn').after(zeile, wechselZeile, uebung);
+  }
+
+  // Die Einführung steht beim ersten Start oben und aufgeklappt, danach zugeklappt weiter unten zum Nachlesen.
+  // Die Stufen und Zahlen kommen aus STUFEN und den Punktewerten, damit der Text nie von der App abweicht.
+  function einfuehrungAufbauen() {
+    const box = document.createElement('details');
+    box.className = 'info einfuehrung';
+    box.id = 'einfuehrung';
+    const titel = document.createElement('summary');
+    titel.textContent = 'So funktioniert Football Brain';
+    const liste = document.createElement('ul');
+    const zeilen = [
+      'Jeden Tag gibt es ein Tagesquiz mit ' + FRAGEN_PRO_RUNDE + ' neuen Fragen, danach so viele weitere, wie du magst.',
+      'Jede richtige neue Antwort bringt ' + PUNKTE_NEU + ' Punkte, jede richtige Wiederholung in der Übungsrunde ' + PUNKTE_UEBUNG + '.',
+    ];
+    STUFEN.forEach((stufe) => {
+      zeilen.push(stufe.name + ' (' + stufe.hinweis + '): ' + stufe.thema + '.');
+    });
+    const frei = STUFEN.slice(1).map((stufe, i) => stufe.name + ' mit ' + stufe.freiAb + ' Punkten auf ' + STUFEN[i].name);
+    zeilen.push('Die nächste Stufe wird frei: ' + frei.join(', ') + '. Wiederholungen zählen dafür erst, wenn alle neuen Fragen einer Stufe durch sind.');
+    zeilen.forEach((text) => {
+      const punkt = document.createElement('li');
+      punkt.textContent = text;
+      liste.appendChild(punkt);
+    });
+    const ok = document.createElement('button');
+    ok.type = 'button';
+    ok.className = 'neben';
+    ok.id = 'einfuehrung-ok';
+    ok.textContent = 'Verstanden, los geht’s';
+    ok.addEventListener('click', () => {
+      speicher.erklaert = true;
+      speicherSichern();
+      startZeigen();
+    });
+    box.append(titel, liste, ok);
+    $('installieren').before(box);
+  }
+
+  // Solange die Einführung nicht bestätigt und keine erste Runde gestartet ist, steht sie oben. Aufgeklappt wird sie nur beim Hochschieben,
+  // damit sie nicht jedes Mal wieder aufgeht, wenn jemand sie zugeklappt hat und in die App zurückkommt.
+  function einfuehrungZeigen() {
+    const box = $('einfuehrung');
+    const neu = !speicher.erklaert;
+    $('einfuehrung-ok').hidden = !neu;
+    box.classList.toggle('oben', neu);
+    if (neu && $('start').firstElementChild !== box) {
+      $('start').prepend(box);
+      box.open = true;
+    } else if (!neu && $('start').firstElementChild === box) {
+      $('installieren').before(box);
+      box.open = false;
+    }
+  }
+
+  // Der Kasten zum Mitnehmen des Fortschritts: Code kopieren, auf dem anderen Gerät einfügen und einlesen.
+  function mitnehmenAufbauen() {
+    const box = document.createElement('details');
+    box.className = 'info';
+    box.id = 'mitnehmen';
+    const titel = document.createElement('summary');
+    titel.textContent = 'Fortschritt aufs andere Gerät mitnehmen';
+    const erklaerung = document.createElement('p');
+    erklaerung.textContent =
+      'Dein Fortschritt liegt nur in diesem Browser. Kopiere hier den Code und füge ihn auf dem anderen Gerät im selben Feld ein, zum Beispiel beim Wechsel auf ein neues Handy.';
+    const kopierKnopf = document.createElement('button');
+    kopierKnopf.type = 'button';
+    kopierKnopf.className = 'neben';
+    kopierKnopf.id = 'code-kopieren';
+    kopierKnopf.textContent = 'Code kopieren';
+    kopierKnopf.addEventListener('click', codeKopieren);
+    const beschriftung = document.createElement('label');
+    beschriftung.htmlFor = 'code-feld';
+    beschriftung.textContent = 'Code von einem anderen Gerät einfügen:';
+    const feld = document.createElement('textarea');
+    feld.id = 'code-feld';
+    feld.rows = 3;
+    feld.spellcheck = false;
+    feld.setAttribute('autocomplete', 'off');
+    feld.setAttribute('autocapitalize', 'off');
+    const lesenKnopf = document.createElement('button');
+    lesenKnopf.type = 'button';
+    lesenKnopf.className = 'neben';
+    lesenKnopf.id = 'code-einlesen';
+    lesenKnopf.textContent = 'Code einlesen';
+    lesenKnopf.addEventListener('click', codeEinlesen);
+    const info = document.createElement('p');
+    info.className = 'quelle';
+    info.id = 'code-info';
+    info.hidden = true;
+    info.setAttribute('aria-live', 'polite');
+    box.append(titel, erklaerung, kopierKnopf, beschriftung, feld, lesenKnopf, info);
+    $('installieren').after(box);
+  }
+
+  function codeKopieren() {
+    const code = fortschrittCode();
+    const info = $('code-info');
+    info.hidden = false;
+    // Ist die Zwischenablage nicht erlaubt, steht der Code im Feld, zum Markieren und Kopieren von Hand.
+    const vonHand = () => {
+      const feld = $('code-feld');
+      feld.value = code;
+      feld.focus();
+      feld.select();
+      info.textContent = 'Der Code steht im Feld unten. Markiere ihn und kopiere ihn von Hand.';
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(() => {
+        info.textContent = 'Code kopiert. Füge ihn auf dem anderen Gerät im Feld unten ein und tippe auf „Code einlesen“.';
+      }, vonHand);
+    } else {
+      vonHand();
+    }
+  }
+
+  // Der eingefügte Code ersetzt den Stand dieses Geräts, aber erst nach der Rückfrage mit beiden Ständen.
+  function codeEinlesen() {
+    const info = $('code-info');
+    info.hidden = false;
+    const neu = fortschrittAusCode($('code-feld').value);
+    if (!neu) {
+      info.textContent = 'Das ist kein gültiger Code. Kopiere ihn noch einmal vollständig vom anderen Gerät.';
+      return;
+    }
+    if (!window.confirm('Fortschritt auf diesem Gerät ersetzen?\n\nJetzt hier: ' + standKurz(speicher) + '\nIm Code: ' + standKurz(neu))) return;
+    speicher = neu;
+    runde = null;
+    ergebnisRunde = null;
+    freischaltenPruefen();
+    speicherSichern();
+    $('code-feld').value = '';
+    startZeigen();
+    info.textContent = 'Fortschritt übernommen: ' + standKurz(speicher) + '.';
+    info.scrollIntoView({ block: 'nearest' });
+  }
+
+  // „Frage melden“ unter den Antworten: Der Knopf reicht Kennung und Wortlaut der Frage weiter, damit sie sich prüfen lässt.
+  function meldenAufbauen() {
+    const zeile = document.createElement('div');
+    zeile.className = 'melden-zeile';
+    const knopf = document.createElement('button');
+    knopf.type = 'button';
+    knopf.className = 'klein';
+    knopf.id = 'melden';
+    knopf.textContent = 'Frage melden';
+    knopf.addEventListener('click', frageMelden);
+    const hinweis = document.createElement('p');
+    hinweis.className = 'quelle';
+    hinweis.id = 'melden-hinweis';
+    hinweis.hidden = true;
+    zeile.append(knopf, hinweis);
+    $('rueckmeldung').after(zeile);
+  }
+
+  function frageMelden() {
+    const frage = runde ? fragenNachId[runde.ids[position]] : null;
+    if (!frage) return;
+    const text =
+      'Football Brain, Frage melden\n' +
+      frage.id + ' · ' + (frage.kategorie ? frage.kategorie + ' · ' : '') + 'Stufe ' + STUFEN[stufeVon(frage) - 1].name + '\n' +
+      '„' + frage.frage + '“\n' +
+      'Mein Hinweis: ';
+    const hinweis = $('melden-hinweis');
+    const kopiert = 'Text kopiert. Füge ihn in eine Nachricht ein, ergänze deinen Hinweis und schick ihn dem, der dir die App gegeben hat.';
+    if (navigator.share) {
+      navigator.share({ text: text }).catch((fehler) => {
+        if (!fehler || fehler.name !== 'AbortError') kopieren(text, hinweis, kopiert);
+      });
+    } else {
+      kopieren(text, hinweis, kopiert);
+    }
   }
 
   // Tippt jemand auf eine gesperrte Stufe, steht unter den Knöpfen, was dafür noch fehlt.
@@ -605,24 +897,27 @@
 
     const box = $('antworten');
     box.textContent = '';
-    frage.antworten.forEach((text, index) => {
+    // original: Platz der Antwort in der Fragenliste, anzeige: Stelle des Knopfes (und damit der Buchstabe).
+    antwortOrdnung(runde, position).forEach((original, anzeige) => {
       const knopf = document.createElement('button');
       knopf.type = 'button';
       knopf.className = 'antwort';
       const buchstabe = document.createElement('span');
       buchstabe.className = 'buchstabe';
-      buchstabe.textContent = BUCHSTABEN[index];
+      buchstabe.textContent = BUCHSTABEN[anzeige];
       const inhalt = document.createElement('span');
       inhalt.className = 'text';
-      inhalt.textContent = text;
+      inhalt.textContent = frage.antworten[original];
       const marke = document.createElement('span');
       marke.className = 'marke';
       marke.setAttribute('aria-hidden', 'true');
       knopf.append(buchstabe, inhalt, marke);
-      knopf.addEventListener('click', () => antwortWaehlen(index));
+      knopf.addEventListener('click', () => antwortWaehlen(anzeige));
       box.appendChild(knopf);
     });
     $('rueckmeldung').hidden = true;
+    $('melden-hinweis').hidden = true;
+    $('melden-hinweis').textContent = '';
   }
 
   function quelleZeigen(quelle) {
@@ -644,16 +939,18 @@
     zeile.hidden = false;
   }
 
+  // gewaehlt: Platz der gewählten Antwort in der Fragenliste. Die Knöpfe stehen in der Reihenfolge von antwortOrdnung.
   function rueckmeldungZeigen(frage, gewaehlt) {
     const richtig = gewaehlt === frage.richtig;
+    const ordnung = antwortOrdnung(runde, position);
     const knoepfe = $('antworten').children;
     for (let i = 0; i < knoepfe.length; i++) {
       knoepfe[i].disabled = true;
       const marke = knoepfe[i].querySelector('.marke');
-      if (i === frage.richtig) {
+      if (ordnung[i] === frage.richtig) {
         knoepfe[i].classList.add('richtig');
         marke.textContent = '✓';
-      } else if (i === gewaehlt) {
+      } else if (ordnung[i] === gewaehlt) {
         knoepfe[i].classList.add('falsch');
         marke.textContent = '✗';
       }
@@ -663,7 +960,7 @@
     box.className = 'rueckmeldung ' + (richtig ? 'ok' : 'nein');
     $('rueckmeldung-titel').textContent = richtig ? 'Richtig!' : 'Leider falsch';
     const loesung = $('rueckmeldung-richtig');
-    loesung.textContent = 'Richtig ist: ' + BUCHSTABEN[frage.richtig] + ') ' + frage.antworten[frage.richtig];
+    loesung.textContent = 'Richtig ist: ' + BUCHSTABEN[ordnung.indexOf(frage.richtig)] + ') ' + frage.antworten[frage.richtig];
     loesung.hidden = richtig;
     $('rueckmeldung-text').textContent = frage.erklaerung || '';
     quelleZeigen(frage.quelle);
@@ -696,6 +993,53 @@
     return 'schwach';
   }
 
+  // Hat diese Runde die nächste Stufe freigeschaltet, steht das direkt unter den Punkten, dazu ein Knopf zum Wechseln.
+  // Gingen Übungspunkte nur aufs Punktekonto, steht hier auch, warum der Balken zur nächsten Stufe nicht gewachsen ist.
+  function ergebnisFreigabeZeigen() {
+    const r = ergebnisRunde;
+    const frei = stufeGueltig(r.freigabe) ? r.freigabe : 0;
+    const freiZeile = $('ergebnis-freigabe');
+    freiZeile.textContent = frei ? 'Neue Stufe frei: ' + STUFEN[frei - 1].name : '';
+    freiZeile.hidden = frei === 0;
+
+    const gewaehlt = frei !== 0 && speicher.stufe === frei;
+    const wechsel = $('ergebnis-wechsel');
+    wechsel.textContent = frei === 0 ? '' : gewaehlt ? STUFEN[frei - 1].name + ' ist jetzt gewählt' : 'Zu ' + STUFEN[frei - 1].name + ' wechseln';
+    wechsel.disabled = gewaehlt;
+    $('ergebnis-wechsel-zeile').hidden = frei === 0 || speicher.stufe > frei;
+
+    const stufe = stufeGueltig(r.stufe) ? r.stufe : 0;
+    const erklaeren = r.art === 'ueben' && r.nurGesamt === true && stufe !== 0 && naechsteGesperrte() === stufe + 1;
+    const uebung = $('ergebnis-uebungshinweis');
+    uebung.textContent = erklaeren
+      ? 'Wiederholungen zählen fürs Punktekonto. Für ' + STUFEN[stufe].name + ' zählen sie erst, wenn auf ' + STUFEN[stufe - 1].name + ' alle neuen Fragen durch sind.'
+      : '';
+    uebung.hidden = !erklaeren;
+  }
+
+  // Direkt unter dem Ergebnis geht es mit der nächsten Runde neuer Fragen weiter, solange auf der Stufe welche übrig sind.
+  function ergebnisWeiterZeigen() {
+    const mehr = mehrZustand();
+    const weiterKnopf = $('weiter-spielen');
+    weiterKnopf.hidden = !mehrSichtbar(mehr);
+    weiterKnopf.textContent = mehrKnopfText(mehr);
+    $('teilen').className = weiterKnopf.hidden ? 'haupt' : 'neben';
+    const leerText = mehr === 'leer' ? leerHinweis() : '';
+    $('mehr-hinweis').textContent = leerText;
+    $('mehr-hinweis').hidden = leerText === '';
+  }
+
+  // „Zu College wechseln“ im Ergebnis: Die frisch freigeschaltete Stufe wird gleich gewählt.
+  // Danach kommen weitere neue Fragen und die Übungsrunde von dort (ein Tagesquiz von heute, das schon gespielt ist, bleibt wie es ist).
+  function ergebnisStufeWaehlen() {
+    const nummer = ergebnisRunde ? ergebnisRunde.freigabe : 0;
+    if (!stufeGueltig(nummer) || nummer > speicher.freigabe || rundeOffen()) return;
+    speicher.stufe = nummer;
+    speicherSichern();
+    ergebnisFreigabeZeigen();
+    ergebnisWeiterZeigen();
+  }
+
   function ergebnisZeigen(r, gewinn) {
     ergebnisRunde = r;
     const aus = auswerten(r);
@@ -709,21 +1053,8 @@
     const gewinnZeile = $('ergebnis-gewinn');
     gewinnZeile.textContent = gewinn > 0 ? '+' + gewinn + ' Punkte' : '';
     gewinnZeile.hidden = !(gewinn > 0);
-    // Hat diese Runde die nächste Stufe freigeschaltet, steht das direkt unter den Punkten.
-    const frei = stufeGueltig(r.freigabe) ? STUFEN[r.freigabe - 1].name : '';
-    const freiZeile = $('ergebnis-freigabe');
-    freiZeile.textContent = frei ? 'Neue Stufe frei: ' + frei : '';
-    freiZeile.hidden = frei === '';
-
-    // Direkt unter dem Ergebnis geht es mit der nächsten Runde neuer Fragen weiter, solange auf der Stufe welche übrig sind.
-    const mehr = mehrZustand();
-    const weiterKnopf = $('weiter-spielen');
-    weiterKnopf.hidden = !mehrSichtbar(mehr);
-    weiterKnopf.textContent = mehrKnopfText(mehr);
-    $('teilen').className = weiterKnopf.hidden ? 'haupt' : 'neben';
-    const leerText = mehr === 'leer' ? leerHinweis() : '';
-    $('mehr-hinweis').textContent = leerText;
-    $('mehr-hinweis').hidden = leerText === '';
+    ergebnisFreigabeZeigen();
+    ergebnisWeiterZeigen();
 
     const liste = $('ergebnis-liste');
     liste.textContent = '';
@@ -751,14 +1082,16 @@
     $('teilen-hinweis').textContent = '';
   }
 
-  function kopieren(text) {
-    const hinweis = $('teilen-hinweis');
+  // Legt den Text in die Zwischenablage und schreibt in die Zeile „hinweis“, was jetzt zu tun ist.
+  // Geht das nicht, steht der Text selbst dort, zum Kopieren von Hand.
+  function kopieren(text, hinweis, erfolg) {
+    hinweis.hidden = false;
     hinweis.style.whiteSpace = 'pre-line';
     const vonHand = 'Zum Teilen bitte von Hand kopieren:\n' + text;
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(
         () => {
-          hinweis.textContent = 'Ergebnis kopiert. Jetzt in eine Nachricht einfügen.';
+          hinweis.textContent = erfolg;
         },
         () => {
           hinweis.textContent = vonHand;
@@ -776,12 +1109,13 @@
     const kopf = 'Football Brain · ' + rundenName(ergebnisRunde.art) + ' ';
     const text = '🏈 ' + kopf + datumKurz(ergebnisRunde.tag) + '\n' + aus.richtig + '/' + aus.von + ' richtig\n' + quadrate;
     const adresse = window.location.origin + window.location.pathname;
+    const kopiert = 'Ergebnis kopiert. Jetzt in eine Nachricht einfügen.';
     if (navigator.share) {
       navigator.share({ text: text, url: adresse }).catch((fehler) => {
-        if (!fehler || fehler.name !== 'AbortError') kopieren(text + '\n' + adresse);
+        if (!fehler || fehler.name !== 'AbortError') kopieren(text + '\n' + adresse, $('teilen-hinweis'), kopiert);
       });
     } else {
-      kopieren(text + '\n' + adresse);
+      kopieren(text + '\n' + adresse, $('teilen-hinweis'), kopiert);
     }
   }
 
@@ -894,7 +1228,10 @@
     const alsApp = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches;
     if (alsApp || window.navigator.standalone) $('installieren').hidden = true;
     stufenAufbauen();
-    freigabeZeileAufbauen();
+    ergebnisZeilenAufbauen();
+    einfuehrungAufbauen();
+    mitnehmenAufbauen();
+    meldenAufbauen();
     ereignisseAnmelden();
     fragenLaden();
     symbolFuerIphone();

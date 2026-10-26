@@ -437,6 +437,51 @@ main {
   font-size: 0.95rem;
 }
 
+/* Einführung (Liste) und Fortschritt mitnehmen (Eingabefeld) stehen in denselben Kästen wie die Installationshilfe. */
+
+.info ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+}
+
+.info li + li {
+  margin-top: 0.4rem;
+}
+
+.info label {
+  display: block;
+  margin-top: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.info textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.6rem 0.7rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 2px solid var(--rand);
+  border-radius: 14px;
+  resize: vertical;
+}
+
+.info textarea:focus-visible {
+  outline: 3px solid var(--fokus);
+  outline-offset: 2px;
+}
+
+/* Beim ersten Start steht die Einführung oben, blau umrandet und mit Abstand nach unten statt nach oben. */
+
+.info.einfuehrung.oben {
+  margin: 0 0 1.1rem;
+  border-color: var(--blau);
+}
+
 /* Der Fuß der Startseite (Fragenliste, Zurücksetzen, Signatur) steht mittig ganz unten.
    Ist die Seite kürzer als der Bildschirm, rutscht er an den unteren Rand, sonst folgt er am Ende der Seite. */
 
@@ -542,8 +587,8 @@ body[data-ansicht="start"] #start {
 }
 
 .stufe-hinweis {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   color: var(--leise);
 }
 
@@ -581,11 +626,13 @@ body[data-ansicht="start"] #start {
   color: #ffffff;
 }
 
-/* Gesperrte Stufe: Schloss statt Symbol und etwas blasser. Ein Tipp darauf zeigt, was noch fehlt. */
+/* Gesperrte Stufe: Schloss statt Symbol, gestrichelter Rand und eine ruhigere Fläche. Ein Tipp darauf zeigt, was noch fehlt.
+   Die Schrift bleibt voll lesbar (kein Durchscheinen): Auf kleinen Bildschirmen wurde sie sonst zu blass. */
 
 .stufe.zu {
   color: var(--leise);
-  opacity: 0.7;
+  background: var(--bg);
+  border-style: dashed;
 }
 
 .stufe.zu[data-stufe]::before {
@@ -964,6 +1011,47 @@ body[data-ansicht="start"] #start {
 .freigabe::before {
   content: "🔓 ";
   content: "🔓 " / "";
+}
+
+/* Knopf „Zu College wechseln“ unter der Meldung. Nach dem Tipp bleibt er als Bestätigung stehen, aber ruhig und nicht mehr antippbar. */
+
+.wechsel-zeile {
+  margin: 0.2rem 0 0.1rem;
+}
+
+.wechsel {
+  padding: 0.45rem 1.2rem;
+  font-family: var(--schrift-titel);
+  font-synthesis: none;
+  font-weight: 800;
+  color: #ffffff;
+  background: var(--blau);
+  border: 0;
+  border-radius: 99px;
+  box-shadow: 0 3px 0 var(--blau-kante);
+}
+
+.wechsel:active:not(:disabled) {
+  box-shadow: 0 1px 0 var(--blau-kante);
+  transform: translateY(2px);
+}
+
+.wechsel:disabled {
+  color: var(--leise);
+  background: var(--karte);
+  box-shadow: inset 0 0 0 2px var(--rand);
+  cursor: default;
+}
+
+/* „Frage melden“ unter den Antworten: unauffällig, in der Mitte. */
+
+.melden-zeile {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.melden-zeile .quelle {
+  margin: 0.3rem 0 0;
 }
 
 .serie-zeile {

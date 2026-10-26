@@ -1,8 +1,9 @@
 // Service Worker: hält die App auch ohne Netz bereit.
 // Erst das Netz fragen (damit neue Fragen und App-Updates sofort ankommen), bei Funkloch den gespeicherten Stand zeigen.
-const CACHE = 'football-brain-v2';
+const CACHE = 'football-brain-v3';
 const DATEIEN = ['./', 'index.html', 'style.css', 'app.js', 'fragen.json', 'manifest.json', 'icon.svg'];
-const NETZ_LIMIT_MS = 5000;
+// So lange wartet die App aufs Netz, wenn sie eine gespeicherte Kopie hat. Ohne Kopie gibt es nichts anderes zu zeigen, dann gilt kein Limit.
+const NETZ_LIMIT_MS = 3000;
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -18,9 +19,10 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-function vomNetz(url) {
+// limit 0 heißt: ohne eigenes Zeitlimit warten (der Browser bricht bei einem Netzfehler selbst ab).
+function vomNetz(url, limit) {
   return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error('Zeitlimit')), NETZ_LIMIT_MS);
+    const timer = limit > 0 ? setTimeout(() => reject(new Error('Zeitlimit')), limit) : 0;
     fetch(url, { cache: 'no-cache' }).then(
       (antwort) => {
         clearTimeout(timer);
@@ -40,16 +42,16 @@ self.addEventListener('fetch', (event) => {
   if (new URL(anfrage.url).origin !== self.location.origin) return;
 
   event.respondWith(
-    vomNetz(anfrage.url)
-      .then((antwort) => {
-        if (antwort.ok) {
-          const kopie = antwort.clone();
-          caches.open(CACHE).then((cache) => cache.put(anfrage, kopie));
-        }
-        return antwort;
-      })
-      .catch(() =>
-        caches.match(anfrage, { ignoreSearch: true }).then((treffer) => treffer || caches.match('./'))
-      )
+    caches.match(anfrage, { ignoreSearch: true }).then((kopie) =>
+      vomNetz(anfrage.url, kopie ? NETZ_LIMIT_MS : 0)
+        .then((antwort) => {
+          if (antwort.ok) {
+            const abzug = antwort.clone();
+            caches.open(CACHE).then((cache) => cache.put(anfrage, abzug));
+          }
+          return antwort;
+        })
+        .catch(() => kopie || caches.match('./'))
+    )
   );
 });
