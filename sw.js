@@ -1,7 +1,7 @@
 // Service Worker: hält die App auch ohne Netz bereit.
 // Erst das Netz fragen (damit neue Fragen und App-Updates sofort ankommen), bei Funkloch den gespeicherten Stand zeigen.
-const CACHE = 'football-brain-v3';
-const DATEIEN = ['./', 'index.html', 'style.css', 'app.js', 'fragen.json', 'manifest.json', 'icon.svg'];
+const CACHE = 'football-brain-v4';
+const DATEIEN = ['./', 'index.html', 'style.css', 'design-neu.css', 'app.js', 'fragen.json', 'manifest.json', 'icon.svg'];
 // So lange wartet die App aufs Netz, wenn sie eine gespeicherte Kopie hat. Ohne Kopie gibt es nichts anderes zu zeigen, dann gilt kein Limit.
 const NETZ_LIMIT_MS = 3000;
 
