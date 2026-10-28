@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Football Brain: Selbsttest</title>
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body { max-width: 46rem; margin: 0 auto; padding: 1rem; font: 16px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #0e1a33; background: #eef4ff; }
+    @media (prefers-color-scheme: dark) { body { color: #eaf1ff; background: #091531; } }
+    h1 { margin: 0 0 0.6rem; font-size: 1.5rem; }
+    .warnung { padding: 0.8rem 1rem; color: #5c3d00; background: #fff4c7; border: 2px solid #e3ad00; border-radius: 12px; }
+    button { padding: 0.6rem 1.1rem; font: inherit; font-weight: 700; color: #ffffff; background: #1b62e0; border: 0; border-radius: 12px; cursor: pointer; }
+    button:disabled { opacity: 0.5; cursor: default; }
+    button.leise { color: inherit; background: transparent; border: 2px solid currentColor; }
+    #fazit { padding: 0.8rem 1rem; font-weight: 800; border-radius: 12px; }
+    #fazit.gut { color: #14532d; background: #dcfce7; }
+    #fazit.schlecht { color: #7f1d1d; background: #fee2e2; }
+    #status { min-height: 1.5rem; font-weight: 700; }
+    ol { margin: 1rem 0 0; padding: 0; list-style: none; }
+    li { margin-top: 0.2rem; padding: 0.25rem 0.6rem; overflow-wrap: anywhere; border-radius: 8px; }
+    li.kopf { margin-top: 0.9rem; padding-left: 0; font-weight: 800; }
+    li.ok { color: #14532d; background: #dcfce7; }
+    li.rot { color: #7f1d1d; background: #fee2e2; }
+    li small { display: block; opacity: 0.85; }
+    textarea { width: 100%; min-height: 8rem; margin-top: 0.6rem; font: 13px/1.4 ui-monospace, Consolas, monospace; }
+    iframe { display: block; width: 100%; max-width: 26rem; height: 38rem; margin-top: 1.2rem; background: #ffffff; border: 2px solid #8fb0e8; border-radius: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Football Brain: Selbsttest</h1>
+
+  <p class="warnung"><strong>Öffne diese Seite in einem privaten Fenster.</strong>
+    Der Test spielt die App selbst durch und benutzt dafür denselben Speicher wie die App.
+    Ist in diesem Browser schon Fortschritt gespeichert, sichert der Test ihn vorher und spielt ihn am Ende zurück.
+    Das gelingt nur, wenn der Test bis zum Ende läuft: Schließe das Fenster nicht währenddessen.</p>
+
+  <p>Der Test dauert etwa eine halbe Minute. Unten läuft die App im Rahmen mit, du kannst zusehen.
+    Grün heißt: Die App hat sich so verhalten wie vorgesehen. Rot zeigt, was erwartet und was gefunden wurde.</p>
+
+  <div id="sicherung" class="warnung" hidden>
+    <p>Hier liegt ein gesicherter Fortschritt von einem unterbrochenen Test. Spiele ihn zurück, bevor du etwas anderes tust.</p>
+    <button id="rueckspielen" type="button">Gesicherten Fortschritt zurückspielen</button>
+    <button id="verwerfen" type="button" class="leise">Sicherung verwerfen</button>
+  </div>
+
+  <p>
+    <button id="start" type="button">Test starten</button>
+    <button id="bericht-kopieren" type="button" class="leise" hidden>Bericht kopieren</button>
+  </p>
+  <p id="status" aria-live="polite"></p>
+  <p id="fazit" hidden></p>
+  <textarea id="bericht-text" readonly hidden aria-label="Bericht"></textarea>
+  <ol id="ergebnisse"></ol>
+  <iframe id="app" title="Football Brain im Test"></iframe>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // Die Vorschau liegt im Unterordner /vorschau/ und hat einen eigenen Speicher, damit sie den echten Fortschritt nicht anfasst.
+    // Der Test nimmt denselben Schlüssel wie die App an dieser Adresse und achtet darauf, den der jeweils anderen Seite nicht zu verändern.
+    const IN_VORSCHAU = /\/vorschau(\/|$)/.test(window.location.pathname);
+    const SPEICHER_KEY = 'football-tagesquiz-fortschritt-v1' + (IN_VORSCHAU ? '-vorschau' : '');
+    const ANDERER_KEY = 'football-tagesquiz-fortschritt-v1' + (IN_VORSCHAU ? '' : '-vorschau');
+    const SICHERUNG_KEY = 'football-tagesquiz-sicherung-v1' + (IN_VORSCHAU ? '-vorschau' : '');
+    const BUCHSTABEN = ['A', 'B', 'C', 'D', 'E', 'F'];
+    // Dieser Stand wird in der Fußzeile der App erwartet („App vom …“). Weicht er ab, läuft noch eine alte Datei.
+    const ERWARTETER_APP_STAND = '28.10.2026';
+    // Umfang des Tagesrings (Radius 50), daraus rechnet der Test den erwarteten Versatz.
+    const RING_UMFANG = 2 * Math.PI * 50;
+
+    const rahmen = document.getElementById('app');
+    const startKnopf = document.getElementById('start');
+    const berichtKnopf = document.getElementById('bericht-kopieren');
+    const berichtFeld = document.getElementById('bericht-text');
+    const sicherungBox = document.getElementById('sicherung');
+    const statusZeile = document.getElementById('status');
+    const fazitZeile = document.getElementById('fazit');
+    const liste = document.getElementById('ergebnisse');
+
+    let gruen = 0;
+    let rot = 0;
+    let bericht = [];
+    let fragenListe = [];
+    let fragenNachText = {};
+    let zwischenablage = '';
+    let schwelle2 = 0;
+
+    // ---------- Hilfen ----------
+
+    function warte(ms) {
+      return new Promise((fertig) => setTimeout(fertig, ms));
+    }
+
+    // Wartet, bis die Bedingung stimmt. Nach maxMs bricht der Test mit einer Meldung ab.
+    async function bis(bedingung, was, maxMs) {
+      const ende = Date.now() + (maxMs || 8000);
+      for (;;) {
+        let ok = false;
+        try {
+          ok = !!bedingung();
+        } catch (fehler) {
+          ok = false;
+        }
+        if (ok) return;
+        if (Date.now() > ende) throw new Error('Zeit abgelaufen beim Warten auf: ' + was);
+        await warte(40);
+      }
+    }
+
+    function heute() {
+      const d = new Date();
+      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+
+    function stufeVon(frage) {
+      return [1, 2, 3].indexOf(frage.stufe) !== -1 ? frage.stufe : 2;
+    }
+
+    function leererStand() {
+      return { v: 1, fragen: {}, tage: {}, runde: null, stufe: 1, punkte: 0, stufenPunkte: [0, 0, 0], freigabe: 1, erklaert: true };
+    }
+
+    // ---------- Bericht ----------
+
+    function abschnitt(titel) {
+      statusZeile.textContent = 'Läuft: ' + titel;
+      const punkt = document.createElement('li');
+      punkt.className = 'kopf';
+      punkt.textContent = titel;
+      liste.appendChild(punkt);
+      bericht.push('');
+      bericht.push(titel);
+    }
+
+    function pruefe(ok, name, gefunden) {
+      const punkt = document.createElement('li');
+      punkt.className = ok ? 'ok' : 'rot';
+      punkt.textContent = (ok ? '✓ ' : '✗ ') + name;
+      const mitDetail = !ok && gefunden !== undefined;
+      if (mitDetail) {
+        const klein = document.createElement('small');
+        klein.textContent = 'Gefunden: ' + gefunden;
+        punkt.appendChild(klein);
+      }
+      liste.appendChild(punkt);
+      if (ok) gruen += 1;
+      else rot += 1;
+      bericht.push((ok ? 'OK      ' : 'FEHLER  ') + name + (mitDetail ? ' | gefunden: ' + gefunden : ''));
+      return ok;
+    }
+
+    async function gruppe(titel, funktion) {
+      abschnitt(titel);
+      try {
+        await funktion();
+      } catch (fehler) {
+        pruefe(false, 'Abgebrochen', fehler && fehler.message ? fehler.message : String(fehler));
+      }
+    }
+
+    // ---------- Die App im Rahmen bedienen ----------
+
+    const doc = () => rahmen.contentDocument;
+    const el = (id) => doc().getElementById(id);
+    const text = (id) => {
+      const e = el(id);
+      return e ? e.textContent.trim() : '';
+    };
+    // versteckt oder gar nicht vorhanden
+    const zu = (id) => {
+      const e = el(id);
+      return !e || e.hidden;
+    };
+    const speicherStand = () => JSON.parse(localStorage.getItem(SPEICHER_KEY));
+    const stufenKnopf = (nummer) => doc().querySelector('#stufen .stufe[data-stufe="' + nummer + '"]');
+
+    function rahmenLaden(adresse) {
+      return new Promise((fertig, fehler) => {
+        const zeit = setTimeout(() => fehler(new Error('Die App wurde nicht geladen.')), 15000);
+        const einmal = () => {
+          rahmen.removeEventListener('load', einmal);
+          clearTimeout(zeit);
+          fertig();
+        };
+        rahmen.addEventListener('load', einmal);
+        rahmen.src = adresse;
+      });
+    }
+
+    // Lädt die App frisch. stand: ein Objekt (wird als Speicherstand gesetzt), null (leerer Speicher) oder weggelassen (Speicher so lassen).
+    async function appStarten(stand) {
+      if (stand === null) localStorage.removeItem(SPEICHER_KEY);
+      else if (stand !== undefined) localStorage.setItem(SPEICHER_KEY, JSON.stringify(stand));
+      await rahmenLaden('index.html?selbsttest=' + Date.now());
+      await bis(() => !zu('start') || !zu('fehler'), 'die Startseite der App');
+      if (!zu('fehler')) throw new Error('Die App zeigt den Fehlerbildschirm: ' + text('fehler-text'));
+      // Rückfragen der App werden bestätigt, Zwischenablage und Teilen-Menü werden durch Attrappen ersetzt, die den Text festhalten.
+      const w = rahmen.contentWindow;
+      w.confirm = () => true;
+      try {
+        Object.defineProperty(w.navigator, 'clipboard', {
+          configurable: true,
+          value: {
+            writeText: (t) => {
+              zwischenablage = t;
+              return Promise.resolve();
+            },
+          },
+        });
+        Object.defineProperty(w.navigator, 'share', { configurable: true, value: undefined });
+      } catch (fehler) {
+        pruefe(false, 'Zwischenablage und Teilen-Menü ließen sich im Test nicht ersetzen', fehler.message);
+      }
+    }
+
+    // Tippt auf einen Knopf, so wie es ein Mensch täte: Er muss da, sichtbar und nicht gesperrt sein.
+    function tippe(id) {
+      const e = el(id);
+      if (!e) throw new Error('Knopf fehlt: ' + id);
+      if (e.getClientRects().length === 0) throw new Error('Knopf ist nicht zu sehen: ' + id);
+      if (e.disabled) throw new Error('Knopf ist gesperrt: ' + id);
+      e.click();
+    }
+
+    function antwortTexte() {
+      return Array.from(el('antworten').children).map((k) => k.querySelector('.text').textContent);
+    }
+
+    // Beantwortet die gezeigte Frage richtig oder falsch und hält fest, was die App danach zeigt.
+    function frageBeantworten(richtig) {
+      const gezeigt = text('frage-text');
+      const frage = fragenNachText[gezeigt];
+      if (!frage) throw new Error('Die gezeigte Frage steht nicht in der Fragenliste: ' + gezeigt);
+      const knoepfe = Array.from(el('antworten').children);
+      const texte = antwortTexte();
+      const gesucht = richtig ? frage.antworten[frage.richtig] : frage.antworten.find((a, i) => i !== frage.richtig);
+      const stelle = texte.indexOf(gesucht);
+      if (stelle === -1) throw new Error('Antwortknopf nicht gefunden: ' + gesucht);
+      knoepfe[stelle].click();
+      return {
+        frage: frage,
+        soll: richtig,
+        texte: texte,
+        gewaehlt: stelle,
+        titel: text('rueckmeldung-titel'),
+        loesung: text('rueckmeldung-richtig'),
+        loesungSichtbar: !el('rueckmeldung-richtig').hidden,
+        klassen: Array.from(el('antworten').children).map((k) => k.className),
+      };
+    }
+
+    // Spielt die gerade gestartete Runde bis zum Ergebnis. muster: pro Frage true (richtig) oder false (falsch); das letzte gilt für den Rest.
+    async function rundeSpielen(muster) {
+      const spiel = [];
+      for (let i = 0; i < 10 && !zu('frage'); i++) {
+        spiel.push(frageBeantworten(muster[Math.min(i, muster.length - 1)]));
+        tippe('weiter');
+      }
+      return spiel;
+    }
+
+    function antwortenPruefen(spiel, name) {
+      const falsch = spiel.filter((s) => s.titel !== (s.soll ? 'Richtig!' : 'Leider falsch'));
+      pruefe(spiel.length > 0 && falsch.length === 0, name, spiel.length === 0 ? 'keine Frage gespielt' : falsch.map((s) => s.frage.id + ': ' + s.titel).join('; '));
+    }
+
+    // Prüft, dass die Rückmeldung die richtige Antwort am richtigen Platz zeigt (auch bei gemischter Reihenfolge).
+    function markierungenPruefen(spiel, name) {
+      const fehler = [];
+      spiel.forEach((s) => {
+        const richtigText = s.frage.antworten[s.frage.richtig];
+        const richtigStelle = s.texte.indexOf(richtigText);
+        if (s.klassen[richtigStelle].indexOf('richtig') === -1) fehler.push(s.frage.id + ': richtige Antwort nicht markiert');
+        if (s.soll) {
+          if (s.klassen.some((k) => k.indexOf('falsch') !== -1)) fehler.push(s.frage.id + ': trotz richtiger Antwort etwas als falsch markiert');
+          if (s.loesungSichtbar) fehler.push(s.frage.id + ': Lösung gezeigt, obwohl richtig geantwortet');
+        } else {
+          if (s.klassen[s.gewaehlt].indexOf('falsch') === -1) fehler.push(s.frage.id + ': gewählte falsche Antwort nicht markiert');
+          const erwartet = 'Richtig ist: ' + BUCHSTABEN[richtigStelle] + ') ' + richtigText;
+          if (!s.loesungSichtbar || s.loesung !== erwartet) fehler.push(s.frage.id + ': erwartet „' + erwartet + '“, gezeigt „' + s.loesung + '“');
+        }
+      });
+      pruefe(spiel.length > 0 && fehler.length === 0, name, fehler.join('; '));
+    }
+
+    // Die Zahl, mit der eine Antwort beginnt (Komma als Dezimalzeichen), sonst null. Absichtlich einfacher gebaut als in der App.
+    function fuehrendeZahl(t) {
+      const m = /^\s*(\d+(?:,\d+)?)/.exec(t);
+      return m ? parseFloat(m[1].replace(',', '.')) : null;
+    }
+
+    // Prüft die Reihenfolge der Antworten in einer gespielten Runde: Es sind genau die Antworten der Liste, bestehen alle aus Zahlen,
+    // stehen sie aufsteigend, und die übrigen Fragen stehen zumindest teilweise anders als in der Liste (gemischt).
+    function reihenfolgePruefen(spiel, name) {
+      const fehler = [];
+      let frei = 0;
+      let gemischt = 0;
+      spiel.forEach((s) => {
+        const gleich = JSON.stringify(s.texte.slice().sort()) === JSON.stringify(s.frage.antworten.slice().sort());
+        if (!gleich) fehler.push(s.frage.id + ': andere Antworten als in der Liste (' + s.texte.join(' | ') + ')');
+        const zahlen = s.texte.map(fuehrendeZahl);
+        if (zahlen.every((z) => z !== null)) {
+          for (let i = 1; i < zahlen.length; i++) {
+            if (zahlen[i] < zahlen[i - 1]) fehler.push(s.frage.id + ': Zahlen nicht aufsteigend (' + s.texte.join(' | ') + ')');
+          }
+        } else {
+          frei += 1;
+          if (JSON.stringify(s.texte) !== JSON.stringify(s.frage.antworten)) gemischt += 1;
+        }
+      });
+      pruefe(spiel.length > 0 && fehler.length === 0, name + ': Es sind genau die Antworten der Liste, Zahlen stehen aufsteigend', fehler.join('; '));
+      pruefe(frei === 0 || gemischt >= 1, name + ': Die Antworten stehen in gemischter Reihenfolge', gemischt + ' von ' + frei + ' Fragen anders als in der Liste');
+    }
+
+    // ---------- Die Prüfungen ----------
+
+    async function testLaufen() {
+      abschnitt('0. Vorbereitung');
+      // Der Speicher der jeweils anderen Seite (Vorschau oder echte App) darf sich durch den Test nicht ändern.
+      const anderesVorher = localStorage.getItem(ANDERER_KEY);
+      // Die Vorschau hat vielleicht keine eigene Fragenliste und nimmt dann die der echten App eine Ebene höher (wie die App selbst).
+      let antwort = await fetch('fragen.json', { cache: 'no-cache' });
+      if (!antwort.ok && IN_VORSCHAU) antwort = await fetch('../fragen.json', { cache: 'no-cache' });
+      const daten = await antwort.json();
+      const bekannt = {};
+      fragenListe = (Array.isArray(daten.fragen) ? daten.fragen : []).filter((f) => {
+        const gueltig =
+          f && typeof f.id === 'string' && f.id !== '' && typeof f.frage === 'string' && f.frage !== '' &&
+          Array.isArray(f.antworten) && f.antworten.length >= 2 && Number.isInteger(f.richtig) &&
+          f.richtig >= 0 && f.richtig < f.antworten.length && !bekannt[f.id];
+        if (gueltig) bekannt[f.id] = true;
+        return gueltig;
+      });
+      fragenNachText = {};
+      fragenListe.forEach((f) => {
+        fragenNachText[f.frage.trim()] = f;
+      });
+      if (!pruefe(fragenListe.length > 0, 'Die Fragenliste lässt sich laden (' + fragenListe.length + ' Fragen)', 'leer')) {
+        throw new Error('Ohne Fragenliste kann der Test nicht weiter.');
+      }
+      const ohneQuelle = fragenListe.filter((f) => !f.quelle || !f.quelle.url).map((f) => f.id);
+      pruefe(ohneQuelle.length === 0, 'Jede Frage hat eine Quelle', 'ohne Quelle: ' + ohneQuelle.join(', '));
+
+      await gruppe('1. Frischer Start', async () => {
+        await appStarten(null);
+        pruefe(!zu('start'), 'Die Startseite erscheint', 'nicht zu sehen');
+        const stand = text('stand');
+        pruefe(stand.indexOf('App vom ' + ERWARTETER_APP_STAND) !== -1, 'Die App meldet den erwarteten Stand (' + ERWARTETER_APP_STAND + '), sonst läuft noch eine alte Datei', stand);
+        pruefe(stand.indexOf(fragenListe.length + ' Fragen') !== -1, 'Die Fußzeile nennt die Zahl der Fragen (' + fragenListe.length + ')', stand);
+        pruefe(stufenKnopf(1).classList.contains('aktiv'), 'Highschool ist vorgewählt');
+        pruefe(stufenKnopf(2).classList.contains('zu') && stufenKnopf(3).classList.contains('zu'), 'College und NFL sind gesperrt');
+        const hinweis2 = stufenKnopf(2).querySelector('.stufe-hinweis').textContent;
+        pruefe(hinweis2 === 'gesperrt', 'Gesperrte Stufen tragen das Wort „gesperrt“', hinweis2);
+        const weg = /^College wird frei: 0 von (\d+) Punkten auf Highschool\.$/.exec(text('stufen-ziel-text'));
+        pruefe(!!weg, 'Unter den Stufen steht der Weg zu College', text('stufen-ziel-text'));
+        schwelle2 = weg ? Number(weg[1]) : 0;
+        pruefe(schwelle2 > 50, 'Die Schwelle für College (' + schwelle2 + ') liegt über 50; der Test rechnet damit', String(schwelle2));
+        pruefe(el('einfuehrung').open === true && el('start').firstElementChild === el('einfuehrung'), 'Die Einführung steht oben und ist aufgeklappt');
+        pruefe(text('punkte-gesamt') === '0' && text('serie') === '0', 'Punkte und Serie stehen auf 0', text('punkte-gesamt') + ' / ' + text('serie'));
+        const erwartet = fragenListe.filter((f) => stufeVon(f) === 1).length;
+        pruefe(text('vorrat') === String(erwartet), 'Der Vorrat zählt alle Highschool-Fragen (' + erwartet + ')', text('vorrat'));
+        pruefe(text('ring-zahl') === '0/' + Math.min(5, erwartet), 'Der Tagesring steht auf 0/5', text('ring-zahl'));
+        pruefe(/neue Fragen warten auf dich\./.test(text('heute-zeile')), 'Neben dem Ring steht, dass neue Fragen warten', text('heute-zeile'));
+        pruefe(zu('nachlesen-starten'), 'Ohne beantwortete Fragen gibt es keinen Knopf „Nachlesen“');
+        pruefe(el('woche').children.length === 7, 'Die Wochenleiste hat sieben Tage', String(el('woche').children.length));
+        pruefe(!zu('vorschau-schild') === IN_VORSCHAU, IN_VORSCHAU ? 'In der Vorschau steht oben das Schild „Vorschau“' : 'In der echten App steht kein Schild „Vorschau“ im Kopf');
+        pruefe((doc().title.indexOf('Vorschau') !== -1) === IN_VORSCHAU, 'Der Seitentitel nennt die Vorschau nur in der Vorschau', doc().title);
+      });
+
+      await gruppe('2. Gesperrte Stufe antippen, Einführung bestätigen', async () => {
+        stufenKnopf(2).click();
+        const info = text('stufen-info');
+        const m = /^College ist noch gesperrt\. Sammle (\d+) Punkte auf Highschool, dir fehlen noch (\d+)\.$/.exec(info);
+        pruefe(!!m && Number(m[1]) === schwelle2 && Number(m[2]) === schwelle2, 'Ein Tipp auf College erklärt, was fehlt', info);
+        pruefe(stufenKnopf(1).classList.contains('aktiv'), 'Highschool bleibt gewählt');
+        tippe('einfuehrung-ok');
+        pruefe(el('einfuehrung').open === false && el('start').firstElementChild !== el('einfuehrung'), 'Nach „Verstanden“ klappt die Einführung zu und rutscht nach unten');
+        pruefe(speicherStand().erklaert === true, 'Die Einführung gilt als gesehen (gespeichert)');
+      });
+
+      await gruppe('3. Tagesquiz, alles richtig', async () => {
+        if (!(schwelle2 > 50)) throw new Error('Die Schwelle für College ist unbekannt oder zu klein für diesen Test.');
+        await appStarten(null);
+        tippe('tag-starten');
+        pruefe(!zu('frage') && text('fortschritt-text') === 'Tagesquiz · Frage 1 von 5', 'Die erste Frage erscheint mit der Kopfzeile des Tagesquiz', text('fortschritt-text'));
+        pruefe(speicherStand().erklaert === true, 'Mit der ersten Runde gilt die Einführung als gesehen');
+        pruefe(!!fragenNachText[text('frage-text')], 'Die gezeigte Frage steht in der Fragenliste', text('frage-text'));
+        const spiel = await rundeSpielen([true]);
+        antwortenPruefen(spiel, 'Alle Antworten werden als richtig erkannt');
+        markierungenPruefen(spiel, 'Tagesquiz: Rückmeldung zeigt die richtige Antwort am richtigen Platz');
+        reihenfolgePruefen(spiel, 'Tagesquiz');
+        pruefe(!zu('ergebnis') && text('ergebnis-punkte') === '5 von 5', 'Ergebnis: 5 von 5', text('ergebnis-punkte'));
+        pruefe(text('ergebnis-gewinn') === '+50 Punkte', 'Gewinn: +50 Punkte', text('ergebnis-gewinn'));
+        pruefe(zu('ergebnis-freigabe') && zu('ergebnis-wechsel-zeile'), 'Noch keine neue Stufe (50 Punkte reichen nicht)');
+        const s = speicherStand();
+        pruefe(s.punkte === 50 && s.stufenPunkte[0] === 50, 'Gespeichert: 50 Punkte, davon 50 auf Highschool', JSON.stringify([s.punkte, s.stufenPunkte]));
+        tippe('zum-start');
+        pruefe(text('punkte-gesamt') === '50' && text('ring-zahl') === '5/5' && text('serie') === '1', 'Start: 50 Punkte, Tagesring 5/5, Serie 1', [text('punkte-gesamt'), text('ring-zahl'), text('serie')].join(' / '));
+        pruefe(text('heute-zeile') === 'Geschafft! Heute 5 von 5 richtig.', 'Neben dem Ring steht „Geschafft! Heute 5 von 5 richtig.“', text('heute-zeile'));
+        pruefe(text('tag-starten') === 'Ergebnis vom Tagesquiz ansehen', 'Der Tagesquiz-Knopf zeigt jetzt das Ergebnis', text('tag-starten'));
+        const ziel = 'College wird frei: 50 von ' + schwelle2 + ' Punkten auf Highschool.';
+        pruefe(text('stufen-ziel-text') === ziel, 'Der Weg zu College zeigt den Fortschritt', text('stufen-ziel-text'));
+        pruefe(!zu('mehr-starten') && text('mehr-starten') === 'Noch 5 neue Fragen', 'Weitere Fragen sind frei', text('mehr-starten'));
+      });
+
+      await gruppe('4. Übungsrunde: gemischte Antworten, Punkte nur fürs Konto', async () => {
+        tippe('ueben-starten');
+        pruefe(text('fortschritt-text') === 'Übungsrunde · Frage 1 von 5', 'Kopfzeile der Übungsrunde', text('fortschritt-text'));
+        const spiel = await rundeSpielen([false, true]);
+        antwortenPruefen(spiel, 'Eine falsche und vier richtige Antworten werden richtig erkannt');
+        markierungenPruefen(spiel, 'Rückmeldung zeigt die richtige Antwort am richtigen Platz');
+        const gemischt = spiel.filter((s) => JSON.stringify(s.texte) !== JSON.stringify(s.frage.antworten)).length;
+        pruefe(gemischt >= 1, 'Die Antworten stehen in der Übungsrunde in gemischter Reihenfolge', gemischt + ' von ' + spiel.length + ' Fragen anders als in der Liste');
+        pruefe(text('ergebnis-punkte') === '4 von 5', 'Ergebnis: 4 von 5', text('ergebnis-punkte'));
+        pruefe(text('ergebnis-gewinn') === '+20 Punkte', 'Gewinn: +20 Punkte (4 mal 5)', text('ergebnis-gewinn'));
+        pruefe(!zu('ergebnis-uebungshinweis') && /zählen fürs Punktekonto/.test(text('ergebnis-uebungshinweis')), 'Das Ergebnis erklärt, dass Wiederholungen nur fürs Punktekonto zählen', text('ergebnis-uebungshinweis'));
+        let s = speicherStand();
+        pruefe(s.punkte === 70 && s.stufenPunkte[0] === 50, 'Punkte: 70 insgesamt, auf Highschool weiter 50', JSON.stringify([s.punkte, s.stufenPunkte]));
+        tippe('zum-start');
+        tippe('ueben-starten');
+        const spiel2 = await rundeSpielen([true]);
+        antwortenPruefen(spiel2, 'Zweite Übungsrunde: alle Antworten richtig erkannt');
+        markierungenPruefen(spiel2, 'Zweite Übungsrunde: Markierungen stimmen');
+        s = speicherStand();
+        pruefe(s.punkte === 95 && s.stufenPunkte[0] === 50 && s.freigabe === 1, 'Nach zwei Übungsrunden: College bleibt gesperrt, Highschool weiter 50 Punkte', JSON.stringify([s.punkte, s.stufenPunkte, s.freigabe]));
+      });
+
+      await gruppe('5. Weitere Fragen, neue Stufe und Wechsel', async () => {
+        tippe('zum-start');
+        tippe('mehr-starten');
+        pruefe(text('fortschritt-text') === 'Weitere Fragen · Frage 1 von 5', 'Kopfzeile der weiteren Fragen', text('fortschritt-text'));
+        await rundeSpielen([true]);
+        let runden = 1;
+        while (speicherStand().freigabe < 2 && runden < 12) {
+          tippe('weiter-spielen');
+          await rundeSpielen([true]);
+          runden += 1;
+        }
+        pruefe(speicherStand().freigabe === 2, 'College wird frei, sobald die Punkte reichen (' + schwelle2 + ')', 'Freigabe: ' + speicherStand().freigabe);
+        pruefe(!zu('ergebnis-freigabe') && text('ergebnis-freigabe') === 'Neue Stufe frei: College', 'Das Ergebnis meldet „Neue Stufe frei: College“', text('ergebnis-freigabe'));
+        pruefe(!zu('ergebnis-wechsel-zeile') && text('ergebnis-wechsel') === 'Zu College wechseln', 'Ein Knopf bietet den Wechsel zu College an', text('ergebnis-wechsel'));
+        pruefe(speicherStand().stufe === 1, 'Vor dem Tipp bleibt Highschool gewählt', String(speicherStand().stufe));
+        tippe('ergebnis-wechsel');
+        pruefe(text('ergebnis-wechsel') === 'College ist jetzt gewählt' && el('ergebnis-wechsel').disabled, 'Nach dem Tipp steht dort „College ist jetzt gewählt“', text('ergebnis-wechsel'));
+        pruefe(speicherStand().stufe === 2, 'Gespeichert: Stufe College', String(speicherStand().stufe));
+        pruefe(!zu('weiter-spielen') && text('weiter-spielen') === 'Noch 5 neue Fragen', 'Weitere Fragen kommen jetzt von College', text('weiter-spielen'));
+        tippe('zum-start');
+        pruefe(stufenKnopf(2).classList.contains('aktiv') && !stufenKnopf(2).classList.contains('zu'), 'Auf dem Start ist College gewählt und offen');
+        const weg = /^NFL wird frei: 0 von (\d+) Punkten auf College\.$/.exec(text('stufen-ziel-text'));
+        pruefe(!!weg, 'Der nächste Weg führt zu NFL', text('stufen-ziel-text'));
+      });
+
+      await gruppe('6. Fortschritt mitnehmen', async () => {
+        const vorher = speicherStand();
+        el('mitnehmen').open = true;
+        zwischenablage = '';
+        tippe('code-kopieren');
+        await warte(80);
+        pruefe(zwischenablage.indexOf('FB1:') === 0, 'Der Code beginnt mit „FB1:“', zwischenablage.slice(0, 12));
+        pruefe(/^Code kopiert/.test(text('code-info')), 'Die App meldet „Code kopiert“', text('code-info'));
+        const code = zwischenablage;
+        tippe('zuruecksetzen');
+        pruefe(text('punkte-gesamt') === '0' && speicherStand().punkte === 0, 'Zurücksetzen: Die Punkte stehen wieder auf 0', text('punkte-gesamt'));
+        pruefe(speicherStand().freigabe === 1 && speicherStand().stufe === 1, 'Zurücksetzen: Stufen sind wieder gesperrt, Highschool ist gewählt');
+        el('mitnehmen').open = true;
+        el('code-feld').value = code;
+        tippe('code-einlesen');
+        const nachher = speicherStand();
+        pruefe(nachher.punkte === vorher.punkte && text('punkte-gesamt') === vorher.punkte.toLocaleString('de-DE'), 'Nach dem Einlesen stehen die Punkte wieder da (' + vorher.punkte + ')', text('punkte-gesamt') + ' / gespeichert ' + nachher.punkte);
+        pruefe(nachher.stufe === vorher.stufe && nachher.freigabe === vorher.freigabe, 'Gewählte und freigeschaltete Stufe sind wieder da', JSON.stringify([nachher.stufe, nachher.freigabe]));
+        pruefe(JSON.stringify(nachher.stufenPunkte) === JSON.stringify(vorher.stufenPunkte), 'Die Punkte je Stufe sind wieder da', JSON.stringify(nachher.stufenPunkte));
+        pruefe(Object.keys(nachher.fragen).length === Object.keys(vorher.fragen).length, 'Alle gesehenen Fragen sind wieder da (' + Object.keys(vorher.fragen).length + ')', String(Object.keys(nachher.fragen).length));
+        pruefe(text('serie') === '1', 'Die Serie ist wieder da', text('serie'));
+        pruefe(/^Fortschritt übernommen/.test(text('code-info')), 'Die App meldet „Fortschritt übernommen“', text('code-info'));
+        el('code-feld').value = 'FB1:hallo';
+        tippe('code-einlesen');
+        pruefe(/^Das ist kein gültiger Code/.test(text('code-info')) && speicherStand().punkte === vorher.punkte, 'Ein ungültiger Code wird abgelehnt und ändert nichts', text('code-info'));
+      });
+
+      await gruppe('7. Frage melden, Pause und Weiterspielen', async () => {
+        tippe('mehr-starten');
+        const frage = fragenNachText[text('frage-text')];
+        pruefe(!!frage, 'Eine Frage von College erscheint', text('frage-text'));
+        zwischenablage = '';
+        tippe('melden');
+        await warte(80);
+        pruefe(!!frage && zwischenablage.indexOf(frage.id) !== -1 && zwischenablage.indexOf(frage.frage) !== -1 && zwischenablage.indexOf('Mein Hinweis:') !== -1, 'Der Meldetext enthält Kennung und Wortlaut der Frage', zwischenablage);
+        pruefe(!zu('melden-hinweis') && /^Text kopiert/.test(text('melden-hinweis')), 'Die App sagt, dass der Text kopiert ist', text('melden-hinweis'));
+        frageBeantworten(true);
+        tippe('weiter');
+        pruefe(zu('melden-hinweis'), 'Bei der nächsten Frage ist der Hinweis wieder weg');
+        const reiheVorPause = antwortTexte();
+        tippe('abbrechen');
+        pruefe(text('mehr-starten') === 'Weitere Fragen fortsetzen', 'Nach der Pause bietet der Start das Fortsetzen an', text('mehr-starten'));
+        pruefe(text('ring-zahl') === '5/5', 'Der Ring gehört zum Tagesquiz und bleibt bei den weiteren Fragen auf 5/5', text('ring-zahl'));
+        tippe('mehr-starten');
+        pruefe(text('fortschritt-text') === 'Weitere Fragen · Frage 2 von 5', 'Die Runde macht bei Frage 2 weiter', text('fortschritt-text'));
+        pruefe(JSON.stringify(antwortTexte()) === JSON.stringify(reiheVorPause), 'Weitere Fragen: Nach der Pause stehen die Antworten in derselben Reihenfolge', antwortTexte().join(' | '));
+      });
+
+      await gruppe('8. Übungsrunde nach Neustart der App', async () => {
+        const stand = leererStand();
+        fragenListe.filter((f) => stufeVon(f) === 1).slice(0, 8).forEach((f) => {
+          stand.fragen[f.id] = { tag: heute(), richtig: true };
+        });
+        await appStarten(stand);
+        tippe('ueben-starten');
+        frageBeantworten(true);
+        tippe('weiter');
+        const zweite = text('frage-text');
+        const reihe = antwortTexte();
+        await appStarten();
+        pruefe(text('ueben-starten') === 'Übungsrunde fortsetzen', 'Nach dem Neustart bietet der Start das Fortsetzen an', text('ueben-starten'));
+        tippe('ueben-starten');
+        pruefe(text('fortschritt-text') === 'Übungsrunde · Frage 2 von 5' && text('frage-text') === zweite, 'Die Runde macht bei derselben Frage 2 weiter', text('fortschritt-text') + ' / ' + text('frage-text'));
+        pruefe(JSON.stringify(antwortTexte()) === JSON.stringify(reihe), 'Die Antworten stehen in derselben Reihenfolge wie vor dem Neustart', antwortTexte().join(' | '));
+      });
+
+      await gruppe('9. Stufe leer gespielt: Die Übung zählt für die nächste Stufe', async () => {
+        const stand = leererStand();
+        fragenListe.filter((f) => stufeVon(f) === 1).forEach((f) => {
+          stand.fragen[f.id] = { tag: heute(), richtig: true };
+        });
+        stand.stufenPunkte = [Math.max(0, schwelle2 - 5), 0, 0];
+        stand.punkte = stand.stufenPunkte[0];
+        await appStarten(stand);
+        pruefe(text('vorrat') === '0', 'Auf Highschool ist kein neuer Vorrat mehr', text('vorrat'));
+        pruefe(/Die Übungsrunde bringt Punkte für College/.test(text('hinweis')), 'Der Hinweis nennt die Übungsrunde als Weg zu College', text('hinweis'));
+        tippe('ueben-starten');
+        const spiel = await rundeSpielen([true]);
+        antwortenPruefen(spiel, 'Alle Antworten werden als richtig erkannt');
+        pruefe(zu('ergebnis-uebungshinweis'), 'Kein Hinweis „nur fürs Punktekonto“, denn hier zählt die Übung');
+        const s = speicherStand();
+        pruefe(s.freigabe === 2, 'Die Übung schaltet College frei', 'Freigabe: ' + s.freigabe);
+        pruefe(text('ergebnis-freigabe') === 'Neue Stufe frei: College', 'Das Ergebnis meldet „Neue Stufe frei: College“', text('ergebnis-freigabe'));
+        pruefe(s.stufenPunkte[0] === Math.max(0, schwelle2 - 5) + 5 * spiel.length, 'Die Übungspunkte zählen auf Highschool mit', JSON.stringify(s.stufenPunkte));
+      });
+
+      await gruppe('10. Alter Speicherstand von vor den Stufen', async () => {
+        await appStarten({ v: 1, fragen: {}, tage: { '2026-10-01': { runden: 1 } }, runde: null, stufe: 2, punkte: 120 });
+        pruefe(stufenKnopf(2).classList.contains('aktiv') && !stufenKnopf(2).classList.contains('zu'), 'Die bisher gespielte Stufe College bleibt gewählt und offen');
+        pruefe(text('punkte-gesamt') === '120', 'Die Punkte sind da', text('punkte-gesamt'));
+        pruefe(el('start').firstElementChild !== el('einfuehrung') && el('einfuehrung').open === false, 'Wer schon gespielt hat, sieht die Einführung nicht oben');
+        pruefe(/^NFL wird frei: 0 von \d+ Punkten auf College\.$/.test(text('stufen-ziel-text')), 'Der nächste Weg führt zu NFL', text('stufen-ziel-text'));
+      });
+
+      await gruppe('11. Nachlesen nach Thema', async () => {
+        // Aus den ersten zwei Themen mit mindestens vier Fragen werden je drei als beantwortet gesetzt (die mittlere zuletzt falsch).
+        // Die vierte Frage des ersten Themas bleibt ungesehen und darf im Nachlesen nicht auftauchen.
+        const nachThema = {};
+        const nachId = {};
+        fragenListe.forEach((f) => {
+          const t = f.kategorie || 'Weitere Themen';
+          (nachThema[t] = nachThema[t] || []).push(f);
+          nachId[f.id] = f;
+        });
+        const themen = Object.keys(nachThema).filter((t) => nachThema[t].length >= 4).slice(0, 2);
+        if (themen.length < 2) throw new Error('Die Fragenliste hat keine zwei Themen mit mindestens vier Fragen.');
+        const stand = leererStand();
+        const beantwortet = {};
+        themen.forEach((t) => {
+          nachThema[t].slice(0, 3).forEach((f, i) => {
+            stand.fragen[f.id] = { tag: heute(), richtig: i !== 1 };
+            beantwortet[f.id] = i !== 1;
+          });
+        });
+        const ungesehen = nachThema[themen[0]][3];
+        await appStarten(stand);
+        pruefe(!zu('nachlesen-starten') && text('nachlesen-starten') === 'Beantwortete Fragen nachlesen', 'Mit beantworteten Fragen erscheint der Knopf „Beantwortete Fragen nachlesen“', text('nachlesen-starten'));
+        const vorher = JSON.stringify(speicherStand());
+        tippe('nachlesen-starten');
+        pruefe(!zu('nachlesen') && zu('start'), 'Das Nachlesen öffnet sich und ersetzt den Start');
+        const knoepfe = Array.from(doc().querySelectorAll('#nachlesen-themen .thema'));
+        const gezeigt = knoepfe.map((k) => k.dataset.thema).sort();
+        pruefe(JSON.stringify(gezeigt) === JSON.stringify(themen.slice().sort()), 'Die Übersicht zeigt genau die Themen mit beantworteten Fragen', gezeigt.join(' | '));
+        const zahlen = knoepfe.map((k) => k.querySelector('.thema-zahl').textContent);
+        pruefe(zahlen.length === 2 && zahlen.every((z) => z === '3 Fragen, 1 zuletzt falsch'), 'Jedes Thema nennt 3 Fragen, davon 1 zuletzt falsch', zahlen.join(' | '));
+
+        knoepfe.find((k) => k.dataset.thema === themen[0]).click();
+        pruefe(!zu('nachlesen-liste') && zu('nachlesen-themen') && text('nachlesen-titel') === themen[0], 'Ein Tipp auf ein Thema zeigt dessen Fragen', text('nachlesen-titel'));
+        const liste = el('nachlesen-liste');
+        const eintraege = Array.from(liste.children);
+        const ids = eintraege.map((li) => li.dataset.frage).sort();
+        const soll = nachThema[themen[0]].slice(0, 3).map((f) => f.id).sort();
+        pruefe(JSON.stringify(ids) === JSON.stringify(soll), 'Das Thema zeigt genau die drei beantworteten Fragen', ids.join(', '));
+        pruefe(eintraege.every((li) => li.textContent.indexOf(nachId[li.dataset.frage].frage) !== -1), 'Jeder Eintrag nennt den Wortlaut seiner Frage');
+        pruefe(
+          eintraege.every((li) => li.className === (beantwortet[li.dataset.frage] ? 'ok' : 'nein')),
+          'Das Zeichen zeigt jeweils die letzte Antwort: richtig oder falsch',
+          eintraege.map((li) => li.dataset.frage + ' ' + li.className).join(', ')
+        );
+        pruefe(liste.textContent.indexOf(ungesehen.frage) === -1, 'Eine Frage, die noch nicht gespielt wurde, taucht nicht auf');
+
+        const falschFrage = nachThema[themen[0]][1];
+        const falschEintrag = liste.querySelector('li[data-frage="' + falschFrage.id + '"]');
+        falschEintrag.querySelector('summary').click();
+        const detail = falschEintrag.querySelector('.nachlesen-detail').textContent;
+        pruefe(falschEintrag.querySelector('details').open === true, 'Ein Tipp klappt die Frage auf');
+        pruefe(detail.indexOf('Richtig: ' + falschFrage.antworten[falschFrage.richtig]) !== -1, 'Aufgeklappt steht die richtige Antwort da', detail);
+        pruefe(!falschFrage.erklaerung || detail.indexOf(falschFrage.erklaerung) !== -1, 'Aufgeklappt steht die Erklärung da', detail);
+        const link = falschEintrag.querySelector('.nachlesen-detail a');
+        pruefe(!!link && link.href === new URL(falschFrage.quelle.url).href, 'Die Quelle steht als Link da', link ? link.href : 'kein Link');
+
+        tippe('nachlesen-zurueck');
+        pruefe(!zu('nachlesen-themen') && zu('nachlesen-liste') && text('nachlesen-titel') === 'Nachlesen', 'Zurück führt aus dem Thema zur Übersicht', text('nachlesen-titel'));
+        tippe('nachlesen-zurueck');
+        pruefe(!zu('start') && zu('nachlesen'), 'Zurück führt von der Übersicht zum Start');
+        pruefe(JSON.stringify(speicherStand()) === vorher, 'Das Nachlesen ändert den gespeicherten Fortschritt nicht');
+      });
+
+      await gruppe('12. Tagesring und Wochenleiste', async () => {
+        await appStarten(null);
+        const tageDom = () => Array.from(doc().querySelectorAll('#woche .wt'));
+        const mittag = (tag) => new Date(tag + 'T12:00:00');
+        const tagListe = tageDom().map((li) => li.dataset.tag);
+        pruefe(tagListe.length === 7 && mittag(tagListe[0]).getDay() === 1, 'Die Wochenleiste hat sieben Tage und beginnt an einem Montag', tagListe.join(', '));
+        pruefe(tagListe.every((tag, i) => i === 0 || Math.round((mittag(tag) - mittag(tagListe[i - 1])) / 86400000) === 1), 'Die sieben Tage folgen lückenlos aufeinander', tagListe.join(', '));
+        const heutige = tageDom().filter((li) => li.classList.contains('heute'));
+        pruefe(heutige.length === 1 && heutige[0].dataset.tag === heute(), 'Genau ein Tag ist als heute markiert, und zwar der richtige', heutige.map((li) => li.dataset.tag).join(', '));
+        pruefe(tageDom().every((li) => !li.classList.contains('gespielt')), 'Ohne gespielte Runde ist kein Tag als gespielt markiert');
+        const versatz = () => parseFloat(el('ring-fuell').style.strokeDashoffset);
+        pruefe(Math.abs(versatz() - RING_UMFANG) < 0.5, 'Zu Beginn ist der Ring leer', String(versatz()));
+
+        tippe('tag-starten');
+        frageBeantworten(true);
+        tippe('weiter');
+        frageBeantworten(false);
+        tippe('weiter');
+        tippe('abbrechen');
+        pruefe(text('ring-zahl') === '2/5', 'Nach zwei beantworteten Fragen steht der Ring auf 2/5', text('ring-zahl'));
+        pruefe(Math.abs(versatz() - RING_UMFANG * 0.6) < 0.5, 'Der Ring ist zu zwei Fünfteln gefüllt', String(versatz()));
+        pruefe(text('heute-zeile') === '2 von 5 beantwortet. Mach weiter!' && el('heute-karte').dataset.zustand === 'laeuft', 'Neben dem Ring steht „2 von 5 beantwortet. Mach weiter!“', text('heute-zeile'));
+
+        tippe('tag-starten');
+        await rundeSpielen([true]);
+        tippe('zum-start');
+        pruefe(text('ring-zahl') === '5/5' && Math.abs(versatz()) < 0.5 && el('heute-karte').dataset.zustand === 'erledigt', 'Nach dem Tagesquiz ist der Ring voll', text('ring-zahl') + ' / ' + versatz() + ' / ' + el('heute-karte').dataset.zustand);
+        pruefe(text('heute-zeile') === 'Geschafft! Heute 4 von 5 richtig.', 'Neben dem Ring steht „Geschafft! Heute 4 von 5 richtig.“ (eine Antwort war falsch)', text('heute-zeile'));
+        const heutiger = tageDom().find((li) => li.dataset.tag === heute());
+        pruefe(!!heutiger && heutiger.classList.contains('gespielt'), 'Der heutige Tag ist in der Wochenleiste als gespielt markiert');
+
+        // Gespeicherte Tage: der Montag dieser Woche erscheint als gespielt, ein Tag aus der Vorwoche nicht.
+        const montag = tagListe[0];
+        const vorwoche = mittag(montag);
+        vorwoche.setDate(vorwoche.getDate() - 3);
+        const stand = leererStand();
+        stand.tage[montag] = { runden: 1 };
+        stand.tage[vorwoche.getFullYear() + '-' + String(vorwoche.getMonth() + 1).padStart(2, '0') + '-' + String(vorwoche.getDate()).padStart(2, '0')] = { runden: 1 };
+        await appStarten(stand);
+        const gespielt = tageDom().filter((li) => li.classList.contains('gespielt')).map((li) => li.dataset.tag);
+        pruefe(JSON.stringify(gespielt) === JSON.stringify([montag]), 'Gespeicherte Tage erscheinen als gespielt, ein Tag aus der Vorwoche nicht', gespielt.join(', '));
+      });
+
+      await gruppe('13. Eigener Speicher von Vorschau und echter App', async () => {
+        pruefe(localStorage.getItem(SPEICHER_KEY) !== null, 'Die App schreibt ihren Stand unter ihrem eigenen Schlüssel (' + SPEICHER_KEY + ')');
+        pruefe(localStorage.getItem(ANDERER_KEY) === anderesVorher, 'Der Speicher der ' + (IN_VORSCHAU ? 'echten App' : 'Vorschau') + ' wurde durch den Test nicht verändert');
+      });
+    }
+
+    // ---------- Start und Aufräumen ----------
+
+    function fazitZeigen() {
+      fazitZeile.hidden = false;
+      if (rot === 0 && gruen > 0) {
+        fazitZeile.className = 'gut';
+        fazitZeile.textContent = 'Alles grün: ' + gruen + ' Prüfungen bestanden.';
+      } else {
+        fazitZeile.className = 'schlecht';
+        fazitZeile.textContent = rot + ' von ' + (gruen + rot) + ' Prüfungen sind fehlgeschlagen. Der Bericht lässt sich kopieren und an James schicken.';
+      }
+      bericht.push('');
+      bericht.push('Ergebnis: ' + gruen + ' bestanden, ' + rot + ' fehlgeschlagen');
+      berichtKnopf.hidden = false;
+    }
+
+    startKnopf.addEventListener('click', async () => {
+      if (window.location.protocol === 'file:') {
+        window.alert('Bitte öffne diese Seite über die Internetadresse der App. Von einer lokalen Datei aus kann der Test die App nicht steuern.');
+        return;
+      }
+      const vorhanden = localStorage.getItem(SPEICHER_KEY);
+      let punkte = 0;
+      try {
+        punkte = vorhanden ? Number(JSON.parse(vorhanden).punkte) || 0 : 0;
+      } catch (fehler) {
+        punkte = 0;
+      }
+      if (punkte > 0 && !window.confirm('Hier ist schon Fortschritt gespeichert (' + punkte + ' Punkte). Der Test sichert ihn vorher und spielt ihn am Ende zurück. Das gelingt nur, wenn der Test bis zum Ende läuft. Besser ist ein privates Fenster. Trotzdem starten?')) return;
+
+      startKnopf.disabled = true;
+      berichtKnopf.hidden = true;
+      berichtFeld.hidden = true;
+      fazitZeile.hidden = true;
+      liste.textContent = '';
+      gruen = 0;
+      rot = 0;
+      bericht = ['Football Brain Selbsttest, ' + new Date().toLocaleString('de-DE'), navigator.userAgent];
+      const hatteStand = vorhanden !== null;
+      if (hatteStand) localStorage.setItem(SICHERUNG_KEY, vorhanden);
+      try {
+        await testLaufen();
+      } catch (fehler) {
+        pruefe(false, 'Test abgebrochen', fehler && fehler.message ? fehler.message : String(fehler));
+      } finally {
+        rahmen.src = 'about:blank';
+        await warte(250);
+        if (hatteStand) {
+          localStorage.setItem(SPEICHER_KEY, localStorage.getItem(SICHERUNG_KEY));
+          localStorage.removeItem(SICHERUNG_KEY);
+        } else {
+          localStorage.removeItem(SPEICHER_KEY);
+        }
+        statusZeile.textContent = '';
+        fazitZeigen();
+        startKnopf.disabled = false;
+      }
+    });
+
+    berichtKnopf.addEventListener('click', () => {
+      const inhalt = bericht.join('\n');
+      berichtFeld.value = inhalt;
+      const vonHand = () => {
+        berichtFeld.hidden = false;
+        berichtFeld.focus();
+        berichtFeld.select();
+        statusZeile.textContent = 'Bitte den Bericht im Feld markieren und von Hand kopieren.';
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(inhalt).then(() => {
+          statusZeile.textContent = 'Bericht kopiert.';
+        }, vonHand);
+      } else {
+        vonHand();
+      }
+    });
+
+    // Ein unterbrochener Test hinterlässt eine Sicherung. Sie wird zuerst zurückgespielt, damit nichts verloren geht.
+    if (localStorage.getItem(SICHERUNG_KEY) !== null) {
+      sicherungBox.hidden = false;
+      startKnopf.disabled = true;
+    }
+    document.getElementById('rueckspielen').addEventListener('click', () => {
+      localStorage.setItem(SPEICHER_KEY, localStorage.getItem(SICHERUNG_KEY));
+      localStorage.removeItem(SICHERUNG_KEY);
+      window.location.reload();
+    });
+    document.getElementById('verwerfen').addEventListener('click', () => {
+      localStorage.removeItem(SICHERUNG_KEY);
+      window.location.reload();
+    });
+  })();
+  </script>
+</body>
+</html>
