@@ -231,9 +231,10 @@
     }
 
     // Beantwortet die gezeigte Frage richtig oder falsch und hält fest, was die App danach zeigt.
-    function frageBeantworten(richtig) {
+    // vorgabe: die Frage selbst, wenn sie nicht in der Fragenliste steht (Bildfragen).
+    function frageBeantworten(richtig, vorgabe) {
       const gezeigt = text('frage-text');
-      const frage = fragenNachText[gezeigt];
+      const frage = vorgabe || fragenNachText[gezeigt];
       if (!frage) throw new Error('Die gezeigte Frage steht nicht in der Fragenliste: ' + gezeigt);
       const knoepfe = Array.from(el('antworten').children);
       const texte = antwortTexte();
@@ -258,6 +259,19 @@
       const spiel = [];
       for (let i = 0; i < 10 && !zu('frage'); i++) {
         spiel.push(frageBeantworten(muster[Math.min(i, muster.length - 1)]));
+        tippe('weiter');
+      }
+      return spiel;
+    }
+
+    // Spielt die gerade gestartete Bild-Runde bis zum Ergebnis. Die Bildfrage erkennt der Test an der Kennung, die der Bildkasten trägt.
+    function bildRundeSpielen(bildFragen, muster) {
+      const spiel = [];
+      for (let i = 0; i < 10 && !zu('frage'); i++) {
+        const kennung = el('frage-bild').dataset.frage;
+        const gezeigt = bildFragen.find((f) => f.id === kennung);
+        if (!gezeigt) throw new Error('Die gezeigte Bildfrage ist unbekannt: ' + kennung);
+        spiel.push(frageBeantworten(muster[Math.min(i, muster.length - 1)], gezeigt));
         tippe('weiter');
       }
       return spiel;
@@ -481,7 +495,7 @@
         pruefe(/^Das ist kein gültiger Code/.test(text('code-info')) && speicherStand().punkte === vorher.punkte, 'Ein ungültiger Code wird abgelehnt und ändert nichts', text('code-info'));
       });
 
-      await gruppe('7. Frage melden, Pause und Weiterspielen', async () => {
+      await gruppe('7. Frage melden, Frage vorschlagen, Pause und Weiterspielen', async () => {
         tippe('mehr-starten');
         const frage = fragenNachText[text('frage-text')];
         pruefe(!!frage, 'Eine Frage von College erscheint', text('frage-text'));
@@ -490,6 +504,12 @@
         await warte(80);
         pruefe(!!frage && zwischenablage.indexOf(frage.id) !== -1 && zwischenablage.indexOf(frage.frage) !== -1 && zwischenablage.indexOf('Mein Hinweis:') !== -1, 'Der Meldetext enthält Kennung und Wortlaut der Frage', zwischenablage);
         pruefe(!zu('melden-hinweis') && /^Text kopiert/.test(text('melden-hinweis')), 'Die App sagt, dass der Text kopiert ist', text('melden-hinweis'));
+        zwischenablage = '';
+        tippe('vorschlagen');
+        await warte(80);
+        pruefe(['Frage vorschlagen', 'Frage:', 'A)', 'B)', 'C)', 'D)', 'Richtig ist:', 'Quelle'].every((teil) => zwischenablage.indexOf(teil) !== -1), 'Die Vorlage hat Platz für Frage, vier Antworten, die richtige Antwort und die Quelle', zwischenablage);
+        pruefe(!!frage && zwischenablage.indexOf(frage.id) === -1 && zwischenablage.indexOf(frage.frage) === -1, 'Die Vorlage gehört zu keiner gezeigten Frage', zwischenablage);
+        pruefe(!zu('melden-hinweis') && /^Vorlage kopiert/.test(text('melden-hinweis')), 'Die App sagt, dass die Vorlage kopiert ist', text('melden-hinweis'));
         frageBeantworten(true);
         tippe('weiter');
         pruefe(zu('melden-hinweis'), 'Bei der nächsten Frage ist der Hinweis wieder weg');
@@ -655,7 +675,191 @@
         pruefe(JSON.stringify(gespielt) === JSON.stringify([montag]), 'Gespeicherte Tage erscheinen als gespielt, ein Tag aus der Vorwoche nicht', gespielt.join(', '));
       });
 
-      await gruppe('13. Eigener Speicher von Vorschau und echter App', async () => {
+      await gruppe('13. Positionen im Bild', async () => {
+        await appStarten(null);
+        const daten = rahmen.contentWindow.footballBrainBilder;
+        if (!daten || !Array.isArray(daten.fragen) || !daten.aufstellungen) {
+          throw new Error('Die App stellt keine Bildfragen bereit (footballBrainBilder fehlt). Läuft noch eine alte app.js?');
+        }
+        const bildFragen = daten.fragen;
+        const aufstellungen = daten.aufstellungen;
+        const linie = daten.linie;
+        const listenIds = {};
+        fragenListe.forEach((f) => {
+          listenIds[f.id] = true;
+        });
+        // Wer ist wer: Diese Tabelle steht im Test und nicht in der App. So fällt auf, wenn bei einer Frage der falsche Spieler leuchtet.
+        const NAMEN = {
+          QB: 'Quarterback', C: 'Center', X: 'Wide Receiver', Z: 'Wide Receiver', SLOT: 'Slot Receiver', HB: 'Running Back', RB: 'Running Back',
+          FB: 'Fullback', TE: 'Tight End', LT: 'Offensive Tackle', RT: 'Offensive Tackle', LG: 'Offensive Guard', RG: 'Offensive Guard',
+          CB1: 'Cornerback', CB2: 'Cornerback', FS: 'Safety', SS: 'Safety', WILL: 'Linebacker', MIKE: 'Linebacker', SAM: 'Linebacker',
+          DE1: 'Defensive End', DE2: 'Defensive End', DT1: 'Defensive Tackle', DT2: 'Defensive Tackle', NT: 'Nose Tackle',
+        };
+
+        // ---- Die Daten ----
+        pruefe(bildFragen.length >= 12, 'Es gibt mindestens 12 Bildfragen (' + bildFragen.length + ')', String(bildFragen.length));
+        const ids = bildFragen.map((f) => f.id);
+        const doppelt = ids.filter((id, i) => ids.indexOf(id) !== i || listenIds[id]);
+        pruefe(doppelt.length === 0 && ids.every((id) => /^b\d+$/.test(id)), 'Die Kennungen der Bildfragen sind eindeutig, beginnen mit „b“ und stoßen nicht mit der Fragenliste zusammen', doppelt.join(', ') || ids.join(', '));
+        const kaputt = bildFragen
+          .filter((f) => {
+            const gut =
+              typeof f.frage === 'string' && f.frage !== '' &&
+              Array.isArray(f.antworten) && f.antworten.length === 4 && new Set(f.antworten).size === 4 &&
+              f.antworten.every((a) => typeof a === 'string' && a !== '') &&
+              Number.isInteger(f.richtig) && f.richtig >= 0 && f.richtig < 4 &&
+              [1, 2, 3].indexOf(f.stufe) !== -1 &&
+              typeof f.erklaerung === 'string' && f.erklaerung !== '' &&
+              !!f.quelle && !!f.quelle.text && /^https:\/\//.test(f.quelle.url || '') &&
+              !!f.bild && !!aufstellungen[f.bild.aufstellung] && !!aufstellungen[f.bild.gegner] &&
+              aufstellungen[f.bild.aufstellung].team !== aufstellungen[f.bild.gegner].team;
+            return !gut;
+          })
+          .map((f) => f.id);
+        pruefe(kaputt.length === 0, 'Jede Bildfrage hat Text, vier verschiedene Antworten, eine richtige, Stufe, Erklärung, Quelle und zwei verschiedene Teams fürs Bild', kaputt.join(', '));
+
+        const aufstellungsFehler = [];
+        Object.keys(aufstellungen).forEach((schluessel) => {
+          const a = aufstellungen[schluessel];
+          const sp = a.spieler;
+          if (sp.length !== 11) aufstellungsFehler.push(schluessel + ': ' + sp.length + ' Spieler statt 11');
+          if (new Set(sp.map((s) => s[0])).size !== sp.length) aufstellungsFehler.push(schluessel + ': doppelte Kennung');
+          sp.forEach((s, i) => {
+            if (s[1] < 12 || s[1] > 268 || s[2] < 12 || s[2] > 156) aufstellungsFehler.push(schluessel + ': ' + s[0] + ' liegt am Rand der Zeichnung');
+            const richtigeSeite = a.team === 'angriff' ? s[2] > linie + 9 : s[2] < linie - 9;
+            if (!richtigeSeite) aufstellungsFehler.push(schluessel + ': ' + s[0] + ' steht auf der falschen Seite der Line of Scrimmage');
+            for (let j = i + 1; j < sp.length; j++) {
+              if (Math.hypot(s[1] - sp[j][1], s[2] - sp[j][2]) < 17) aufstellungsFehler.push(schluessel + ': ' + s[0] + ' und ' + sp[j][0] + ' überdecken sich');
+            }
+          });
+          if (a.team === 'angriff') {
+            const vorn = Math.min.apply(null, sp.map((s) => s[2]));
+            const aufDerLinie = sp.filter((s) => s[2] === vorn).length;
+            if (aufDerLinie < 7 || sp.length - aufDerLinie > 4) {
+              aufstellungsFehler.push(schluessel + ': ' + aufDerLinie + ' Spieler auf der Linie und ' + (sp.length - aufDerLinie) + ' dahinter');
+            }
+          }
+        });
+        pruefe(aufstellungsFehler.length === 0, 'Jede Aufstellung hat 11 Spieler, die sich nicht überdecken und auf der richtigen Seite der Linie stehen; der Angriff hat mindestens 7 auf der Linie und höchstens 4 dahinter', aufstellungsFehler.join('; '));
+
+        const falscherPunkt = bildFragen
+          .filter((f) => {
+            const a = aufstellungen[f.bild.aufstellung];
+            const treffer = a ? a.spieler.filter((s) => s[0] === f.bild.punkt).length : 0;
+            return treffer !== 1 || NAMEN[f.bild.punkt] !== f.antworten[f.richtig];
+          })
+          .map((f) => f.id + ' (' + f.bild.punkt + ' ist ' + NAMEN[f.bild.punkt] + ', richtig steht ' + f.antworten[f.richtig] + ')');
+        pruefe(falscherPunkt.length === 0, 'Bei jeder Bildfrage leuchtet genau der Spieler, dessen Position die richtige Antwort nennt', falscherPunkt.join('; '));
+
+        const mehrdeutig = bildFragen
+          .filter((f) => {
+            const hat = (name) => f.antworten.indexOf(name) !== -1;
+            return (hat('Fullback') && hat('Running Back')) || (hat('Slot Receiver') && hat('Wide Receiver')) || (hat('Nose Tackle') && hat('Defensive Tackle'));
+          })
+          .map((f) => f.id);
+        pruefe(mehrdeutig.length === 0, 'Keine Bildfrage bietet zwei Antworten an, die beide stimmen könnten (Fullback und Running Back, Slot Receiver und Wide Receiver, Nose Tackle und Defensive Tackle)', mehrdeutig.join(', '));
+
+        const jeStufe = [1, 2, 3].map((s) => bildFragen.filter((f) => f.stufe === s).length);
+        pruefe(jeStufe[0] >= 5 && jeStufe[1] >= 5 && jeStufe[2] >= 1, 'Highschool und College haben je mindestens fünf Bildfragen (eine volle Runde), NFL mindestens eine (' + jeStufe.join(' / ') + ')', jeStufe.join(' / '));
+
+        // ---- Die Bild-Runde auf Highschool ----
+        pruefe(!zu('bilder-starten') && text('bilder-starten') === 'Positionen im Bild erkennen', 'Auf dem Start steht der Knopf „Positionen im Bild erkennen“', zu('bilder-starten') ? 'Knopf fehlt oder ist versteckt' : text('bilder-starten'));
+        pruefe(el('einfuehrung').textContent.indexOf('Positionen im Bild') !== -1, 'Die Einführung erwähnt die Positionen im Bild');
+        tippe('bilder-starten');
+        pruefe(!zu('frage') && text('fortschritt-text') === 'Positionen · Frage 1 von 5', 'Die Runde beginnt mit der Kopfzeile „Positionen · Frage 1 von 5“', text('fortschritt-text'));
+        const kopfzeile = text('kategorie');
+        const kasten = el('frage-bild');
+        const zeichnung = kasten.querySelector('svg');
+        const spielerZahl = kasten.querySelectorAll('.bf-spieler').length;
+        const leuchtend = kasten.querySelectorAll('.bf-punkt').length;
+        pruefe(
+          !kasten.hidden && !!zeichnung && spielerZahl === 22 && leuchtend === 1 && zeichnung.getAttribute('role') === 'img' && /leuchtet/.test(zeichnung.getAttribute('aria-label') || ''),
+          'Das Bild zeigt 22 Spieler, genau einer leuchtet, und es hat eine Beschreibung zum Vorlesen',
+          'Bild sichtbar: ' + !kasten.hidden + ', Zeichnung: ' + !!zeichnung + ', Spieler: ' + spielerZahl + ', leuchtend: ' + leuchtend
+        );
+        const w = rahmen.contentWindow;
+        const kuerzelDeckkraft = () => w.getComputedStyle(el('frage-bild').querySelector('.bf-name')).opacity;
+        const vorAntwort = kuerzelDeckkraft();
+        const erste = frageBeantworten(false, bildFragen.find((f) => f.id === kasten.dataset.frage));
+        const nachAntwort = kuerzelDeckkraft();
+        const aufgeloest = kasten.classList.contains('aufgeloest');
+        tippe('weiter');
+        const wiederZu = !kasten.classList.contains('aufgeloest') && kuerzelDeckkraft() === '0';
+        pruefe(vorAntwort === '0' && nachAntwort === '1' && aufgeloest && wiederZu, 'Die Kürzel der Spieler sind erst nach der Antwort zu sehen und bei der nächsten Frage wieder verborgen', 'vorher ' + vorAntwort + ', nachher ' + nachAntwort + ', nächste Frage verborgen: ' + wiederZu);
+
+        const spiel = [erste].concat(bildRundeSpielen(bildFragen, [true]));
+        pruefe(spiel.length === 5, 'Die Runde hat fünf Bildfragen', String(spiel.length));
+        antwortenPruefen(spiel, 'Bild-Runde: Eine falsche und vier richtige Antworten werden richtig erkannt');
+        markierungenPruefen(spiel, 'Bild-Runde: Die Rückmeldung zeigt die richtige Antwort am richtigen Platz');
+        reihenfolgePruefen(spiel, 'Bild-Runde');
+        pruefe(spiel.every((s) => s.frage.stufe === 1) && kopfzeile === 'Positionen · Stufe Highschool', 'Auf Highschool kommen nur Bildfragen von Highschool, die Kopfzeile nennt Thema und Stufe', kopfzeile + ' / Stufen: ' + spiel.map((s) => s.frage.stufe).join(','));
+
+        pruefe(!zu('ergebnis') && text('ergebnis-art').indexOf('Positionen · ') === 0 && text('ergebnis-punkte') === '4 von 5', 'Ergebnis: „Positionen“, 4 von 5', text('ergebnis-art') + ' / ' + text('ergebnis-punkte'));
+        pruefe(zu('ergebnis-gewinn'), 'Die Bild-Runde gibt keine Punkte (keine Zeile „+ Punkte“)', text('ergebnis-gewinn'));
+        const zeilen = Array.from(el('ergebnis-liste').children);
+        pruefe(zeilen.length === 5 && zeilen.every((li) => li.textContent.indexOf('Richtig: ') !== -1), 'Die Ergebnisliste nennt bei jeder Bildfrage die richtige Antwort', zeilen.map((li) => li.textContent).join(' | '));
+        const stand = speicherStand();
+        pruefe(
+          stand.punkte === 0 && JSON.stringify(stand.stufenPunkte) === '[0,0,0]' && Object.keys(stand.fragen).length === 0 && stand.freigabe === 1,
+          'Gespeichert: keine Punkte, keine gesehenen Fragen, keine neue Stufe',
+          JSON.stringify([stand.punkte, stand.stufenPunkte, Object.keys(stand.fragen).length, stand.freigabe])
+        );
+        const heutigerTag = stand.tage[heute()];
+        pruefe(!!heutigerTag && heutigerTag.runden === 1 && !heutigerTag.tagesquiz, 'Der Tag zählt als gespielt (Serie), das Tagesquiz bleibt offen', JSON.stringify(heutigerTag));
+        tippe('zum-start');
+        const startZeile = [text('serie'), text('punkte-gesamt'), text('ring-zahl'), text('tag-starten')];
+        pruefe(startZeile.join(' / ') === '1 / 0 / 0/5 / Tagesquiz starten', 'Danach steht der Start auf Serie 1, 0 Punkte, Tagesring 0/5 und „Tagesquiz starten“', startZeile.join(' / '));
+
+        // ---- Pause und Weiterspielen ----
+        tippe('bilder-starten');
+        frageBeantworten(true, bildFragen.find((f) => f.id === el('frage-bild').dataset.frage));
+        tippe('weiter');
+        const zweitesBild = el('frage-bild').dataset.frage;
+        const reiheVorPause = antwortTexte();
+        tippe('abbrechen');
+        const fortsetzenText = text('bilder-starten');
+        pruefe(fortsetzenText === 'Positionen im Bild fortsetzen', 'Nach der Pause bietet der Start „Positionen im Bild fortsetzen“ an', fortsetzenText);
+        tippe('bilder-starten');
+        pruefe(
+          text('fortschritt-text') === 'Positionen · Frage 2 von 5' && el('frage-bild').dataset.frage === zweitesBild && JSON.stringify(antwortTexte()) === JSON.stringify(reiheVorPause),
+          'Die Runde macht bei derselben Bildfrage 2 weiter, die Antworten stehen wie vor der Pause',
+          text('fortschritt-text') + ' / ' + el('frage-bild').dataset.frage + ' statt ' + zweitesBild
+        );
+
+        // ---- Läuft ein Tagesquiz, bleibt der Knopf zu (sonst würde er den Rundenspeicher überschreiben) ----
+        await appStarten(null);
+        tippe('tag-starten');
+        tippe('abbrechen');
+        pruefe(zu('bilder-starten'), 'Solange ein Tagesquiz angefangen ist, bleibt der Knopf für die Bilder zu');
+
+        // ---- Die Stufe bestimmt, welche Bildfragen kommen ----
+        const college = leererStand();
+        college.stufe = 2;
+        college.freigabe = 2;
+        await appStarten(college);
+        tippe('bilder-starten');
+        const kopfCollege = text('kategorie');
+        const spielCollege = bildRundeSpielen(bildFragen, [true]);
+        pruefe(
+          spielCollege.length === 5 && spielCollege.every((s) => s.frage.stufe === 2) && kopfCollege === 'Positionen · Stufe College',
+          'Auf College kommen nur Bildfragen von College',
+          kopfCollege + ' / Stufen: ' + spielCollege.map((s) => s.frage.stufe).join(',')
+        );
+        const nfl = leererStand();
+        nfl.stufe = 3;
+        nfl.freigabe = 3;
+        await appStarten(nfl);
+        tippe('bilder-starten');
+        const spielNfl = bildRundeSpielen(bildFragen, [true]);
+        const vonNfl = spielNfl.filter((s) => s.frage.stufe === 3).length;
+        pruefe(
+          spielNfl.length === 5 && vonNfl === Math.min(5, jeStufe[2]) && spielNfl.every((s) => s.frage.stufe >= 2),
+          'Auf NFL kommen zuerst alle Bildfragen von NFL, den Rest füllen die von College',
+          'Stufen: ' + spielNfl.map((s) => s.frage.stufe).join(',')
+        );
+      });
+
+      await gruppe('14. Eigener Speicher von Vorschau und echter App', async () => {
         pruefe(localStorage.getItem(SPEICHER_KEY) !== null, 'Die App schreibt ihren Stand unter ihrem eigenen Schlüssel (' + SPEICHER_KEY + ')');
         pruefe(localStorage.getItem(ANDERER_KEY) === anderesVorher, 'Der Speicher der ' + (IN_VORSCHAU ? 'echten App' : 'Vorschau') + ' wurde durch den Test nicht verändert');
       });

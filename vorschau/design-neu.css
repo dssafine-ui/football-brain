@@ -1,5 +1,6 @@
 /* Football Brain: neues Aussehen (Richtung A „Spieltag“). Schritt 1 seit 26.10.2026; Schritt 2 (Tagesring, Wochenleiste, Nachlesen,
-   Größenstaffel, Einblenden der Ansichten) steht ganz unten, Stand 28.10.2026. index.html lädt diese Datei nach style.css.
+   Größenstaffel, Einblenden der Ansichten) steht weiter unten, Stand 28.10.2026; ganz unten folgen die Positionen im Bild.
+   index.html lädt diese Datei nach style.css.
    Gleiche Persönlichkeit wie bisher, aber ruhiger: getönte Flächen statt Rahmen, einheitliche Rundungen,
    eigene Symbole statt Emoji, das Spielfeld als Fortschrittsbalken und die Rückmeldung als Panel von unten.
    Es wird nichts nachgeladen: Alle Symbole stecken als kleine Zeichnungen in dieser Datei. */
@@ -206,6 +207,17 @@ body[data-ansicht="frage"] .datum {
   justify-content: center;
   min-height: 2.75rem;
   padding: 0 0.9rem;
+}
+
+/* „Frage melden“ und „Frage vorschlagen“ stehen nebeneinander, der Hinweis darunter nimmt die ganze Breite. */
+.melden-zeile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.melden-zeile .quelle {
+  flex-basis: 100%;
 }
 
 .info {
@@ -1073,5 +1085,115 @@ main > section:not([hidden]) {
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ==========================================================================
+   Positionen im Bild (28.10.2026)
+   ========================================================================== */
+
+/* Eine Aufstellung von oben: Der Angriff steht unten und spielt nach oben, die Verteidigung steht oben, ein Spieler leuchtet.
+   Gezeichnet wird in app.js (bildZeichnen). Rasen und Linien nehmen die Farben der Variablen oben, damit das Bild im Dunkelmodus mitgeht.
+   Der Angriff ist rund und blau, die Verteidigung eckig und rot: Die Form hilft auch, wenn man Farben schlecht unterscheidet. */
+
+.frage-bild {
+  margin: 0 0 1rem;
+  overflow: hidden;
+  background: var(--karte);
+  border-radius: var(--r-karte);
+  box-shadow: var(--schatten);
+}
+
+.frage-bild svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.bf-rasen {
+  fill: var(--rasen);
+}
+
+.bf-streifen {
+  fill: var(--rasen-streifen);
+}
+
+.bf-linie {
+  fill: none;
+  stroke: var(--rasen-linie);
+  stroke-width: 1;
+}
+
+.bf-los {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.4;
+}
+
+/* Das andere Team steht nur zur Orientierung im Bild und tritt zurück. */
+.bf-gegner {
+  opacity: 0.4;
+}
+
+.bf-spieler {
+  stroke: #ffffff;
+  stroke-width: 1.6;
+}
+
+.bf-angriff {
+  fill: #2f7bf5;
+}
+
+.bf-abwehr {
+  fill: #e5484d;
+}
+
+/* Der leuchtende Spieler ist gold mit dunklem Rand, dahinter pulsiert ein Schein (bei „weniger Bewegung“ steht er still, siehe style.css). */
+.bf-punkt {
+  fill: #ffd84d;
+  stroke: #14213d;
+  stroke-width: 2;
+}
+
+.bf-glut {
+  fill: #ffd84d;
+  opacity: 0.6;
+  animation: bf-puls 1.5s ease-in-out infinite;
+}
+
+/* Die Kürzel erscheinen erst nach der Antwort. */
+.bf-name {
+  fill: #ffffff;
+  font-size: 8.5px;
+  font-weight: 800;
+  text-anchor: middle;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bf-name-punkt {
+  fill: #14213d;
+}
+
+.frage-bild.aufgeloest .bf-name {
+  opacity: 1;
+}
+
+.frage-bild-legende {
+  margin: 0;
+  padding: 0.5rem 0.8rem 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+@keyframes bf-puls {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.75;
   }
 }
