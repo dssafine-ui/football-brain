@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Football Brain</title>
+  <meta name="description" content="Football Brain: jeden Tag fünf neue Fragen zu American Football, in drei Wissensstufen, und danach so viele weitere, wie du magst.">
+  <meta name="theme-color" content="#2f7bf5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f5ac8" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Football Brain">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="design-neu.css">
+</head>
+<body>
+  <!-- Aussehen: style.css ist die Grundlage, design-neu.css (seit 26.10.2026) liegt darüber. app.js sucht die Elemente über ihre Kennungen, die müssen bleiben. -->
+
+  <!-- Der Football als Vorlage: einmal gezeichnet, dann im Kopf und in der Ladeanzeige verwendet.
+       Die Größe ist 0 statt display:none, damit die Farbverläufe überall greifen. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="fb-leder" gradientUnits="userSpaceOnUse" cx="-55" cy="-50" r="270">
+        <stop offset="0" stop-color="#f0a05a"/>
+        <stop offset="0.38" stop-color="#cc6a2a"/>
+        <stop offset="0.75" stop-color="#9a4417"/>
+        <stop offset="1" stop-color="#6a280c"/>
+      </radialGradient>
+      <linearGradient id="fb-schatten" gradientUnits="userSpaceOnUse" x1="0" y1="-30" x2="0" y2="112">
+        <stop offset="0" stop-color="#2a0d03" stop-opacity="0"/>
+        <stop offset="1" stop-color="#2a0d03" stop-opacity="0.5"/>
+      </linearGradient>
+      <linearGradient id="fb-glanz" gradientUnits="userSpaceOnUse" x1="-130" y1="0" x2="20" y2="0">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+        <stop offset="0.35" stop-color="#ffffff" stop-opacity="0.8"/>
+        <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="fb-boden">
+        <stop offset="0" stop-color="#06245f" stop-opacity="0.45"/>
+        <stop offset="1" stop-color="#06245f" stop-opacity="0"/>
+      </radialGradient>
+      <clipPath id="fb-form">
+        <path d="M-200 0C-150 -70 -70 -112.5 0 -112.5C70 -112.5 150 -70 200 0C150 70 70 112.5 0 112.5C-70 112.5 -150 70 -200 0Z"/>
+      </clipPath>
+      <path id="fb-stern" fill="#ffd84d" d="M0 -1Q0.12 -0.12 1 0Q0.12 0.12 0 1Q-0.12 0.12 -1 0Q-0.12 -0.12 0 -1Z"/>
+      <g id="fb-ball">
+        <path d="M-200 0C-150 -70 -70 -112.5 0 -112.5C70 -112.5 150 -70 200 0C150 70 70 112.5 0 112.5C-70 112.5 -150 70 -200 0Z" fill="url(#fb-leder)"/>
+        <g clip-path="url(#fb-form)" fill="none">
+          <g stroke="#fffaf0" stroke-width="12">
+            <path d="M-136 -125Q-168 0 -136 125"/>
+            <path d="M-110 -125Q-142 0 -110 125"/>
+            <path d="M136 -125Q168 0 136 125"/>
+            <path d="M110 -125Q142 0 110 125"/>
+          </g>
+          <path d="M-200 0H-64M64 0H200" stroke="#3a1608" stroke-opacity="0.5" stroke-width="3.5"/>
+        </g>
+        <path d="M-200 0C-150 -70 -70 -112.5 0 -112.5C70 -112.5 150 -70 200 0C150 70 70 112.5 0 112.5C-70 112.5 -150 70 -200 0Z" fill="url(#fb-schatten)"/>
+        <g fill="none" stroke-linecap="round" stroke-width="9">
+          <path d="M-62 4H62M-48 -18V26M-24 -21V29M0 -22V30M24 -21V29M48 -18V26" stroke="#2a0f04" stroke-opacity="0.45"/>
+          <path d="M-62 0H62M-48 -22V22M-24 -25V25M0 -26V26M24 -25V25M48 -22V22" stroke="#fffaf0"/>
+        </g>
+        <path d="M-124 -53C-98 -74 -56 -86 -8 -88" fill="none" stroke="url(#fb-glanz)" stroke-width="11" stroke-linecap="round"/>
+        <path d="M-200 0C-150 -70 -70 -112.5 0 -112.5C70 -112.5 150 -70 200 0C150 70 70 112.5 0 112.5C-70 112.5 -150 70 -200 0Z" fill="none" stroke="#3a1608" stroke-width="9" stroke-linejoin="round"/>
+      </g>
+    </defs>
+  </svg>
+
+  <header class="kopf">
+    <span class="vorschau" id="vorschau-schild" hidden>Vorschau</span>
+    <div class="kopf-inhalt">
+      <svg class="logo" viewBox="-210 -140 420 320" aria-hidden="true" focusable="false">
+        <ellipse cx="0" cy="152" rx="130" ry="13" fill="url(#fb-boden)"/>
+        <g transform="rotate(-24)"><use href="#fb-ball"/></g>
+        <use class="funkel" href="#fb-stern" transform="translate(-150 -92) scale(26)"/>
+        <use class="funkel f2" href="#fb-stern" transform="translate(172 64) scale(18)"/>
+        <use class="funkel f3" href="#fb-stern" transform="translate(-186 -28) scale(10)"/>
+      </svg>
+      <div class="kopf-text">
+        <h1>Football <span>Brain</span></h1>
+        <p class="datum" id="datum"></p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="laden">
+      <svg class="lade-ball" viewBox="-210 -140 420 320" aria-hidden="true" focusable="false">
+        <ellipse cx="0" cy="152" rx="130" ry="13" fill="url(#fb-boden)"/>
+        <g transform="rotate(-24)"><use href="#fb-ball"/></g>
+      </svg>
+      <p class="mitte">Fragen werden geladen …</p>
+    </section>
+
+    <section id="start" hidden>
+      <!-- Tagesring und Wochenleiste: app.js füllt Zahl, Ring und Zeile (tagesringZeigen) und baut die sieben Tage der Woche (wocheZeigen). -->
+      <div class="heute-karte" id="heute-karte" data-zustand="offen">
+        <div class="ring" id="ring" role="img" aria-label="Tagesquiz heute">
+          <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+            <circle class="ring-spur" cx="60" cy="60" r="50"/>
+            <circle class="ring-fuell" id="ring-fuell" cx="60" cy="60" r="50"/>
+          </svg>
+          <span class="ring-mitte"><span class="ring-zahl" id="ring-zahl">0/5</span><span class="ring-label">Heute</span></span>
+        </div>
+        <div class="heute-text">
+          <p class="heute-titel">Tagesquiz</p>
+          <p class="heute-zeile" id="heute-zeile"></p>
+        </div>
+        <ol class="woche" id="woche" aria-label="Diese Woche"></ol>
+      </div>
+      <div class="kennzahlen">
+        <div class="kennzahl">
+          <span class="sym" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M12 2.2c.9 3.3 3.5 5 5 7.5 1.4 2.4 1.6 4.7.9 6.9-.8 2.4-3 4.6-5.9 4.6-3.1 0-5.8-2.3-6.2-5.4-.3-2.4.7-4.2 2-5.6.2 1.4.8 2.3 1.7 2.8-.3-2.8.4-6.8 2.5-10.8z" fill="#ff7a1a"/><path d="M12 12.6c1.6 1.7 2.6 3.1 2.2 4.9-.3 1.3-1.2 2-2.2 2-1.1 0-2-.8-2.1-2-.1-1.5 1.1-2.8 2.1-4.9z" fill="#ffd84d"/></svg>
+          </span>
+          <div class="werte"><span class="zahl zahl-rot" id="serie">0</span><span class="label" id="serie-label">Tage in Serie</span></div>
+        </div>
+        <div class="kennzahl">
+          <span class="sym" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><g transform="rotate(-35 12 12)"><path d="M1.5 12C4 6 8 4 12 4s8 2 10.5 8c-2.5 6-6.5 8-10.5 8S4 18 1.5 12z" fill="#b8581f" stroke="#3a1608" stroke-width="1.1" stroke-linejoin="round"/><path d="M8 12h8M10 10v4M12 9.5v5M14 10v4" fill="none" stroke="#fffaf0" stroke-width="1.2" stroke-linecap="round"/><path d="M5.3 8.2q-.8 3.8 0 7.6M18.7 8.2q.8 3.8 0 7.6" fill="none" stroke="#fffaf0" stroke-width="1.2" stroke-linecap="round"/></g></svg>
+          </span>
+          <div class="werte"><span class="zahl zahl-gold" id="punkte-gesamt">0</span><span class="label">Punkte gesamt</span></div>
+        </div>
+        <div class="kennzahl">
+          <span class="sym" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><rect x="3.5" y="2.5" width="17" height="19" rx="4.5" fill="#1b62e0"/><path d="M9.3 9.4a2.8 2.8 0 1 1 4.1 2.5c-.9.5-1.4 1-1.4 2.1" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.3" r="1.2" fill="#ffffff"/></svg>
+          </span>
+          <div class="werte"><span class="zahl" id="vorrat">0</span><span class="label">Fragen im Vorrat</span></div>
+        </div>
+      </div>
+      <div class="stufen-block">
+        <p class="stufen-titel" id="stufen-titel">Wissensstufe</p>
+        <div class="stufen" id="stufen" role="group" aria-labelledby="stufen-titel"></div>
+        <p class="stufen-info" id="stufen-info" hidden></p>
+      </div>
+      <p class="hinweis" id="hinweis" hidden></p>
+      <button class="haupt" id="mehr-starten" type="button" hidden>Noch 5 neue Fragen</button>
+      <button class="haupt" id="tag-starten" type="button">Tagesquiz starten</button>
+      <button class="neben" id="ueben-starten" type="button" hidden>Übungsrunde (alte Fragen wiederholen)</button>
+      <button class="neben" id="nachlesen-starten" type="button" hidden>Beantwortete Fragen nachlesen</button>
+      <details class="info" id="installieren">
+        <summary>Als App aufs Handy legen</summary>
+        <p><strong>iPhone:</strong> In Safari unten auf das Teilen-Symbol tippen, dann „Zum Home-Bildschirm“. Danach nur noch über das neue Symbol öffnen.</p>
+        <p><strong>Android:</strong> In Chrome oben rechts auf die drei Punkte tippen, dann „App installieren“ oder „Zum Startbildschirm hinzufügen“.</p>
+      </details>
+      <div class="fuss">
+        <span id="stand"></span>
+        <button class="klein" id="zuruecksetzen" type="button">Fortschritt zurücksetzen</button>
+      </div>
+      <p class="quelle">Gebaut von Kabeljunge89</p>
+    </section>
+
+    <section id="frage" hidden>
+      <div class="fortschritt-kopf">
+        <span id="fortschritt-text"></span>
+        <button class="klein" id="abbrechen" type="button">Pause</button>
+      </div>
+      <div class="balken"><div id="fortschritt-balken"></div></div>
+      <p class="kategorie" id="kategorie"></p>
+      <h2 id="frage-text"></h2>
+      <div class="antworten" id="antworten"></div>
+      <div class="rueckmeldung" id="rueckmeldung" hidden>
+        <h3 id="rueckmeldung-titel" tabindex="-1"></h3>
+        <p id="rueckmeldung-richtig"></p>
+        <p id="rueckmeldung-text"></p>
+        <p class="quelle" id="rueckmeldung-quelle" hidden></p>
+        <button class="haupt" id="weiter" type="button">Nächste Frage</button>
+      </div>
+    </section>
+
+    <section id="ergebnis" hidden>
+      <div class="ergebnis-kopf">
+        <p class="kategorie" id="ergebnis-art"></p>
+        <p class="punkte" id="ergebnis-punkte"></p>
+        <p id="ergebnis-text"></p>
+        <p class="serie-zeile" id="ergebnis-serie"></p>
+        <p class="gewinn" id="ergebnis-gewinn" hidden></p>
+      </div>
+      <button class="haupt" id="weiter-spielen" type="button" hidden>Noch 5 neue Fragen</button>
+      <p class="hinweis" id="mehr-hinweis" hidden></p>
+      <ol class="liste" id="ergebnis-liste"></ol>
+      <button class="haupt" id="teilen" type="button">Ergebnis teilen</button>
+      <p class="quelle" id="teilen-hinweis"></p>
+      <button class="neben" id="zum-start" type="button">Zurück zum Start</button>
+    </section>
+
+    <!-- Nachlesen: beantwortete Fragen nach Thema. app.js füllt die Themen (nachlesenUebersichtZeigen) und die Fragen eines Themas (nachlesenThemaZeigen). -->
+    <section id="nachlesen" hidden>
+      <div class="nachlesen-kopf">
+        <button class="pille" id="nachlesen-zurueck" type="button">Zurück zum Start</button>
+      </div>
+      <h2 id="nachlesen-titel" tabindex="-1">Nachlesen</h2>
+      <p class="quelle" id="nachlesen-info"></p>
+      <div class="themen" id="nachlesen-themen"></div>
+      <ol class="nachlesen-liste" id="nachlesen-liste" hidden></ol>
+    </section>
+
+    <section id="fehler" hidden>
+      <h2>Die Fragen lassen sich gerade nicht laden</h2>
+      <p id="fehler-text"></p>
+      <button class="haupt" id="nochmal" type="button">Nochmal versuchen</button>
+    </section>
+  </main>
+
+  <noscript><p class="hinweis">Für das Quiz muss JavaScript eingeschaltet sein.</p></noscript>
+  <script src="app.js" defer></script>
+</body>
+</html>
