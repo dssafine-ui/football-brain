@@ -3,7 +3,10 @@
 // Das Tagesquiz hat fünf Fragen. Danach lassen sich ohne Obergrenze weitere neue Fragen spielen, immer zufällig aus allen Themen.
 // Highschool ist von Anfang an offen. College und NFL werden frei, sobald man auf der Stufe davor genug Punkte gesammelt hat.
 // Neue Fragen zählen immer für die nächste Stufe, Wiederholungen in der Übungsrunde nur, wenn auf der Stufe alle neuen Fragen durch sind.
-// Dazu: Einführung beim ersten Start, Fortschritt per Code auf ein anderes Gerät mitnehmen, Fragen melden, beantwortete Fragen nachlesen.
+// Dazu: Einführung beim ersten Start, Fortschritt per Code auf ein anderes Gerät mitnehmen, Fragen melden und vorschlagen, beantwortete Fragen nachlesen.
+// Und: das Positions-Quiz (Positionen im Bild). Eine Aufstellung wird gezeichnet, ein Spieler leuchtet, man sagt seine Position.
+// Es hat eine eigene Karte auf dem Start, direkt unter dem Tagesquiz. Die Bildfragen stehen hier im Code
+// (Abschnitt „Positions-Quiz“), nicht in fragen.json, und sie geben keine Punkte.
 (function () {
   'use strict';
 
@@ -37,8 +40,9 @@
   // Neue Fragen (Tagesquiz und weitere Fragen) zählen voll, Wiederholungen in der Übungsrunde halb.
   const PUNKTE_NEU = 10;
   const PUNKTE_UEBUNG = 5;
-  // Rundenarten: tag = Tagesquiz, mehr = weitere neue Fragen nach dem Tagesquiz, ueben = alte Fragen wiederholen.
-  const RUNDENNAMEN = { tag: 'Tagesquiz', mehr: 'Weitere Fragen', ueben: 'Übungsrunde' };
+  // Rundenarten: tag = Tagesquiz, mehr = weitere neue Fragen nach dem Tagesquiz, ueben = alte Fragen wiederholen,
+  // bild = Positions-Quiz mit Bildfragen (Training ohne Punkte).
+  const RUNDENNAMEN = { tag: 'Tagesquiz', mehr: 'Weitere Fragen', ueben: 'Übungsrunde', bild: 'Positions-Quiz' };
 
   let fragen = [];
   let fragenNachId = {};
@@ -50,6 +54,8 @@
   let ergebnisRunde = null;
   // Das Thema, das im Nachlesen gerade offen ist (null: die Übersicht der Themen).
   let nachlesenThema = null;
+  // Die Bildfragen (Positionen), die zu ihrer Zeichnung passen. Sie stehen nicht in `fragen`, wohl aber in fragenNachId.
+  let bildFragen = [];
 
   function $(id) {
     return document.getElementById(id);
@@ -242,7 +248,9 @@
     return speicher.freigabe > vorher ? speicher.freigabe : 0;
   }
 
+  // Das Positions-Quiz ist Training: keine Punkte, damit sich mit den wenigen Bildfragen keine Stufe freispielen lässt.
   function punkteJeFrage(art) {
+    if (art === 'bild') return 0;
     return art === 'ueben' ? PUNKTE_UEBUNG : PUNKTE_NEU;
   }
 
@@ -430,6 +438,11 @@
       const falsche = alte.filter((frage) => speicher.fragen[frage.id].richtig === false);
       const richtige = alte.filter((frage) => speicher.fragen[frage.id].richtig !== false);
       kandidaten = falsche.concat(richtige);
+    } else if (art === 'bild') {
+      // Positions-Quiz: erst die Bildfragen der gewählten Stufe. Reichen sie nicht für eine Runde, kommen leichtere dazu (die schwersten zuerst).
+      kandidaten = mischen(bildFragen.filter((frage) => stufeVon(frage) === speicher.stufe)).concat(
+        mischen(bildFragen.filter((frage) => stufeVon(frage) < speicher.stufe)).sort((a, b) => stufeVon(b) - stufeVon(a))
+      );
     } else {
       // Tagesquiz und weitere Fragen: zufällig aus allen noch ungesehenen Fragen der Stufe, egal zu welchem Thema.
       kandidaten = mischen(ungesehene());
@@ -503,6 +516,13 @@
     const index = antwortOrdnung(runde, position)[anzeige];
     if (index === undefined) return;
     runde.antworten[position] = index;
+    // Bildfragen (Positionen) sind Training: Sie bleiben außerhalb der gesehenen Fragen, der Punkte und der Stufen.
+    if (runde.art === 'bild') {
+      speicher.runde = runde;
+      speicherSichern();
+      rueckmeldungZeigen(frage, index);
+      return;
+    }
     const alt = istObjekt(speicher.fragen[frage.id]) ? speicher.fragen[frage.id] : {};
     const richtig = index === frage.richtig;
     speicher.fragen[frage.id] = { tag: alt.tag || runde.tag, richtig: richtig };
@@ -595,6 +615,9 @@
     // Solange eine Tagesrunde oder eine Runde mit weiteren Fragen läuft, bleibt die Übung zu: Sie würde den einzigen Rundenspeicher überschreiben.
     uebenKnopf.hidden = zustand === 'laeuft' || mehr === 'laeuft' || gesehene().length === 0;
     uebenKnopf.textContent = aktiveRunde('ueben') ? 'Übungsrunde fortsetzen' : 'Übungsrunde (alte Fragen wiederholen)';
+
+    // Das Positions-Quiz hat eine eigene Karte direkt unter dem Tagesquiz.
+    bilderKarteZeigen();
 
     // Nachlesen gibt es erst, wenn schon eine Frage beantwortet wurde.
     $('nachlesen-starten').hidden = beantwortete().length === 0;
@@ -763,6 +786,7 @@
     });
     const frei = STUFEN.slice(1).map((stufe, i) => stufe.name + ' mit ' + stufe.freiAb + ' Punkten auf ' + STUFEN[i].name);
     zeilen.push('Die nächste Stufe wird frei: ' + frei.join(', ') + '. Wiederholungen zählen dafür erst, wenn alle neuen Fragen einer Stufe durch sind.');
+    zeilen.push('Positions-Quiz: Im Bild leuchtet ein Spieler, du sagst, welche Position er spielt. Das ist Training und gibt keine Punkte.');
     zeilen.forEach((text) => {
       const punkt = document.createElement('li');
       punkt.textContent = text;
@@ -880,7 +904,8 @@
     info.scrollIntoView({ block: 'nearest' });
   }
 
-  // „Frage melden“ unter den Antworten: Der Knopf reicht Kennung und Wortlaut der Frage weiter, damit sie sich prüfen lässt.
+  // „Frage melden“ und „Frage vorschlagen“ unter den Antworten. Melden reicht Kennung und Wortlaut der Frage weiter, damit sie sich prüfen lässt;
+  // Vorschlagen bereitet eine Vorlage für eine neue Frage vor. Beide zeigen ihren Hinweis im selben Absatz darunter.
   function meldenAufbauen() {
     const zeile = document.createElement('div');
     zeile.className = 'melden-zeile';
@@ -890,12 +915,30 @@
     knopf.id = 'melden';
     knopf.textContent = 'Frage melden';
     knopf.addEventListener('click', frageMelden);
+    const vorschlag = document.createElement('button');
+    vorschlag.type = 'button';
+    vorschlag.className = 'klein';
+    vorschlag.id = 'vorschlagen';
+    vorschlag.textContent = 'Frage vorschlagen';
+    vorschlag.addEventListener('click', frageVorschlagen);
     const hinweis = document.createElement('p');
     hinweis.className = 'quelle';
     hinweis.id = 'melden-hinweis';
     hinweis.hidden = true;
-    zeile.append(knopf, hinweis);
+    zeile.append(knopf, vorschlag, hinweis);
     $('rueckmeldung').after(zeile);
+  }
+
+  // Reicht einen vorbereiteten Text übers Teilen-Menü weiter, sonst über die Zwischenablage.
+  function textWeitergeben(text, kopiert) {
+    const hinweis = $('melden-hinweis');
+    if (navigator.share) {
+      navigator.share({ text: text }).catch((fehler) => {
+        if (!fehler || fehler.name !== 'AbortError') kopieren(text, hinweis, kopiert);
+      });
+    } else {
+      kopieren(text, hinweis, kopiert);
+    }
   }
 
   function frageMelden() {
@@ -906,15 +949,21 @@
       frage.id + ' · ' + (frage.kategorie ? frage.kategorie + ' · ' : '') + 'Stufe ' + STUFEN[stufeVon(frage) - 1].name + '\n' +
       '„' + frage.frage + '“\n' +
       'Mein Hinweis: ';
-    const hinweis = $('melden-hinweis');
-    const kopiert = 'Text kopiert. Füge ihn in eine Nachricht ein, ergänze deinen Hinweis und schick ihn dem, der dir die App gegeben hat.';
-    if (navigator.share) {
-      navigator.share({ text: text }).catch((fehler) => {
-        if (!fehler || fehler.name !== 'AbortError') kopieren(text, hinweis, kopiert);
-      });
-    } else {
-      kopieren(text, hinweis, kopiert);
-    }
+    textWeitergeben(text, 'Text kopiert. Füge ihn in eine Nachricht ein, ergänze deinen Hinweis und schick ihn dem, der dir die App gegeben hat.');
+  }
+
+  // Die Vorlage gehört zu keiner gezeigten Frage: Wer eine neue Frage kennt, füllt Frage, Antworten, richtige Antwort und Quelle aus.
+  function frageVorschlagen() {
+    const text =
+      'Football Brain, Frage vorschlagen\n' +
+      'Frage: \n' +
+      'A) \n' +
+      'B) \n' +
+      'C) \n' +
+      'D) \n' +
+      'Richtig ist: \n' +
+      'Quelle (Link oder Regelbuch): ';
+    textWeitergeben(text, 'Vorlage kopiert. Füge sie in eine Nachricht ein, trag deine Frage ein und schick sie dem, der dir die App gegeben hat.');
   }
 
   // Tippt jemand auf eine gesperrte Stufe, steht unter den Knöpfen, was dafür noch fehlt.
@@ -993,6 +1042,7 @@
     const stufenName = STUFEN[stufeVon(frage) - 1].name;
     $('kategorie').textContent = (frage.kategorie ? frage.kategorie + ' · ' : '') + 'Stufe ' + stufenName;
     $('frage-text').textContent = frage.frage;
+    bildZeigen(frage);
 
     const box = $('antworten');
     box.textContent = '';
@@ -1045,6 +1095,8 @@
   // gewaehlt: Platz der gewählten Antwort in der Fragenliste. Die Knöpfe stehen in der Reihenfolge von antwortOrdnung.
   function rueckmeldungZeigen(frage, gewaehlt) {
     const richtig = gewaehlt === frage.richtig;
+    // Bei einer Bildfrage zeigt das Bild jetzt die Kürzel aller Spieler.
+    $('frage-bild').classList.add('aufgeloest');
     const ordnung = antwortOrdnung(runde, position);
     const knoepfe = $('antworten').children;
     for (let i = 0; i < knoepfe.length; i++) {
@@ -1173,7 +1225,8 @@
       vorlesen.className = 'nur-vorlesen';
       vorlesen.textContent = eintrag.richtig ? 'Richtig beantwortet: ' : 'Falsch beantwortet: ';
       inhalt.append(vorlesen, eintrag.frage.frage);
-      if (!eintrag.richtig) {
+      // Bildfragen sehen im Ergebnis alle gleich aus (derselbe Fragetext), darum steht dort immer die richtige Antwort.
+      if (!eintrag.richtig || eintrag.frage.bild) {
         const loesung = document.createElement('span');
         loesung.className = 'quelle';
         loesung.textContent = 'Richtig: ' + eintrag.frage.antworten[eintrag.frage.richtig];
@@ -1183,6 +1236,434 @@
       liste.appendChild(punkt);
     });
     $('teilen-hinweis').textContent = '';
+  }
+
+  // ---------- Positions-Quiz (Positionen im Bild) ----------
+
+  // Eine Aufstellung von oben gesehen: Der Angriff steht unten und spielt nach oben, die Verteidigung steht oben.
+  // Die Zeichnung ist 280 breit und 166 hoch, die Line of Scrimmage liegt bei y = 78.
+  // Die Bildfragen stehen hier im Code und nicht in fragen.json. Sie geben keine Punkte, zählen nicht für die Stufen
+  // und landen nicht unter den gesehenen Fragen (siehe antwortWaehlen). Der Fortschritt bleibt also, wie er ist.
+  const BILD_BREITE = 280;
+  const BILD_HOEHE = 166;
+  const BILD_LINIE_Y = 78;
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+
+  // Die Karte auf dem Start: links eine kleine Aufstellung, rechts Titel und ein Satz.
+  // Das kleine Bild ist dieselbe Zeichnung wie im Quiz (Angriff in der I-Formation, der Quarterback leuchtet), ohne Kürzel und Legende.
+  // Der Ausschnitt (x, y, Breite, Höhe) lässt die Spieler ganz außen weg (Receiver, Cornerbacks), damit die Punkte auf dem kleinen Bild größer wirken.
+  const KARTE_BILD = { aufstellung: 'iform', gegner: 'vier3', punkt: 'QB', lage: '' };
+  const KARTE_AUSSCHNITT = '30 10 220 150';
+  const ZAHLWOERTER = { 3: 'Drei', 4: 'Vier', 5: 'Fünf', 6: 'Sechs', 7: 'Sieben', 8: 'Acht', 9: 'Neun', 10: 'Zehn' };
+  const KARTE_ZEILE = (ZAHLWOERTER[FRAGEN_PRO_RUNDE] || FRAGEN_PRO_RUNDE) + ' Bildfragen: Erkenne den goldenen Spieler';
+
+  // Spieler: [Kennung, x, y, Kürzel]. Fehlt das Kürzel, gilt die Kennung. Jedes Team hat 11 Spieler.
+  // Der Angriff hält die Regel „mindestens 7 Spieler auf der Linie (ganz vorn), höchstens 4 dahinter“.
+  const AUFSTELLUNGEN = {
+    iform: {
+      beschreibung: 'der Angriff in der I-Formation',
+      team: 'angriff',
+      spieler: [
+        ['LT', 78, 91], ['LG', 104, 91], ['C', 130, 91], ['RG', 156, 91], ['RT', 182, 91],
+        ['TE', 208, 91], ['X', 16, 91, 'WR'], ['Z', 264, 106, 'WR'],
+        ['QB', 130, 111], ['FB', 130, 129], ['HB', 130, 147, 'RB'],
+      ],
+    },
+    shotgun: {
+      beschreibung: 'der Angriff im Shotgun',
+      team: 'angriff',
+      spieler: [
+        ['LT', 78, 91], ['LG', 104, 91], ['C', 130, 91], ['RG', 156, 91], ['RT', 182, 91],
+        ['TE', 208, 91], ['X', 16, 91, 'WR'], ['SLOT', 58, 106, 'WR'], ['Z', 264, 106, 'WR'],
+        ['QB', 130, 131], ['RB', 158, 131],
+      ],
+    },
+    vier3: {
+      beschreibung: 'die Verteidigung in der 4-3-Aufstellung',
+      team: 'abwehr',
+      spieler: [
+        ['DE1', 70, 65, 'DE'], ['DT1', 112, 65, 'DT'], ['DT2', 148, 65, 'DT'], ['DE2', 190, 65, 'DE'],
+        ['WILL', 80, 44, 'LB'], ['MIKE', 130, 44, 'LB'], ['SAM', 180, 44, 'LB'],
+        ['CB1', 16, 60, 'CB'], ['CB2', 264, 60, 'CB'],
+        ['FS', 98, 22, 'S'], ['SS', 172, 22, 'S'],
+      ],
+    },
+    drei4: {
+      beschreibung: 'die Verteidigung in der 3-4-Aufstellung',
+      team: 'abwehr',
+      spieler: [
+        ['DE1', 80, 65, 'DE'], ['NT', 130, 65], ['DE2', 180, 65, 'DE'],
+        ['OLB1', 56, 50, 'OLB'], ['ILB1', 106, 44, 'ILB'], ['ILB2', 154, 44, 'ILB'], ['OLB2', 204, 50, 'OLB'],
+        ['CB1', 16, 60, 'CB'], ['CB2', 264, 60, 'CB'],
+        ['FS', 98, 22, 'S'], ['SS', 172, 22, 'S'],
+      ],
+    },
+  };
+
+  // Die Quellen sind die NFL-Begriffsliste und die Wikipedia-Seite zu den Positionen (beide am 28.10.2026 gelesen).
+  const QUELLE_NFL = 'https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms';
+  const QUELLE_WIKIPEDIA = { text: 'American football positions bei Wikipedia', url: 'https://en.wikipedia.org/wiki/American_football_positions' };
+
+  function nflQuelle(begriff) {
+    return { text: 'Football Terms (' + begriff + ') bei NFL Football Operations', url: QUELLE_NFL };
+  }
+
+  const FRAGE_ANGRIFF = 'Angriff: Welche Position spielt der leuchtende Spieler?';
+  const FRAGE_ABWEHR = 'Verteidigung: Welche Position spielt der leuchtende Spieler?';
+  const FRAGE_SHOTGUN = 'Angriff im Shotgun: Welche Position spielt der leuchtende Spieler?';
+
+  // Bildfragen: wie die Fragen der Liste (Kennung, Stufe, Antworten, richtig, Erklärung, Quelle), dazu das Bild.
+  // aufstellung: das Team, in dem der Spieler leuchtet. gegner: das andere Team, es steht nur blass zur Orientierung im Bild.
+  // punkt: Kennung des leuchtenden Spielers. lage: sagt für Vorlese-Programme, wo er steht, ohne seine Position zu verraten.
+  // Die Kennungen beginnen mit „b“, damit sie nie mit denen aus fragen.json zusammenstoßen.
+  const BILDFRAGEN = [
+    {
+      id: 'b01',
+      stufe: 1,
+      kategorie: 'Positionen',
+      frage: FRAGE_ANGRIFF,
+      bild: { aufstellung: 'iform', gegner: 'vier3', punkt: 'QB', lage: 'Er steht direkt hinter dem Spieler in der Mitte der Linie.' },
+      antworten: ['Quarterback', 'Center', 'Tight End', 'Running Back'],
+      richtig: 0,
+      erklaerung: 'Der Quarterback steht hinter dem Center und bekommt von ihm den Ball. Dann wirft er, übergibt den Ball oder läuft selbst.',
+      quelle: nflQuelle('Quarterback'),
+    },
+    {
+      id: 'b02',
+      stufe: 1,
+      kategorie: 'Positionen',
+      frage: FRAGE_ANGRIFF,
+      bild: { aufstellung: 'iform', gegner: 'vier3', punkt: 'C', lage: 'Er steht in der Mitte der vordersten Reihe, direkt an der Linie.' },
+      antworten: ['Center', 'Quarterback', 'Wide Receiver', 'Running Back'],
+      richtig: 0,
+      erklaerung: 'Der Center steht in der Mitte der Offensive Line. Er gibt den Ball zwischen den Beinen an den Quarterback (der Snap) und startet so jeden Spielzug.',
+      quelle: nflQuelle('Center'),
+    },
+    {
+      id: 'b03',
+      stufe: 1,
+      kategorie: 'Positionen',
+      frage: FRAGE_ANGRIFF,
+      bild: { aufstellung: 'iform', gegner: 'vier3', punkt: 'X', lage: 'Er steht links außen, weit weg von den anderen Spielern, an der Linie.' },
+      antworten: ['Wide Receiver', 'Tight End', 'Quarterback', 'Center'],
+      richtig: 0,
+      erklaerung: 'Wide Receiver stehen weit außen, nahe der Seitenlinie. Sie laufen nach vorn und fangen Pässe vom Quarterback.',
+      quelle: nflQuelle('Wide Receiver'),
+    },
+    {
+      id: 'b04',
+      stufe: 1,
+      kategorie: 'Positionen',
+      frage: FRAGE_ANGRIFF,
+      bild: { aufstellung: 'iform', gegner: 'vier3', punkt: 'HB', lage: 'Er steht in der Mitte ganz hinten.' },
+      antworten: ['Running Back', 'Quarterback', 'Tight End', 'Center'],
+      richtig: 0,
+      erklaerung: 'Der Running Back (auch Halfback oder Tailback) steht hinter dem Quarterback. Er bekommt den Ball oft übergeben und läuft damit nach vorn.',
+      quelle: nflQuelle('Running Back'),
+    },
+    {
+      id: 'b05',
+      stufe: 1,
+      kategorie: 'Positionen',
+      frage: FRAGE_ANGRIFF,
+      bild: { aufstellung: 'iform', gegner: 'vier3', punkt: 'TE', lage: 'Er steht rechts am Ende der vordersten Reihe.' },
+      antworten: ['Tight End', 'Wide Receiver', 'Running Back', 'Quarterback'],
+      richtig: 0,
+      erklaerung: 'Der Tight End steht am Ende der Offensive Line, direkt neben dem Tackle. Er blockt und fängt auch Pässe.',
+      quelle: nflQuelle('Tight End'),
+    },
+    {
+      id: 'b06',
+      stufe: 1,
+      kategorie: 'Positionen',
+      frage: FRAGE_ABWEHR,
+      bild: { aufstellung: 'vier3', gegner: 'iform', punkt: 'CB1', lage: 'Er steht links außen, weit weg von den anderen Verteidigern.' },
+      antworten: ['Cornerback', 'Safety', 'Linebacker', 'Defensive End'],
+      richtig: 0,
+      erklaerung: 'Cornerbacks stehen weit außen, gegenüber der Wide Receiver. In der Grundaufstellung gibt es zwei davon.',
+      quelle: nflQuelle('Cornerback'),
+    },
+    {
+      id: 'b07',
+      stufe: 1,
+      kategorie: 'Positionen',
+      frage: FRAGE_ABWEHR,
+      bild: { aufstellung: 'vier3', gegner: 'iform', punkt: 'FS', lage: 'Er steht ganz oben, am weitesten von der Linie weg.' },
+      antworten: ['Safety', 'Cornerback', 'Linebacker', 'Defensive Tackle'],
+      richtig: 0,
+      erklaerung: 'Safeties stehen am weitesten hinten, etwa 10 bis 15 Yards hinter der Line of Scrimmage. Sie verteidigen gegen Pässe und helfen gegen den Lauf.',
+      quelle: nflQuelle('Safety (Position)'),
+    },
+    {
+      id: 'b08',
+      stufe: 1,
+      kategorie: 'Positionen',
+      frage: FRAGE_ABWEHR,
+      bild: { aufstellung: 'vier3', gegner: 'iform', punkt: 'MIKE', lage: 'Er steht in der Mitte, hinter der vordersten Reihe der Verteidiger.' },
+      antworten: ['Linebacker', 'Safety', 'Cornerback', 'Defensive End'],
+      richtig: 0,
+      erklaerung: 'Linebacker stehen drei bis fünf Yards hinter der Defensive Line. Sie stoppen Läufer, decken Receiver oder stürmen auf den Quarterback.',
+      quelle: nflQuelle('Linebacker'),
+    },
+    {
+      id: 'b09',
+      stufe: 2,
+      kategorie: 'Positionen',
+      frage: FRAGE_ANGRIFF,
+      bild: { aufstellung: 'iform', gegner: 'vier3', punkt: 'LG', lage: 'Er steht in der vordersten Reihe, direkt links neben dem Spieler in der Mitte.' },
+      antworten: ['Offensive Guard', 'Offensive Tackle', 'Center', 'Tight End'],
+      richtig: 0,
+      erklaerung: 'Zwei Guards stehen links und rechts neben dem Center. Sie blocken für den Quarterback und öffnen Lücken für den Running Back.',
+      quelle: nflQuelle('Offensive Guard'),
+    },
+    {
+      id: 'b10',
+      stufe: 2,
+      kategorie: 'Positionen',
+      frage: FRAGE_ANGRIFF,
+      bild: { aufstellung: 'iform', gegner: 'vier3', punkt: 'LT', lage: 'Er steht links am Ende der vordersten Reihe.' },
+      antworten: ['Offensive Tackle', 'Offensive Guard', 'Center', 'Tight End'],
+      richtig: 0,
+      erklaerung: 'Die beiden Tackles stehen außen an der Offensive Line, neben den Guards. Sie schützen den Quarterback vor den anstürmenden Verteidigern.',
+      quelle: nflQuelle('Offensive Tackle'),
+    },
+    {
+      id: 'b11',
+      stufe: 2,
+      kategorie: 'Positionen',
+      frage: FRAGE_ABWEHR,
+      bild: { aufstellung: 'vier3', gegner: 'iform', punkt: 'DE1', lage: 'Er steht links am Ende der vordersten Reihe der Verteidiger.' },
+      antworten: ['Defensive End', 'Defensive Tackle', 'Linebacker', 'Cornerback'],
+      richtig: 0,
+      erklaerung: 'Defensive Ends stehen an den äußeren Enden der Defensive Line. Sie setzen den Quarterback unter Druck oder stoppen den Running Back.',
+      quelle: nflQuelle('Defensive End'),
+    },
+    {
+      id: 'b12',
+      stufe: 2,
+      kategorie: 'Positionen',
+      frage: FRAGE_ABWEHR,
+      bild: { aufstellung: 'vier3', gegner: 'iform', punkt: 'DT1', lage: 'Er steht in der vordersten Reihe der Verteidiger, innen links.' },
+      antworten: ['Defensive Tackle', 'Defensive End', 'Linebacker', 'Safety'],
+      richtig: 0,
+      erklaerung: 'Defensive Tackles stehen innen in der Defensive Line, meist gegenüber den Guards. In der 4-3-Defense gibt es zwei davon.',
+      quelle: nflQuelle('Defensive Tackle'),
+    },
+    {
+      id: 'b13',
+      stufe: 2,
+      kategorie: 'Positionen',
+      frage: FRAGE_ANGRIFF,
+      bild: { aufstellung: 'iform', gegner: 'vier3', punkt: 'FB', lage: 'Er steht in der Mitte einer Reihe von drei Spielern hintereinander.' },
+      antworten: ['Fullback', 'Tight End', 'Quarterback', 'Offensive Guard'],
+      richtig: 0,
+      erklaerung: 'Der Fullback ist meist größer und stärker als der Halfback. Er steht näher an der Linie und blockt oft für ihn.',
+      quelle: QUELLE_WIKIPEDIA,
+    },
+    {
+      id: 'b14',
+      stufe: 2,
+      kategorie: 'Positionen',
+      frage: FRAGE_SHOTGUN,
+      bild: { aufstellung: 'shotgun', gegner: 'vier3', punkt: 'QB', lage: 'Er steht in der Mitte, mehrere Schritte hinter der Linie.' },
+      antworten: ['Quarterback', 'Running Back', 'Center', 'Tight End'],
+      richtig: 0,
+      erklaerung: 'Im Shotgun steht der Quarterback nicht direkt hinter dem Center, sondern einige Yards weiter hinten. Der Center spielt ihm den Ball nach hinten zu.',
+      quelle: QUELLE_WIKIPEDIA,
+    },
+    {
+      id: 'b15',
+      stufe: 3,
+      kategorie: 'Positionen',
+      frage: FRAGE_SHOTGUN,
+      bild: { aufstellung: 'shotgun', gegner: 'vier3', punkt: 'SLOT', lage: 'Er steht links, ein Stück hinter der Linie, zwischen dem äußeren Spieler und der Linie.' },
+      antworten: ['Slot Receiver', 'Tight End', 'Running Back', 'Quarterback'],
+      richtig: 0,
+      erklaerung: 'Ein Wide Receiver, der zwischen dem äußersten Receiver und der Offensive Line steht, spielt im Slot. Man nennt ihn Slot Receiver.',
+      quelle: QUELLE_WIKIPEDIA,
+    },
+    {
+      id: 'b16',
+      stufe: 3,
+      kategorie: 'Positionen',
+      frage: 'Verteidigung in der 3-4-Aufstellung: Welche Position spielt der leuchtende Spieler?',
+      bild: { aufstellung: 'drei4', gegner: 'iform', punkt: 'NT', lage: 'Er steht in der Mitte der vordersten Reihe der Verteidiger.' },
+      antworten: ['Nose Tackle', 'Defensive End', 'Inside Linebacker', 'Safety'],
+      richtig: 0,
+      erklaerung: 'Der Nose Tackle steht in der Defensive Line direkt gegenüber vom Center. Er gehört vor allem zur 3-4-Defense mit drei Linemen und vier Linebackern.',
+      quelle: nflQuelle('Nose Guard/Nose Tackle'),
+    },
+  ];
+
+  // Für den Selbsttest (pruefen.html) sichtbar: die Bildfragen und die Aufstellungen. Reine Daten, die App liest sie nur.
+  window.footballBrainBilder = { fragen: BILDFRAGEN, aufstellungen: AUFSTELLUNGEN, linie: BILD_LINIE_Y };
+
+  // Passen die Angaben zu den Aufstellungen? Beide Teams müssen es geben, und der leuchtende Spieler muss im ersten Team stehen.
+  function bildGueltig(bild) {
+    return (
+      istObjekt(bild) &&
+      !!AUFSTELLUNGEN[bild.aufstellung] &&
+      !!AUFSTELLUNGEN[bild.gegner] &&
+      AUFSTELLUNGEN[bild.aufstellung].spieler.some((zeile) => zeile[0] === bild.punkt)
+    );
+  }
+
+  // Meldet die Bildfragen an, damit eine angefangene Runde nach einem Neustart weitergeht (aktiveRunde sucht die Fragen über ihre Kennung).
+  // Eine Kennung, die schon in der Fragenliste steht, bleibt unberührt.
+  function bildFragenEintragen() {
+    bildFragen = BILDFRAGEN.filter((frage) => frageGueltig(frage) && bildGueltig(frage.bild) && !fragenNachId[frage.id]);
+    bildFragen.forEach((frage) => {
+      fragenNachId[frage.id] = frage;
+    });
+  }
+
+  // Die Karte für das Positions-Quiz und der Platz für das Bild stehen nicht in index.html, sondern entstehen hier.
+  // Die Karte ist ein Knopf direkt unter dem Tagesquiz-Knopf: links eine kleine Aufstellung, rechts Titel und ein Satz (bilderKarteZeigen füllt sie).
+  function bilderAufbauen() {
+    const karte = document.createElement('button');
+    karte.type = 'button';
+    karte.className = 'quiz-karte';
+    karte.id = 'bilder-starten';
+    karte.hidden = true;
+
+    // Das kleine Bild ist nur Schmuck: für Vorlese-Programme verborgen und ohne die Kürzel der Spieler.
+    const vorschau = document.createElement('span');
+    vorschau.className = 'quiz-karte-bild';
+    vorschau.setAttribute('aria-hidden', 'true');
+    const gezeichnet = bildZeichnen(KARTE_BILD);
+    if (gezeichnet) {
+      const kleinesBild = gezeichnet.svg;
+      kleinesBild.removeAttribute('role');
+      kleinesBild.removeAttribute('aria-label');
+      kleinesBild.setAttribute('viewBox', KARTE_AUSSCHNITT);
+      kleinesBild.querySelectorAll('.bf-name').forEach((kuerzel) => kuerzel.remove());
+      vorschau.appendChild(kleinesBild);
+    }
+
+    const titel = document.createElement('span');
+    titel.className = 'quiz-karte-titel';
+    titel.id = 'bilder-titel';
+    const zeile = document.createElement('span');
+    zeile.className = 'quiz-karte-zeile';
+    zeile.id = 'bilder-zeile';
+    const text = document.createElement('span');
+    text.className = 'quiz-karte-text';
+    text.append(titel, zeile);
+
+    karte.append(vorschau, text);
+    karte.addEventListener('click', () => {
+      const laufend = aktiveRunde('bild');
+      if (laufend) rundeFortsetzen(laufend);
+      else if (!rundeOffen() && bildFragen.length > 0) rundeStarten('bild');
+    });
+    $('tag-starten').after(karte);
+
+    const box = document.createElement('div');
+    box.className = 'frage-bild';
+    box.id = 'frage-bild';
+    box.hidden = true;
+    $('frage-text').after(box);
+  }
+
+  // Titel und Satz der Karte, und ob sie bedienbar ist. Die Karte bleibt immer zu sehen, solange es Bildfragen gibt.
+  // Ist eine andere Runde angefangen, steht sie gedimmt da und sagt, was zu tun ist: Ein Start würde den einzigen Rundenspeicher überschreiben.
+  function bilderKarteZeigen() {
+    const karte = $('bilder-starten');
+    const laufend = aktiveRunde('bild');
+    const gesperrt = !laufend && rundeOffen();
+    karte.hidden = bildFragen.length === 0;
+    karte.classList.toggle('gesperrt', gesperrt);
+    if (gesperrt) karte.setAttribute('aria-disabled', 'true');
+    else karte.removeAttribute('aria-disabled');
+
+    let titel = 'Positions-Quiz';
+    let zeile = KARTE_ZEILE;
+    if (laufend) {
+      titel = 'Positions-Quiz fortsetzen';
+      const beantwortet = laufend.antworten.filter((antwort) => antwort !== -1).length;
+      zeile = beantwortet + ' von ' + laufend.ids.length + ' beantwortet. Mach weiter!';
+    } else if (gesperrt) {
+      zeile = 'Beende zuerst die angefangene Runde.';
+    }
+    $('bilder-titel').textContent = titel;
+    $('bilder-zeile').textContent = zeile;
+  }
+
+  // Ein SVG-Element mit seinen Eigenschaften.
+  function svgElement(name, eigenschaften) {
+    const element = document.createElementNS(SVG_NS, name);
+    Object.keys(eigenschaften).forEach((schluessel) => {
+      element.setAttribute(schluessel, String(eigenschaften[schluessel]));
+    });
+    return element;
+  }
+
+  // Ein Spieler: Der Angriff ist ein Kreis, die Verteidigung ein Quadrat (die Form hilft auch, wenn man Farben schlecht unterscheidet).
+  // Der leuchtende Spieler bekommt einen Schein dahinter. Kürzel gibt es nur beim gefragten Team; sie bleiben unsichtbar,
+  // bis die Frage beantwortet ist (dann trägt der Bildkasten die Klasse „aufgeloest“).
+  function spielerZeichnen(gruppe, team, zeile, leuchtet, mitKuerzel) {
+    const x = zeile[1];
+    const y = zeile[2];
+    const form = 'bf-spieler ' + (team === 'angriff' ? 'bf-angriff' : 'bf-abwehr') + (leuchtet ? ' bf-punkt' : '');
+    if (leuchtet) gruppe.appendChild(svgElement('circle', { cx: x, cy: y, r: 15, class: 'bf-glut' }));
+    if (team === 'angriff') {
+      gruppe.appendChild(svgElement('circle', { cx: x, cy: y, r: 8, class: form }));
+    } else {
+      gruppe.appendChild(svgElement('rect', { x: x - 7.5, y: y - 7.5, width: 15, height: 15, rx: 3, class: form }));
+    }
+    if (mitKuerzel) {
+      const kuerzel = svgElement('text', { x: x, y: y + 3, 'text-anchor': 'middle', class: leuchtet ? 'bf-name bf-name-punkt' : 'bf-name' });
+      kuerzel.textContent = zeile[3] || zeile[0];
+      gruppe.appendChild(kuerzel);
+    }
+  }
+
+  // Zeichnet die Aufstellung einer Bildfrage. Gibt Zeichnung und Legende zurück, oder null, wenn die Angaben nicht passen.
+  function bildZeichnen(bild) {
+    if (!bildGueltig(bild)) return null;
+    const eigene = AUFSTELLUNGEN[bild.aufstellung];
+    const gegner = AUFSTELLUNGEN[bild.gegner];
+
+    const svg = svgElement('svg', { viewBox: '0 0 ' + BILD_BREITE + ' ' + BILD_HOEHE, role: 'img', focusable: 'false' });
+    svg.setAttribute('aria-label', 'Aufstellung von oben gesehen, ' + eigene.beschreibung + '. Ein Spieler leuchtet. ' + (bild.lage || ''));
+
+    // Rasen mit Streifen und Linien im Abstand von 28, ausgerichtet an der Line of Scrimmage; links und rechts die Seitenlinien.
+    svg.appendChild(svgElement('rect', { x: 0, y: 0, width: BILD_BREITE, height: BILD_HOEHE, class: 'bf-rasen' }));
+    for (let y = (BILD_LINIE_Y % 56) - 56; y < BILD_HOEHE; y += 56) {
+      svg.appendChild(svgElement('rect', { x: 0, y: y, width: BILD_BREITE, height: 28, class: 'bf-streifen' }));
+    }
+    for (let y = BILD_LINIE_Y % 28; y < BILD_HOEHE; y += 28) {
+      svg.appendChild(svgElement('line', { x1: 0, y1: y, x2: BILD_BREITE, y2: y, class: 'bf-linie' }));
+    }
+    svg.appendChild(svgElement('line', { x1: 6, y1: 0, x2: 6, y2: BILD_HOEHE, class: 'bf-linie' }));
+    svg.appendChild(svgElement('line', { x1: BILD_BREITE - 6, y1: 0, x2: BILD_BREITE - 6, y2: BILD_HOEHE, class: 'bf-linie' }));
+    svg.appendChild(svgElement('line', { x1: 0, y1: BILD_LINIE_Y, x2: BILD_BREITE, y2: BILD_LINIE_Y, class: 'bf-los' }));
+
+    // Erst das andere Team (blass), dann das gefragte darüber.
+    const hinten = svgElement('g', { class: 'bf-gegner' });
+    gegner.spieler.forEach((zeile) => spielerZeichnen(hinten, gegner.team, zeile, false, false));
+    svg.appendChild(hinten);
+    const vorn = svgElement('g', { class: 'bf-team' });
+    eigene.spieler.forEach((zeile) => spielerZeichnen(vorn, eigene.team, zeile, zeile[0] === bild.punkt, true));
+    svg.appendChild(vorn);
+
+    const legende = document.createElement('p');
+    legende.className = 'frage-bild-legende';
+    legende.textContent = 'Blau und rund: Angriff, er spielt nach oben. Rot und eckig: Verteidigung. Weiße Linie: Line of Scrimmage.';
+    return { svg: svg, legende: legende };
+  }
+
+  // Legt das Bild einer Frage unter den Fragetext. Fragen ohne Bild blenden den Platz aus.
+  function bildZeigen(frage) {
+    const box = $('frage-bild');
+    box.textContent = '';
+    box.classList.remove('aufgeloest');
+    box.removeAttribute('data-frage');
+    const gezeichnet = istObjekt(frage.bild) ? bildZeichnen(frage.bild) : null;
+    box.hidden = !gezeichnet;
+    if (!gezeichnet) return;
+    box.setAttribute('data-frage', frage.id);
+    box.append(gezeichnet.svg, gezeichnet.legende);
   }
 
   // ---------- Nachlesen ----------
@@ -1423,6 +1904,7 @@
         gueltige.forEach((frage) => {
           fragenNachId[frage.id] = frage;
         });
+        bildFragenEintragen();
         listenStand = typeof daten.stand === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(daten.stand) ? daten.stand : '';
         startZeigen();
       })
@@ -1493,6 +1975,7 @@
     einfuehrungAufbauen();
     mitnehmenAufbauen();
     meldenAufbauen();
+    bilderAufbauen();
     ereignisseAnmelden();
     fragenLaden();
     symbolFuerIphone();
