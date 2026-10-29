@@ -69,6 +69,7 @@
   </svg>
 
   <header class="kopf">
+    <span class="vorschau" id="vorschau-schild" hidden>Vorschau</span>
     <div class="kopf-inhalt">
       <svg class="logo" viewBox="-210 -140 420 320" aria-hidden="true" focusable="false">
         <ellipse cx="0" cy="152" rx="130" ry="13" fill="url(#fb-boden)"/>
@@ -94,6 +95,21 @@
     </section>
 
     <section id="start" hidden>
+      <!-- Tagesring und Wochenleiste: app.js füllt Zahl, Ring und Zeile (tagesringZeigen) und baut die sieben Tage der Woche (wocheZeigen). -->
+      <div class="heute-karte" id="heute-karte" data-zustand="offen">
+        <div class="ring" id="ring" role="img" aria-label="Tagesquiz heute">
+          <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+            <circle class="ring-spur" cx="60" cy="60" r="50"/>
+            <circle class="ring-fuell" id="ring-fuell" cx="60" cy="60" r="50"/>
+          </svg>
+          <span class="ring-mitte"><span class="ring-zahl" id="ring-zahl">0/5</span><span class="ring-label">Heute</span></span>
+        </div>
+        <div class="heute-text">
+          <p class="heute-titel">Tagesquiz</p>
+          <p class="heute-zeile" id="heute-zeile"></p>
+        </div>
+        <ol class="woche" id="woche" aria-label="Diese Woche"></ol>
+      </div>
       <div class="kennzahlen">
         <div class="kennzahl">
           <span class="sym" aria-hidden="true">
@@ -106,12 +122,6 @@
             <svg viewBox="0 0 24 24" focusable="false"><g transform="rotate(-35 12 12)"><path d="M1.5 12C4 6 8 4 12 4s8 2 10.5 8c-2.5 6-6.5 8-10.5 8S4 18 1.5 12z" fill="#b8581f" stroke="#3a1608" stroke-width="1.1" stroke-linejoin="round"/><path d="M8 12h8M10 10v4M12 9.5v5M14 10v4" fill="none" stroke="#fffaf0" stroke-width="1.2" stroke-linecap="round"/><path d="M5.3 8.2q-.8 3.8 0 7.6M18.7 8.2q.8 3.8 0 7.6" fill="none" stroke="#fffaf0" stroke-width="1.2" stroke-linecap="round"/></g></svg>
           </span>
           <div class="werte"><span class="zahl zahl-gold" id="punkte-gesamt">0</span><span class="label">Punkte gesamt</span></div>
-        </div>
-        <div class="kennzahl">
-          <span class="sym" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9.5" fill="#ffffff" stroke="#d71f3b" stroke-width="2.4"/><circle cx="12" cy="12" r="5.2" fill="none" stroke="#d71f3b" stroke-width="2.4"/><circle cx="12" cy="12" r="1.8" fill="#d71f3b"/></svg>
-          </span>
-          <div class="werte"><span class="zahl zahl-blau" id="heute">offen</span><span class="label">Heute</span></div>
         </div>
         <div class="kennzahl">
           <span class="sym" aria-hidden="true">
@@ -129,6 +139,7 @@
       <button class="haupt" id="mehr-starten" type="button" hidden>Noch 5 neue Fragen</button>
       <button class="haupt" id="tag-starten" type="button">Tagesquiz starten</button>
       <button class="neben" id="ueben-starten" type="button" hidden>Übungsrunde (alte Fragen wiederholen)</button>
+      <button class="neben" id="nachlesen-starten" type="button" hidden>Beantwortete Fragen nachlesen</button>
       <details class="info" id="installieren">
         <summary>Als App aufs Handy legen</summary>
         <p><strong>iPhone:</strong> In Safari unten auf das Teilen-Symbol tippen, dann „Zum Home-Bildschirm“. Danach nur noch über das neue Symbol öffnen.</p>
@@ -173,6 +184,17 @@
       <button class="haupt" id="teilen" type="button">Ergebnis teilen</button>
       <p class="quelle" id="teilen-hinweis"></p>
       <button class="neben" id="zum-start" type="button">Zurück zum Start</button>
+    </section>
+
+    <!-- Nachlesen: beantwortete Fragen nach Thema. app.js füllt die Themen (nachlesenUebersichtZeigen) und die Fragen eines Themas (nachlesenThemaZeigen). -->
+    <section id="nachlesen" hidden>
+      <div class="nachlesen-kopf">
+        <button class="pille" id="nachlesen-zurueck" type="button">Zurück zum Start</button>
+      </div>
+      <h2 id="nachlesen-titel" tabindex="-1">Nachlesen</h2>
+      <p class="quelle" id="nachlesen-info"></p>
+      <div class="themen" id="nachlesen-themen"></div>
+      <ol class="nachlesen-liste" id="nachlesen-liste" hidden></ol>
     </section>
 
     <section id="fehler" hidden>

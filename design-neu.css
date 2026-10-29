@@ -1,5 +1,7 @@
-/* Football Brain: neues Aussehen, Vorschau Schritt 1 (Richtung A „Spieltag“, Stand 26.10.2026).
-   Diese Datei lädt nur neu.html, und zwar nach style.css. Die jetzige App (index.html) bleibt davon unberührt.
+/* Football Brain: neues Aussehen (Richtung A „Spieltag“). Schritt 1 seit 26.10.2026; Schritt 2 (Tagesring, Wochenleiste, Nachlesen,
+   Größenstaffel, Einblenden der Ansichten) steht weiter unten, Stand 28.10.2026; ganz unten folgen die Positionen im Bild
+   und die Karte für das Positions-Quiz.
+   index.html lädt diese Datei nach style.css.
    Gleiche Persönlichkeit wie bisher, aber ruhiger: getönte Flächen statt Rahmen, einheitliche Rundungen,
    eigene Symbole statt Emoji, das Spielfeld als Fortschrittsbalken und die Rückmeldung als Panel von unten.
    Es wird nichts nachgeladen: Alle Symbole stecken als kleine Zeichnungen in dieser Datei. */
@@ -206,6 +208,17 @@ body[data-ansicht="frage"] .datum {
   justify-content: center;
   min-height: 2.75rem;
   padding: 0 0.9rem;
+}
+
+/* „Frage melden“ und „Frage vorschlagen“ stehen nebeneinander, der Hinweis darunter nimmt die ganze Breite. */
+.melden-zeile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.melden-zeile .quelle {
+  flex-basis: 100%;
 }
 
 .info {
@@ -668,4 +681,593 @@ body[data-ansicht="frage"] .datum {
   70% {
     transform: scale(0.97, 1.04) rotate(2deg);
   }
+}
+
+/* ==========================================================================
+   Schritt 2 (28.10.2026)
+   ========================================================================== */
+
+/* ---------- Größenstaffel ----------
+   Titel, Frage, Antwort und Fließtext bekommen feste Stufen, die mit der Breite des Bildschirms mitwachsen.
+   Die Schrift bleibt die Systemschrift (nichts wird nachgeladen). Zahlen stehen mit Tabellenziffern, damit nichts zuckt. */
+
+:root {
+  --t-frage: clamp(1.3rem, 5.6vw, 1.6rem);
+  --t-antwort: 1.06rem;
+  --t-text: 0.96rem;
+}
+
+#frage-text {
+  font-size: var(--t-frage);
+  line-height: 1.22;
+  text-wrap: balance;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.antwort {
+  font-size: var(--t-antwort);
+  line-height: 1.3;
+}
+
+.antwort .text {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.rueckmeldung p {
+  font-size: var(--t-text);
+}
+
+/* ---------- Kopf: auf dem Start kleiner, im Nachlesen so schmal wie in der Frage ---------- */
+
+body[data-ansicht="start"] .logo {
+  width: min(34vw, 7rem);
+}
+
+body[data-ansicht="nachlesen"] .kopf {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 0.45rem);
+  padding-bottom: 0.55rem;
+}
+
+body[data-ansicht="nachlesen"] .logo {
+  width: 3rem;
+}
+
+body[data-ansicht="nachlesen"] h1 {
+  font-size: 1.15rem;
+}
+
+body[data-ansicht="nachlesen"] .datum {
+  display: none;
+}
+
+@media (max-height: 700px) {
+  body[data-ansicht="start"] .logo {
+    width: min(30vw, 5.8rem);
+  }
+}
+
+/* ---------- Start: Tagesring und Wochenleiste, drei Kennzahlen ---------- */
+
+.kennzahlen {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.heute-karte {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 1.1rem;
+  row-gap: 0.8rem;
+  margin-bottom: 0.9rem;
+  padding: 1rem 1.1rem 0.9rem;
+  background: var(--karte);
+  border-radius: var(--r-karte);
+  box-shadow: var(--schatten);
+  animation: rein 0.4s ease backwards;
+}
+
+.ring {
+  position: relative;
+  width: 5.6rem;
+  height: 5.6rem;
+}
+
+.ring svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ring-spur,
+.ring-fuell {
+  fill: none;
+  stroke-width: 11;
+}
+
+.ring-spur {
+  stroke: var(--flaeche);
+}
+
+/* Der Ring beginnt oben und läuft im Uhrzeigersinn. Länge und Versatz setzt app.js (tagesringZeigen). */
+.ring-fuell {
+  stroke: var(--blau);
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 60px 60px;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.heute-karte[data-zustand="erledigt"] .ring-fuell {
+  stroke: var(--gold-kante);
+}
+
+.ring-mitte {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.05;
+}
+
+.ring-zahl {
+  font-family: var(--schrift-titel);
+  font-size: 1.5rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  color: var(--titel);
+}
+
+.ring-label {
+  margin-top: 0.15rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--leise);
+}
+
+.heute-titel {
+  margin: 0;
+  font-family: var(--schrift-titel);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--titel);
+}
+
+.heute-zeile {
+  margin: 0.2rem 0 0;
+  font-size: var(--t-text);
+  line-height: 1.35;
+  color: var(--leise);
+}
+
+.woche {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0.7rem 0 0;
+  list-style: none;
+  border-top: 1px solid var(--flaeche);
+}
+
+.wt {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.wt-marke {
+  display: block;
+  width: 100%;
+  max-width: 1.9rem;
+  aspect-ratio: 1;
+  background: var(--flaeche);
+  border-radius: 50%;
+}
+
+/* Gespielt: ein Football auf Gold. Heute: blauer Ring. Kommende Tage: gestrichelt. */
+.wt.gespielt .wt-marke {
+  background: var(--bild-ball) center / 84% auto no-repeat, var(--gold);
+}
+
+.wt.heute .wt-marke {
+  box-shadow: 0 0 0 2.5px var(--blau);
+}
+
+.wt.spaeter .wt-marke {
+  background: transparent;
+  border: 2px dashed var(--rand);
+}
+
+.wt-buchstabe {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--leise);
+}
+
+.wt.heute .wt-buchstabe {
+  color: var(--blau-text);
+}
+
+/* ---------- Nachlesen ---------- */
+
+.nachlesen-kopf {
+  margin-bottom: 0.7rem;
+}
+
+.pille {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  font-weight: 700;
+  color: var(--blau-text);
+  background: var(--flaeche);
+  border: 0;
+  border-radius: 99px;
+}
+
+#nachlesen-titel {
+  margin: 0.2rem 0;
+  font-size: 1.5rem;
+}
+
+#nachlesen-titel:focus {
+  outline: none;
+}
+
+#nachlesen-info {
+  margin: 0 0 1rem;
+}
+
+.themen {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.thema {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  width: 100%;
+  min-height: 3.6rem;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  background: var(--karte);
+  border: 2px solid transparent;
+  border-radius: var(--r-karte);
+  box-shadow: var(--schatten);
+  transition: transform 0.12s ease, border-color 0.15s ease;
+}
+
+.thema:active {
+  border-color: var(--blau);
+  transform: scale(0.985);
+}
+
+.thema-name {
+  font-family: var(--schrift-titel);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--titel);
+}
+
+.thema-zahl {
+  font-size: 0.85rem;
+  color: var(--leise);
+}
+
+.nachlesen-liste {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nachlesen-liste li {
+  background: var(--karte);
+  border-radius: var(--r-klein);
+  box-shadow: var(--schatten);
+}
+
+.nachlesen-frage summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.7rem 0.8rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.nachlesen-frage summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Der kleine Pfeil rechts zeigt, dass sich die Frage aufklappen lässt. */
+.nachlesen-frage summary::after {
+  content: "";
+  flex: none;
+  align-self: center;
+  width: 0.65rem;
+  height: 0.65rem;
+  margin-left: auto;
+  border-right: 2px solid var(--leise);
+  border-bottom: 2px solid var(--leise);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+}
+
+.nachlesen-frage[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+.nachlesen-liste .zeichen {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  font-weight: 900;
+  border-radius: 50%;
+}
+
+.nachlesen-liste li.ok .zeichen {
+  color: var(--richtig-bg);
+  background: var(--richtig-rand);
+}
+
+.nachlesen-liste li.nein .zeichen {
+  color: var(--falsch-bg);
+  background: var(--falsch-rand);
+}
+
+.nachlesen-inhalt {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.nachlesen-text {
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.nachlesen-stufe {
+  font-size: 0.78rem;
+  color: var(--leise);
+}
+
+.nachlesen-detail {
+  padding: 0 0.8rem 0.85rem 3.05rem;
+}
+
+.nachlesen-detail p {
+  margin: 0.4rem 0 0;
+  font-size: var(--t-text);
+  line-height: 1.4;
+}
+
+.nachlesen-loesung strong {
+  color: var(--richtig-text);
+}
+
+@media (hover: hover) {
+  .thema:hover {
+    border-color: var(--blau);
+  }
+}
+
+/* ---------- Einblenden: Jede Ansicht kommt von unten weich ins Bild ----------
+   Das ist nur eine Animation der gerade eingeblendeten Ansicht. Die Ansichten selbst wechseln wie bisher sofort,
+   die Bedienung hängt nicht daran. Bei „weniger Bewegung“ schaltet style.css alle Animationen ab. */
+
+main > section:not([hidden]) {
+  animation: ansicht-rein 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.1) backwards;
+}
+
+@keyframes ansicht-rein {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Positionen im Bild (28.10.2026)
+   ========================================================================== */
+
+/* Eine Aufstellung von oben: Der Angriff steht unten und spielt nach oben, die Verteidigung steht oben, ein Spieler leuchtet.
+   Gezeichnet wird in app.js (bildZeichnen). Rasen und Linien nehmen die Farben der Variablen oben, damit das Bild im Dunkelmodus mitgeht.
+   Der Angriff ist rund und blau, die Verteidigung eckig und rot: Die Form hilft auch, wenn man Farben schlecht unterscheidet. */
+
+.frage-bild {
+  margin: 0 0 1rem;
+  overflow: hidden;
+  background: var(--karte);
+  border-radius: var(--r-karte);
+  box-shadow: var(--schatten);
+}
+
+.frage-bild svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.bf-rasen {
+  fill: var(--rasen);
+}
+
+.bf-streifen {
+  fill: var(--rasen-streifen);
+}
+
+.bf-linie {
+  fill: none;
+  stroke: var(--rasen-linie);
+  stroke-width: 1;
+}
+
+.bf-los {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.4;
+}
+
+/* Das andere Team steht nur zur Orientierung im Bild und tritt zurück. */
+.bf-gegner {
+  opacity: 0.4;
+}
+
+.bf-spieler {
+  stroke: #ffffff;
+  stroke-width: 1.6;
+}
+
+.bf-angriff {
+  fill: #2f7bf5;
+}
+
+.bf-abwehr {
+  fill: #e5484d;
+}
+
+/* Der leuchtende Spieler ist gold mit dunklem Rand, dahinter pulsiert ein Schein (bei „weniger Bewegung“ steht er still, siehe style.css). */
+.bf-punkt {
+  fill: #ffd84d;
+  stroke: #14213d;
+  stroke-width: 2;
+}
+
+.bf-glut {
+  fill: #ffd84d;
+  opacity: 0.6;
+  animation: bf-puls 1.5s ease-in-out infinite;
+}
+
+/* Die Kürzel erscheinen erst nach der Antwort. */
+.bf-name {
+  fill: #ffffff;
+  font-size: 8.5px;
+  font-weight: 800;
+  text-anchor: middle;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bf-name-punkt {
+  fill: #14213d;
+}
+
+.frage-bild.aufgeloest .bf-name {
+  opacity: 1;
+}
+
+.frage-bild-legende {
+  margin: 0;
+  padding: 0.5rem 0.8rem 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+@keyframes bf-puls {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+}
+
+/* ==========================================================================
+   Positions-Quiz: eigene Karte auf dem Start (28.10.2026)
+   ========================================================================== */
+
+/* Die Karte steht direkt unter dem Tagesquiz-Knopf (app.js: bilderAufbauen) und ist selbst ein Knopf. Links eine kleine Aufstellung
+   mit einem leuchtenden Spieler (dieselbe Zeichnung und dieselben Farben wie im Quiz, darum die Klassen bf-…), rechts Titel und ein Satz.
+   Läuft gerade eine andere Runde, trägt die Karte die Klasse „gesperrt“: Sie bleibt zu sehen, ist aber gedimmt. */
+
+.quiz-karte {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  margin-top: 0.9rem;
+  padding: 0.65rem 0.9rem 0.65rem 0.65rem;
+  text-align: left;
+  color: var(--text);
+  background: var(--karte);
+  border: 0;
+  border-radius: var(--r-karte);
+  box-shadow: var(--schatten);
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+
+.quiz-karte:active {
+  transform: scale(0.98);
+}
+
+.quiz-karte.gesperrt {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.quiz-karte.gesperrt:active {
+  transform: none;
+}
+
+.quiz-karte-bild {
+  display: block;
+  flex: 0 0 auto;
+  width: clamp(5.8rem, 31vw, 7.8rem);
+  overflow: hidden;
+  border-radius: var(--r-klein);
+}
+
+.quiz-karte-bild svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.quiz-karte-text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.quiz-karte-titel {
+  font-family: var(--schrift-titel);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--titel);
+}
+
+.quiz-karte-zeile {
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: var(--leise);
 }
