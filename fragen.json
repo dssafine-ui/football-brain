@@ -1,5 +1,5 @@
 {
-  "stand": "2026-10-30",
+  "stand": "2026-11-03",
   "fragen": [
     {
       "id": "q001",
@@ -3513,6 +3513,806 @@
       "richtig": 0,
       "erklaerung": "Geht der Ball nach dem Fumble der Offense in der gegnerischen Endzone ins Aus, ist es ein Touchback. Die Defense bekommt den Ball an der 20-Yard-Linie. Das gilt auch, wenn der Ball dabei die Pylone berührt (Regel 11-6-2).",
       "quelle": { "text": "NFL-Regelbuch 2026, Regel 11-6-2 (Touchback-Situationen)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q350",
+      "stufe": 1,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wie nennt man die spielfreie Woche, die jedes NFL-Team in der Hauptrunde genau einmal hat?",
+      "antworten": ["Timeout Week", "Rest Quarter", "Bye Week", "Reserve Week"],
+      "richtig": 2,
+      "erklaerung": "In der NFL-Hauptrunde spielt jedes Team 17 Spiele in 18 Wochen. In einer Woche hat es frei, diese spielfreie Woche heißt „Bye Week“.",
+      "quelle": { "text": "National Football League bei Wikipedia", "url": "https://en.wikipedia.org/wiki/National_Football_League" }
+    },
+    {
+      "id": "q351",
+      "stufe": 1,
+      "kategorie": "Liga und Rekorde",
+      "frage": "An welchem Wochentag finden die meisten NFL-Hauptrundenspiele statt?",
+      "antworten": ["Sonntag", "Samstag", "Montag", "Donnerstag"],
+      "richtig": 0,
+      "erklaerung": "Die meisten Hauptrundenspiele werden sonntags gespielt. Dazu kommen ein Spiel am Donnerstagabend, ein Sonntagabendspiel und ein oder zwei Spiele am Montagabend.",
+      "quelle": { "text": "NFL regular season bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_regular_season" }
+    },
+    {
+      "id": "q352",
+      "stufe": 1,
+      "kategorie": "Liga und Rekorde",
+      "frage": "In welchem Monat beginnt die NFL-Hauptrunde normalerweise?",
+      "antworten": ["Juli", "August", "Oktober", "September"],
+      "richtig": 3,
+      "erklaerung": "Die Hauptrunde beginnt am Wochenende nach dem Labor Day, dem ersten Montag im September, und läuft bis Anfang Januar. Im August finden nur die Vorbereitungsspiele (Preseason) statt.",
+      "quelle": { "text": "NFL regular season bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_regular_season" }
+    },
+    {
+      "id": "q353",
+      "stufe": 1,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wie viele Divisions hat die NFL insgesamt?",
+      "antworten": ["4", "8", "12", "16"],
+      "richtig": 1,
+      "erklaerung": "Die 32 Teams sind gleichmäßig auf die Conferences AFC und NFC verteilt. Jede Conference hat vier Divisions mit je vier Teams, zusammen also acht Divisions. Die vier Divisionssieger jeder Conference erreichen automatisch die Playoffs.",
+      "quelle": { "text": "National Football League bei Wikipedia", "url": "https://en.wikipedia.org/wiki/National_Football_League" }
+    },
+    {
+      "id": "q354",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Was bekommen die Spieler des Super-Bowl-Siegers traditionell als Erinnerung überreicht?",
+      "antworten": ["Eine goldene Armbanduhr", "Einen Gedenkpokal", "Einen Super-Bowl-Ring", "Eine Medaille am Band"],
+      "richtig": 2,
+      "erklaerung": "Die NFL vergibt den Super-Bowl-Ring an die Mitglieder des Siegerteams. Auch das unterlegene Finalteam bekommt einen Ring.",
+      "quelle": { "text": "Super Bowl ring bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_ring" }
+    },
+    {
+      "id": "q355",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Fans der Green Bay Packers tragen gern Schaumstoffhüte in Käseform. Wie nennt man die Fans deshalb?",
+      "antworten": ["Cheeseheads", "Dairy Kings", "Lumberjacks", "Wisconsin Wolves"],
+      "richtig": 0,
+      "erklaerung": "„Cheesehead“ ist ein Spitzname für Menschen aus Wisconsin und für Fans der Packers. Wisconsin gilt als „America's Dairyland“ wegen seiner Milchwirtschaft, die käseförmigen Schaumstoffhüte sind das Markenzeichen der Fans.",
+      "quelle": { "text": "Cheesehead bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Cheesehead" }
+    },
+    {
+      "id": "q356",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welcher Rapper war der Hauptact der Halbzeitshow beim Super Bowl LIX im Februar 2025?",
+      "antworten": ["Drake", "Kendrick Lamar", "Eminem", "Travis Scott"],
+      "richtig": 1,
+      "erklaerung": "Kendrick Lamar trat am 9. Februar 2025 im Caesars Superdome in New Orleans auf, mit Gästen wie SZA, Samuel L. Jackson und Serena Williams. Den Super Bowl LIX gewannen die Philadelphia Eagles.",
+      "quelle": { "text": "Super Bowl LIX halftime show bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_LIX_halftime_show" }
+    },
+    {
+      "id": "q357",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "In welchem Stadion wird der Super Bowl LXI im Februar 2027 gespielt?",
+      "antworten": ["Caesars Superdome in New Orleans", "Allegiant Stadium in Las Vegas", "Hard Rock Stadium in Miami Gardens", "SoFi Stadium in Inglewood"],
+      "richtig": 3,
+      "erklaerung": "Der Super Bowl LXI findet am 14. Februar 2027 im SoFi Stadium in Inglewood bei Los Angeles statt. Nach dem Super Bowl LVI im Jahr 2022 ist es der zweite in diesem Stadion.",
+      "quelle": { "text": "Super Bowl LXI bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_LXI" }
+    },
+    {
+      "id": "q358",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Wie nennt man den Bereich hinter der Line of Scrimmage, in dem Quarterback und Running Backs der Offense stehen?",
+      "antworten": ["Backfield", "Neutral Zone", "Secondary", "Red Zone"],
+      "richtig": 0,
+      "erklaerung": "Zum Backfield zählen die Spieler der Offense, die ihren Spielzug hinter der Line of Scrimmage beginnen. Das sind meist der Quarterback und die Running Backs (Halfbacks und Fullback).",
+      "quelle": { "text": "Offensive backfield bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Offensive_backfield" }
+    },
+    {
+      "id": "q359",
+      "stufe": 1,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Welche Aufgabe hat ein Return Specialist in den Special Teams?",
+      "antworten": ["Er tritt die Kickoffs und Punts", "Er hält den Ball für den Kicker", "Er fängt Kickoffs und Punts und trägt sie zurück", "Er blockt die Verteidiger bei Field Goals"],
+      "richtig": 2,
+      "erklaerung": "Ein Return Specialist (Kick Returner oder Punt Returner) fängt Kickoffs und Punts und trägt sie so weit wie möglich zurück. Die meisten spielen hauptsächlich eine andere Position, etwa als Wide Receiver, Cornerback oder Running Back.",
+      "quelle": { "text": "Return specialist bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Return_specialist" }
+    },
+    {
+      "id": "q360",
+      "stufe": 1,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Der Quarterback weicht unter Druck aus der Pocket aus und läuft oder wirft improvisiert. Wie nennt man das?",
+      "antworten": ["Handoff", "Scramble", "Spike", "Audible"],
+      "richtig": 1,
+      "erklaerung": "Bei einem Scramble versucht der Quarterback, einem Sack zu entgehen. Er läuft nach vorn, zurück oder zur Seite und sucht einen Receiver oder läuft selbst, wenn sich Raum auftut. Meist ist es kein geplanter Spielzug.",
+      "quelle": { "text": "Quarterback scramble bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Quarterback_scramble" }
+    },
+    {
+      "id": "q361",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Wie nennt man einen Spieler, der gerade seine erste Profisaison spielt?",
+      "antworten": ["Veteran", "Captain", "Backup", "Rookie"],
+      "richtig": 3,
+      "erklaerung": "Ein Rookie ist ein Profi in seiner ersten Saison. Im Gegensatz zum erfahrenen Veteranen braucht er meist noch mehr Training und muss viel lernen.",
+      "quelle": { "text": "Rookie bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Rookie" }
+    },
+    {
+      "id": "q362",
+      "stufe": 1,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Wie nennt man den festgelegten Laufweg, den ein Receiver nach dem Snap läuft, um für einen Pass frei zu werden?",
+      "antworten": ["Route", "Huddle", "Blitz", "Snap Count"],
+      "richtig": 0,
+      "erklaerung": "Eine Route ist der Weg, den ein Receiver läuft, um für einen Pass nach vorn frei zu werden. Routes laufen meist Wide Receiver, Running Backs und Tight Ends. Eine Übersicht der gebräuchlichen Routes nennt man „Route Tree“.",
+      "quelle": { "text": "Route (gridiron football) bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Route_(gridiron_football)" }
+    },
+    {
+      "id": "q363",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wie tief ist eine Endzone im American Football?",
+      "antworten": ["5 Yards", "7 Yards", "10 Yards", "15 Yards"],
+      "richtig": 2,
+      "erklaerung": "Die Goal Lines liegen 10 Yards vor den End Lines. Dazwischen liegt die Endzone, in der Touchdowns erzielt werden. Mit zweimal 10 Yards Endzone und 100 Yards dazwischen ist das Feld 120 Yards lang (Regel 1-1-1).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 1-1-1 (Spielfeld)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q364",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wie weit liegen zwei benachbarte Yardlinien auf einem Football-Feld auseinander?",
+      "antworten": ["2 Yards", "5 Yards", "10 Yards", "20 Yards"],
+      "richtig": 1,
+      "erklaerung": "Die Linien quer über das Feld sind im Abstand von 5 Yards eingezeichnet (Regel 1-2-1). Beschriftet sind nur die Linien bei 10, 20, 30, 40 und 50 Yards (Regel 1-2-4).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 1-2-1 und 1-2-4 (Markierungen)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q365",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Wo stehen im NFL-Stadion die Torstangen für Field Goals und Extrapunkte?",
+      "antworten": ["Auf der 10-Yard-Linie", "Auf der Goal Line", "Mitten in der Endzone", "Auf der End Line, am hinteren Ende der Endzone"],
+      "richtig": 3,
+      "erklaerung": "Das Tor steht in der Ebene der End Line, also am hinteren Ende der Endzone. Die Stangen sind leuchtend gold, der Querbalken ist 18 Fuß 6 Zoll lang und liegt 10 Fuß über dem Boden (Regel 1-3-1 und 1-3-2).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 1-3-1 und 1-3-2 (Tor)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q366",
+      "stufe": 1,
+      "kategorie": "Regeln",
+      "frage": "Welche Form hat ein offizieller NFL-Football laut Regelbuch?",
+      "antworten": ["Ein gestrecktes Rotationsellipsoid mit zugespitzten Enden", "Eine abgeplattete Kugel", "Ein Zylinder mit runden Enden", "Ein Würfel mit abgerundeten Ecken"],
+      "richtig": 0,
+      "erklaerung": "Das Regelbuch schreibt die Form eines „Prolate Spheroid“ vor, also eines gestreckten Rotationsellipsoids. Die lange Achse misst 11 bis 11¼ Zoll (Regel 2).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 2 (Der Ball)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q367",
+      "stufe": 1,
+      "kategorie": "Football international",
+      "frage": "Die Arena Corinthians in São Paulo war 2024 und 2025 Schauplatz von NFL-Hauptrundenspielen. In welchem Land liegt sie?",
+      "antworten": ["Argentinien", "Mexiko", "Brasilien", "Kolumbien"],
+      "richtig": 2,
+      "erklaerung": "São Paulo liegt in Brasilien. Die NFL International Series trug dort 2024 und 2025 Spiele aus. Weitere Gastgeberländer außerhalb der USA sind unter anderem das Vereinigte Königreich, Deutschland, Spanien und Irland.",
+      "quelle": { "text": "NFL International Series bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_International_Series" }
+    },
+    {
+      "id": "q368",
+      "stufe": 1,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Was versteht man im Profisport unter einem „Free Agent“?",
+      "antworten": ["Einen Spieler, der nur zum Training eingeladen wird", "Einen Spieler ohne Vertrag, der bei anderen Teams unterschreiben darf", "Einen Spieler, der gerade verletzt ist", "Einen Spieler, der ohne Gehalt spielt"],
+      "richtig": 1,
+      "erklaerung": "Ein Free Agent steht bei keinem Team unter Vertrag und darf mit anderen Teams verhandeln. Auch ein Spieler mit laufendem Vertrag kann Angebote einholen, wenn die Liga das erlaubt. Die Regeln dafür legt jede Liga selbst fest.",
+      "quelle": { "text": "Free agent bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Free_agent" }
+    },
+    {
+      "id": "q369",
+      "stufe": 1,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Was ist der „Lambeau Leap“?",
+      "antworten": ["Ein Trickspielzug, bei dem der Ballträger über die Line springt", "Ein Block, bei dem ein Verteidiger über den Quarterback springt", "Eine Aufwärmübung der Packers vor dem Spiel", "Ein Touchdown-Jubel, bei dem der Spieler in die Tribüne hinter der Endzone springt"],
+      "richtig": 3,
+      "erklaerung": "Beim Lambeau Leap springt ein Spieler nach seinem Touchdown in die Zuschauerränge hinter der Endzone. Bekannt wurde der Jubel, als Packers-Spieler LeRoy Butler ihn am 26. Dezember 1993 im Lambeau Field zeigte. Er gehört bis heute zu den Traditionen der Green Bay Packers.",
+      "quelle": { "text": "Lambeau Leap bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Lambeau_Leap" }
+    },
+    {
+      "id": "q370",
+      "stufe": 2,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welches NFL-Team ist mit dem „Terrible Towel“ verbunden, einem Fan-Handtuch, das bei Spielen geschwenkt wird?",
+      "antworten": ["Green Bay Packers", "Pittsburgh Steelers", "Dallas Cowboys", "Philadelphia Eagles"],
+      "richtig": 1,
+      "erklaerung": "Das Terrible Towel ist das Erkennungszeichen der Pittsburgh Steelers und ihrer Fans. Es gilt als das erste „Rally Towel“ und war schon auf dem Mount Everest und an Bord der Internationalen Raumstation.",
+      "quelle": { "text": "Terrible Towel bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Terrible_Towel" }
+    },
+    {
+      "id": "q371",
+      "stufe": 2,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Welches Team machte den „Tush Push“ (auch „Brotherly Shove“) berühmt, bei dem Mitspieler den Quarterback beim Sneak von hinten nach vorn schieben?",
+      "antworten": ["Kansas City Chiefs", "Buffalo Bills", "San Francisco 49ers", "Philadelphia Eagles"],
+      "richtig": 3,
+      "erklaerung": "Der Tush Push ist eine Variante des Quarterback Sneaks, die die Philadelphia Eagles populär machten. Zusätzliche Spieler stehen hinter dem Quarterback und schieben ihn nach vorn, während die Offensive Line ebenfalls drückt. Die Eagles setzten ihn erstmals 2021 mit Jalen Hurts ein und nutzen ihn seit 2022 regelmäßig bei kurzen Distanzen.",
+      "quelle": { "text": "Tush push bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Tush_push" }
+    },
+    {
+      "id": "q372",
+      "stufe": 2,
+      "kategorie": "College-Football",
+      "frage": "Welche beiden College-Teams tragen jedes Jahr den „Iron Bowl“ aus?",
+      "antworten": ["Alabama Crimson Tide und Auburn Tigers", "Georgia Bulldogs und Florida Gators", "Clemson Tigers und South Carolina Gamecocks", "USC Trojans und Notre Dame Fighting Irish"],
+      "richtig": 0,
+      "erklaerung": "Der Iron Bowl ist das Duell der University of Alabama gegen die Auburn University, beide aus Alabama und Mitglieder der SEC. Der Name erinnert an die Eisen- und Stahlindustrie von Birmingham, wo das Spiel lange im Legion Field stattfand. Die Rivalität begann 1893.",
+      "quelle": { "text": "Iron Bowl bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Iron_Bowl" }
+    },
+    {
+      "id": "q373",
+      "stufe": 2,
+      "kategorie": "College-Football",
+      "frage": "Wie wird das jährliche College-Football-Duell zwischen den Michigan Wolverines und den Ohio State Buckeyes oft kurz genannt?",
+      "antworten": ["The Big One", "The Rumble", "The Game", "The Civil War"],
+      "richtig": 2,
+      "erklaerung": "Die Rivalität zwischen Michigan und Ohio State heißt bei manchen Fans einfach „The Game“. ESPN stufte sie im Jahr 2000 als größte Sportrivalität Nordamerikas ein.",
+      "quelle": { "text": "Michigan–Ohio State football rivalry bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Michigan%E2%80%93Ohio_State_football_rivalry" }
+    },
+    {
+      "id": "q374",
+      "stufe": 2,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Wer wurde im NFL Draft 2026 an erster Stelle ausgewählt?",
+      "antworten": ["Cam Ward", "Fernando Mendoza", "Arch Manning", "Dante Moore"],
+      "richtig": 1,
+      "erklaerung": "Die Las Vegas Raiders wählten Quarterback Fernando Mendoza von den Indiana Hoosiers an Nummer eins. Der Draft fand vom 23. bis 25. April 2026 in Pittsburgh statt. Cam Ward war der erste Pick im Jahr 2025.",
+      "quelle": { "text": "2026 NFL draft bei Wikipedia", "url": "https://en.wikipedia.org/wiki/2026_NFL_draft" }
+    },
+    {
+      "id": "q375",
+      "stufe": 2,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Ein Verteidiger packt einen Läufer am Kragen der Schulterpolster oder am Trikot im Nacken und reißt ihn zu Boden (Horse-Collar Tackle). Welche Strafe folgt?",
+      "antworten": ["15 Yards und automatisches First Down", "10 Yards ohne First Down", "5 Yards und automatisches First Down", "15 Yards ohne First Down"],
+      "richtig": 0,
+      "erklaerung": "Das Horse-Collar Tackle ist verboten: Der Verteidiger greift in den Kragen der Schulterpolster oder ins Trikot auf Höhe des Namensschilds oder darüber und zieht den Läufer zu Boden. Es kostet die Defense 15 Yards und gibt der Offense ein automatisches First Down (Regel 12-2-16).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 12-2-16 (Horse-Collar Tackle)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q376",
+      "stufe": 2,
+      "kategorie": "Football international",
+      "frage": "Wie heißt der internationale Dachverband des American Football, der unter anderem die Weltmeisterschaften organisiert?",
+      "antworten": ["FIFA", "NFL International", "NCAA", "IFAF"],
+      "richtig": 3,
+      "erklaerung": "Die International Federation of American Football (IFAF) ist der Weltverband des American Football. Sie organisiert die Weltmeisterschaft, die alle vier Jahre stattfindet. 2023 erkannte das IOC die IFAF als olympischen Weltverband an, und Flag Football wurde für die Spiele 2028 in Los Angeles ausgewählt.",
+      "quelle": { "text": "International Federation of American Football bei Wikipedia", "url": "https://en.wikipedia.org/wiki/International_Federation_of_American_Football" }
+    },
+    {
+      "id": "q377",
+      "stufe": 2,
+      "kategorie": "Football in Europa",
+      "frage": "In welchem Stadion in Dublin trug die NFL 2025 ein Hauptrundenspiel aus?",
+      "antworten": ["Aviva Stadium", "Wembley Stadium", "Croke Park", "Millennium Stadium"],
+      "richtig": 2,
+      "erklaerung": "Die NFL spielte 2025 im Croke Park in Dublin. Weitere Orte der International Series in Europa waren London (seit 2007), München (2022 und 2024), Frankfurt (2023), Berlin (2025) und Madrid (2025).",
+      "quelle": { "text": "NFL International Series bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_International_Series" }
+    },
+    {
+      "id": "q378",
+      "stufe": 2,
+      "kategorie": "Football international",
+      "frage": "In welchem Stadion in Mexiko-Stadt trug die NFL ab 2016 Hauptrundenspiele der International Series aus?",
+      "antworten": ["Estadio Olímpico Universitario", "Estadio Azteca", "Estadio Jalisco", "Estadio BBVA"],
+      "richtig": 1,
+      "erklaerung": "Die NFL spielte ab 2016 im Estadio Azteca von Mexiko-Stadt, zuletzt 2022. Für 2026 war die Rückkehr nach Mexiko angekündigt.",
+      "quelle": { "text": "NFL International Series bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_International_Series" }
+    },
+    {
+      "id": "q379",
+      "stufe": 2,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Von welcher Linie aus tritt das kickende Team in der NFL den Kickoff?",
+      "antworten": ["Von der eigenen 25-Yard-Linie", "Von der eigenen 30-Yard-Linie", "Von der eigenen 40-Yard-Linie", "Von der eigenen 35-Yard-Linie"],
+      "richtig": 3,
+      "erklaerung": "Der Kicker tritt den Kickoff von der 35-Yard-Linie seines Teams. Bei einem Safety Kick nach einem Safety ist es die eigene 20-Yard-Linie (Regel 6-1-2).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 6-1-2 (Aufstellungslinien beim Kickoff)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q380",
+      "stufe": 2,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Ein Receiver nimmt nach seinem Touchdown beim Jubel den Helm ab. Wie viele Yards kostet das sein Team?",
+      "antworten": ["5 Yards", "10 Yards", "15 Yards", "20 Yards"],
+      "richtig": 2,
+      "erklaerung": "Den Helm auf dem Feld oder in der Endzone während eines Jubels abzunehmen, ist Unsportsmanlike Conduct und kostet 15 Yards (Regel 12-3-1).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 12-3-1 (Unsportsmanlike Conduct)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q381",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Ein Cheftrainer wirft die rote Flagge, aber die Videoüberprüfung bestätigt die Entscheidung auf dem Feld. Was passiert mit seinem Team?",
+      "antworten": ["Es verliert ein Timeout", "Es bekommt 5 Yards Strafe", "Es verliert einen Down", "Der Gegner bekommt einen Punkt"],
+      "richtig": 0,
+      "erklaerung": "Eine erfolglose Challenge kostet das Team ein Timeout. Ohne verbleibendes Timeout darf ein Team gar nicht challengen, wer es trotzdem versucht, bekommt 15 Yards Strafe (Regel 15-1-1).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 15-1-1 (Coach Challenges)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q382",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Ein Spieler wirft einen Lateral (Pass nach hinten), niemand fängt ihn und der Ball berührt den Boden. Was gilt?",
+      "antworten": ["Der Spielzug ist beendet, der Pass gilt als unvollständig", "Der Ball bleibt im Spiel, beide Teams dürfen ihn aufnehmen und weitertragen", "Der Ball geht an das Team, das nicht geworfen hat", "Das werfende Team verliert einen Down"],
+      "richtig": 1,
+      "erklaerung": "Ein Pass nach hinten, der den Boden berührt, bleibt im Spiel. Spieler beider Teams dürfen ihn aufnehmen und damit weiterlaufen (Regel 8-7-1). Nur ein Pass nach vorn, der den Boden berührt, ist unvollständig.",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 8-7-1 (Pass nach hinten)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q383",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Welche Firma stellt laut Regelbuch die offiziellen Spielbälle der NFL her?",
+      "antworten": ["Nike", "Adidas", "Rawlings", "Wilson"],
+      "richtig": 3,
+      "erklaerung": "Das Regelbuch schreibt vor, dass der Spielball ein „Wilson“ sein muss, handverlesen und mit der Unterschrift des Commissioners. Er besteht aus einer genarbten, naturbraunen Lederhülle um eine aufgepumpte Urethan-Blase (Regel 2).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 2 (Der Ball)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q384",
+      "stufe": 2,
+      "kategorie": "Regeln",
+      "frage": "Wessen Unterschrift trägt jeder offizielle NFL-Spielball?",
+      "antworten": ["Die des Commissioners, derzeit Roger Goodell", "Die des Referees des Spiels", "Die des Teambesitzers", "Die des Super-Bowl-MVP des Vorjahres"],
+      "richtig": 0,
+      "erklaerung": "Laut Regelbuch trägt jeder Spielball die Unterschrift des Commissioners der Liga. Im Regelbuch 2026 ist das Roger Goodell (Regel 2).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 2 (Der Ball)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q385",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welcher Receiver der New York Giants machte im Super Bowl XLII den „Helmet Catch“, bei dem er den Ball gegen seinen Helm presste?",
+      "antworten": ["Plaxico Burress", "Amani Toomer", "David Tyree", "Domenik Hixon"],
+      "richtig": 2,
+      "erklaerung": "David Tyree fing im letzten Drive des Super Bowl XLII einen Pass von Quarterback Eli Manning und presste den Ball gegen seinen Helm. Die Giants gewannen 17:14 gegen die Patriots, die zuvor alle 16 Hauptrundenspiele gewonnen hatten, und sorgten für eine der größten Überraschungen der Sportgeschichte.",
+      "quelle": { "text": "David Tyree bei Wikipedia", "url": "https://en.wikipedia.org/wiki/David_Tyree" }
+    },
+    {
+      "id": "q386",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welcher Cornerback der Patriots fing im Super Bowl XLIX (2015) in den Schlusssekunden an der Goal Line einen Pass der Seahawks ab und sicherte den Sieg?",
+      "antworten": ["Malcolm Butler", "Darrelle Revis", "Logan Ryan", "Brandon Browner"],
+      "richtig": 0,
+      "erklaerung": "Malcolm Butler, der 2014 ohne Draft zu den Patriots gekommen war, fing den Pass an der Goal Line ab und verhinderte so den Führungstouchdown der Seahawks. Die Patriots gewannen 28:24 am 1. Februar 2015 in Glendale, Arizona. Die Interception gilt als einer der größten Spielzüge der NFL-Geschichte.",
+      "quelle": { "text": "Malcolm Butler bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Malcolm_Butler" }
+    },
+    {
+      "id": "q387",
+      "stufe": 3,
+      "kategorie": "Liga und Rekorde",
+      "frage": "Welches Ergebnis steht für den höchsten Sieg in der Geschichte des Super Bowls?",
+      "antworten": ["46:10", "52:17", "43:8", "55:10"],
+      "richtig": 3,
+      "erklaerung": "Die 49ers schlugen die Broncos im Super Bowl XXIV am 28. Januar 1990 in New Orleans mit 55:10. Das ist der größte Vorsprung (45 Punkte) und die höchste Punktzahl eines Teams in einem Super Bowl. Joe Montana wurde zum dritten Mal zum MVP gewählt.",
+      "quelle": { "text": "Super Bowl XXIV bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_XXIV" }
+    },
+    {
+      "id": "q388",
+      "stufe": 3,
+      "kategorie": "Geschichte und Liga",
+      "frage": "Welches dieser Teams gehörte 1960 zu den acht Gründungsmitgliedern der American Football League (AFL)?",
+      "antworten": ["Miami Dolphins", "Buffalo Bills", "Cincinnati Bengals", "Atlanta Falcons"],
+      "richtig": 1,
+      "erklaerung": "Die AFL startete 1960 mit acht Teams: Boston Patriots, Buffalo Bills, Dallas Texans, Denver Broncos, Houston Oilers, Los Angeles Chargers, Titans of New York und Oakland Raiders. 1970 schloss sich die AFL mit der NFL zusammen und wurde deren American Football Conference (AFC).",
+      "quelle": { "text": "American Football League bei Wikipedia", "url": "https://en.wikipedia.org/wiki/American_Football_League" }
+    },
+    {
+      "id": "q389",
+      "stufe": 3,
+      "kategorie": "Bonusfrage",
+      "frage": "Welches NFL-Stadion wurde bereits 1924 eröffnet und gilt als das älteste der Liga?",
+      "antworten": ["Lambeau Field in Green Bay", "Arrowhead Stadium in Kansas City", "Soldier Field in Chicago", "Hard Rock Stadium in Miami Gardens"],
+      "richtig": 2,
+      "erklaerung": "Das Soldier Field an der Near South Side von Chicago wurde 1924 eröffnet und ist seit 1971 die Heimat der Chicago Bears. Mit 62.500 Plätzen ist es das zweitkleinste Stadion der NFL.",
+      "quelle": { "text": "Soldier Field bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Soldier_Field" }
+    },
+    {
+      "id": "q390",
+      "stufe": 3,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Wie viele Defensive Backs stehen in der Dime-Formation der Defense auf dem Feld?",
+      "antworten": ["6", "4", "5", "7"],
+      "richtig": 0,
+      "erklaerung": "Die Dime Defense setzt sechs Defensive Backs ein, meist zwei Safeties und vier Cornerbacks. Sie kommt vor allem bei klaren Passsituationen zum Einsatz. Die Nickel-Formation hat fünf Defensive Backs.",
+      "quelle": { "text": "Dime defense bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Dime_defense" }
+    },
+    {
+      "id": "q391",
+      "stufe": 3,
+      "kategorie": "Taktik und Positionen",
+      "frage": "Was kennzeichnet die „West Coast Offense“, die Bill Walsh in den 1970er-Jahren bei den Cincinnati Bengals entwickelte?",
+      "antworten": ["Fast ausschließlich Läufe durch die Mitte", "Lange Pässe tief ins gegnerische Feld", "Ein Spiel ohne festen Quarterback", "Kurze, horizontale Pässe mit hoher Erfolgsquote"],
+      "richtig": 3,
+      "erklaerung": "Die West Coast Offense setzt auf kurze, horizontale Pässe mit hoher Fangquote. Die Receiver sollen nach dem Fang viele Yards dazugewinnen. Ursprünglich bezeichnete der Begriff das System von Don Coryell bei den San Diego Chargers, heute meint er meist Bill Walshs System.",
+      "quelle": { "text": "West Coast offense bei Wikipedia", "url": "https://en.wikipedia.org/wiki/West_Coast_offense" }
+    },
+    {
+      "id": "q392",
+      "stufe": 3,
+      "kategorie": "Spielzüge, Defense und Positionen",
+      "frage": "Was kennzeichnet einen „Zone Blitz“?",
+      "antworten": ["Alle elf Verteidiger rennen auf den Quarterback zu", "Zusätzliche Spieler rushen den Quarterback, aber ein vermeintlicher Rusher fällt überraschend in die Passverteidigung zurück", "Die Defense deckt nur die Endzone und lässt den Quarterback unbedrängt", "Alle Verteidiger decken Mann gegen Mann und keiner rusht"],
+      "richtig": 1,
+      "erklaerung": "Beim Zone Blitz rushen fünf oder mehr Spieler auf den Quarterback. Ein Spieler, der eigentlich anrennen müsste, etwa ein Defensive End, fällt dafür überraschend in die Zone-Coverage zurück. Ziel ist, den Quarterback zu stören: unvollständiger Pass, Sack, Fumble oder Interception.",
+      "quelle": { "text": "Zone blitz bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Zone_blitz" }
+    },
+    {
+      "id": "q393",
+      "stufe": 3,
+      "kategorie": "College-Football",
+      "frage": "Texas und Oklahoma treffen sich jedes Jahr zur „Red River Rivalry“. In welchem Stadion in Dallas wird das Spiel seit 1932 ausgetragen?",
+      "antworten": ["AT&T Stadium", "Toyota Stadium", "Cotton Bowl", "Gerald J. Ford Stadium"],
+      "richtig": 2,
+      "erklaerung": "Die Red River Rivalry findet seit 1932 im Cotton Bowl im Fair Park von Dallas statt, seit 1934 meist am zweiten Samstag im Oktober. Der Name erinnert an den Red River, der einen Teil der Grenze zwischen Texas und Oklahoma bildet. Die beiden Teams spielen seit 1900 gegeneinander.",
+      "quelle": { "text": "Red River Rivalry bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Red_River_Rivalry" }
+    },
+    {
+      "id": "q394",
+      "stufe": 3,
+      "kategorie": "Football in Europa",
+      "frage": "In welchem Jahr wurde die höchste deutsche American-Football-Liga gegründet, damals noch „American-Football-Bundesliga“ genannt?",
+      "antworten": ["1979", "1966", "1985", "1992"],
+      "richtig": 0,
+      "erklaerung": "Die Liga wurde 1979 gegründet und heißt seit 1999 German Football League (GFL). Gespielt wird nach den Regeln der NCAA. Laut Wikipedia gilt sie als die wettbewerbsstärkste nationale Liga Europas.",
+      "quelle": { "text": "German Football League bei Wikipedia", "url": "https://en.wikipedia.org/wiki/German_Football_League" }
+    },
+    {
+      "id": "q395",
+      "stufe": 3,
+      "kategorie": "Regeln",
+      "frage": "Ein Field-Goal-Versuch wird verfehlt. Der Kick wurde weniger als 20 Yards vor der Goal Line der Defense angesetzt, und die Defense hat den Ball nicht berührt. Wo übernimmt sie den Ball?",
+      "antworten": ["An der Line of Scrimmage", "An der eigenen 10-Yard-Linie", "An der eigenen 25-Yard-Linie", "An der eigenen 20-Yard-Linie"],
+      "richtig": 3,
+      "erklaerung": "Verfehlt die Offense ein Field Goal aus kurzer Distanz, bekommt die Defense den Ball an ihrer eigenen 20-Yard-Linie. Wurde der Kick weiter entfernt angesetzt, übernimmt die Defense den Ball an der Stelle des Kicks (Regel 11-4-2).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 11-4-2 (Verfehlte Field Goals)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q396",
+      "stufe": 3,
+      "kategorie": "Regeln",
+      "frage": "Wie viele Timeouts hat jedes Team in der Verlängerung eines Hauptrundenspiels?",
+      "antworten": ["1", "2", "3", "4"],
+      "richtig": 1,
+      "erklaerung": "In der Verlängerung der Hauptrunde stehen jedem Team zwei Timeouts zu (Regel 16-3). In den Playoffs sind es drei Timeouts je Halbzeit (Regel 16-4).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 16-3 (Verlängerung in der Hauptrunde)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q397",
+      "stufe": 3,
+      "kategorie": "Regeln",
+      "frage": "Wer kann in der Verlängerung eine Videoüberprüfung eines Spielzugs auslösen?",
+      "antworten": ["Jeder Cheftrainer mit einer roten Flagge", "Beide Cheftrainer, aber nur einmal pro Team", "Nur der Replay Official", "Der Referee auf Zuruf der Captains"],
+      "richtig": 2,
+      "erklaerung": "In der Verlängerung leitet nur der Replay Official eine Überprüfung ein. Challenges der Cheftrainer sind nicht erlaubt (Regel 16-5).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 16-5 (Allgemeine Regeln der Verlängerung)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q398",
+      "stufe": 3,
+      "kategorie": "Spielablauf und Strafen",
+      "frage": "Ein Verteidiger blockt einen weit außen stehenden Receiver unterhalb der Hüfte (Illegal Cut Block). Welche Strafe folgt?",
+      "antworten": ["15 Yards und automatisches First Down", "5 Yards ohne First Down", "10 Yards und automatisches First Down", "15 Yards ohne First Down"],
+      "richtig": 0,
+      "erklaerung": "Ein Receiver, der mehr als zwei Yards außerhalb seines Tackles steht, darf nicht unterhalb der Hüfte geblockt werden. Der Illegal Cut Block kostet die Defense 15 Yards und gibt der Offense ein automatisches First Down (Regel 8-4-5).",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 8-4-5 (Illegal Cut Block)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q399",
+      "stufe": 3,
+      "kategorie": "Bonusfrage",
+      "frage": "Wie viele Spiele umfasst die komplette NFL-Hauptrunde mit allen 32 Teams?",
+      "antworten": ["256", "272", "288", "544"],
+      "richtig": 1,
+      "erklaerung": "32 Teams spielen je 17 Spiele. An jedem Spiel sind zwei Teams beteiligt, also ergibt sich 32 mal 17 geteilt durch 2, das sind 272 Spiele. Mit nur 16 Spielen je Team wären es 256.",
+      "quelle": { "text": "NFL regular season bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_regular_season" }
+    },
+    {
+      "id": "q400",
+      "stufe": 1,
+      "kategorie": "Statistik",
+      "frage": "In der Statistik eines Quarterbacks steht „24/36“: 24 Pässe kamen an, 36 wurden geworfen. Wie hoch ist seine Passquote (Completion Percentage)?",
+      "antworten": ["50,0 %", "60,0 %", "66,7 %", "75,0 %"],
+      "richtig": 2,
+      "erklaerung": "Die Passquote ist die Zahl der angekommenen Pässe (Completions) geteilt durch die Zahl der Versuche (Attempts): 24 geteilt durch 36 ergibt 0,667, also 66,7 Prozent. Für ein perfektes Passer Rating braucht ein Quarterback mindestens 77,5 Prozent.",
+      "quelle": { "text": "Passer rating bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Passer_rating" }
+    },
+    {
+      "id": "q401",
+      "stufe": 1,
+      "kategorie": "Statistik",
+      "frage": "Ein Running Back läuft 20-mal mit dem Ball und gewinnt dabei zusammen 100 Yards. Wie viele Yards pro Lauf (Yards per Carry) sind das im Schnitt?",
+      "antworten": ["0,2", "5,0", "80,0", "120,0"],
+      "richtig": 1,
+      "erklaerung": "Yards per Carry sind die Rushing Yards geteilt durch die Zahl der Läufe (Carries): 100 geteilt durch 20 ergibt 5,0. Den besten Schnitt unter allen Spielern mit mindestens 750 Läufen hat laut Wikipedia Michael Vick mit 7,0 Yards pro Lauf.",
+      "quelle": { "text": "Carry bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Carry_(gridiron_football)" }
+    },
+    {
+      "id": "q402",
+      "stufe": 1,
+      "kategorie": "Statistik",
+      "frage": "Ein Team erobert im Spiel den Ball dreimal vom Gegner (Takeaways) und verliert ihn selbst einmal (Turnover). Wie groß ist seine Turnover-Differenz?",
+      "antworten": ["+2", "+3", "+4", "−2"],
+      "richtig": 0,
+      "erklaerung": "Die Turnover-Differenz ist die Zahl der eigenen Takeaways minus die Zahl der eigenen Turnovers: 3 minus 1 ergibt +2. Ein positiver Wert heißt, dass ein Team den Ball öfter gewinnt als verliert. Die beste Differenz in einer Saison hatte Washington 1983 mit +43.",
+      "quelle": { "text": "List of NFL team records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_team_records" }
+    },
+    {
+      "id": "q403",
+      "stufe": 1,
+      "kategorie": "Statistik",
+      "frage": "Team A hatte in einem Spiel ohne Verlängerung 36 Minuten lang den Ball (Time of Possession). Wie viele Minuten hatte Team B den Ball?",
+      "antworten": ["20 Minuten", "30 Minuten", "36 Minuten", "24 Minuten"],
+      "richtig": 3,
+      "erklaerung": "Die Ballbesitzzeit (Time of Possession) zeigt, wie lange ein Team den Ball hat. In 60 Spielminuten hat immer genau ein Team den Ball, die beiden Zeiten ergeben also zusammen 60 Minuten: 60 minus 36 sind 24. Viel Ballbesitz gilt als Vorteil, weil die gegnerische Defense müde wird.",
+      "quelle": { "text": "Time of possession im Glossar bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Glossary_of_American_football_terms" }
+    },
+    {
+      "id": "q404",
+      "stufe": 1,
+      "kategorie": "Statistik",
+      "frage": "In der NFL-Tabelle steht bei einem Team die Bilanz „11–5–1“. Was bedeutet das?",
+      "antworten": ["11 Siege, 5 Niederlagen, 1 Unentschieden", "11 Siege, 1 Niederlage, 5 Unentschieden", "11 Heimspiele, 5 Auswärtsspiele, 1 Playoff-Spiel", "11 Touchdowns, 5 Field Goals, 1 Safety"],
+      "richtig": 0,
+      "erklaerung": "Die NFL schreibt Bilanzen als Siege–Niederlagen–Unentschieden. 11 plus 5 plus 1 sind 17 Spiele, so viele wie ein Team in der Hauptrunde bestreitet. Die Green Bay Packers kamen von 1921 bis 2025 auf eine Hauptrunden-Bilanz von 819–611–39.",
+      "quelle": { "text": "List of NFL team records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_team_records" }
+    },
+    {
+      "id": "q405",
+      "stufe": 1,
+      "kategorie": "Statistik",
+      "frage": "Ein Receiver fängt einen Pass, der 10 Yards über die Line of Scrimmage hinausfliegt, und läuft danach noch 15 Yards weiter, bis er getackelt wird. Wie viele Receiving Yards bekommt er für diesen Spielzug gutgeschrieben?",
+      "antworten": ["5", "10", "15", "25"],
+      "richtig": 3,
+      "erklaerung": "Dem Fänger werden alle Yards gutgeschrieben, die der Spielzug von der Line of Scrimmage bis zum Ende bringt: 10 Yards in der Luft (Air Yards) plus 15 Yards nach dem Fang (Yards after Catch) sind 25. Dieselben 25 Yards zählen auch als Passing Yards für den Quarterback.",
+      "quelle": { "text": "Completion bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Completion_(gridiron_football)" }
+    },
+    {
+      "id": "q406",
+      "stufe": 1,
+      "kategorie": "Statistik",
+      "frage": "Ein Team gewinnt in einem Spiel 150 Yards durch Läufe und 250 Yards durch Pässe. Wie viele Yards hat es insgesamt gemacht (Total Offense)?",
+      "antworten": ["250", "400", "100", "550"],
+      "richtig": 1,
+      "erklaerung": "Total Offense, auch Total Yards genannt, ist die Summe aus Rushing Yards und Passing Yards: 150 plus 250 sind 400. Receiving Yards kommen nicht noch einmal dazu, denn sie stecken schon in den Passing Yards.",
+      "quelle": { "text": "Total offense bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Total_offense" }
+    },
+    {
+      "id": "q407",
+      "stufe": 1,
+      "kategorie": "Statistik",
+      "frage": "Ein Team erzielt drei Touchdowns, jeweils mit verwandeltem Extrapunkt, und dazu zwei Field Goals. Wie viele Punkte hat es insgesamt?",
+      "antworten": ["24", "25", "27", "29"],
+      "richtig": 2,
+      "erklaerung": "Ein Touchdown mit Extrapunkt bringt 6 plus 1, also 7 Punkte. Drei davon sind 21 Punkte. Zwei Field Goals zu je 3 Punkten geben 6 Punkte dazu: 21 plus 6 sind 27.",
+      "quelle": { "text": "Football Terms (Touchdown, Extrapunkt, Field Goal) bei NFL Football Operations", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q408",
+      "stufe": 1,
+      "kategorie": "Statistik",
+      "frage": "Ein Team hat in der Saison 400 Punkte erzielt und 350 Punkte kassiert. Wie groß ist seine Punktedifferenz (Point Differential)?",
+      "antworten": ["−50", "+25", "+750", "+50"],
+      "richtig": 3,
+      "erklaerung": "Die Punktedifferenz ist die Zahl der erzielten Punkte minus die der kassierten Punkte: 400 minus 350 ergibt +50. Die schlechteste Differenz in einer Saison mit 16 Spielen hatten 1981 die Baltimore Colts mit −274.",
+      "quelle": { "text": "List of NFL team records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_team_records" }
+    },
+    {
+      "id": "q409",
+      "stufe": 1,
+      "kategorie": "Statistik",
+      "frage": "Ein Kicker trifft in einer Saison 27 von 30 Field-Goal-Versuchen. Wie hoch ist seine Trefferquote?",
+      "antworten": ["90 %", "85 %", "88 %", "93 %"],
+      "richtig": 0,
+      "erklaerung": "Die Trefferquote ist die Zahl der verwandelten Field Goals geteilt durch die Zahl der Versuche: 27 geteilt durch 30 ergibt 0,90, also 90 Prozent. Eine Saison ohne Fehlversuch bei mindestens 20 Versuchen gelang unter anderem Gary Anderson 1998 mit 35 von 35.",
+      "quelle": { "text": "List of NFL individual records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_individual_records" }
+    },
+    {
+      "id": "q410",
+      "stufe": 2,
+      "kategorie": "Statistik",
+      "frage": "Was bedeutet die Abkürzung YAC in der Passstatistik?",
+      "antworten": ["Yards, die ein Quarterback beim Scramble läuft", "Yards, die der Receiver nach dem Fang noch gewinnt", "Die Länge des Passes in der Luft bis zum Fang", "Yards, die ein Verteidiger nach einem Turnover zurückträgt"],
+      "richtig": 1,
+      "erklaerung": "YAC steht für Yards after Catch: die Yards, die ein Receiver vom Ort des Fangs bis zum Ende des Spielzugs noch gewinnt. Die Länge des Passes in der Luft von der Line of Scrimmage bis zum Fang heißt dagegen Air Yards.",
+      "quelle": { "text": "Yards after catch bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Yards_after_catch" }
+    },
+    {
+      "id": "q411",
+      "stufe": 2,
+      "kategorie": "Statistik",
+      "frage": "Aus welchen beiden Yardzahlen setzen sich die Yards from Scrimmage eines Spielers zusammen?",
+      "antworten": ["Passing Yards und Rushing Yards", "Receiving Yards und Return Yards", "Rushing Yards und Receiving Yards", "Passing Yards und Receiving Yards"],
+      "richtig": 2,
+      "erklaerung": "Yards from Scrimmage sind die Rushing Yards plus die Receiving Yards eines Spielers. Passing Yards plus Rushing Yards ergeben dagegen die Total Offense. Die meisten Yards from Scrimmage in einer Saison gewann Chris Johnson 2009 mit 2.509, in der Karriere Jerry Rice mit 23.540.",
+      "quelle": { "text": "Yards from scrimmage bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Yards_from_scrimmage" }
+    },
+    {
+      "id": "q412",
+      "stufe": 2,
+      "kategorie": "Statistik",
+      "frage": "Welche Yards zählen zu den All-Purpose Yards eines Spielers zusätzlich zu den Rushing und Receiving Yards?",
+      "antworten": ["Return Yards (Kickoffs, Punts und Turnovers)", "Die Passing Yards des eigenen Quarterbacks", "Yards, die durch Strafen gegen den Gegner entstehen", "Die Yards, die bei Sacks verloren gehen"],
+      "richtig": 0,
+      "erklaerung": "All-Purpose Yards sind Rushing, Receiving und alle Return Yards. Passing Yards und Strafyards gehören nicht dazu. Den Saisonrekord hält Darren Sproles mit 2.696 Yards (2011), den Karriererekord Jerry Rice mit 23.546.",
+      "quelle": { "text": "All-purpose yardage bei Wikipedia", "url": "https://en.wikipedia.org/wiki/All-purpose_yardage" }
+    },
+    {
+      "id": "q413",
+      "stufe": 2,
+      "kategorie": "Statistik",
+      "frage": "Was zählt die Statistik „Targets“ bei einem Receiver?",
+      "antworten": ["Wie viele Touchdowns er in der Saison gefangen hat", "Wie oft er in der Red Zone auf dem Feld gestanden hat", "Wie viele Pässe er gefangen hat", "Wie oft ein Pass zu ihm geworfen wurde, egal ob gefangen"],
+      "richtig": 3,
+      "erklaerung": "Ein Target zählt jedes Mal, wenn ein Pass für einen bestimmten Receiver gedacht ist, egal ob er gefangen wird oder nicht. Wer 10 Targets hat und 7 Pässe fängt, kommt auf eine Fangquote von 70 Prozent.",
+      "quelle": { "text": "Target im Glossar bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Glossary_of_American_football_terms" }
+    },
+    {
+      "id": "q414",
+      "stufe": 2,
+      "kategorie": "Statistik",
+      "frage": "Was ist ein „Tackle for Loss“?",
+      "antworten": ["Ein Tackle, nach dem der Verteidiger den Ball erobert", "Ein Tackle hinter der Line of Scrimmage, das dem Gegner Raum kostet", "Ein Tackle, das mit einer Strafe gegen die Defense geahndet wird", "Ein verfehltes Tackle, nach dem der Gegner weiterläuft"],
+      "richtig": 1,
+      "erklaerung": "Ein Tackle for Loss (TFL) bringt den Gegner hinter der Line of Scrimmage zu Boden, sodass die Offense Raum verliert. Auch ein Sack zählt dazu, wenn der Quarterback hinter der Line getackelt wird.",
+      "quelle": { "text": "Tackle-for-loss im Glossar bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Glossary_of_American_football_terms" }
+    },
+    {
+      "id": "q415",
+      "stufe": 2,
+      "kategorie": "Statistik",
+      "frage": "Was zählt in der Statistik als „Pass Breakup“ (auch Pass Deflected)?",
+      "antworten": ["Der Quarterback wirft den Ball absichtlich ins Aus", "Ein Verteidiger fängt den Pass ab und trägt ihn zurück", "Ein Verteidiger wehrt den Pass ab, er bleibt unvollständig", "Der Receiver lässt den Ball nach dem Fang wieder fallen"],
+      "richtig": 2,
+      "erklaerung": "Ein Pass Breakup (Pass Deflected) ist ein unvollständiger Pass, den ein Verteidiger verursacht, etwa indem er den Ball mit der Hand wegschlägt. Fängt der Verteidiger den Ball, ist es eine Interception. Trifft er den Receiver, bevor dieser den Ball berührt hat, ist es Pass Interference.",
+      "quelle": { "text": "Pass deflected bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Pass_deflected" }
+    },
+    {
+      "id": "q416",
+      "stufe": 2,
+      "kategorie": "Statistik",
+      "frage": "Welche dieser Zahlen fließt nicht in das NFL-Passer-Rating eines Quarterbacks ein?",
+      "antworten": ["Die Zahl seiner Touchdown-Pässe", "Die Zahl seiner Interceptions", "Seine Passing Yards pro Versuch", "Seine Rushing Yards"],
+      "richtig": 3,
+      "erklaerung": "Das Passer Rating nutzt nur Versuche, Completions, Passing Yards, Touchdown-Pässe und Interceptions. Läufe, Sacks und Fumbles zählen nicht, deshalb sagt es über einen laufstarken Quarterback nur die halbe Wahrheit.",
+      "quelle": { "text": "Passer rating bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Passer_rating" }
+    },
+    {
+      "id": "q417",
+      "stufe": 2,
+      "kategorie": "Statistik",
+      "frage": "Wer hat in der NFL-Hauptrunde die meisten Passing Yards der Karriere geworfen?",
+      "antworten": ["Tom Brady", "Drew Brees", "Peyton Manning", "Brett Favre"],
+      "richtig": 0,
+      "erklaerung": "Tom Brady kam zwischen 2000 und 2022 auf 89.214 Passing Yards. Drew Brees war der erste Spieler mit 80.000 Karriere-Yards, Brady der erste mit 85.000.",
+      "quelle": { "text": "List of NFL quarterback records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_quarterback_records" }
+    },
+    {
+      "id": "q418",
+      "stufe": 2,
+      "kategorie": "Statistik",
+      "frage": "Welches Team hat mit zwölf Teilnahmen die meisten Super Bowls erreicht?",
+      "antworten": ["Dallas Cowboys", "Pittsburgh Steelers", "New England Patriots", "San Francisco 49ers"],
+      "richtig": 2,
+      "erklaerung": "Die New England Patriots standen 1985, 1996, 2001, 2003, 2004, 2007, 2011, 2014, 2016, 2017, 2018 und 2025 im Super Bowl. Die meisten Teilnahmen in Folge hat Buffalo mit vier (1990 bis 1993).",
+      "quelle": { "text": "List of NFL team records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_team_records" }
+    },
+    {
+      "id": "q419",
+      "stufe": 2,
+      "kategorie": "Statistik",
+      "frage": "Wie viele Punkte Rückstand hat in der NFL-Geschichte höchstens ein Team aufgeholt, um ein Spiel noch zu gewinnen?",
+      "antworten": ["25 Punkte", "33 Punkte", "36 Punkte", "40 Punkte"],
+      "richtig": 1,
+      "erklaerung": "Die Minnesota Vikings lagen am 17. Dezember 2022 gegen die Indianapolis Colts mit 0:33 zurück und gewannen noch 39:36 in der Verlängerung. Im Super Bowl LI holten die New England Patriots gegen die Atlanta Falcons 25 Punkte auf.",
+      "quelle": { "text": "List of NFL team records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_team_records" }
+    },
+    {
+      "id": "q420",
+      "stufe": 3,
+      "kategorie": "Statistik",
+      "frage": "Wie viele Passing Yards warf Norm Van Brocklin am 28. September 1951 – bis heute der NFL-Rekord für ein einzelnes Spiel?",
+      "antworten": ["554", "505", "527", "612"],
+      "richtig": 0,
+      "erklaerung": "Van Brocklin warf für die Los Angeles Rams gegen die New York Yanks 554 Yards und war der erste Quarterback mit 500 Yards in einem Spiel. Tom Bradys 505 Yards im Super Bowl LII sind der Rekord für ein Endspiel.",
+      "quelle": { "text": "List of NFL quarterback records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_quarterback_records" }
+    },
+    {
+      "id": "q421",
+      "stufe": 3,
+      "kategorie": "Statistik",
+      "frage": "Wer hält den NFL-Rekord für die meisten Rushing Yards in einem einzelnen Spiel?",
+      "antworten": ["Jamal Lewis", "Barry Sanders", "Adrian Peterson", "Derrick Henry"],
+      "richtig": 2,
+      "erklaerung": "Adrian Peterson lief am 4. November 2007 als Rookie 296 Yards, davon 253 in einer einzigen Halbzeit – beides ist bis heute Rekord.",
+      "quelle": { "text": "List of NFL individual records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_individual_records" }
+    },
+    {
+      "id": "q422",
+      "stufe": 3,
+      "kategorie": "Statistik",
+      "frage": "Wer hält den NFL-Rekord für die meisten Receptions (gefangene Pässe) in einer einzigen Saison?",
+      "antworten": ["Marvin Harrison", "Michael Thomas", "Cooper Kupp", "Antonio Brown"],
+      "richtig": 1,
+      "erklaerung": "Michael Thomas fing 2019 genau 149 Pässe, im Schnitt 9,31 pro Spiel bei 16 Spielen. In einer einzigen Postseason fing Cooper Kupp 2021 mit 33 Pässen die meisten.",
+      "quelle": { "text": "List of NFL individual records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_individual_records" }
+    },
+    {
+      "id": "q423",
+      "stufe": 3,
+      "kategorie": "Statistik",
+      "frage": "Wie viele Touchdowns (Rushing, Receiving und Returns zusammen) erzielte LaDainian Tomlinson 2006 – NFL-Rekord für eine Saison?",
+      "antworten": ["26", "28", "31", "34"],
+      "richtig": 2,
+      "erklaerung": "Tomlinson kam 2006 auf 31 Touchdowns, davon 28 Rushing Touchdowns (ebenfalls Rekord), und auf 186 Punkte. So viele Punkte hat noch nie ein Spieler in einer Saison erzielt.",
+      "quelle": { "text": "List of NFL individual records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_individual_records" }
+    },
+    {
+      "id": "q424",
+      "stufe": 3,
+      "kategorie": "Statistik",
+      "frage": "Wer erreichte mit 122,5 das höchste Passer Rating in einer NFL-Saison?",
+      "antworten": ["Aaron Rodgers", "Peyton Manning", "Tom Brady", "Patrick Mahomes"],
+      "richtig": 0,
+      "erklaerung": "Aaron Rodgers erreichte 2011 ein Passer Rating von 122,5. Das höchste mögliche Rating liegt bei 158,3. Das beste Rating in einem Super Bowl erzielte Phil Simms mit 150,92 im Super Bowl XXI.",
+      "quelle": { "text": "Passer rating bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Passer_rating" }
+    },
+    {
+      "id": "q425",
+      "stufe": 3,
+      "kategorie": "Statistik",
+      "frage": "Ab wie vielen Yards pro Passversuch ist der Yards-Teil des Passer Ratings ausgereizt?",
+      "antworten": ["8,0", "10,0", "11,5", "12,5"],
+      "richtig": 3,
+      "erklaerung": "Jeder Teil des Passer Ratings ist nach oben begrenzt. Beim Yards-Teil liegt die Grenze bei 12,5 Yards pro Versuch. Für das perfekte Rating von 158,3 braucht ein Quarterback außerdem mindestens 77,5 Prozent Passquote, 11,875 Prozent Touchdown-Pässe und keine Interception.",
+      "quelle": { "text": "Passer rating bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Passer_rating" }
+    },
+    {
+      "id": "q426",
+      "stufe": 3,
+      "kategorie": "Statistik",
+      "frage": "Welcher Spieler schaffte als Erster in der NFL-Geschichte in derselben Saison 1.000 Rushing Yards und 1.000 Receiving Yards?",
+      "antworten": ["Roger Craig", "Walter Payton", "Thurman Thomas", "Jim Brown"],
+      "richtig": 0,
+      "erklaerung": "Roger Craig war der erste NFL-Spieler mit 1.000 Rushing und 1.000 Receiving Yards in derselben Saison. Der Saisonrekord bei den Yards from Scrimmage liegt bei 2.509 (Chris Johnson, 2009).",
+      "quelle": { "text": "Yards from scrimmage bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Yards_from_scrimmage" }
+    },
+    {
+      "id": "q427",
+      "stufe": 3,
+      "kategorie": "Statistik",
+      "frage": "Ein Quarterback wird 7 Yards hinter der Line of Scrimmage gesackt. Wie verbucht die NFL diesen Verlust in der Statistik?",
+      "antworten": ["Als −7 Rushing Yards des Quarterbacks, so wie es im College gezählt wird", "Als −7 Passing Yards des Quarterbacks", "Nur als Minus in den Passing Yards des Teams", "Gar nicht, Sack-Yards tauchen in keiner Statistik auf"],
+      "richtig": 2,
+      "erklaerung": "In der NFL zählen die Yards eines Sacks weder zu den Passing noch zu den Rushing Yards des Quarterbacks, sondern nur zu den Passing Yards des Teams. Im College (NCAA) werden sie dagegen als Rushing Yards von Spieler und Team gerechnet.",
+      "quelle": { "text": "Carry bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Carry_(gridiron_football)" }
+    },
+    {
+      "id": "q428",
+      "stufe": 3,
+      "kategorie": "Statistik",
+      "frage": "Welcher Tight End stellte 2025 mit 126 Receptions den NFL-Rekord für Tight Ends in einer Saison auf?",
+      "antworten": ["Travis Kelce", "Trey McBride", "George Kittle", "Brock Bowers"],
+      "richtig": 1,
+      "erklaerung": "Trey McBride fing 2025 insgesamt 126 Pässe, so viele wie noch nie ein Tight End in einer Saison. Brock Bowers hält mit 112 Receptions den Rekord für Rookies (2024), Tony Gonzalez mit 1.325 den Karriererekord unter Tight Ends.",
+      "quelle": { "text": "List of NFL individual records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_individual_records" }
+    },
+    {
+      "id": "q429",
+      "stufe": 3,
+      "kategorie": "Statistik",
+      "frage": "Was unterscheidet ESPNs Total QBR (seit 2011) vom klassischen Passer Rating?",
+      "antworten": ["Es wertet nur Pässe, die mehr als 20 Yards weit fliegen", "Es gilt nur für Playoff-Spiele und den Super Bowl", "Es misst allein die Passquote auf einer Skala bis 158,3", "Es zählt auch Läufe, Sacks, Strafen und die Spielsituation"],
+      "richtig": 3,
+      "erklaerung": "ESPN hat das Total QBR 2011 eingeführt. Es bezieht alle Beiträge eines Quarterbacks ein, also Pässe, Läufe, Sacks, Strafen und Turnovers, und gewichtet jeden Spielzug nach Schwierigkeit und Spielstand. Die Skala reicht von 0 bis 100, ein durchschnittlicher Quarterback liegt bei etwa 50. Die genaue Formel hat ESPN nie vollständig veröffentlicht.",
+      "quelle": { "text": "Total quarterback rating bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Total_quarterback_rating" }
     }
   ]
 }
