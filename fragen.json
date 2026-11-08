@@ -4158,21 +4158,21 @@
       "id": "q414",
       "stufe": 2,
       "kategorie": "Statistik",
-      "frage": "Was ist ein „Tackle for Loss“?",
-      "antworten": ["Ein Tackle, nach dem der Verteidiger den Ball erobert", "Ein Tackle hinter der Line of Scrimmage, das dem Gegner Raum kostet", "Ein Tackle, das mit einer Strafe gegen die Defense geahndet wird", "Ein verfehltes Tackle, nach dem der Gegner weiterläuft"],
-      "richtig": 1,
-      "erklaerung": "Ein Tackle for Loss (TFL) bringt den Gegner hinter der Line of Scrimmage zu Boden, sodass die Offense Raum verliert. Auch ein Sack zählt dazu, wenn der Quarterback hinter der Line getackelt wird.",
-      "quelle": { "text": "Tackle-for-loss im Glossar bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Glossary_of_American_football_terms" }
+      "frage": "Wie viele Rushing Touchdowns hat Emmitt Smith in seiner Karriere erzielt – NFL-Rekord bis heute?",
+      "antworten": ["110", "123", "145", "164"],
+      "richtig": 3,
+      "erklaerung": "Emmitt Smith lief zwischen 1990 und 2004 für 164 Touchdowns, vor allem für die Dallas Cowboys. LaDainian Tomlinson folgt mit 145, Marcus Allen kam auf 123 und Walter Payton auf 110.",
+      "quelle": { "text": "List of NFL individual records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_individual_records" }
     },
     {
       "id": "q415",
       "stufe": 2,
       "kategorie": "Statistik",
-      "frage": "Was zählt in der Statistik als „Pass Breakup“ (auch Pass Deflected)?",
-      "antworten": ["Der Quarterback wirft den Ball absichtlich ins Aus", "Ein Verteidiger fängt den Pass ab und trägt ihn zurück", "Ein Verteidiger wehrt den Pass ab, er bleibt unvollständig", "Der Receiver lässt den Ball nach dem Fang wieder fallen"],
-      "richtig": 2,
-      "erklaerung": "Ein Pass Breakup (Pass Deflected) ist ein unvollständiger Pass, den ein Verteidiger verursacht, etwa indem er den Ball mit der Hand wegschlägt. Fängt der Verteidiger den Ball, ist es eine Interception. Trifft er den Receiver, bevor dieser den Ball berührt hat, ist es Pass Interference.",
-      "quelle": { "text": "Pass deflected bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Pass_deflected" }
+      "frage": "Wer hat in der NFL-Hauptrunde die meisten Receptions (gefangene Pässe) der Karriere?",
+      "antworten": ["Larry Fitzgerald", "Terrell Owens", "Tony Gonzalez", "Jerry Rice"],
+      "richtig": 3,
+      "erklaerung": "Jerry Rice fing zwischen 1985 und 2004 insgesamt 1.549 Pässe. Larry Fitzgerald folgt mit 1.432 Receptions.",
+      "quelle": { "text": "List of NFL individual records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_individual_records" }
     },
     {
       "id": "q416",
@@ -4198,21 +4198,21 @@
       "id": "q418",
       "stufe": 2,
       "kategorie": "Statistik",
-      "frage": "Welches Team hat mit zwölf Teilnahmen die meisten Super Bowls erreicht?",
-      "antworten": ["Dallas Cowboys", "Pittsburgh Steelers", "New England Patriots", "San Francisco 49ers"],
+      "frage": "Wie viele Touchdown-Pässe hat ein Quarterback in der NFL höchstens in einem einzigen Spiel geworfen?",
+      "antworten": ["5", "6", "7", "9"],
       "richtig": 2,
-      "erklaerung": "Die New England Patriots standen 1985, 1996, 2001, 2003, 2004, 2007, 2011, 2014, 2016, 2017, 2018 und 2025 im Super Bowl. Die meisten Teilnahmen in Folge hat Buffalo mit vier (1990 bis 1993).",
-      "quelle": { "text": "List of NFL team records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_team_records" }
+      "erklaerung": "Sieben Touchdown-Pässe in einem Spiel schafften bisher mehrere Quarterbacks, zum Beispiel Y. A. Tittle 1962 und Nick Foles 2013. Mehr hat noch keiner geworfen.",
+      "quelle": { "text": "List of NFL individual records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_individual_records" }
     },
     {
       "id": "q419",
       "stufe": 2,
       "kategorie": "Statistik",
-      "frage": "Wie viele Punkte Rückstand hat in der NFL-Geschichte höchstens ein Team aufgeholt, um ein Spiel noch zu gewinnen?",
-      "antworten": ["25 Punkte", "33 Punkte", "36 Punkte", "40 Punkte"],
-      "richtig": 1,
-      "erklaerung": "Die Minnesota Vikings lagen am 17. Dezember 2022 gegen die Indianapolis Colts mit 0:33 zurück und gewannen noch 39:36 in der Verlängerung. Im Super Bowl LI holten die New England Patriots gegen die Atlanta Falcons 25 Punkte auf.",
-      "quelle": { "text": "List of NFL team records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_team_records" }
+      "frage": "Wie lang war der längste Lauf von der Line of Scrimmage in der NFL-Geschichte?",
+      "antworten": ["91 Yards", "95 Yards", "99 Yards", "100 Yards"],
+      "richtig": 2,
+      "erklaerung": "Tony Dorsett lief am 3. Januar 1983 für die Dallas Cowboys 99 Yards zum Touchdown gegen die Minnesota Vikings. Länger geht es nicht, denn die Offense startet höchstens an der eigenen 1-Yard-Linie.",
+      "quelle": { "text": "List of NFL individual records bei Wikipedia", "url": "https://en.wikipedia.org/wiki/List_of_NFL_individual_records" }
     },
     {
       "id": "q420",
