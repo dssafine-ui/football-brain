@@ -759,6 +759,27 @@
 
   /* ---------- Spielplan ---------- */
 
+  // Rechnet Datum und Uhrzeit in US-Ostzeit (ET) in deutsche Zeit um, mit Sommer- und Winterzeit beider Seiten.
+  function inDeutsch(datum, zeit) {
+    if (!datum || !zeit) { return { datum: datum || "", zeit: zeit || "", stempel: 0, deutsch: false }; }
+    try {
+      var d = datum.split("-").map(Number);
+      var t = zeit.split(":").map(Number);
+      var raten = Date.UTC(d[0], d[1] - 1, d[2], t[0], t[1]);
+      var ny = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hourCycle: "h23", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric" });
+      var p = {};
+      ny.formatToParts(new Date(raten)).forEach(function (x) { p[x.type] = parseInt(x.value, 10); });
+      var offset = Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute) - raten;
+      var echt = raten - offset;
+      var de = new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" });
+      var q = {};
+      de.formatToParts(new Date(echt)).forEach(function (x) { q[x.type] = x.value; });
+      return { datum: q.year + "-" + q.month + "-" + q.day, zeit: q.hour + ":" + q.minute, stempel: echt, deutsch: true };
+    } catch (e) {
+      return { datum: datum, zeit: zeit, stempel: 0, deutsch: false };
+    }
+  }
+
   function spielplanZeigen() {
     var inhalt = leeren(document.getElementById("thema-inhalt"));
     titelSetzen("Spielplan");
@@ -779,7 +800,7 @@
     }
     if (planFilter.woche === null || wochen.indexOf(planFilter.woche) === -1) { planFilter.woche = aktuell; }
 
-    inhalt.appendChild(el("p", { klasse: "thema-info", text: "Alle Spiele der Hauptrunde " + plan.saison + ". Wähle eine Woche oder ein Team. Uhrzeiten in US-Ostzeit (ET), in Deutschland sechs Stunden später." }));
+    inhalt.appendChild(el("p", { klasse: "thema-info", text: "Alle Spiele der Hauptrunde " + plan.saison + ". Wähle eine Woche oder ein Team. Datum und Uhrzeit in deutscher Zeit (umgerechnet aus US-Ostzeit). Späte Spiele rutschen dadurch oft auf den nächsten Tag." }));
     var wochenAuswahl = el("select", { "aria-label": "Woche wählen" });
     wochen.forEach(function (w) {
       wochenAuswahl.appendChild(el("option", { value: String(w), text: "Woche " + w + (w === aktuell ? " (aktuell)" : "") }));
@@ -801,18 +822,22 @@
       var treffer = spiele.filter(function (s) {
         if (planFilter.woche !== "alle" && s.woche !== planFilter.woche) { return false; }
         return planFilter.team === "alle" || s.heim === planFilter.team || s.gast === planFilter.team;
+      }).map(function (s) {
+        return { s: s, de: inDeutsch(s.datum, s.zeit) };
       }).sort(function (a, b) {
-        return (a.woche - b.woche) || String(a.datum + (a.zeit || "")).localeCompare(String(b.datum + (b.zeit || "")));
+        return (a.s.woche - b.s.woche) || (a.de.stempel - b.de.stempel);
       });
       var letzte = null;
-      treffer.forEach(function (s) {
-        var gruppe = "Woche " + s.woche + " · " + datumZeigen(s.datum);
+      treffer.forEach(function (eintrag) {
+        var s = eintrag.s;
+        var de = eintrag.de;
+        var gruppe = "Woche " + s.woche + " · " + datumZeigen(de.datum);
         if (gruppe !== letzte) { liste.appendChild(el("h3", { klasse: "gruppe", text: gruppe })); letzte = gruppe; }
         var fertig = hat(s.heimPunkte) && hat(s.gastPunkte);
         liste.appendChild(el("div", { klasse: "eintrag spiel" }, [
           el("div", { klasse: "eintrag-text", style: "padding:10px 12px" }, [
             el("span", { klasse: "eintrag-titel", text: teamName(s.gast) + " @ " + teamName(s.heim) }),
-            el("span", { klasse: "eintrag-zeile", text: fertig ? "Endstand " + s.gastPunkte + " : " + s.heimPunkte : (s.zeit ? s.zeit + " Uhr ET" : "Zeit offen") })
+            el("span", { klasse: "eintrag-zeile", text: fertig ? "Endstand " + s.gastPunkte + " : " + s.heimPunkte : (s.zeit ? de.zeit + (de.deutsch ? " Uhr" : " Uhr ET") : "Zeit offen") })
           ])
         ]));
       });
