@@ -12,6 +12,7 @@
     spieler: "wiki-spieler.json",
     statistik: "wiki-statistik.json",
     tabelle: "wiki-tabelle.json",
+    spielplan: "wiki-spielplan.json",
     namen: "wiki-namen.json"
   };
   var MAX_TREFFER = 30;
@@ -34,7 +35,8 @@
     { feld: "fg_made", titel: "Field Goals", einheit: "FG", pos: null }
   ];
 
-  var daten = { teams: null, regeln: null, spieler: null, statistik: null, tabelle: null, namen: null };
+  var daten = { teams: null, regeln: null, spieler: null, statistik: null, tabelle: null, spielplan: null, namen: null };
+  var planFilter = { woche: null, team: "alle" };
 
   // Name, Position und Team zu einer Spieler-ID: erst aus dem Kader, sonst aus wiki-namen.json (Spieler ohne Kaderplatz).
   function spielerInfo(id) {
@@ -202,6 +204,9 @@
       anzahlStat ? "Bestenlisten, Saison " + daten.statistik.saison : "Die Statistik lässt sich gerade nicht laden", false));
     liste.appendChild(themaKarte("tabelle", "Tabelle",
       daten.tabelle ? "Saison " + daten.tabelle.saison + ", nach " + daten.tabelle.woche + " Wochen" : "Die Tabelle lässt sich gerade nicht laden", false));
+    var plan = daten.spielplan && daten.spielplan.spiele;
+    liste.appendChild(themaKarte("spielplan", "Spielplan",
+      plan && plan.length ? "Saison " + daten.spielplan.saison + ", " + plan.length + " Spiele nach Woche" : "Kommt, sobald wiki-spielplan.json da ist", !(plan && plan.length)));
     LEERSTELLEN.forEach(function (l) {
       liste.appendChild(themaKarte(l.id, l.titel, "Kommt später aus dem Daten-Skript", true));
     });
@@ -752,6 +757,80 @@
     window.scrollTo(0, 0);
   }
 
+  /* ---------- Spielplan ---------- */
+
+  function spielplanZeigen() {
+    var inhalt = leeren(document.getElementById("thema-inhalt"));
+    titelSetzen("Spielplan");
+    var plan = daten.spielplan;
+    var spiele = (plan && plan.spiele) || [];
+    if (!spiele.length) {
+      inhalt.appendChild(ladeProblem(DATEIEN.spielplan));
+      return;
+    }
+    var wochen = [];
+    spiele.forEach(function (s) { if (wochen.indexOf(s.woche) === -1) { wochen.push(s.woche); } });
+    wochen.sort(function (a, b) { return a - b; });
+    // Aktuelle Woche: die erste mit einem Spiel ohne Ergebnis, sonst die letzte.
+    var aktuell = wochen[wochen.length - 1];
+    for (var i = 0; i < wochen.length; i++) {
+      var offen = spiele.some(function (s) { return s.woche === wochen[i] && !hat(s.heimPunkte); });
+      if (offen) { aktuell = wochen[i]; break; }
+    }
+    if (planFilter.woche === null || wochen.indexOf(planFilter.woche) === -1) { planFilter.woche = aktuell; }
+
+    inhalt.appendChild(el("p", { klasse: "thema-info", text: "Alle Spiele der Hauptrunde " + plan.saison + ". Wähle eine Woche oder ein Team. Uhrzeiten in US-Ostzeit (ET), in Deutschland sechs Stunden später." }));
+    var wochenAuswahl = el("select", { "aria-label": "Woche wählen" });
+    wochen.forEach(function (w) {
+      wochenAuswahl.appendChild(el("option", { value: String(w), text: "Woche " + w + (w === aktuell ? " (aktuell)" : "") }));
+    });
+    wochenAuswahl.appendChild(el("option", { value: "alle", text: "Alle Wochen" }));
+    wochenAuswahl.value = planFilter.woche === "alle" ? "alle" : String(planFilter.woche);
+    var teamAuswahl = el("select", { "aria-label": "Team wählen" });
+    optionen(teamAuswahl, teamListe().map(function (t) { return { wert: t.kuerzel, text: t.name }; }), "Alle Teams", planFilter.team);
+    inhalt.appendChild(el("div", { klasse: "filter filter-spieler" }, [wochenAuswahl, teamAuswahl]));
+    var kopf = el("p", { klasse: "thema-info" });
+    var liste = el("div", { klasse: "eintraege" });
+    inhalt.appendChild(kopf);
+    inhalt.appendChild(liste);
+
+    function neuZeichnen() {
+      planFilter.woche = wochenAuswahl.value === "alle" ? "alle" : parseInt(wochenAuswahl.value, 10);
+      planFilter.team = teamAuswahl.value;
+      leeren(liste);
+      var treffer = spiele.filter(function (s) {
+        if (planFilter.woche !== "alle" && s.woche !== planFilter.woche) { return false; }
+        return planFilter.team === "alle" || s.heim === planFilter.team || s.gast === planFilter.team;
+      }).sort(function (a, b) {
+        return (a.woche - b.woche) || String(a.datum + (a.zeit || "")).localeCompare(String(b.datum + (b.zeit || "")));
+      });
+      var letzte = null;
+      treffer.forEach(function (s) {
+        var gruppe = "Woche " + s.woche + " · " + datumZeigen(s.datum);
+        if (gruppe !== letzte) { liste.appendChild(el("h3", { klasse: "gruppe", text: gruppe })); letzte = gruppe; }
+        var fertig = hat(s.heimPunkte) && hat(s.gastPunkte);
+        liste.appendChild(el("div", { klasse: "eintrag spiel" }, [
+          el("div", { klasse: "eintrag-text", style: "padding:10px 12px" }, [
+            el("span", { klasse: "eintrag-titel", text: teamName(s.gast) + " @ " + teamName(s.heim) }),
+            el("span", { klasse: "eintrag-zeile", text: fertig ? "Endstand " + s.gastPunkte + " : " + s.heimPunkte : (s.zeit ? s.zeit + " Uhr ET" : "Zeit offen") })
+          ])
+        ]));
+      });
+      if (planFilter.woche !== "alle") {
+        var spielt = {};
+        spiele.forEach(function (s) { if (s.woche === planFilter.woche) { spielt[s.heim] = true; spielt[s.gast] = true; } });
+        var bye = teamListe().filter(function (t) { return !spielt[t.kuerzel]; }).map(function (t) { return t.name; });
+        if (bye.length && planFilter.team === "alle") { liste.appendChild(el("p", { klasse: "quelle", text: "Spielfrei (Bye): " + bye.join(", ") })); }
+      }
+      kopf.textContent = treffer.length ? treffer.length + (treffer.length === 1 ? " Spiel" : " Spiele") : "Kein Spiel gefunden.";
+    }
+    wochenAuswahl.addEventListener("change", neuZeichnen);
+    teamAuswahl.addEventListener("change", neuZeichnen);
+    neuZeichnen();
+    inhalt.appendChild(el("p", { klasse: "quelle", text: "Stand " + datumZeigen(plan.stand) + ". Quelle: " + plan.quelle + "." }));
+    window.scrollTo(0, 0);
+  }
+
   /* ---------- Leerstellen ---------- */
 
   function leerstelleZeigen(l) {
@@ -788,7 +867,7 @@
     var seite = document.getElementById("thema");
 
     try {
-      if (["teams", "regeln", "spieler", "statistik", "tabelle"].indexOf(thema) !== -1 || leerstelle) {
+      if (["teams", "regeln", "spieler", "statistik", "tabelle", "spielplan"].indexOf(thema) !== -1 || leerstelle) {
         start.hidden = true;
         seite.hidden = false;
         document.body.setAttribute("data-ansicht", "thema");
@@ -802,6 +881,8 @@
           statistikZeigen();
         } else if (thema === "tabelle") {
           tabelleZeigen();
+        } else if (thema === "spielplan") {
+          spielplanZeigen();
         } else {
           leerstelleZeigen(leerstelle);
         }
@@ -831,7 +912,7 @@
       );
     })).then(function () {
       document.getElementById("laden").hidden = true;
-      var nichtGeladen = Object.keys(fehler).filter(function (n) { return n !== "namen"; });
+      var nichtGeladen = Object.keys(fehler).filter(function (n) { return n !== "namen" && n !== "spielplan"; });
       if (nichtGeladen.length) {
         fehlerZeigen("Nicht alles ließ sich laden: " + nichtGeladen.map(function (n) { return DATEIEN[n] + " (" + fehler[n] + ")"; }).join(", ") + ". Öffnest du die Seite direkt aus dem Ordner, blockiert der Browser das Laden; über die Vorschau-Adresse oder einen kleinen lokalen Server funktioniert es.");
       }
