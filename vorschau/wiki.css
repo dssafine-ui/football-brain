@@ -646,6 +646,22 @@ main {
 
 /* ---------- Fuß ---------- */
 
+.quiz-knopf {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  margin: 1.5rem 0 0;
+  padding: 0 1.4rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  background: var(--blau);
+  border-bottom: 4px solid var(--blau-kante);
+  border-radius: var(--r-karte);
+}
+
 .fuss {
   margin: 1.5rem 0 0;
   font-size: 0.85rem;
@@ -693,6 +709,44 @@ main {
   color: var(--blau-text);
   font-weight: 700;
   text-decoration: none;
+}
+
+/* AFC rot, NFC blau */
+.gruppe.afc, .gruppe.nfc {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  color: #fff;
+}
+.gruppe.afc { background: #c8102e; }
+.gruppe.nfc { background: #1b62e0; }
+.tabelle.afc { border-color: #c8102e; }
+.tabelle.nfc { border-color: #1b62e0; }
+.tabelle.afc th { background: #fde3e7; color: #8e0b21; }
+.tabelle.nfc th { background: #e0ebff; color: #0f3f9c; }
+.tabelle.afc a { color: #b3132f; }
+.tabelle.nfc a { color: #1750c4; }
+.tabelle.afc tr:nth-child(even) td { background: rgba(200, 16, 46, 0.05); }
+.tabelle.nfc tr:nth-child(even) td { background: rgba(27, 98, 224, 0.06); }
+@media (prefers-color-scheme: dark) {
+  .tabelle.afc th { background: #4a1620; color: #ffb3bf; }
+  .tabelle.nfc th { background: #14284f; color: #b5cdff; }
+  .tabelle.afc a { color: #ff8fa0; }
+  .tabelle.nfc a { color: #8fb4ff; }
+}
+
+.eintrag[hidden], .artikel[hidden] { display: none !important; }
+
+.regel-suche {
+  width: 100%;
+  min-height: 44px;
+  margin: 0 0 0.8rem;
+  padding: 0 0.8rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--karte);
+  border: 2px solid var(--rand);
+  border-radius: var(--r-klein);
 }
 
 .filter-spieler {

@@ -11,7 +11,8 @@
     regeln: "wiki-regeln.json",
     spieler: "wiki-spieler.json",
     statistik: "wiki-statistik.json",
-    tabelle: "wiki-tabelle.json"
+    tabelle: "wiki-tabelle.json",
+    namen: "wiki-namen.json"
   };
   var MAX_TREFFER = 30;
   var MAX_SPIELER = 50;
@@ -33,7 +34,30 @@
     { feld: "fg_made", titel: "Field Goals", einheit: "FG", pos: null }
   ];
 
-  var daten = { teams: null, regeln: null, spieler: null, statistik: null, tabelle: null };
+  var daten = { teams: null, regeln: null, spieler: null, statistik: null, tabelle: null, namen: null };
+
+  // Name, Position und Team zu einer Spieler-ID: erst aus dem Kader, sonst aus wiki-namen.json (Spieler ohne Kaderplatz).
+  function spielerInfo(id) {
+    var k = spielerNachId[id];
+    if (k) { return { name: k.name, pos: k.pos, team: k.team, imKader: true }; }
+    var n = daten.namen && daten.namen.spieler && daten.namen.spieler[id];
+    return n ? { name: n.name, pos: n.pos, team: n.team, imKader: false } : null;
+  }
+
+  var ROEMISCH = { I: 1, V: 5, X: 10, L: 50, C: 100 };
+  // Super Bowl I wurde im Januar 1967 gespielt, also ist Super Bowl N im Jahr 1966 + N.
+  function superBowlJahr(nummer) {
+    var s = String(nummer).toUpperCase();
+    var n = 0;
+    if (/^\d+$/.test(s)) { n = parseInt(s, 10); } else {
+      for (var i = 0; i < s.length; i++) {
+        var w = ROEMISCH[s[i]] || 0;
+        var nach = ROEMISCH[s[i + 1]] || 0;
+        n += w < nach ? -w : w;
+      }
+    }
+    return n ? 1966 + n : null;
+  }
   var spielerNachId = {};
   var spielerFilter = { team: "alle", pos: "alle", text: "" };
   var fehler = {};
@@ -317,8 +341,39 @@
   function superBowlText(t) {
     if (!hat(t.superBowlSiege)) { return null; }
     if (t.superBowlSiege === 0) { return "noch keiner"; }
-    var spiele = (t.superBowlSpiele || []).join(", ");
+    var spiele = (t.superBowlSpiele || []).map(superBowlJahr).filter(hat).join(", ");
     return t.superBowlSiege + (spiele ? " (" + spiele + ")" : "");
+  }
+
+  function bilanzText(kuerzel) {
+    var gefunden = null;
+    ((daten.tabelle && daten.tabelle.divisionen) || []).forEach(function (d) {
+      d.teams.forEach(function (r) {
+        if (r.team === kuerzel) { gefunden = { r: r, platz: d.teams.indexOf(r) + 1 }; }
+      });
+    });
+    if (!gefunden) { return null; }
+    var r = gefunden.r;
+    return r.siege + "-" + r.niederlagen + (r.unentschieden ? "-" + r.unentschieden : "") +
+      " (Punkte " + r.punkte + " zu " + r.gegen + "), Platz " + gefunden.platz + " in der Division";
+  }
+
+  function rivalenText(t) {
+    var r = teamListe().filter(function (x) {
+      return x.conference === t.conference && x.division === t.division && x.kuerzel !== t.kuerzel;
+    }).map(function (x) { return x.name; });
+    return r.length ? r.join(", ") : null;
+  }
+
+  function kaderText(kuerzel) {
+    var n = spielerListe().filter(function (s) { return s.team === kuerzel; }).length;
+    return n ? n + " Spieler im Kader (Woche " + daten.spieler.kaderwoche + ")" : null;
+  }
+
+  function quarterbackText(kuerzel) {
+    var qb = spielerListe().filter(function (s) { return s.team === kuerzel && s.pos === "QB"; })
+      .map(function (s) { return s.name + (hat(s.nr) ? " (#" + s.nr + ")" : ""); });
+    return qb.length ? qb.join(", ") : null;
   }
 
   function filterLeiste(teams) {
@@ -353,9 +408,17 @@
     var fakten = el("dl", { klasse: "fakten" });
     [
       ["Liga", t.conference + " " + t.division],
+      ["Spitzname", t.kurzname],
       ["Stadion", t.stadion ? t.stadion + (t.stadionOrt ? ", " + t.stadionOrt : "") : null],
+      ["Stadion eröffnet", t.stadionEroeffnet],
+      ["Stadion-Hinweis", t.stadionHinweis || (t.stadionGeteilt ? "Wird geteilt mit " + teamName(t.stadionGeteilt) + "." : null)],
       ["Gegründet", t.gegruendet],
-      ["Super-Bowl-Siege", superBowlText(t)]
+      ["Super-Bowl-Siege", superBowlText(t)],
+      ["Super Bowl", t.superBowlHinweis],
+      ["Bilanz " + (daten.tabelle ? daten.tabelle.saison : ""), bilanzText(t.kuerzel)],
+      ["Division-Rivalen", rivalenText(t)],
+      ["Kader", kaderText(t.kuerzel)],
+      ["Quarterbacks", quarterbackText(t.kuerzel)]
     ].forEach(function (paar) {
       if (!hat(paar[1])) { return; }
       fakten.appendChild(el("dt", { text: paar[0] }));
@@ -394,7 +457,7 @@
       proGruppe[name].push(t);
     });
     reihenfolge.forEach(function (name) {
-      inhalt.appendChild(el("h3", { klasse: "gruppe", text: name }));
+      inhalt.appendChild(el("h3", { klasse: "gruppe " + name.slice(0, 3).toLowerCase(), text: name }));
       var liste = el("div", { klasse: "eintraege" });
       proGruppe[name].forEach(function (t) { liste.appendChild(teamKarte(t)); });
       inhalt.appendChild(liste);
@@ -448,9 +511,38 @@
       return;
     }
     inhalt.appendChild(el("p", { klasse: "thema-info", text: "Die Regeln der NFL in eigenen Worten. Die Nummer zeigt, wo die Stelle im offiziellen Regelbuch 2026 steht. Maßgeblich ist immer das Regelbuch selbst." }));
+    var suchFeld = el("input", { type: "search", klasse: "regel-suche", placeholder: "In den Regeln suchen, zum Beispiel Holding oder 4.2", "aria-label": "Regeln durchsuchen", autocomplete: "off", spellcheck: "false" });
+    var suchInfo = el("p", { klasse: "thema-info" });
     var liste = el("div", { klasse: "eintraege" });
     regeln.forEach(function (r) { liste.appendChild(regelKarte(r)); });
+    inhalt.appendChild(suchFeld);
+    inhalt.appendChild(suchInfo);
     inhalt.appendChild(liste);
+    suchFeld.addEventListener("input", function () {
+      var begriffe = normal(suchFeld.value).split(/\s+/).filter(Boolean);
+      var treffer = 0;
+      regeln.forEach(function (r) {
+        var karte = document.getElementById("regel-" + r.nummer);
+        var kopfText = normal(["regel", r.nummer, r.titel, r.englisch, r.kurz].join(" "));
+        var passtRegel = begriffe.every(function (b) { return kopfText.indexOf(b) !== -1; });
+        var sichtbar = 0;
+        (r.eintraege || []).forEach(function (e) {
+          var knoten = document.getElementById("regel-" + eintragId(r, e));
+          var text = normal([r.nummer, r.titel, e.titel, absaetze(e.text).join(" "), (e.stichwoerter || []).join(" "), eintragId(r, e)].join(" "));
+          var passt = !begriffe.length || passtRegel || begriffe.every(function (b) { return text.indexOf(b) !== -1; });
+          if (knoten) { knoten.hidden = !passt; }
+          if (passt) { sichtbar++; }
+        });
+        var zeigen = !begriffe.length || passtRegel || sichtbar > 0;
+        if (karte) {
+          karte.hidden = !zeigen;
+          if (begriffe.length && zeigen) { karte.open = true; }
+          if (!begriffe.length) { karte.open = false; }
+        }
+        if (zeigen && begriffe.length) { treffer += passtRegel ? (r.eintraege || []).length || 1 : sichtbar; }
+      });
+      suchInfo.textContent = !begriffe.length ? "" : treffer ? treffer + " passende Regelstellen" : "Nichts gefunden. Versuch ein anderes Stichwort oder eine Nummer.";
+    });
     inhalt.appendChild(sammelHinweis(daten.regeln));
     zielOeffnen("regel-" + ziel.split(".")[0], ziel);
   }
@@ -604,18 +696,21 @@
     BESTENLISTEN.forEach(function (b) {
       var reihe = Object.keys(stat).filter(function (id) {
         if (!hat(stat[id][b.feld])) { return false; }
-        var s = spielerNachId[id];
+        var s = spielerInfo(id);
         return !b.pos || (s && b.pos.indexOf(s.pos) !== -1);
       }).sort(function (a, c) { return stat[c][b.feld] - stat[a][b.feld]; }).slice(0, 10);
       inhalt.appendChild(el("h3", { klasse: "gruppe", text: b.titel }));
       var tabelle = el("table", { klasse: "tabelle" });
       tabelle.appendChild(el("tr", null, [el("th", { text: "#" }), el("th", { text: "Spieler" }), el("th", { text: "Team" }), el("th", { text: b.einheit })]));
       reihe.forEach(function (id, i) {
-        var s = spielerNachId[id];
+        var s = spielerInfo(id);
+        var namensKnoten = !s ? "Name fehlt (" + id + ")"
+          : s.imKader ? el("a", { href: "#spieler/" + encodeURIComponent(id), text: s.name })
+          : s.name + (s.pos ? " (" + s.pos + ", nicht im aktuellen Kader)" : " (nicht im aktuellen Kader)");
         tabelle.appendChild(el("tr", null, [
           el("td", { text: String(i + 1) }),
-          el("td", null, [s ? el("a", { href: "#spieler/" + encodeURIComponent(id), text: s.name }) : "Unbekannt (" + id + ")"]),
-          el("td", { text: s ? s.team : "" }),
+          el("td", null, [namensKnoten]),
+          el("td", { text: s && s.team ? s.team : "" }),
           el("td", { text: String(stat[id][b.feld]) })
         ]));
       });
@@ -637,8 +732,9 @@
     }
     inhalt.appendChild(el("p", { klasse: "thema-info", text: "Siege, Niederlagen und Punkte der Hauptrunde " + t.saison + ", nach " + t.woche + " Wochen. Antippen eines Teams öffnet das Team." }));
     t.divisionen.forEach(function (d) {
-      inhalt.appendChild(el("h3", { klasse: "gruppe", text: d.division }));
-      var tabelle = el("table", { klasse: "tabelle" });
+      var farbe = d.division.indexOf("AFC") === 0 ? " afc" : d.division.indexOf("NFC") === 0 ? " nfc" : "";
+      inhalt.appendChild(el("h3", { klasse: "gruppe" + farbe, text: d.division }));
+      var tabelle = el("table", { klasse: "tabelle" + farbe });
       tabelle.appendChild(el("tr", null, ["Team", "S", "N", "U", "Pkt", "Gegen"].map(function (k) { return el("th", { text: k }); })));
       d.teams.forEach(function (r) {
         tabelle.appendChild(el("tr", null, [
@@ -735,7 +831,7 @@
       );
     })).then(function () {
       document.getElementById("laden").hidden = true;
-      var nichtGeladen = Object.keys(fehler);
+      var nichtGeladen = Object.keys(fehler).filter(function (n) { return n !== "namen"; });
       if (nichtGeladen.length) {
         fehlerZeigen("Nicht alles ließ sich laden: " + nichtGeladen.map(function (n) { return DATEIEN[n] + " (" + fehler[n] + ")"; }).join(", ") + ". Öffnest du die Seite direkt aus dem Ordner, blockiert der Browser das Laden; über die Vorschau-Adresse oder einen kleinen lokalen Server funktioniert es.");
       }
