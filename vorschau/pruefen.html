@@ -359,6 +359,36 @@
       const ohneQuelle = fragenListe.filter((f) => !f.quelle || !f.quelle.url).map((f) => f.id);
       pruefe(ohneQuelle.length === 0, 'Jede Frage hat eine Quelle', 'ohne Quelle: ' + ohneQuelle.join(', '));
 
+      await gruppe('0b. Football-Wiki (Dateien)', async () => {
+        const holen = async (name) => {
+          try {
+            const a = await fetch(name, { cache: 'no-cache' });
+            return a.ok ? await a.json() : null;
+          } catch (e) {
+            return null;
+          }
+        };
+        const teams = await holen('wiki-teams.json');
+        pruefe(!!teams && Array.isArray(teams.teams) && teams.teams.length === 32, 'wiki-teams.json hat 32 Teams', teams && teams.teams ? String(teams.teams.length) : 'nicht ladbar');
+        const regeln = await holen('wiki-regeln.json');
+        pruefe(!!regeln && Array.isArray(regeln.regeln) && regeln.regeln.length > 0, 'wiki-regeln.json hat Regeln', 'nicht ladbar');
+        const spieler = await holen('wiki-spieler.json');
+        pruefe(!!spieler && Array.isArray(spieler.spieler) && spieler.spieler.length > 1500, 'wiki-spieler.json hat über 1500 Spieler', spieler && spieler.spieler ? String(spieler.spieler.length) : 'nicht ladbar');
+        const statistik = await holen('wiki-statistik.json');
+        pruefe(!!statistik && !!statistik.spieler && Object.keys(statistik.spieler).length > 300, 'wiki-statistik.json hat Zahlen zu über 300 Spielern', 'nicht ladbar oder zu wenig');
+        const tabelle = await holen('wiki-tabelle.json');
+        pruefe(!!tabelle && Array.isArray(tabelle.divisionen) && tabelle.divisionen.length === 8, 'wiki-tabelle.json hat 8 Divisionen', 'nicht ladbar');
+        if (teams && tabelle) {
+          const kuerzel = {};
+          teams.teams.forEach((t) => { kuerzel[t.kuerzel] = true; });
+          const unbekannt = [];
+          tabelle.divisionen.forEach((d) => d.teams.forEach((r) => { if (!kuerzel[r.team]) unbekannt.push(r.team); }));
+          pruefe(unbekannt.length === 0, 'Jedes Team-Kürzel der Tabelle steht in der Teamliste', unbekannt.join(', '));
+        }
+        const seite = await fetch('wiki.html', { cache: 'no-cache' }).then((a) => (a.ok ? a.text() : ''), () => '');
+        pruefe(seite.indexOf('Daten: nflverse (CC BY 4.0)') !== -1, 'wiki.html nennt die Quelle „Daten: nflverse (CC BY 4.0)“', 'Hinweis fehlt');
+      });
+
       await gruppe('1. Frischer Start', async () => {
         await appStarten(null);
         pruefe(!zu('start'), 'Die Startseite erscheint', 'nicht zu sehen');

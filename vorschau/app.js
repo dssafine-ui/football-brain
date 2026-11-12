@@ -7,6 +7,8 @@
 // Und: das Positions-Quiz (Positionen im Bild). Eine Aufstellung wird gezeichnet, ein Spieler leuchtet, man sagt seine Position.
 // Es hat eine eigene Karte auf dem Start, direkt unter dem Tagesquiz. Die Bildfragen stehen hier im Code
 // (Abschnitt „Positions-Quiz“), nicht in fragen.json, und sie geben keine Punkte.
+// Neu: das Football-Wiki (nur NFL: Teams, Regeln, Spieler, Statistik, Tabelle). Es ist eine eigene Seite (wiki.html mit wiki.js und wiki-*.json)
+// mit eigener Karte auf dem Start und hat mit Punkten, Serie und Fortschritt nichts zu tun.
 (function () {
   'use strict';
 
@@ -15,7 +17,7 @@
   const IN_VORSCHAU = /\/vorschau(\/|$)/.test(window.location.pathname);
   const SPEICHER_KEY = 'football-tagesquiz-fortschritt-v1' + (IN_VORSCHAU ? '-vorschau' : '');
   // Stand der App-Dateien (steht unten auf der Startseite, damit sich nach einem Upload nachprüfen lässt, ob die neue Fassung läuft).
-  const APP_STAND = '2026-10-28';
+  const APP_STAND = '2026-11-12';
   // Der Code zum Mitnehmen des Fortschritts beginnt immer so. Daran erkennt die App, ob ein eingefügter Text überhaupt ein Code ist.
   const CODE_KOPF = 'FB1:';
   const FRAGEN_PRO_RUNDE = 5;
@@ -568,7 +570,9 @@
 
   function abschnittZeigen(name) {
     ABSCHNITTE.forEach((id) => {
-      $(id).hidden = id !== name;
+      // Fehlt ein Abschnitt in der index.html (etwa bei einem halben Upload ohne Wiki), bleibt der Rest der App bedienbar.
+      const abschnitt = $(id);
+      if (abschnitt) abschnitt.hidden = id !== name;
     });
     // Das Design hängt daran: Auf dem Start steht der Ball groß im Kopf, sonst klein.
     document.body.dataset.ansicht = name;
@@ -1935,6 +1939,9 @@
     });
 
     $('nachlesen-starten').addEventListener('click', nachlesenUebersichtZeigen);
+    // Das Wiki ist eine eigene Seite (wiki.html) und teilt nichts mit dem Quiz: kein Punktestand, kein Speicher.
+    const wikiKnopf = $('wiki-starten');
+    if (wikiKnopf) wikiKnopf.addEventListener('click', () => { window.location.href = 'wiki.html'; });
     $('nachlesen-zurueck').addEventListener('click', nachlesenZurueck);
 
     $('abbrechen').addEventListener('click', startZeigen);

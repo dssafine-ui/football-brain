@@ -1,0 +1,764 @@
+/* Football Brain: Wiki (Vorschau, Stand 09.11.2026).
+   Gleiche Farben, Rundungen und Schrift wie die App (style.css und design-neu.css), aber eigene Klassen und eigene Datei:
+   An den Dateien der App ändert sich dadurch nichts. Es wird nichts nachgeladen, alle Symbole stecken in dieser Datei. */
+
+:root {
+  color-scheme: light dark;
+
+  --schrift: ui-rounded, 'SF Pro Rounded', 'Nunito', 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --schrift-titel: ui-rounded, 'SF Pro Rounded', 'Nunito', 'Varela Round', 'Trebuchet MS', 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --blau: #1b62e0;
+  --blau-kante: #1047ad;
+  --blau-text: #1750c4;
+  --blau-flaeche: #e6efff;
+  --kopf-oben: #2f7bf5;
+  --kopf-mitte: #1b62e0;
+  --kopf-unten: #0f4bb8;
+  --kopf-kante: #0a3585;
+  --streifen: #d71f3b;
+  --rot-text: #b3132f;
+  --gold: #ffd84d;
+
+  --bg: #f1f5fc;
+  --karte: #ffffff;
+  --flaeche: #e6eefb;
+  --text: #0e1a33;
+  --titel: #0b2a63;
+  --leise: #4a5a78;
+  --rand: #d6e2f6;
+  --schatten: 0 1px 2px rgba(11, 42, 99, 0.07), 0 8px 20px rgba(11, 42, 99, 0.08);
+
+  --hinweis-bg: #fff4c7;
+  --hinweis-text: #5c3d00;
+  --fokus: #f59e0b;
+
+  --r-klein: 14px;
+  --r-karte: 20px;
+  --r-gross: 28px;
+  --t-text: 0.96rem;
+
+  --bild-ball: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='26' viewBox='0 0 40 26'%3E%3Cpath d='M2 13C6 4.5 13 1.5 20 1.5S34 4.5 38 13C34 21.5 27 24.5 20 24.5S6 21.5 2 13Z' fill='%23b8581f' stroke='%233a1608' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M12 13h16M15 10v6M20 9.5v7M25 10v6' fill='none' stroke='%23fffaf0' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M8.5 6Q6.8 13 8.5 20M31.5 6Q33.2 13 31.5 20' fill='none' stroke='%23fffaf0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  --sym-lupe: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238aa0c8' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5 21 21'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --blau: #2f6fe0;
+    --blau-text: #9bbfff;
+    --blau-flaeche: #17305f;
+    --kopf-oben: #1f5ac8;
+    --kopf-mitte: #1648a8;
+    --kopf-unten: #0c2f75;
+    --kopf-kante: #071d4d;
+    --rot-text: #ff8fa3;
+
+    --bg: #081230;
+    --karte: #101e44;
+    --flaeche: #1a2b5c;
+    --text: #eaf1ff;
+    --titel: #ffffff;
+    --leise: #a9bbdd;
+    --rand: #2a4180;
+    --schatten: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 10px 24px rgba(0, 0, 0, 0.35);
+
+    --hinweis-bg: #3a3011;
+    --hinweis-text: #ffe9a8;
+  }
+}
+
+/* ---------- Grundlagen ---------- */
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--schrift);
+  line-height: 1.45;
+  background: var(--bg);
+  color: var(--text);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+a {
+  color: var(--blau-text);
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--fokus);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--schrift-titel);
+  font-synthesis: none;
+}
+
+.nur-vorlesen {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- Kopf ---------- */
+
+.kopf {
+  position: relative;
+  padding: calc(env(safe-area-inset-top, 0px) + 0.6rem) 1rem 0.8rem;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.22), transparent 58%),
+    repeating-linear-gradient(105deg, rgba(255, 255, 255, 0.05) 0 26px, transparent 26px 52px),
+    linear-gradient(170deg, var(--kopf-oben), var(--kopf-mitte) 58%, var(--kopf-unten));
+  border-bottom: 4px solid var(--streifen);
+  border-radius: 0 0 var(--r-gross) var(--r-gross);
+  box-shadow: 0 8px 20px rgba(10, 53, 133, 0.25);
+}
+
+.vorschau {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 0.5rem);
+  right: 0.8rem;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #4a3000;
+  background: var(--gold);
+  border-radius: 99px;
+}
+
+.kopf-inhalt {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
+.logo {
+  flex: none;
+  width: 3rem;
+  aspect-ratio: 40 / 26;
+  background: var(--bild-ball) center / contain no-repeat;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
+  transform: rotate(-12deg);
+}
+
+.kopf-text {
+  min-width: 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+  line-height: 1.1;
+  text-shadow: 0 2px 0 var(--kopf-kante);
+}
+
+h1 span {
+  color: var(--gold);
+}
+
+.datum {
+  display: none;
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  opacity: 0.92;
+}
+
+/* Auf dem Start ist der Kopf größer, in den Themen schmal wie im Nachlesen der App. */
+
+body[data-ansicht="start"] .kopf {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
+  padding-bottom: 1.4rem;
+}
+
+body[data-ansicht="start"] .kopf-inhalt {
+  flex-direction: column;
+  gap: 0.2rem;
+  text-align: center;
+}
+
+body[data-ansicht="start"] .logo {
+  width: 5rem;
+}
+
+body[data-ansicht="start"] h1 {
+  font-size: 1.8rem;
+}
+
+body[data-ansicht="start"] .datum {
+  display: block;
+}
+
+main {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 1.1rem 1rem calc(1.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+.mitte {
+  margin: 1.5rem 0;
+  font-weight: 700;
+  text-align: center;
+  color: var(--leise);
+}
+
+.hinweis {
+  margin: 0 0 1rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--hinweis-text);
+  background: var(--hinweis-bg);
+  border-radius: var(--r-karte);
+}
+
+.hinweis strong {
+  font-weight: 800;
+}
+
+/* ---------- Suche ---------- */
+
+.suche {
+  margin: 0 0 1rem;
+}
+
+.suche input {
+  display: block;
+  width: 100%;
+  min-height: 3.3rem;
+  padding: 0 1rem 0 2.9rem;
+  font-size: 1.05rem;
+  color: var(--text);
+  background: var(--karte) var(--sym-lupe) 0.95rem center / 1.2rem 1.2rem no-repeat;
+  border: 2px solid transparent;
+  border-radius: var(--r-karte);
+  box-shadow: var(--schatten);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.suche input::placeholder {
+  color: var(--leise);
+  opacity: 1;
+}
+
+.suche input:focus-visible {
+  border-color: var(--blau);
+  outline: none;
+}
+
+.treffer {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+}
+
+.treffer-kopf {
+  margin: 0 0 0.1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--leise);
+}
+
+.treffer-eintrag {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.65rem 0.85rem;
+  color: inherit;
+  text-decoration: none;
+  background: var(--karte);
+  border-radius: var(--r-klein);
+  box-shadow: var(--schatten);
+}
+
+.treffer-typ {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--rot-text);
+}
+
+.treffer-titel {
+  font-weight: 800;
+  color: var(--titel);
+}
+
+.treffer-zeile {
+  font-size: 0.85rem;
+  color: var(--leise);
+}
+
+/* ---------- Themenkarten auf dem Start ---------- */
+
+.themen {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.thema {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 3.8rem;
+  padding: 0.7rem 1rem;
+  color: inherit;
+  text-decoration: none;
+  background: var(--karte);
+  border: 2px solid transparent;
+  border-radius: var(--r-karte);
+  box-shadow: var(--schatten);
+  transition: transform 0.12s ease, border-color 0.15s ease;
+}
+
+.thema:active {
+  border-color: var(--blau);
+  transform: scale(0.985);
+}
+
+.thema-text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.thema-name {
+  font-family: var(--schrift-titel);
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: var(--titel);
+}
+
+.thema-zahl {
+  font-size: 0.85rem;
+  color: var(--leise);
+}
+
+.thema::after,
+.eintrag > summary::after {
+  content: "";
+  flex: none;
+  width: 0.65rem;
+  height: 0.65rem;
+  margin-left: auto;
+  border-right: 2px solid var(--leise);
+  border-bottom: 2px solid var(--leise);
+  transform: rotate(-45deg);
+}
+
+.eintrag > summary::after {
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+}
+
+.eintrag[open] > summary::after {
+  transform: rotate(-135deg);
+}
+
+/* Eine Leerstelle ist gestrichelt und trägt eine goldene Marke, damit man sie nie mit fertigem Inhalt verwechselt. */
+
+.thema.leer {
+  background: transparent;
+  border: 2px dashed var(--rand);
+  box-shadow: none;
+}
+
+.leer-marke {
+  display: inline-block;
+  flex: none;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #4a3000;
+  background: var(--gold);
+  border-radius: 99px;
+}
+
+/* ---------- Themenansicht ---------- */
+
+.thema-kopf {
+  margin-bottom: 0.7rem;
+}
+
+.pille {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  font-weight: 700;
+  color: var(--blau-text);
+  text-decoration: none;
+  background: var(--flaeche);
+  border: 0;
+  border-radius: 99px;
+}
+
+#thema-titel {
+  margin: 0.2rem 0;
+  font-size: 1.5rem;
+  color: var(--titel);
+}
+
+#thema-titel:focus {
+  outline: none;
+}
+
+.thema-info {
+  margin: 0 0 1rem;
+  font-size: var(--t-text);
+  color: var(--leise);
+}
+
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 0.4rem;
+}
+
+.filter button {
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  font-weight: 700;
+  color: var(--blau-text);
+  background: var(--flaeche);
+  border: 0;
+  border-radius: 99px;
+}
+
+.filter button[aria-pressed="true"] {
+  color: #ffffff;
+  background: var(--blau);
+}
+
+.gruppe {
+  margin: 1.3rem 0 0.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--leise);
+}
+
+.eintraege {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.eintrag {
+  background: var(--karte);
+  border-radius: var(--r-klein);
+  box-shadow: var(--schatten);
+}
+
+.eintrag > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.8rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.eintrag > summary::-webkit-details-marker {
+  display: none;
+}
+
+.kuerzel {
+  display: grid;
+  flex: none;
+  place-items: center;
+  min-width: 2.7rem;
+  height: 2.7rem;
+  padding: 0 0.3rem;
+  font-family: var(--schrift-titel);
+  font-size: 0.88rem;
+  font-weight: 900;
+  color: var(--blau-text);
+  background: var(--blau-flaeche);
+  border-radius: 12px;
+}
+
+.eintrag-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.eintrag-titel {
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--titel);
+  overflow-wrap: anywhere;
+}
+
+.eintrag-zeile {
+  font-size: 0.82rem;
+  color: var(--leise);
+}
+
+.eintrag-detail {
+  padding: 0 0.9rem 0.9rem;
+}
+
+.fakten {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.35rem 0.9rem;
+  margin: 0 0 0.8rem;
+  padding: 0.7rem 0.8rem;
+  font-size: var(--t-text);
+  background: var(--flaeche);
+  border-radius: var(--r-klein);
+}
+
+.fakten dt {
+  font-weight: 700;
+  color: var(--leise);
+}
+
+.fakten dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.profil {
+  margin: 0 0 0.6rem;
+  font-size: var(--t-text);
+  line-height: 1.45;
+}
+
+.quelle {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--leise);
+  overflow-wrap: anywhere;
+}
+
+.quelle a {
+  color: inherit;
+}
+
+/* ---------- Regeln ---------- */
+
+.artikel {
+  margin-top: 0.6rem;
+  padding: 0.8rem 0.9rem;
+  background: var(--flaeche);
+  border-radius: var(--r-klein);
+}
+
+.artikel.markiert {
+  box-shadow: 0 0 0 3px var(--gold);
+}
+
+.artikel-nummer {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blau-text);
+}
+
+.artikel-titel {
+  margin: 0.1rem 0 0.35rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--titel);
+}
+
+.artikel-text {
+  margin: 0.3rem 0 0;
+  font-size: var(--t-text);
+  line-height: 1.45;
+}
+
+/* ---------- Leerstellen ---------- */
+
+.leerstelle {
+  padding: 1rem 1.1rem 1.1rem;
+  background: transparent;
+  border: 2px dashed var(--rand);
+  border-radius: var(--r-karte);
+}
+
+.leer-text {
+  margin: 0.7rem 0 0;
+  font-size: var(--t-text);
+}
+
+.leer-datei {
+  margin: 0.7rem 0 0;
+  font-size: 0.85rem;
+  color: var(--leise);
+}
+
+.leer-datei code {
+  padding: 0.1rem 0.4rem;
+  background: var(--flaeche);
+  border-radius: 8px;
+}
+
+/* ---------- Fuß ---------- */
+
+.fuss {
+  margin: 1.5rem 0 0;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--leise);
+}
+
+/* ---------- Tabellen und Spielerfilter ---------- */
+
+.tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 0.75rem;
+  font-size: 0.92rem;
+  background: var(--karte);
+  border: 2px solid var(--rand);
+  border-radius: var(--r-klein);
+  overflow: hidden;
+}
+
+.tabelle th,
+.tabelle td {
+  padding: 0.5rem 0.55rem;
+  text-align: right;
+  border-bottom: 1px solid var(--rand);
+}
+
+.tabelle th:first-child,
+.tabelle td:first-child {
+  text-align: left;
+}
+
+.tabelle th:nth-child(2):not(:last-child),
+.tabelle td:nth-child(2):not(:last-child) {
+  text-align: left;
+}
+
+.tabelle th {
+  color: var(--leise);
+  font-weight: 700;
+  background: var(--flaeche);
+}
+
+.tabelle a {
+  color: var(--blau-text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.filter-spieler {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem;
+}
+
+.filter-spieler input,
+.filter-spieler select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 0.8rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--karte);
+  border: 2px solid var(--rand);
+  border-radius: var(--r-klein);
+}
+
+@media (min-width: 560px) {
+  .filter-spieler {
+    grid-template-columns: 2fr 1.4fr 1fr;
+  }
+}
+
+/* ---------- Mit der Maus ---------- */
+
+@media (hover: hover) {
+  .thema:hover {
+    border-color: var(--blau);
+  }
+
+  .thema.leer:hover {
+    border-color: var(--leise);
+  }
+
+  .treffer-eintrag:hover {
+    box-shadow: 0 0 0 2px var(--blau);
+  }
+
+  .eintrag > summary:hover .eintrag-titel {
+    color: var(--blau-text);
+  }
+}
+
+@media (max-width: 360px) {
+  body[data-ansicht="start"] h1 {
+    font-size: 1.55rem;
+  }
+
+  .fakten {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .fakten dd {
+    margin-bottom: 0.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

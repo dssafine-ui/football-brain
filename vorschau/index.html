@@ -140,6 +140,16 @@
       <button class="haupt" id="tag-starten" type="button">Tagesquiz starten</button>
       <button class="neben" id="ueben-starten" type="button" hidden>Übungsrunde (alte Fragen wiederholen)</button>
       <button class="neben" id="nachlesen-starten" type="button" hidden>Beantwortete Fragen nachlesen</button>
+      <!-- Football-Wiki: eigene Karte unter den Quiz-Knöpfen. Sie öffnet den Abschnitt #wiki (app.js, Teil „Football-Wiki“). -->
+      <button class="quiz-karte wiki-karte" id="wiki-starten" type="button">
+        <span class="quiz-karte-bild wiki-karte-bild" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false"><path d="M7 9.5c5.5-2 11-1.6 17 1.8 6-3.4 11.5-3.8 17-1.8v29c-5.5-2-11-1.6-17 1.8-6-3.4-11.5-3.8-17-1.8z" fill="#1b62e0"/><path d="M24 11.3v29" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/><path d="M12 16.5c3-.8 6-.6 9 .8M12 22.5c3-.8 6-.6 9 .8M12 28.5c3-.8 6-.6 9 .8M27 17.3c3-1.4 6-1.6 9-.8M27 23.3c3-1.4 6-1.6 9-.8M27 29.3c3-1.4 6-1.6 9-.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.8"/></svg>
+        </span>
+        <span class="quiz-karte-text">
+          <span class="quiz-karte-titel">Football-Wiki</span>
+          <span class="quiz-karte-zeile">Teams, Tabelle, Spieler, Statistik und Regeln der NFL zum Nachschlagen.</span>
+        </span>
+      </button>
       <details class="info" id="installieren">
         <summary>Als App aufs Handy legen</summary>
         <p><strong>iPhone:</strong> In Safari unten auf das Teilen-Symbol tippen, dann „Zum Home-Bildschirm“. Danach nur noch über das neue Symbol öffnen.</p>
@@ -195,6 +205,29 @@
       <p class="quelle" id="nachlesen-info"></p>
       <div class="themen" id="nachlesen-themen"></div>
       <ol class="nachlesen-liste" id="nachlesen-liste" hidden></ol>
+    </section>
+
+    <!-- Football-Wiki (nur NFL): Teams, Tabelle, Spieler, Statistik, Regeln. app.js füllt jeden Bereich beim ersten Öffnen aus den Dateien wiki-*.json
+         (wikiZeigen, wikiBereichWaehlen). Mit dem Quiz hat das Wiki nichts zu tun: kein Punktestand, kein Speicher. -->
+    <section id="wiki" hidden>
+      <div class="nachlesen-kopf">
+        <button class="pille" id="wiki-zurueck" type="button">Zurück zum Start</button>
+      </div>
+      <h2 id="wiki-titel" tabindex="-1">Football-Wiki</h2>
+      <p class="quelle" id="wiki-info">Nur NFL, zum Nachschlagen: Teams, Tabelle, Spieler, Statistik und Regeln.</p>
+      <div class="wiki-reiter" id="wiki-reiter" role="tablist" aria-label="Bereiche des Wikis">
+        <button class="wiki-reiter-knopf" id="wiki-reiter-teams" type="button" role="tab" data-bereich="teams" aria-controls="wiki-teams" aria-selected="true">Teams</button>
+        <button class="wiki-reiter-knopf" id="wiki-reiter-tabelle" type="button" role="tab" data-bereich="tabelle" aria-controls="wiki-tabelle" aria-selected="false">Tabelle</button>
+        <button class="wiki-reiter-knopf" id="wiki-reiter-spieler" type="button" role="tab" data-bereich="spieler" aria-controls="wiki-spieler" aria-selected="false">Spieler</button>
+        <button class="wiki-reiter-knopf" id="wiki-reiter-statistik" type="button" role="tab" data-bereich="statistik" aria-controls="wiki-statistik" aria-selected="false">Statistik</button>
+        <button class="wiki-reiter-knopf" id="wiki-reiter-regeln" type="button" role="tab" data-bereich="regeln" aria-controls="wiki-regeln" aria-selected="false">Regeln</button>
+      </div>
+      <div class="wiki-bereich" id="wiki-teams" role="tabpanel" aria-labelledby="wiki-reiter-teams"></div>
+      <div class="wiki-bereich" id="wiki-tabelle" role="tabpanel" aria-labelledby="wiki-reiter-tabelle" hidden></div>
+      <div class="wiki-bereich" id="wiki-spieler" role="tabpanel" aria-labelledby="wiki-reiter-spieler" hidden></div>
+      <div class="wiki-bereich" id="wiki-statistik" role="tabpanel" aria-labelledby="wiki-reiter-statistik" hidden></div>
+      <div class="wiki-bereich" id="wiki-regeln" role="tabpanel" aria-labelledby="wiki-reiter-regeln" hidden></div>
+      <p class="quelle wiki-quelle" id="wiki-quelle"><a href="https://github.com/nflverse/nflverse-data" target="_blank" rel="noopener noreferrer">Daten: nflverse (CC BY 4.0)</a>. Spieler, Statistik und Tabelle sind für diese App ausgewählt und zusammengerechnet. Teams: Wikipedia-Listen, Regeln: NFL-Regelbuch 2026 in eigenen Worten. Lizenztext: <a href="https://creativecommons.org/licenses/by/4.0/deed.de" target="_blank" rel="noopener noreferrer">creativecommons.org</a>.</p>
     </section>
 
     <section id="fehler" hidden>

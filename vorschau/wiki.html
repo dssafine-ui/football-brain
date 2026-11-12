@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1b62e0">
+<meta name="robots" content="noindex">
+<title>Football Brain: Wiki</title>
+<link rel="stylesheet" href="wiki.css">
+</head>
+<body data-ansicht="start">
+
+<header class="kopf">
+  <span class="vorschau">Vorschau</span>
+  <div class="kopf-inhalt">
+    <span class="logo" aria-hidden="true"></span>
+    <div class="kopf-text">
+      <h1>Football Brain <span>Wiki</span></h1>
+      <p class="datum">Die NFL zum Nachschlagen</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <p id="laden" class="mitte">Wiki wird geladen …</p>
+  <p id="fehler" class="hinweis" hidden></p>
+
+  <section id="start" hidden>
+    <p class="hinweis"><strong>Vorschau.</strong> Teams, Regeln, Spieler, Statistik und Tabelle der NFL. Die Zahlen werden jede Woche nach dem Montagsspiel erneuert.</p>
+
+    <form id="suche-form" class="suche" role="search">
+      <label class="nur-vorlesen" for="suche">Im Wiki suchen</label>
+      <input id="suche" type="search" placeholder="Team, Spieler, Stadion oder Regel suchen" autocomplete="off" enterkeyhint="search" spellcheck="false">
+    </form>
+    <div id="treffer" class="treffer" aria-live="polite" hidden></div>
+
+    <nav id="themen" class="themen" aria-label="Themen"></nav>
+
+    <p class="fuss">Daten: nflverse (CC BY 4.0) · <a href="./">Zurück zum Quiz</a></p>
+  </section>
+
+  <section id="thema" hidden>
+    <div class="thema-kopf"><a class="pille" href="#">Zurück zum Wiki</a></div>
+    <h2 id="thema-titel" tabindex="-1"></h2>
+    <div id="thema-inhalt"></div>
+    <p class="fuss">Daten: nflverse (CC BY 4.0)</p>
+  </section>
+</main>
+
+<script src="wiki.js"></script>
+</body>
+</html>
