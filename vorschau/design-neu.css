@@ -1271,3 +1271,38 @@ main > section:not([hidden]) {
   line-height: 1.35;
   color: var(--leise);
 }
+
+/* Lexikon-Karte: dunkle Karte mit grünem Feld als Symbol und Pfeil rechts, damit sie sich vom Quiz abhebt. */
+.wiki-karte {
+  padding: 0.8rem 0.9rem;
+  background: linear-gradient(135deg, #12306b, #1b4fb0);
+  border-left: 5px solid #ff7a1a;
+}
+
+.wiki-karte .quiz-karte-titel,
+.wiki-karte .quiz-karte-zeile {
+  color: #ffffff;
+}
+
+.wiki-karte .quiz-karte-zeile {
+  opacity: 0.85;
+}
+
+.wiki-karte-bild {
+  display: block;
+  flex: 0 0 auto;
+  width: 3.4rem;
+}
+
+.wiki-karte-bild svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.wiki-karte-pfeil {
+  flex: 0 0 auto;
+  font-size: 2rem;
+  line-height: 1;
+  color: #ff7a1a;
+}

@@ -142,13 +142,14 @@
       <button class="neben" id="nachlesen-starten" type="button" hidden>Beantwortete Fragen nachlesen</button>
       <!-- Football-Wiki: eigene Karte unter den Quiz-Knöpfen. Sie öffnet den Abschnitt #wiki (app.js, Teil „Football-Wiki“). -->
       <button class="quiz-karte wiki-karte" id="wiki-starten" type="button">
-        <span class="quiz-karte-bild wiki-karte-bild" aria-hidden="true">
-          <svg viewBox="0 0 48 48" focusable="false"><path d="M7 9.5c5.5-2 11-1.6 17 1.8 6-3.4 11.5-3.8 17-1.8v29c-5.5-2-11-1.6-17 1.8-6-3.4-11.5-3.8-17-1.8z" fill="#1b62e0"/><path d="M24 11.3v29" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/><path d="M12 16.5c3-.8 6-.6 9 .8M12 22.5c3-.8 6-.6 9 .8M12 28.5c3-.8 6-.6 9 .8M27 17.3c3-1.4 6-1.6 9-.8M27 23.3c3-1.4 6-1.6 9-.8M27 29.3c3-1.4 6-1.6 9-.8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.8"/></svg>
+        <span class="wiki-karte-bild" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false"><rect x="5" y="9" width="38" height="30" rx="5" fill="#1d7a3a"/><path d="M12 9v30M19 9v30M26 9v30M33 9v30M40 9v30" stroke="#ffffff" stroke-width="1.2" opacity="0.45"/><path d="M5 24h38" stroke="#ffffff" stroke-width="1.6" opacity="0.8"/><g transform="rotate(-30 24 24)"><path d="M13 24c2.5-6 6-8 11-8s8.5 2 11 8c-2.5 6-6 8-11 8s-8.5-2-11-8z" fill="#b8581f" stroke="#3a1608" stroke-width="1.2" stroke-linejoin="round"/><path d="M19 24h10M21 22.2v3.6M24 21.6v4.8M27 22.2v3.6" stroke="#fffaf0" stroke-width="1.3" stroke-linecap="round"/></g></svg>
         </span>
         <span class="quiz-karte-text">
-          <span class="quiz-karte-titel">Football-Wiki</span>
-          <span class="quiz-karte-zeile">Teams, Tabelle, Spieler, Statistik und Regeln der NFL zum Nachschlagen.</span>
+          <span class="quiz-karte-titel">Football-Lexikon</span>
+          <span class="quiz-karte-zeile">Teams, Tabelle, Spieler, Statistik und Regeln der NFL.</span>
         </span>
+        <span class="wiki-karte-pfeil" aria-hidden="true">›</span>
       </button>
       <details class="info" id="installieren">
         <summary>Als App aufs Handy legen</summary>
@@ -213,7 +214,7 @@
       <div class="nachlesen-kopf">
         <button class="pille" id="wiki-zurueck" type="button">Zurück zum Start</button>
       </div>
-      <h2 id="wiki-titel" tabindex="-1">Football-Wiki</h2>
+      <h2 id="wiki-titel" tabindex="-1">Football-Lexikon</h2>
       <p class="quelle" id="wiki-info">Nur NFL, zum Nachschlagen: Teams, Tabelle, Spieler, Statistik und Regeln.</p>
       <div class="wiki-reiter" id="wiki-reiter" role="tablist" aria-label="Bereiche des Wikis">
         <button class="wiki-reiter-knopf" id="wiki-reiter-teams" type="button" role="tab" data-bereich="teams" aria-controls="wiki-teams" aria-selected="true">Teams</button>
