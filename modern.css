@@ -1,0 +1,325 @@
+/* Football Brain: modernes, sportlich cleanes Design für die ganze App (Stand 15.11.2026).
+   Wird als LETZTE Stilvorlage geladen (index.html und wiki.html) und vereinheitlicht Farben, Schrift, Flächen, Knöpfe,
+   Kopf, Quiz, Ergebnis, Nachlesen und Lexikon. Keine Emoji, nichts wird nachgeladen. Die Elemente und Kennungen bleiben unverändert. */
+
+:root {
+  --schrift: 'Inter', 'SF Pro Text', 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --schrift-titel: 'Inter', 'SF Pro Display', 'Segoe UI Variable Display', 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --navy: #0a1f4d;
+  --navy-2: #0f2d6b;
+  --akzent: #ff7a1a;
+  --akzent-dunkel: #e0630a;
+
+  --blau: #1f5fd6;
+  --blau-kante: #1f5fd6;
+  --blau-text: #1a4fb8;
+  --blau-flaeche: #e8f0ff;
+
+  --bg: #f4f6fb;
+  --karte: #ffffff;
+  --flaeche: #eaeff8;
+  --rand: #e0e6f2;
+  --text: #101a33;
+  --titel: #0a1f4d;
+  --leise: #5b6783;
+
+  --r-klein: 10px;
+  --r-karte: 14px;
+  --r-gross: 20px;
+  --schatten: 0 1px 2px rgba(10, 31, 77, 0.05), 0 4px 14px rgba(10, 31, 77, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #070f24;
+    --karte: #0f1b3a;
+    --flaeche: #172652;
+    --rand: #22345f;
+    --text: #e8eefc;
+    --titel: #ffffff;
+    --leise: #9fb0d4;
+    --blau: #4a86f0;
+    --blau-text: #a8c6ff;
+    --blau-flaeche: #172a58;
+    --schatten: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 6px 18px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* ---------- Grundlagen ---------- */
+
+body {
+  font-family: var(--schrift);
+  font-size: 16px;
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .zahl, .haupt, .neben, .stufe-name, .heute-titel, .quiz-karte-titel, .thema-name, .ring-zahl, .punkte, .buchstabe,
+.stufen-titel, .wechsel, .treffer-titel, .eintrag-titel, .artikel-titel {
+  font-family: var(--schrift-titel);
+  letter-spacing: -0.01em;
+}
+
+main {
+  padding-top: 1.25rem;
+}
+
+/* ---------- Kopf ---------- */
+
+.kopf,
+body[data-ansicht="start"] .kopf,
+body[data-ansicht="frage"] .kopf,
+body[data-ansicht="nachlesen"] .kopf {
+  position: relative;
+  border: 0;
+  border-radius: 0 0 var(--r-gross) var(--r-gross);
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(255, 122, 26, 0.18), transparent 55%),
+    linear-gradient(180deg, var(--navy-2), var(--navy));
+  box-shadow: 0 8px 24px rgba(5, 16, 44, 0.28);
+}
+
+.kopf::after {
+  content: "";
+  position: absolute;
+  right: 1.2rem;
+  bottom: 0;
+  left: 1.2rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--akzent), rgba(255, 122, 26, 0));
+  border-radius: 3px;
+}
+
+.kopf h1 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: none;
+  color: #fff;
+}
+
+.kopf h1 span {
+  color: var(--akzent);
+  font-weight: 800;
+}
+
+.kopf .datum {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+body[data-ansicht="start"] .kopf { padding-top: calc(env(safe-area-inset-top, 0px) + 1rem); padding-bottom: 1.3rem; }
+body[data-ansicht="start"] .kopf-inhalt { flex-direction: row; justify-content: flex-start; text-align: left; gap: 0.85rem; }
+body[data-ansicht="start"] .logo { width: 3.4rem; animation: none; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)); }
+body[data-ansicht="start"] h1 { font-size: 1.3rem; }
+body[data-ansicht="frage"] .logo, body[data-ansicht="nachlesen"] .logo { width: 2.4rem; }
+body[data-ansicht="frage"] h1, body[data-ansicht="nachlesen"] h1 { font-size: 0.95rem; }
+
+.vorschau {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* ---------- Flächen ---------- */
+
+.kennzahlen, .heute-karte, .quiz-karte, .info, .stufe, .antwort, .thema, .liste li, .nachlesen-liste li,
+.frage-bild, .treffer-eintrag, .eintrag, .artikel {
+  background: var(--karte);
+  border: 1px solid var(--rand);
+  border-radius: var(--r-karte);
+  box-shadow: var(--schatten);
+}
+
+.kennzahlen { margin-bottom: 0.9rem; }
+.kennzahl + .kennzahl { border-left-color: var(--rand); }
+.kennzahl { padding: 0.9rem 0.2rem 0.8rem; }
+.sym { width: 1.6rem; height: 1.6rem; }
+.zahl { font-size: clamp(1.15rem, 5.6vw, 1.5rem); font-weight: 800; letter-spacing: -0.03em; }
+.zahl-rot { color: var(--akzent-dunkel); }
+.zahl-gold { color: var(--titel); }
+.kennzahl .label, .label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--leise); }
+
+.heute-karte { padding: 1.1rem 1.1rem 0.9rem; }
+.ring-fuell { stroke: var(--akzent); stroke-width: 9; }
+.ring-spur { stroke: var(--flaeche); stroke-width: 9; }
+.heute-karte[data-zustand="erledigt"] .ring-fuell { stroke: #16a34a; }
+.ring-zahl { font-weight: 800; }
+.ring-label, .stufen-titel { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--leise); }
+.heute-titel { font-size: 1.1rem; font-weight: 700; }
+.woche { border-top-color: var(--rand); }
+.wt-marke { background: var(--flaeche); }
+.wt.gespielt .wt-marke { background-color: var(--navy); background-size: 70% auto; }
+.wt.heute .wt-marke { box-shadow: 0 0 0 2px var(--akzent); }
+.wt-buchstabe { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.wt.heute .wt-buchstabe { color: var(--akzent-dunkel); }
+
+/* ---------- Knöpfe ---------- */
+
+.haupt, .neben, .wechsel {
+  border-radius: 12px;
+  box-shadow: none;
+  font-weight: 700;
+  letter-spacing: 0;
+  transition: transform 0.1s ease, background-color 0.15s ease, filter 0.15s ease;
+}
+
+.haupt {
+  min-height: 3.2rem;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(180deg, #ff8a33, var(--akzent));
+  box-shadow: 0 4px 14px rgba(255, 122, 26, 0.35);
+}
+
+.haupt:active { transform: scale(0.985); box-shadow: 0 2px 8px rgba(255, 122, 26, 0.3); }
+
+.neben {
+  min-height: 3rem;
+  color: var(--titel);
+  background: var(--karte);
+  border: 1px solid var(--rand);
+}
+
+.neben:active { transform: scale(0.985); box-shadow: none; }
+
+.klein { font-size: 0.8rem; color: var(--leise); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+.pille, #abbrechen {
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--titel);
+  text-decoration: none;
+  background: var(--karte);
+  border: 1px solid var(--rand);
+  border-radius: 99px;
+}
+
+.rueckmeldung.ok .haupt, .rueckmeldung.nein .haupt { background: var(--navy); box-shadow: none; }
+.rueckmeldung.ok .haupt:active, .rueckmeldung.nein .haupt:active { box-shadow: none; }
+
+/* ---------- Wissensstufen ---------- */
+
+.stufe { min-height: 5.2rem; border-width: 1px; box-shadow: var(--schatten); }
+.stufe-name { font-size: 0.88rem; font-weight: 700; }
+.stufe-hinweis { font-size: 0.72rem; font-weight: 500; }
+.stufe::before, .stufe[data-stufe]::before { background-color: var(--leise); }
+.stufe.aktiv {
+  color: #fff;
+  background: linear-gradient(160deg, var(--navy-2), var(--navy));
+  border-color: var(--navy);
+  box-shadow: 0 6px 16px rgba(10, 31, 77, 0.35);
+}
+.stufe.aktiv::before, .stufe.aktiv[data-stufe]::before { background-color: var(--akzent); }
+.stufe.zu { background: transparent; border-style: dashed; box-shadow: none; }
+
+/* ---------- Fortschrittsbalken: schlicht, mit Akzentfarbe ---------- */
+
+.balken::before { display: none; }
+.balken { height: 8px; margin: 0.3rem 0 1.1rem; background: var(--flaeche); border-radius: 99px; overflow: hidden; }
+.balken > div { background: linear-gradient(90deg, var(--akzent), #ffa04d); border-radius: 99px; box-shadow: none; }
+.balken > div::after, .stufen-ziel .balken > div::after { display: none; }
+.stufen-ziel .balken { height: 8px; margin: 0.5rem 0 0; }
+.stufen-ziel p { font-size: 0.82rem; font-weight: 600; color: var(--leise); }
+
+/* ---------- Frage und Antworten ---------- */
+
+.fortschritt-kopf { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--leise); }
+
+.kategorie {
+  padding: 0.25rem 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: var(--akzent-dunkel);
+  background: rgba(255, 122, 26, 0.12);
+  border-radius: 6px;
+}
+
+#frage-text { font-weight: 700; letter-spacing: -0.02em; color: var(--titel); }
+
+.antwort { min-height: 3.4rem; border-width: 1px; font-weight: 500; box-shadow: var(--schatten); }
+.antwort:active:not(:disabled) { border-color: var(--akzent); transform: scale(0.985); }
+.buchstabe { width: 2rem; height: 2rem; font-size: 0.85rem; font-weight: 700; color: var(--titel); background: var(--flaeche); border: 0; border-radius: 8px; }
+.antwort.richtig { color: var(--richtig-text); background: var(--richtig-bg); border-color: var(--richtig-rand); }
+.antwort.falsch { color: var(--falsch-text); background: var(--falsch-bg); border-color: var(--falsch-rand); }
+
+.rueckmeldung { border: 1px solid var(--rand); border-radius: var(--r-gross); }
+.rueckmeldung h3 { font-weight: 800; letter-spacing: -0.02em; }
+
+@supports selector(:has(*)) {
+  .rueckmeldung { border-radius: 22px 22px 0 0; border-top-width: 4px; }
+}
+
+/* ---------- Ergebnis ---------- */
+
+.punkte {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(160deg, var(--navy-2), var(--navy));
+  border-radius: var(--r-karte);
+  box-shadow: 0 0 0 2px var(--akzent), 0 10px 24px rgba(10, 31, 77, 0.3);
+  text-shadow: none;
+}
+
+.gewinn { color: var(--navy); background: #ffe0c2; border-radius: 8px; box-shadow: none; }
+.ergebnis-kopf .freigabe { border-radius: 8px; }
+
+/* ---------- Lexikon-Karte, Hinweise, Info ---------- */
+
+.wiki-karte, .quiz-karte.wiki-karte {
+  background: linear-gradient(135deg, var(--navy-2), var(--navy));
+  border: 0;
+  border-left: 0;
+  border-radius: var(--r-karte);
+  box-shadow: 0 6px 18px rgba(10, 31, 77, 0.3);
+}
+.wiki-karte-pfeil { color: var(--akzent); }
+.quiz-karte-zeile { font-size: 0.85rem; }
+
+.hinweis { background: var(--blau-flaeche); color: var(--titel); border-radius: var(--r-karte); font-weight: 500; }
+.info summary { font-weight: 600; color: var(--titel); }
+
+/* ---------- Nachlesen und Lexikon ---------- */
+
+.thema { border-width: 1px; }
+.thema:active { border-color: var(--akzent); }
+.thema-name { font-weight: 700; }
+.nachlesen-liste .zeichen, .liste .zeichen { border-radius: 8px; }
+
+.suche input {
+  border: 1px solid var(--rand);
+  border-radius: 12px;
+  background-color: var(--karte);
+  box-shadow: var(--schatten);
+}
+
+.suche input:focus-visible { outline: 2px solid var(--akzent); outline-offset: 1px; }
+
+.filter button { border-radius: 99px; border: 1px solid var(--rand); background: var(--karte); font-weight: 600; }
+.filter button[aria-pressed="true"] { color: #fff; background: var(--navy); border-color: var(--navy); }
+
+.kuerzel { border-radius: 8px; font-weight: 700; }
+.treffer-typ { letter-spacing: 0.09em; font-weight: 700; }
+.quiz-knopf { border-radius: 12px; font-weight: 700; }
+
+.tabelle { border-radius: var(--r-karte); }
+
+:focus-visible { outline-color: var(--akzent); }
+
+@media (hover: hover) {
+  .antwort:hover:not(:disabled), .stufe:hover:not(:disabled):not(.aktiv):not(.zu), .thema:hover { border-color: var(--akzent); box-shadow: var(--schatten); }
+  .haupt:hover { filter: brightness(1.05); }
+  .neben:hover { border-color: var(--leise); }
+}
