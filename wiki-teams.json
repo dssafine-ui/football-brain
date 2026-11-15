@@ -1,0 +1,50 @@
+{
+  "stand": "2026-11-09",
+  "saison": 2026,
+  "hinweis": "Die 32 Teams der NFL mit Conference, Division, Heimstadion und Super-Bowl-Siegen. Stadien und Siege sind am 09.11.2026 in den Wikipedia-Listen gelesen; die Siege sind aus der Ergebnistabelle der Super Bowls I bis LX gezählt, jeweils für die heutige Franchise. Angaben zur Gründung und zur Geschichte der Teams fehlen in dieser Fassung, weil die Quellen dafür uneinheitlich sind.",
+  "quellen": [
+    { "titel": "Wikipedia: List of current NFL stadiums (gelesen am 09.11.2026)", "url": "https://en.wikipedia.org/wiki/List_of_current_NFL_stadiums" },
+    { "titel": "Wikipedia: List of Super Bowl champions (gelesen am 09.11.2026)", "url": "https://en.wikipedia.org/wiki/List_of_Super_Bowl_champions" }
+  ],
+  "teams": [
+    { "kuerzel": "BUF", "name": "Buffalo Bills", "kurzname": "Bills", "conference": "AFC", "division": "East", "stadion": "Highmark Stadium", "stadionOrt": "Orchard Park, New York", "stadionEroeffnet": 2026, "stadionHinweis": "Neues Stadion, seit der Saison 2026 in Betrieb.", "superBowlSiege": 0 },
+    { "kuerzel": "MIA", "name": "Miami Dolphins", "kurzname": "Dolphins", "conference": "AFC", "division": "East", "stadion": "Hard Rock Stadium", "stadionOrt": "Miami Gardens, Florida", "stadionEroeffnet": 1987, "superBowlSiege": 2, "superBowlSpiele": ["VII", "VIII"] },
+    { "kuerzel": "NE", "name": "New England Patriots", "kurzname": "Patriots", "conference": "AFC", "division": "East", "stadion": "Gillette Stadium", "stadionOrt": "Foxborough, Massachusetts", "stadionEroeffnet": 2002, "superBowlSiege": 6, "superBowlSpiele": ["XXXVI", "XXXVIII", "XXXIX", "XLIX", "LI", "LIII"] },
+    { "kuerzel": "NYJ", "name": "New York Jets", "kurzname": "Jets", "conference": "AFC", "division": "East", "stadion": "MetLife Stadium", "stadionOrt": "East Rutherford, New Jersey", "stadionEroeffnet": 2010, "stadionGeteilt": "NYG", "superBowlSiege": 1, "superBowlSpiele": ["III"] },
+
+    { "kuerzel": "BAL", "name": "Baltimore Ravens", "kurzname": "Ravens", "conference": "AFC", "division": "North", "stadion": "M&T Bank Stadium", "stadionOrt": "Baltimore, Maryland", "stadionEroeffnet": 1998, "superBowlSiege": 2, "superBowlSpiele": ["XXXV", "XLVII"] },
+    { "kuerzel": "CIN", "name": "Cincinnati Bengals", "kurzname": "Bengals", "conference": "AFC", "division": "North", "stadion": "Paycor Stadium", "stadionOrt": "Cincinnati, Ohio", "stadionEroeffnet": 2000, "superBowlSiege": 0 },
+    { "kuerzel": "CLE", "name": "Cleveland Browns", "kurzname": "Browns", "conference": "AFC", "division": "North", "stadion": "Huntington Bank Field", "stadionOrt": "Cleveland, Ohio", "stadionEroeffnet": 1999, "superBowlSiege": 0, "superBowlHinweis": "Noch nie im Super Bowl." },
+    { "kuerzel": "PIT", "name": "Pittsburgh Steelers", "kurzname": "Steelers", "conference": "AFC", "division": "North", "stadion": "Acrisure Stadium", "stadionOrt": "Pittsburgh, Pennsylvania", "stadionEroeffnet": 2001, "superBowlSiege": 6, "superBowlSpiele": ["IX", "X", "XIII", "XIV", "XL", "XLIII"] },
+
+    { "kuerzel": "HOU", "name": "Houston Texans", "kurzname": "Texans", "conference": "AFC", "division": "South", "stadion": "Reliant Stadium", "stadionOrt": "Houston, Texas", "stadionEroeffnet": 2002, "stadionHinweis": "Hieß bis 2026 NRG Stadium.", "superBowlSiege": 0, "superBowlHinweis": "Noch nie im Super Bowl." },
+    { "kuerzel": "IND", "name": "Indianapolis Colts", "kurzname": "Colts", "conference": "AFC", "division": "South", "stadion": "Lucas Oil Stadium", "stadionOrt": "Indianapolis, Indiana", "stadionEroeffnet": 2008, "superBowlSiege": 2, "superBowlSpiele": ["V", "XLI"] },
+    { "kuerzel": "JAX", "name": "Jacksonville Jaguars", "kurzname": "Jaguars", "conference": "AFC", "division": "South", "stadion": "EverBank Stadium", "stadionOrt": "Jacksonville, Florida", "stadionEroeffnet": 1995, "superBowlSiege": 0, "superBowlHinweis": "Noch nie im Super Bowl." },
+    { "kuerzel": "TEN", "name": "Tennessee Titans", "kurzname": "Titans", "conference": "AFC", "division": "South", "stadion": "Nissan Stadium", "stadionOrt": "Nashville, Tennessee", "stadionEroeffnet": 1999, "stadionHinweis": "Ein neues Stadion ist für 2027 geplant.", "superBowlSiege": 0 },
+
+    { "kuerzel": "DEN", "name": "Denver Broncos", "kurzname": "Broncos", "conference": "AFC", "division": "West", "stadion": "Empower Field at Mile High", "stadionOrt": "Denver, Colorado", "stadionEroeffnet": 2001, "superBowlSiege": 3, "superBowlSpiele": ["XXXII", "XXXIII", "50"] },
+    { "kuerzel": "KC", "name": "Kansas City Chiefs", "kurzname": "Chiefs", "conference": "AFC", "division": "West", "stadion": "Arrowhead Stadium", "stadionOrt": "Kansas City, Missouri", "stadionEroeffnet": 1972, "superBowlSiege": 4, "superBowlSpiele": ["IV", "LIV", "LVII", "LVIII"] },
+    { "kuerzel": "LV", "name": "Las Vegas Raiders", "kurzname": "Raiders", "conference": "AFC", "division": "West", "stadion": "Allegiant Stadium", "stadionOrt": "Paradise, Nevada", "stadionEroeffnet": 2020, "superBowlSiege": 3, "superBowlSpiele": ["XI", "XV", "XVIII"] },
+    { "kuerzel": "LAC", "name": "Los Angeles Chargers", "kurzname": "Chargers", "conference": "AFC", "division": "West", "stadion": "SoFi Stadium", "stadionOrt": "Inglewood, California", "stadionEroeffnet": 2020, "stadionGeteilt": "LA", "superBowlSiege": 0 },
+
+    { "kuerzel": "DAL", "name": "Dallas Cowboys", "kurzname": "Cowboys", "conference": "NFC", "division": "East", "stadion": "AT&T Stadium", "stadionOrt": "Arlington, Texas", "stadionEroeffnet": 2009, "superBowlSiege": 5, "superBowlSpiele": ["VI", "XII", "XXVII", "XXVIII", "XXX"] },
+    { "kuerzel": "NYG", "name": "New York Giants", "kurzname": "Giants", "conference": "NFC", "division": "East", "stadion": "MetLife Stadium", "stadionOrt": "East Rutherford, New Jersey", "stadionEroeffnet": 2010, "stadionGeteilt": "NYJ", "superBowlSiege": 4, "superBowlSpiele": ["XXI", "XXV", "XLII", "XLVI"] },
+    { "kuerzel": "PHI", "name": "Philadelphia Eagles", "kurzname": "Eagles", "conference": "NFC", "division": "East", "stadion": "Lincoln Financial Field", "stadionOrt": "Philadelphia, Pennsylvania", "stadionEroeffnet": 2003, "superBowlSiege": 2, "superBowlSpiele": ["LII", "LIX"] },
+    { "kuerzel": "WAS", "name": "Washington Commanders", "kurzname": "Commanders", "conference": "NFC", "division": "East", "stadion": "Northwest Stadium", "stadionOrt": "Landover, Maryland", "stadionEroeffnet": 1997, "superBowlSiege": 3, "superBowlSpiele": ["XVII", "XXII", "XXVI"] },
+
+    { "kuerzel": "CHI", "name": "Chicago Bears", "kurzname": "Bears", "conference": "NFC", "division": "North", "stadion": "Soldier Field", "stadionOrt": "Chicago, Illinois", "stadionEroeffnet": 1924, "superBowlSiege": 1, "superBowlSpiele": ["XX"] },
+    { "kuerzel": "DET", "name": "Detroit Lions", "kurzname": "Lions", "conference": "NFC", "division": "North", "stadion": "Ford Field", "stadionOrt": "Detroit, Michigan", "stadionEroeffnet": 2002, "superBowlSiege": 0, "superBowlHinweis": "Noch nie im Super Bowl." },
+    { "kuerzel": "GB", "name": "Green Bay Packers", "kurzname": "Packers", "conference": "NFC", "division": "North", "stadion": "Lambeau Field", "stadionOrt": "Green Bay, Wisconsin", "stadionEroeffnet": 1957, "superBowlSiege": 4, "superBowlSpiele": ["I", "II", "XXXI", "XLV"] },
+    { "kuerzel": "MIN", "name": "Minnesota Vikings", "kurzname": "Vikings", "conference": "NFC", "division": "North", "stadion": "U.S. Bank Stadium", "stadionOrt": "Minneapolis, Minnesota", "stadionEroeffnet": 2016, "superBowlSiege": 0 },
+
+    { "kuerzel": "ATL", "name": "Atlanta Falcons", "kurzname": "Falcons", "conference": "NFC", "division": "South", "stadion": "Mercedes-Benz Stadium", "stadionOrt": "Atlanta, Georgia", "stadionEroeffnet": 2017, "superBowlSiege": 0 },
+    { "kuerzel": "CAR", "name": "Carolina Panthers", "kurzname": "Panthers", "conference": "NFC", "division": "South", "stadion": "Bank of America Stadium", "stadionOrt": "Charlotte, North Carolina", "stadionEroeffnet": 1996, "superBowlSiege": 0 },
+    { "kuerzel": "NO", "name": "New Orleans Saints", "kurzname": "Saints", "conference": "NFC", "division": "South", "stadion": "Caesars Superdome", "stadionOrt": "New Orleans, Louisiana", "stadionEroeffnet": 1975, "superBowlSiege": 1, "superBowlSpiele": ["XLIV"] },
+    { "kuerzel": "TB", "name": "Tampa Bay Buccaneers", "kurzname": "Buccaneers", "conference": "NFC", "division": "South", "stadion": "Raymond James Stadium", "stadionOrt": "Tampa, Florida", "stadionEroeffnet": 1998, "superBowlSiege": 2, "superBowlSpiele": ["XXXVII", "LV"] },
+
+    { "kuerzel": "ARI", "name": "Arizona Cardinals", "kurzname": "Cardinals", "conference": "NFC", "division": "West", "stadion": "State Farm Stadium", "stadionOrt": "Glendale, Arizona", "stadionEroeffnet": 2006, "superBowlSiege": 0 },
+    { "kuerzel": "LA", "name": "Los Angeles Rams", "kurzname": "Rams", "conference": "NFC", "division": "West", "stadion": "SoFi Stadium", "stadionOrt": "Inglewood, California", "stadionEroeffnet": 2020, "stadionGeteilt": "LAC", "superBowlSiege": 2, "superBowlSpiele": ["XXXIV", "LVI"] },
+    { "kuerzel": "SF", "name": "San Francisco 49ers", "kurzname": "49ers", "conference": "NFC", "division": "West", "stadion": "Levi's Stadium", "stadionOrt": "Santa Clara, California", "stadionEroeffnet": 2014, "superBowlSiege": 5, "superBowlSpiele": ["XVI", "XIX", "XXIII", "XXIV", "XXIX"] },
+    { "kuerzel": "SEA", "name": "Seattle Seahawks", "kurzname": "Seahawks", "conference": "NFC", "division": "West", "stadion": "Lumen Field", "stadionOrt": "Seattle, Washington", "stadionEroeffnet": 2002, "superBowlSiege": 2, "superBowlSpiele": ["XLVIII", "LX"] }
+  ]
+}
