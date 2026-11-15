@@ -47,7 +47,7 @@
       </clipPath>
       <path id="fb-stern" fill="#ffd84d" d="M0 -1Q0.12 -0.12 1 0Q0.12 0.12 0 1Q-0.12 0.12 -1 0Q-0.12 -0.12 0 -1Z"/>
       <g id="fb-ball">
-        <path d="M-200 0C-150 -70 -70 -112.5 0 -112.5C70 -112.5 150 -70 200 0C150 70 70 112.5 0 112.5C-70 112.5 -150 70 -200 0Z" fill="url(#fb-leder)"/>
+        <path d="M-200 0C-150 -70 -70 -112.5 0 -112.5C70 -112.5 150 -70 200 0C150 70 70 112.5 0 112.5C-70 112.5 -150 70 -200 0Z" fill="#b9561f"/>
         <g clip-path="url(#fb-form)" fill="none">
           <g stroke="#fffaf0" stroke-width="12">
             <path d="M-136 -125Q-168 0 -136 125"/>
@@ -57,13 +57,13 @@
           </g>
           <path d="M-200 0H-64M64 0H200" stroke="#3a1608" stroke-opacity="0.5" stroke-width="3.5"/>
         </g>
-        <path d="M-200 0C-150 -70 -70 -112.5 0 -112.5C70 -112.5 150 -70 200 0C150 70 70 112.5 0 112.5C-70 112.5 -150 70 -200 0Z" fill="url(#fb-schatten)"/>
+        <path d="M-200 0C-150 -70 -70 -112.5 0 -112.5C70 -112.5 150 -70 200 0C150 70 70 112.5 0 112.5C-70 112.5 -150 70 -200 0Z" fill="none"/>
         <g fill="none" stroke-linecap="round" stroke-width="9">
-          <path d="M-62 4H62M-48 -18V26M-24 -21V29M0 -22V30M24 -21V29M48 -18V26" stroke="#2a0f04" stroke-opacity="0.45"/>
+          <path d="M-62 4H62M-48 -18V26M-24 -21V29M0 -22V30M24 -21V29M48 -18V26" stroke="none"/>
           <path d="M-62 0H62M-48 -22V22M-24 -25V25M0 -26V26M24 -25V25M48 -22V22" stroke="#fffaf0"/>
         </g>
-        <path d="M-124 -53C-98 -74 -56 -86 -8 -88" fill="none" stroke="url(#fb-glanz)" stroke-width="11" stroke-linecap="round"/>
-        <path d="M-200 0C-150 -70 -70 -112.5 0 -112.5C70 -112.5 150 -70 200 0C150 70 70 112.5 0 112.5C-70 112.5 -150 70 -200 0Z" fill="none" stroke="#3a1608" stroke-width="9" stroke-linejoin="round"/>
+        <path d="M-124 -53C-98 -74 -56 -86 -8 -88" fill="none" stroke="#ffffff" stroke-opacity="0.2" stroke-width="8" stroke-linecap="round"/>
+        <path d="M-200 0C-150 -70 -70 -112.5 0 -112.5C70 -112.5 150 -70 200 0C150 70 70 112.5 0 112.5C-70 112.5 -150 70 -200 0Z" fill="none" stroke="#4a1d08" stroke-width="6" stroke-linejoin="round"/>
       </g>
     </defs>
   </svg>
@@ -74,9 +74,6 @@
       <svg class="logo" viewBox="-210 -140 420 320" aria-hidden="true" focusable="false">
         <ellipse cx="0" cy="152" rx="130" ry="13" fill="url(#fb-boden)"/>
         <g transform="rotate(-24)"><use href="#fb-ball"/></g>
-        <use class="funkel" href="#fb-stern" transform="translate(-150 -92) scale(26)"/>
-        <use class="funkel f2" href="#fb-stern" transform="translate(172 64) scale(18)"/>
-        <use class="funkel f3" href="#fb-stern" transform="translate(-186 -28) scale(10)"/>
       </svg>
       <div class="kopf-text">
         <h1>Football <span>Brain</span></h1>
@@ -113,19 +110,19 @@
       <div class="kennzahlen">
         <div class="kennzahl">
           <span class="sym" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false"><path d="M12 2.2c.9 3.3 3.5 5 5 7.5 1.4 2.4 1.6 4.7.9 6.9-.8 2.4-3 4.6-5.9 4.6-3.1 0-5.8-2.3-6.2-5.4-.3-2.4.7-4.2 2-5.6.2 1.4.8 2.3 1.7 2.8-.3-2.8.4-6.8 2.5-10.8z" fill="#ff7a1a"/><path d="M12 12.6c1.6 1.7 2.6 3.1 2.2 4.9-.3 1.3-1.2 2-2.2 2-1.1 0-2-.8-2.1-2-.1-1.5 1.1-2.8 2.1-4.9z" fill="#ffd84d"/></svg>
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M12 3c.6 3 3.2 4.4 4.6 6.9 1.2 2.1 1.4 4.4.6 6.3-.9 2.3-2.9 4.3-5.2 4.3-2.9 0-5.2-2.2-5.4-5-.1-1.9.7-3.4 1.9-4.7.2 1.2.8 2 1.6 2.4C9.5 9.2 10 5.9 12 3z" fill="none" stroke="#f26b1d" stroke-width="1.8" stroke-linejoin="round"/></svg>
           </span>
           <div class="werte"><span class="zahl zahl-rot" id="serie">0</span><span class="label" id="serie-label">Tage in Serie</span></div>
         </div>
         <div class="kennzahl">
           <span class="sym" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false"><g transform="rotate(-35 12 12)"><path d="M1.5 12C4 6 8 4 12 4s8 2 10.5 8c-2.5 6-6.5 8-10.5 8S4 18 1.5 12z" fill="#b8581f" stroke="#3a1608" stroke-width="1.1" stroke-linejoin="round"/><path d="M8 12h8M10 10v4M12 9.5v5M14 10v4" fill="none" stroke="#fffaf0" stroke-width="1.2" stroke-linecap="round"/><path d="M5.3 8.2q-.8 3.8 0 7.6M18.7 8.2q.8 3.8 0 7.6" fill="none" stroke="#fffaf0" stroke-width="1.2" stroke-linecap="round"/></g></svg>
+            <svg viewBox="0 0 24 24" focusable="false"><g transform="rotate(-35 12 12)" fill="none" stroke="#b9561f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12C4.5 6.5 8 5 12 5s7.5 1.5 10 7c-2.5 5.5-6 7-10 7s-7.5-1.5-10-7z"/><path d="M8.5 12h7M10.5 10.2v3.6M13.5 10.2v3.6"/></g></svg>
           </span>
           <div class="werte"><span class="zahl zahl-gold" id="punkte-gesamt">0</span><span class="label">Punkte gesamt</span></div>
         </div>
         <div class="kennzahl">
           <span class="sym" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false"><rect x="3.5" y="2.5" width="17" height="19" rx="4.5" fill="#1b62e0"/><path d="M9.3 9.4a2.8 2.8 0 1 1 4.1 2.5c-.9.5-1.4 1-1.4 2.1" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.3" r="1.2" fill="#ffffff"/></svg>
+            <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="#1b62e0" stroke-width="1.8"/><path d="M9.6 9.6a2.5 2.5 0 1 1 3.6 2.2c-.8.4-1.2.9-1.2 1.8" fill="none" stroke="#1b62e0" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.6" r="1" fill="#1b62e0"/></svg>
           </span>
           <div class="werte"><span class="zahl" id="vorrat">0</span><span class="label">Fragen im Vorrat</span></div>
         </div>
