@@ -1306,3 +1306,63 @@ main > section:not([hidden]) {
   line-height: 1;
   color: #ff7a1a;
 }
+
+/* ---------- Sportlich clean (15.11.2026): ruhiger Kopf, klare Flächen, kräftige Zahlen ---------- */
+
+.kopf,
+body[data-ansicht="start"] .kopf {
+  border-bottom-width: 0;
+  border-radius: 0 0 22px 22px;
+  background: linear-gradient(180deg, #0b2a63 0%, #0a1f4d 100%);
+  box-shadow: 0 6px 18px rgba(6, 20, 56, 0.28);
+}
+
+.kopf h1 {
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.kopf h1 span {
+  color: #ff7a1a;
+}
+
+.kennzahlen,
+.heute-karte,
+.quiz-karte {
+  border-radius: 16px;
+  border: 1px solid var(--rand);
+  box-shadow: 0 1px 2px rgba(11, 42, 99, 0.06);
+}
+
+.zahl {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.kennzahl .label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.62rem;
+}
+
+.haupt {
+  border-radius: 14px;
+  box-shadow: none;
+  letter-spacing: 0.02em;
+}
+
+.wiki-karte {
+  background: linear-gradient(135deg, #0b2a63, #12397f);
+  border: 0;
+}
+
+.wiki-karte .quiz-karte-titel {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.wiki-karte .quiz-karte-zeile {
+  color: rgba(255, 255, 255, 0.75);
+}
