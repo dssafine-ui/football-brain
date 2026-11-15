@@ -1,0 +1,492 @@
+{
+  "stand": "2026-11-09",
+  "hinweis": "Die Texte fassen das offizielle NFL-Regelbuch 2026 in eigenen Worten zusammen, sie sind keine Übersetzung und nicht vollständig. Die Nummer (Regel, Abschnitt, Artikel) zeigt, wo die Stelle im Regelbuch steht. Maßgeblich ist immer das Regelbuch selbst.",
+  "regeln": [
+    {
+      "nummer": 1,
+      "titel": "Das Spielfeld",
+      "englisch": "The Field",
+      "kurz": "Maße, Linien, Endzonen und Tore des Spielfelds.",
+      "eintraege": [
+        {
+          "abschnitt": 1,
+          "artikel": 1,
+          "titel": "Spielfeld und Endzonen",
+          "text": "Gespielt wird auf einem Rechteck von 360 Fuß Länge und 160 Fuß Breite (rund 110 mal 49 Meter). Die Linien an den kurzen Seiten heißen End Lines, die an den langen Seiten Sidelines. Zehn Yards vor jeder End Line verläuft die Goal Line. Der Bereich zwischen den beiden Goal Lines ist das eigentliche Spielfeld (Field of Play, 100 Yards lang), die Flächen dahinter sind die beiden Endzonen. Der Rasen muss in einem von der Liga zugelassenen Grünton gehalten sein.",
+          "stichwoerter": ["Spielfeld", "Endzone", "End Zone", "Goal Line", "Sideline", "End Line", "Field of Play", "Maße", "Größe"]
+        },
+        {
+          "abschnitt": 2,
+          "artikel": 2,
+          "titel": "Hash Marks",
+          "text": "Alle 5 Yards verläuft eine Linie quer über das Feld, dazwischen markieren kurze Striche jeden einzelnen Yard. Die beiden Reihen dieser Hash Marks (Inbounds Lines) liegen 70 Fuß 9 Zoll (rund 21,6 Meter) von der jeweiligen Seitenlinie entfernt.",
+          "stichwoerter": ["Hash Marks", "Inbounds Lines", "Yard-Linie", "Yard Line"]
+        },
+        {
+          "abschnitt": 2,
+          "artikel": 3,
+          "titel": "Goal Line und Pylonen",
+          "text": "Die Goal Line liegt 30 Fuß (10 Yards) innerhalb der End Line und ist acht Zoll breit, doppelt so breit wie die übrigen Linien. An den vier Ecken, an denen Goal Lines und Sidelines aufeinandertreffen, stehen beschwerte Pylonen. Zwei weitere stehen an jeder End Line.",
+          "stichwoerter": ["Goal Line", "Torlinie", "Pylon", "Pylone"]
+        },
+        {
+          "abschnitt": 3,
+          "artikel": 1,
+          "titel": "Querlatte",
+          "text": "Das Tor steht in der Ebene jeder End Line. Seine Querlatte (Crossbar) ist 18 Fuß 6 Zoll lang (rund 5,6 Meter), ihre Oberkante liegt 10 Fuß (rund 3 Meter) über dem Boden. Als Tor zählt die senkrechte Fläche über der Querlatte, zwischen den Außenkanten der beiden Torstangen.",
+          "stichwoerter": ["Querlatte", "Crossbar", "Tor", "Goal", "Field Goal"]
+        },
+        {
+          "abschnitt": 3,
+          "artikel": 2,
+          "titel": "Torstangen",
+          "text": "Die Torstangen (Goal Posts) sind goldfarben, gepolstert und stehen versetzt zur End Line. Die beiden senkrechten Stangen (Uprights) ragen 35 Fuß (rund 10,7 Meter) über die Querlatte hinaus. An ihrer Spitze hängt je ein orangefarbenes Band.",
+          "stichwoerter": ["Torstangen", "Goal Posts", "Uprights", "Field Goal"]
+        }
+      ]
+    },
+    {
+      "nummer": 2,
+      "titel": "Der Ball",
+      "englisch": "The Ball",
+      "kurz": "Maße, Gewicht und Bereitstellung der Spielbälle.",
+      "eintraege": [
+        {
+          "abschnitt": 1,
+          "titel": "Maße und Gewicht",
+          "text": "Gespielt wird mit einem handverlesenen Wilson-Ball, der die Unterschrift des Commissioners trägt. Er ist länglich-rund (Prolate Spheroid), hat eine Hülle aus genarbtem Leder in natürlichem Braun und innen eine Blase aus Urethan mit 12½ bis 13½ Pfund Druck (psi). Maße: Länge 11 bis 11¼ Zoll (rund 28 Zentimeter), größter Umfang 28 bis 28½ Zoll, kleinster Umfang 21 bis 21¼ Zoll. Gewicht: 14 bis 15 Unzen (rund 400 bis 425 Gramm). Ob ein Ball diese Vorgaben erfüllt, entscheidet allein der Referee.",
+          "stichwoerter": ["Ball", "Football", "Wilson", "Gewicht", "Maße", "Luftdruck"]
+        },
+        {
+          "abschnitt": 2,
+          "titel": "Bälle für das Spiel",
+          "text": "Jedes Team legt spätestens zwei Stunden und 15 Minuten vor Spielbeginn 12 Spielbälle, 12 Ersatzbälle und drei besonders markierte Kickbälle zur Prüfung durch den Referee bereit. Passt ein Ball nicht oder gehen die Bälle aus, holt der Referee einen passenden vom Gegner oder nimmt den besten verfügbaren. Bei Regen oder rutschigem Feld wird auf Wunsch des Centers der Offense ein gut greifbarer Ball benutzt; die Uhr läuft dafür weiter, außer es kommt zu unnötiger Verzögerung.",
+          "stichwoerter": ["Bälle", "Kickball", "Regen", "Ersatzball", "Referee"]
+        }
+      ]
+    },
+    {
+      "nummer": 3,
+      "titel": "Grundlagen und Begriffe",
+      "englisch": "Definitions",
+      "kurz": "Hier erklärt das Regelbuch seine Grundbegriffe. Das Wiki zeigt in dieser Fassung nur Auszüge: Ballbesitz, Downs, Spielfortschritt und die Two-Minute-Warning.",
+      "eintraege": [
+        {
+          "abschnitt": 2,
+          "artikel": 7,
+          "titel": "Ballbesitz: Fang, Interception, Recovery",
+          "text": "Ein Spieler hat den Ball, wenn er im Spielfeld ist und ihn mit Hand oder Armen kontrolliert. Für einen Fang, eine Interception oder eine Recovery braucht er drei Dinge nacheinander: erstens volle Kontrolle über den Ball, zweitens sicheren Stand im Spielfeld (beide Füße oder ein anderer Körperteil außer den Händen vollständig auf dem Boden) und drittens eine eindeutig spieltypische Bewegung, zum Beispiel einen weiteren Schritt, den Ball nach vorn strecken, ihn sichern und umdrehen oder einen Gegner abwehren. Verliert er den Ball beim Kontakt mit dem Boden, bevor er den dritten Punkt erfüllt hat, gilt das nicht als Ballbesitz. Von einem Fang spricht man bei einem Ball in der Luft, von einer Recovery bei einem Ball, der schon den Boden berührt hat. Zusätzliche Regeln für Pässe stehen in 8-1-3.",
+          "stichwoerter": ["Fang", "Catch", "Interception", "Recovery", "Ballbesitz", "Possession", "Survive the Ground"]
+        },
+        {
+          "abschnitt": 8,
+          "artikel": 2,
+          "titel": "Serie von vier Downs",
+          "text": "Die Offense bekommt eine Serie von vier aufeinanderfolgenden gezählten Scrimmage-Downs. In dieser Zeit muss sie den Ball bis zur Line to Gain bringen, um den Ballbesitz zu behalten. Der erste Down einer Serie heißt First Down, die folgenden werden bis zum vierten durchgezählt. Ein Down zählt nur, wenn er nicht durch eine Strafe aufgehoben wird und es dabei keinen Ballwechsel gibt.",
+          "stichwoerter": ["Down", "First Down", "Serie", "Series of Downs", "vierter Versuch", "Fourth Down"]
+        },
+        {
+          "abschnitt": 8,
+          "artikel": 3,
+          "titel": "Line to Gain",
+          "text": "Die Line to Gain liegt 10 Yards vor dem Punkt, an dem der Snap der Serie stattfand. Ist die Goal Line näher als 10 Yards, dann ist die Goal Line die Line to Gain.",
+          "stichwoerter": ["Line to Gain", "10 Yards", "First Down", "Goal to Go"]
+        },
+        {
+          "abschnitt": 12,
+          "artikel": 1,
+          "titel": "Forward Progress",
+          "text": "Der Forward Progress eines Ballträgers oder eines Receivers in der Luft ist der Punkt, an dem sein Vorwärtskommen endet. Dort wird der Ball für tot erklärt, auch wenn der Spieler danach noch zurückgeschoben oder zurückgetragen wird.",
+          "stichwoerter": ["Forward Progress", "Raumgewinn", "Ball tot", "Runner"]
+        },
+        {
+          "abschnitt": 12,
+          "artikel": 2,
+          "titel": "Vorwärts und rückwärts",
+          "text": "„Vorwärts“ heißt in Richtung der Goal Line der Defense, „rückwärts“ in Richtung der eigenen Goal Line. Ein Pass, der parallel zu einer Yard-Linie fliegt, oder ein Offense-Spieler, der sich beim Snap parallel zu ihr bewegt, gilt als rückwärts.",
+          "stichwoerter": ["vorwärts", "rückwärts", "Forward", "Backward", "Lateral", "Rückwärtspass"]
+        },
+        {
+          "abschnitt": 41,
+          "titel": "Two-Minute-Warning",
+          "text": "Die Two-Minute-Warning ist eine automatische Auszeit im zweiten und im vierten Viertel. Sie greift am Ende des letzten Downs, bei dem der Ball noch vor der Marke von zwei Minuten Restzeit gesnappt oder gekickt wurde.",
+          "stichwoerter": ["Two-Minute Warning", "Two Minute Warning", "Auszeit", "zwei Minuten"]
+        }
+      ]
+    },
+    {
+      "nummer": 4,
+      "titel": "Spielzeit",
+      "englisch": "Game Timing",
+      "kurz": "Vier Viertel, Halbzeit, Münzwurf, Spieluhr, Auszeiten und die Play Clock.",
+      "eintraege": [
+        {
+          "abschnitt": 1,
+          "artikel": 1,
+          "titel": "Spieldauer",
+          "text": "Ein Spiel dauert 60 Minuten, aufgeteilt in vier Viertel zu je 15 Minuten. Steht es nach vier Vierteln unentschieden, wird verlängert (Overtime, Regel 16).",
+          "stichwoerter": ["Spieldauer", "60 Minuten", "Viertel", "Quarter", "Overtime"]
+        },
+        {
+          "abschnitt": 1,
+          "artikel": 3,
+          "titel": "Halbzeit",
+          "text": "Zwischen zweitem und drittem Viertel liegt die Halbzeit von 13 Minuten. In dieser Zeit ruht das Spiel, und die Teams dürfen das Feld verlassen. Die Pausen zwischen erstem und zweitem sowie zwischen drittem und viertem Viertel dauern mindestens zwei Minuten (4-1-2).",
+          "stichwoerter": ["Halbzeit", "Halftime", "13 Minuten", "Pause"]
+        },
+        {
+          "abschnitt": 2,
+          "artikel": 2,
+          "titel": "Münzwurf",
+          "text": "Kurz vor dem Spiel wirft der Referee in der Mitte des Feldes eine Münze, im Beisein der Kapitäne (höchstens sechs je Team). Der Kapitän des Gastteams ruft „Kopf“ oder „Zahl“. Wer gewinnt, wählt eines von zwei Privilegien, der Verlierer bekommt das andere: entweder die Wahl, den Kickoff zu empfangen oder selbst zu kicken, oder die Wahl der Seite, die das eigene Team verteidigt. Der Gewinner darf seine Wahl auch auf die zweite Halbzeit verschieben („deferren“). In der zweiten Halbzeit hat der Verlierer des Münzwurfs die erste Wahl, außer der Gewinner hatte verschoben.",
+          "stichwoerter": ["Münzwurf", "Coin Toss", "Kickoff", "Seitenwahl", "Defer", "Kapitän"]
+        },
+        {
+          "abschnitt": 2,
+          "artikel": 3,
+          "titel": "Seitenwechsel",
+          "text": "Am Ende des ersten und des dritten Viertels wechseln die Teams die Seiten. Ballbesitz, Down-Nummer, Lage des Balls und Line to Gain bleiben dabei gleich.",
+          "stichwoerter": ["Seitenwechsel", "Change of Goals", "Viertelwechsel"]
+        },
+        {
+          "abschnitt": 3,
+          "artikel": 2,
+          "titel": "Wann die Uhr läuft",
+          "text": "Nach einer Auszeit startet die Uhr bei einem Scrimmage-Down mit dem nächsten Snap. Läuft ein Ballträger bei einem Spielzug von der Scrimmage-Linie ins Aus, startet sie schon mit dem Signal des Referees, dass der Ball wieder bereit zum Spiel ist. Mit dem Snap startet sie dagegen nach einem Ballwechsel, nach der Two-Minute-Warning der ersten Halbzeit und in den letzten fünf Minuten der zweiten Halbzeit.",
+          "stichwoerter": ["Uhr", "Game Clock", "Clock", "Out of Bounds", "Clock Management"]
+        },
+        {
+          "abschnitt": 4,
+          "titel": "Wann die Uhr stoppt",
+          "text": "Die Uhr wird unter anderem angehalten: am Ende eines Kickoffs, wenn der Ball im Aus ist, wenn er an oder hinter einer Goal Line tot ist, bei einem unvollständigen Vorwärtspass, am Ende eines Downs mit Foul, am Ende eines Downs mit Ballwechsel, bei der Two-Minute-Warning und immer dann, wenn ein Offizieller eine Auszeit anzeigt. Auch wenn das kickende Team einen Scrimmage Kick (Punt oder Field-Goal-Versuch) jenseits der Scrimmage-Linie zurückholt, wird sie angehalten.",
+          "stichwoerter": ["Uhr stoppt", "Incomplete Pass", "unvollständiger Pass", "Out of Bounds", "Timeout"]
+        },
+        {
+          "abschnitt": 5,
+          "artikel": 1,
+          "titel": "Auszeiten",
+          "text": "Jedes Team darf pro Halbzeit drei Auszeiten nehmen, in der Overtime der Hauptrunde zwei. Verlangen dürfen sie der Head Coach oder ein Spieler auf dem Feld. Eine Auszeit dauert in der Regel zwei Minuten, unter bestimmten Umständen nur 30 Sekunden. Beantragt ein Team in derselben Spielunterbrechung eine zweite Auszeit oder eine, obwohl es keine mehr hat, kostet das 5 Yards (Delay of Game).",
+          "stichwoerter": ["Auszeit", "Timeout", "drei Auszeiten", "Delay of Game"]
+        },
+        {
+          "abschnitt": 6,
+          "artikel": 1,
+          "titel": "Play Clock: 40 Sekunden",
+          "text": "Die Offense muss den Ball innerhalb von 40 Sekunden nach Beginn der Play Clock per Snap ins Spiel bringen, sonst liegt ein Delay of Game vor. Die 40 Sekunden laufen normalerweise ab dem Ende des vorigen Spielzugs.",
+          "stichwoerter": ["Play Clock", "40 Sekunden", "Delay of Game", "Spielzeit"]
+        },
+        {
+          "abschnitt": 6,
+          "artikel": 2,
+          "titel": "Play Clock: 25 Sekunden",
+          "text": "Nach bestimmten Unterbrechungen bleiben nur 25 Sekunden, gerechnet ab dem Pfiff des Referees. Dazu zählen unter anderem ein Ballwechsel, eine Auszeit, die Two-Minute-Warning, das Ende eines Viertels und die Vollstreckung einer Strafe. Die 25 Sekunden gelten auch dann, wenn die 40-Sekunden-Uhr schon läuft.",
+          "stichwoerter": ["Play Clock", "25 Sekunden", "Delay of Game"]
+        },
+        {
+          "abschnitt": 6,
+          "artikel": 5,
+          "titel": "Delay of Game: 5 Yards",
+          "text": "Delay of Game kostet 5 Yards: ab dem nächsten Spielpunkt, wenn der Ball tot bleibt, oder ab dem vorigen Spielpunkt, wenn er im Spiel war. Zu den Beispielen zählen: nach Ende eines Downs unnötig auf einem Gegner oder dem toten Ball liegen bleiben, zu spät zusammenkommen nach einer Auszeit, absichtlich den Ball berühren, um den Snap zu verzögern, oder den Ball nach einem Down auf dem Feld wegwerfen (außer nach einem Score).",
+          "stichwoerter": ["Delay of Game", "Spielverzögerung", "5 Yards", "Strafe"]
+        }
+      ]
+    },
+    {
+      "nummer": 5,
+      "titel": "Spieler, Auswechslungen, Ausrüstung",
+      "englisch": "Players, Substitutes, Equipment, General Rules",
+      "kurz": "Elf gegen elf, Rückennummern, Einwechslungen und Pflichtausrüstung.",
+      "eintraege": [
+        {
+          "abschnitt": 1,
+          "artikel": 1,
+          "titel": "Elf gegen elf",
+          "text": "Jedes Team spielt mit 11 Spielern. Hat die Offense länger als drei Sekunden mehr als 11 Spieler in der Formation, oder die Defense mehr als 11, wenn der Snap kurz bevorsteht, ist das ein Foul. Dasselbe gilt vor einem Kickoff. Sind mehr als 11 Spieler auf dem Feld, wenn der Ball ins Spiel kommt, ist es ebenfalls ein Foul. Die Strafe beträgt jeweils 5 Yards.",
+          "stichwoerter": ["11 Spieler", "elf Spieler", "zu viele Spieler", "12 Mann", "Too Many Men", "Strafe"]
+        },
+        {
+          "abschnitt": 1,
+          "artikel": 2,
+          "titel": "Rückennummern nach Position",
+          "text": "Die Nummer auf dem Trikot richtet sich nach der Position: Quarterbacks 0 bis 19, Punter und Kicker 0 bis 49 und 90 bis 99, Defensive Backs 0 bis 49, Running Backs, Fullbacks, Tight Ends, H-Backs und Wide Receiver 0 bis 49 und 80 bis 89, Offensive Linemen 50 bis 79, Defensive Linemen 50 bis 79 und 90 bis 99, Linebacker 0 bis 59 und 90 bis 99. Passempfänger (Eligible Receivers) und ein Quarterback in T-Formation müssen eine Nummer von 0 bis 49 oder 80 bis 89 tragen. Wechselt ein Spieler die Position, muss er sie melden (5-3-1).",
+          "stichwoerter": ["Rückennummer", "Trikotnummer", "Nummern", "Eligible Receiver", "Positionen"]
+        },
+        {
+          "abschnitt": 2,
+          "artikel": 3,
+          "titel": "Auswechslungen",
+          "text": "Beliebig viele Ersatzspieler dürfen das Feld betreten, solange der Ball tot ist. Kommt ein Ersatzspieler auf das Spielfeld oder in die Endzone, während der Ball im Spiel ist, ist das eine illegale Einwechslung (5-2-4). Stört er dabei das Spiel, kann es sogar als „palpably unfair act“ gewertet werden.",
+          "stichwoerter": ["Auswechslung", "Substitution", "Einwechslung", "illegale Einwechslung"]
+        },
+        {
+          "abschnitt": 2,
+          "artikel": 5,
+          "titel": "Einwechslungen der Offense",
+          "text": "Ein neu eingewechselter Offense-Spieler muss vor dem Snap mindestens bis zu den Yard-Zahlen ins Spielfeld laufen, sonst ist er ein illegaler Ersatzspieler. Wer sich dem Huddle nähert und mit einem Mitspieler oder einem Offiziellen spricht, muss mindestens an einem Spielzug teilnehmen, bevor er wieder gehen darf. Das soll Scheinwechsel verhindern, mit denen man den Gegner verwirrt.",
+          "stichwoerter": ["Einwechslung", "Huddle", "Offense", "Scheinwechsel", "Substitution"]
+        },
+        {
+          "abschnitt": 4,
+          "artikel": 3,
+          "titel": "Pflichtausrüstung",
+          "text": "Alle Spieler müssen die vorgeschriebene Schutzausrüstung tragen. Dazu gehört ein Helm, dessen Kinnriemen an allen Befestigungspunkten geschlossen ist (nur in Weiß) und dessen Gesichtsmaske befestigt ist. Das Jersey muss alle Polster an Oberkörper und Oberarmen bedecken und in der Hose bleiben. Auf dem Rücken steht über der Nummer der Nachname in mindestens 2½ Zoll hohen Buchstaben, Spitznamen sind verboten. Beim Aufwärmen dürfen einzelne Schutzteile fehlen, Helm, Schulter-, Oberschenkel- und Knieschützer aber nicht.",
+          "stichwoerter": ["Ausrüstung", "Helm", "Jersey", "Schutzausrüstung", "Equipment", "Kinnriemen"]
+        }
+      ]
+    },
+    {
+      "nummer": 6,
+      "titel": "Kickoff und Free Kicks",
+      "englisch": "Free Kicks",
+      "kurz": "Kickoff, Safety Kick und Onside Kick: Linien, Aufstellung, Touchback und Strafen. Für 2026 wurden die Aufstellung des Empfängers, der Touchback bei einem Kickoff von der 50-Yard-Linie und der Zeitpunkt des Onside Kicks geändert.",
+      "eintraege": [
+        {
+          "abschnitt": 1,
+          "artikel": 1,
+          "titel": "Free Kick: Kickoff, Safety Kick, Onside Kick",
+          "text": "Ein Free Kick bringt den Ball zu Beginn eines Downs ins Spiel. Er wird von einem Punkt der Restraining Line des kickenden Teams aus und zwischen den Inbounds Lines getreten. Der Kickoff eröffnet jede Halbzeit und folgt nach einem Try und nach einem erfolgreichen Field Goal. Der Safety Kick bringt den Ball nach einem Safety ins Spiel; dort ist auch ein Punt erlaubt. Der Onside Kick muss den Offiziellen angesagt werden (6-1-6). Ein zugelassenes Tee darf den Ball höchstens einen Zoll (2,5 Zentimeter) über dem Boden halten. Für einen illegalen Free Kick gibt es 5 Yards Strafe.",
+          "stichwoerter": ["Kickoff", "Free Kick", "Safety Kick", "Onside Kick", "Tee", "Anstoß"]
+        },
+        {
+          "abschnitt": 1,
+          "artikel": 2,
+          "titel": "Linien und Zonen beim Kickoff",
+          "text": "Der Kicker tritt bei einem Kickoff von der eigenen 35-Yard-Linie, bei einem Safety Kick von der eigenen 20 (außer eine Strafe hat die Linie verschoben). Die übrigen zehn Spieler des kickenden Teams stehen an der 40-Yard-Linie des Gegners. Die Restraining Line des empfangenden Teams ist dessen eigene 35-Yard-Linie. Die Setup Zone ist der fünf Yards breite Streifen zwischen der 35 und der 30 des Empfängers. Die Landing Zone reicht von der 20-Yard-Linie des Empfängers bis zu dessen Goal Line.",
+          "stichwoerter": ["Landing Zone", "Setup Zone", "Restraining Line", "35-Yard-Linie", "Kickoff"]
+        },
+        {
+          "abschnitt": 1,
+          "artikel": 3,
+          "titel": "Aufstellung beim Kickoff",
+          "text": "Vom Signal „bereit zum Spiel“ an, bis der Ball in der Landing Zone oder der Endzone den Boden oder einen Spieler berührt, gelten feste Aufstellungsregeln. Das kickende Team (außer dem Kicker) steht mit dem vorderen Fuß an der Restraining Line und bleibt mit beiden Füßen am Boden. Mindestens je zwei Spieler stehen im äußeren Streifen (zwischen Seitenlinie und Unterkante der Yard-Zahlen), im mittleren Streifen (zwischen Oberkante der Zahlen und den Inbounds Lines) und innerhalb der Inbounds Lines. Das empfangende Team stellt mindestens neun Spieler in die Setup Zone. Davon stehen mindestens fünf (bei mehr als neun Spielern in der Zone mindestens sechs) mit dem vorderen Fuß auf der Restraining Line, höchstens vier dahinter und höchstens zwei davon in jedem der drei Streifen. Verstöße (Offside, falsche Formation, zu frühes Bewegen) kosten 5 Yards. Die Anforderungen an das empfangende Team in der Setup Zone wurden für 2026 geändert.",
+          "stichwoerter": ["Aufstellung", "Kickoff", "Setup Zone", "Formation", "Offside", "2026"]
+        },
+        {
+          "abschnitt": 1,
+          "artikel": 5,
+          "titel": "Touchback nach dem Kickoff",
+          "text": "Ein Kickoff in die Endzone, der im Feld bleibt, ist ein lebender Ball: Der Empfänger muss ihn zurücktragen oder in der Endzone zu Boden bringen. Ein Touchback gibt es in zwei Fällen. Hat der Ball zuerst in der Landing Zone den Boden oder einen Spieler berührt und wird danach in der Endzone zu Boden gebracht oder verlässt hinter der Goal Line das Feld, liegt der Ball ab der 20-Yard-Linie. Hat der Ball die Landing Zone ohne Berührung verlassen (er geht hinter der Goal Line ins Aus, trifft Torstange oder Querlatte oder wird direkt in der Endzone zu Boden gebracht), liegt er ab der 35-Yard-Linie. Wird der Kickoff von der 50-Yard-Linie getreten und es gibt einen Touchback, liegt der Ball immer an der 20. Diese letzte Regel ist neu in 2026.",
+          "stichwoerter": ["Touchback", "Kickoff", "20-Yard-Linie", "35-Yard-Linie", "Endzone", "2026"]
+        },
+        {
+          "abschnitt": 1,
+          "artikel": 6,
+          "titel": "Onside Kick",
+          "text": "Das kickende Team darf jederzeit im Spiel einen Onside Kick ansagen. Dazu informiert es den Referee, bevor die Play Clock läuft; der Referee sagt es dem Gegner an. Diese Regel wurde für 2026 geändert. Der Kicker tritt von der eigenen 35 (beim Safety Kick von der 20), und höchstens fünf Spieler dürfen auf jeder Seite des Balls stehen (der Holder zählt mit). Das empfangende Team steht 10 Yards davor, acht oder neun Spieler in der „Onside Kick Setup Zone“ (bis 15 Yards hinter der Restraining Line). Das kickende Team darf den Ball berühren, fangen oder zurückholen, wenn er zuerst einen Gegner berührt hat oder die Restraining Line des Empfängers erreicht. Holt es ihn regelgerecht, gehört der Ball ihm. Fliegt der Ball unberührt über die Setup Zone hinaus, ist er tot, gehört dem Empfänger, und es gibt 15 Yards Strafe für unsportliches Verhalten.",
+          "stichwoerter": ["Onside Kick", "Onside", "Kickoff", "Ballbesitz", "Recovery", "2026"]
+        },
+        {
+          "abschnitt": 2,
+          "artikel": 4,
+          "titel": "Kickoff ins Aus oder zu kurz",
+          "text": "Das kickende Team darf den Ball nicht ins Aus treten, nicht als Letzter den Ball berühren, bevor er zwischen den Goal Lines ins Aus geht, und den Ball nicht so treten, dass er vor der Landing Zone den Boden oder einen Spieler berührt. Sonst darf der Empfänger wählen: den Ball 25 Yards vom Kickpunkt entfernt übernehmen (bei einem Safety Kick 30 Yards), auf der Seite, auf der der Ball ins Aus ging oder zu kurz landete, oder, wenn das weniger als 25 (bzw. 30) Yards sind, an der Stelle, wo der Ball ins Aus ging oder aufkam.",
+          "stichwoerter": ["Kickoff", "ins Aus", "zu kurz", "Out of Bounds", "Strafe", "25 Yards"]
+        }
+      ]
+    },
+    {
+      "nummer": 7,
+      "titel": "Ball im Spiel, toter Ball, Scrimmage",
+      "englisch": "Ball in Play, Dead Ball, Scrimmage",
+      "kurz": "Wann der Ball lebt und wann er tot ist, wann es eine neue Serie gibt, und die Regeln vor dem Snap (False Start, Offside, Motion, Formation).",
+      "eintraege": [
+        {
+          "abschnitt": 1,
+          "artikel": 1,
+          "titel": "Lebender Ball",
+          "text": "Nach dem Signal „bereit zum Spiel“ wird der Ball lebendig, sobald er regelgerecht gesnappt oder (bei Free Kick und Fair Catch Kick) getreten wird. Wird er schon vorher gesnappt oder getreten, bleibt er tot.",
+          "stichwoerter": ["Live Ball", "lebender Ball", "Snap", "Ready for Play"]
+        },
+        {
+          "abschnitt": 2,
+          "artikel": 1,
+          "titel": "Wann der Ball tot ist",
+          "text": "Der Ball ist tot und der Down zu Ende, zum Beispiel: wenn ein Ballträger von einem Gegner berührt wird und mit einem anderen Körperteil als Händen oder Füßen den Boden berührt; wenn er festgehalten wird, sodass sein Vorwärtskommen endet; wenn ein Quarterback sofort in die Knie geht oder es andeutet; wenn sich ein Ballträger selbst zu Boden gibt (fällt, kniet ohne weiteren Versuch vorzurücken, rutscht oder taucht); wenn Ball oder Ballträger im Aus sind; bei einem unvollständigen Pass; nach Touchdown, Touchback, Safety, Field Goal oder Try; wenn ein loser Ball ruhig im Feld liegt und niemand ihn aufnimmt; und wenn dem Ballträger der Helm komplett abfällt. Gegen einen rutschenden oder tauchenden Ballträger müssen Verteidiger abbrechen und ihn wie einen am Boden behandeln.",
+          "stichwoerter": ["toter Ball", "Dead Ball", "Down by Contact", "Kneel", "Slide", "Out of Bounds", "Forward Progress"]
+        },
+        {
+          "abschnitt": 3,
+          "artikel": 1,
+          "titel": "Neue Serie für die Offense",
+          "text": "Die Offense (Team A) bekommt eine neue Serie von vier Downs, wenn der Ball an oder jenseits der Line to Gain tot ist; wenn eine Strafe gegen die Defense den Ball an oder über die Line to Gain bringt oder einen automatischen First Down gibt; wenn es einen Ballwechsel gab und Team A am Ende des Downs den Ball hat; wenn das kickende Team einen Scrimmage Kick im Feld zurückholt, nachdem ihn die Empfänger jenseits der Scrimmage-Linie zuerst berührt haben; oder wenn das kickende Team einen Free Kick regelgerecht zurückholt.",
+          "stichwoerter": ["First Down", "neue Serie", "Line to Gain", "Automatic First Down", "Series"]
+        },
+        {
+          "abschnitt": 3,
+          "artikel": 2,
+          "titel": "Neue Serie für die Defense",
+          "text": "Die Defense (Team B) bekommt eine neue Serie von vier Downs, wenn die Offense in ihrer Serie die Line to Gain nicht erreicht (Turnover on Downs); wenn es einen Ballwechsel gab und Team B am Ende des Downs den Ball hat oder ihn zugesprochen bekommt; oder wenn der Ball nach einem Free Kick, Scrimmage Kick oder Fair Catch Kick im Besitz des Empfängers tot ist.",
+          "stichwoerter": ["Turnover on Downs", "Ballwechsel", "Change of Possession", "Interception", "Fumble"]
+        },
+        {
+          "abschnitt": 4,
+          "artikel": 2,
+          "titel": "False Start",
+          "text": "Ein False Start liegt vor, wenn ein Offense-Spieler nach dem Bereitlegen des Balls vor dem Snap eine plötzliche Bewegung macht, die den Beginn des Spielzugs vortäuscht. Das gilt für einzelne Spieler wie für mehrere gleichzeitig. Ein Lineman im Drei-Punkt-Stand darf seine Position nicht ändern und die Hand vom Boden nicht bewegen. Ein Receiver an der Line darf sich nicht nach vorn bewegen, wenn alle Offense-Spieler schon mindestens eine Sekunde gesetzt waren. Der Offizielle pfeift sofort. Strafe: 5 Yards ab der Scrimmage-Linie, noch vor dem Snap vollstreckt.",
+          "stichwoerter": ["False Start", "Fehlstart", "Lineman", "Drei-Punkt-Stand", "5 Yards", "Strafe"]
+        },
+        {
+          "abschnitt": 4,
+          "artikel": 3,
+          "titel": "Encroachment",
+          "text": "Encroachment liegt vor, wenn ein Verteidiger vor dem Snap die Neutral Zone betritt und dabei einen Offense-Spieler oder den Ball berührt oder wenn er beim Snap den Ball stört. Die Offiziellen pfeifen sofort. Strafe: 5 Yards ab der Scrimmage-Linie, vor dem Snap vollstreckt.",
+          "stichwoerter": ["Encroachment", "Neutral Zone", "Defense", "5 Yards", "Strafe"]
+        },
+        {
+          "abschnitt": 4,
+          "artikel": 4,
+          "titel": "Neutral Zone Infraction",
+          "text": "Eine Neutral Zone Infraction liegt vor, wenn ein Verteidiger sich vor dem Snap über die Neutral Zone hinausbewegt und parallel zu oder hinter einem Offensive Lineman steht, mit freier Bahn zum Quarterback oder Kicker; wenn er die Neutral Zone betritt und dadurch Offense-Spieler in der Nähe zu einer sofortigen Schutzreaktion bringt; oder wenn in den letzten zwei Minuten einer Halbzeit gesnappt wird, bevor alle Verteidiger auf ihrer Seite der Scrimmage-Linie stehen. Strafe: 5 Yards.",
+          "stichwoerter": ["Neutral Zone Infraction", "Neutral Zone", "Defense", "5 Yards", "Strafe"]
+        },
+        {
+          "abschnitt": 4,
+          "artikel": 5,
+          "titel": "Offside",
+          "text": "Ein Spieler ist im Abseits (Offside), wenn irgendein Körperteil von ihm in der Neutral Zone oder jenseits davon ist, wenn der Ball ins Spiel kommt. Beim Onside Kick zählt dafür die Restraining Line des Gegners. Strafe: 5 Yards.",
+          "stichwoerter": ["Offside", "Abseits", "Neutral Zone", "5 Yards", "Strafe"]
+        },
+        {
+          "abschnitt": 4,
+          "artikel": 7,
+          "titel": "Shifts und Stillstand vor dem Snap",
+          "text": "Die Offense darf vor dem Snap mehrfach shiften (zwei oder mehr Spieler bewegen sich), muss aber vor und nach jedem Shift eine regelgerechte Formation zeigen. Nach dem letzten Shift müssen alle Spieler gleichzeitig mindestens eine volle Sekunde ruhig und gesetzt stehen (7-4-6). Danach darf ein Backfield-Spieler in Motion gehen. Verstöße sind ein Illegal Shift: 5 Yards.",
+          "stichwoerter": ["Shift", "Illegal Shift", "Motion", "Complete Stop", "Formation", "5 Yards"]
+        },
+        {
+          "abschnitt": 4,
+          "artikel": 8,
+          "titel": "Illegal Motion",
+          "text": "Beim Snap darf höchstens ein im Backfield stehender Spieler in Bewegung sein, und zwar parallel zur oder weg von der Scrimmage-Linie. Niemand darf sich beim Snap auf die Scrimmage-Linie zubewegen. Alle anderen Spieler stehen still. Strafe: 5 Yards.",
+          "stichwoerter": ["Illegal Motion", "Motion", "Backfield", "Scrimmage-Linie", "5 Yards"]
+        },
+        {
+          "abschnitt": 5,
+          "artikel": 1,
+          "titel": "Aufstellung der Offense beim Snap",
+          "text": "Beim Snap muss die Offense mindestens sieben Spieler an der Scrimmage-Linie haben. An beiden Enden dieser Linie müssen berechtigte Passempfänger (Eligible Receivers) stehen, dazwischen nur nicht berechtigte Spieler. Kein Spieler darf im Aus stehen. Ein Spieler, der weder klar auf noch klar hinter der Linie steht, ist nur direkt hinter dem Snapper erlaubt, und nur einer; er muss eine berechtigte Nummer tragen. Spieler auf berechtigten Positionen tragen berechtigte Nummern. Sonst gibt es eine Illegal Formation: 5 Yards.",
+          "stichwoerter": ["Formation", "Illegal Formation", "sieben Spieler", "Scrimmage-Linie", "Eligible Receiver", "Snap"]
+        },
+        {
+          "abschnitt": 6,
+          "artikel": 4,
+          "titel": "Legaler Snap",
+          "text": "Der Snap ist ein Rückwärtspass. Er muss von einem Spieler empfangen werden, der beim Snap nicht an der Scrimmage-Linie steht, es sei denn, der Ball berührt zuerst den Boden. Wird der Ball an einen Spieler gesnappt, der ihn nicht empfangen darf, gibt es 5 Yards ab der Scrimmage-Linie, und der Pfiff erfolgt sofort.",
+          "stichwoerter": ["Snap", "Center", "Rückwärtspass", "Shotgun", "5 Yards"]
+        }
+      ]
+    },
+    {
+      "nummer": 8,
+      "titel": "Vorwärtspass, Rückwärtspass, Fumble",
+      "englisch": "Forward Pass, Backward Pass, Fumble",
+      "kurz": "Was ein Pass ist, wann er gefangen zählt, wer fangen darf, Intentional Grounding, Pass Interference, Fumble und Rückwärtspass.",
+      "eintraege": [
+        {
+          "abschnitt": 1,
+          "artikel": 1,
+          "titel": "Was ein Vorwärtspass ist",
+          "text": "Es ist ein Vorwärtspass, wenn sich der Ball nach dem Verlassen der Hand zuerst in Richtung der gegnerischen Goal Line bewegt, wenn er zuerst an einer Stelle den Boden, einen Spieler oder etwas anderes berührt, die näher an der gegnerischen Goal Line liegt als die Stelle, an der er die Hand verließ, oder wenn ein Ball absichtlich nach vorn fallen gelassen wird. Jede absichtliche Vorwärtsbewegung der Hand mit dem Ball beginnt einen Vorwärtspass. Verliert der Passer den Ball, während er ihn zum Körper zurückholt oder neu ausholt, ist es ein Fumble.",
+          "stichwoerter": ["Vorwärtspass", "Forward Pass", "Pass", "Passer", "Wurf"]
+        },
+        {
+          "abschnitt": 1,
+          "artikel": 2,
+          "titel": "Legaler Vorwärtspass",
+          "text": "Die Offense darf pro Down einen Vorwärtspass werfen, und zwar von hinter der Scrimmage-Linie. Hat der Ball die Linie überquert, ist danach kein Vorwärtspass mehr erlaubt, auch wenn er hinter die Linie zurückkommt. Illegal sind ein Pass, bei dem der ganze Körper des Werfers und der Ball beim Loslassen jenseits der Linie sind, ein zweiter Vorwärtspass, ein Pass nach der Rückkehr des Balls hinter die Linie und ein Pass nach einem Ballwechsel. Strafe: Verlust des Downs und 5 Yards (bei einem Pass von jenseits der Linie ab dem Ort des Wurfs, sonst ab dem vorigen Spot); nach einem Ballwechsel nur 5 Yards.",
+          "stichwoerter": ["illegaler Pass", "ein Pass pro Down", "Scrimmage-Linie", "Illegal Forward Pass", "Strafe"]
+        },
+        {
+          "abschnitt": 1,
+          "artikel": 3,
+          "titel": "Fang und Interception beim Pass",
+          "text": "Ein Pass ist gefangen (von der Offense) oder abgefangen (von der Defense), wenn ein Spieler im Spielfeld erstens den Ball mit Hand oder Armen kontrolliert, bevor er den Boden berührt, zweitens mit beiden Füßen oder einem anderen Körperteil außer den Händen im Feld den Boden berührt und drittens danach eine eindeutig spieltypische Bewegung macht (Schritt, Ball nach vorn strecken, Ball sichern und umdrehen, Gegner abwehren) oder den Ball lange genug kontrolliert, um das zu tun. Verliert er den Ball beim Bodenkontakt, bevor er den dritten Punkt erfüllt hat, ist es kein Fang. Trägt ein Gegner den Ball haltenden Spieler ins Aus, bevor er im Feld den Boden berührt hat, gilt der Pass als gefangen. Fangen zwei berechtigte Gegner den Ball gleichzeitig und behalten ihn beide, gehört er der Offense.",
+          "stichwoerter": ["Fang", "Catch", "Interception", "Completion", "Survive the Ground", "gleichzeitiger Fang"]
+        },
+        {
+          "abschnitt": 1,
+          "artikel": 4,
+          "titel": "Unvollständiger Pass",
+          "text": "Ein unvollständiger Pass bedeutet Verlust des Downs: Der Ball geht an die vorige Stelle zurück und ist sofort tot. Ein Pass ist unvollständig, wenn der Fang nach 8-1-3 nicht abgeschlossen wird, wenn der Ball ins Aus geht oder wenn ein Spieler, der im Aus war, den Ball als Erster berührt, bevor er sich wieder im Feld aufgesetzt hat.",
+          "stichwoerter": ["unvollständiger Pass", "Incomplete Pass", "Incompletion", "Verlust des Downs"]
+        },
+        {
+          "abschnitt": 1,
+          "artikel": 5,
+          "titel": "Wer einen Pass fangen darf",
+          "text": "Einen Vorwärtspass von hinter der Scrimmage-Linie dürfen fangen: Verteidiger; Offense-Spieler, die an einem Ende der Linie stehen und eine berechtigte Nummer (0 bis 49 oder 80 bis 89) tragen oder ihre Position gemeldet haben; Offense-Spieler, die beim Snap mindestens einen Yard hinter der Linie stehen (ebenfalls mit berechtigter Nummer oder gemeldet); alle Offense-Spieler, nachdem ein Verteidiger oder ein berechtigter Offense-Spieler den Ball berührt hat; und ein berechtigter Receiver, der durch ein gegnerisches Foul ins Aus gedrängt wurde und sofort zurückzukehren versucht. Alle anderen Offense-Spieler sind nicht berechtigt (8-1-6).",
+          "stichwoerter": ["Eligible Receiver", "berechtigter Receiver", "Passempfänger", "Ineligible", "Nummer", "Tackle eligible"]
+        },
+        {
+          "abschnitt": 1,
+          "artikel": 8,
+          "titel": "Illegal Touching",
+          "text": "Ein Pass von hinter der Scrimmage-Linie, der absichtlich zuerst von einem ursprünglich nicht berechtigten Offense-Spieler berührt oder von ihm gefangen wird, ist ein Foul (Illegal Touching): 5 Yards ab dem vorigen Spot. Dasselbe gilt für einen berechtigten Receiver, der im Aus war, sich wieder im Feld aufgesetzt hat und den Pass dann als Erster berührt oder fängt; hier ist die Strafe der Verlust des Downs am vorigen Spot.",
+          "stichwoerter": ["Illegal Touching", "nicht berechtigt", "Ineligible", "Aus", "Strafe"]
+        },
+        {
+          "abschnitt": 2,
+          "artikel": 1,
+          "titel": "Intentional Grounding",
+          "text": "Intentional Grounding ist ein Foul: Ein Passer, dem durch Druck der Defense ein Raumverlust droht, wirft einen Vorwärtspass, der nicht in Richtung und Nähe eines ursprünglich berechtigten Receivers geht. Der Pass muss nicht unvollständig sein. Nicht gepfiffen wird, wenn der Passer außerhalb der Pocket war und der Ball an oder hinter der verlängerten Scrimmage-Linie landet (auch im Aus), oder wenn ein Verteidiger seinen Wurf durch Kontakt erheblich beeinflusst hat. Erlaubt ist ein Spike direkt nach dem Snap, um die Uhr zu stoppen; ein verzögerter Spike ist verboten. Strafe: Verlust des Downs und 10 Yards ab dem vorigen Spot (liegt der Ort des Passes mehr als 10 Yards entfernt oder mehr als die halbe Strecke zur Goal Line, Verlust des Downs am Ort des Passes). Ein Safety folgt, wenn der Passer und der Ball in der eigenen Endzone waren.",
+          "stichwoerter": ["Intentional Grounding", "Spike", "Pocket", "Passer", "Safety", "Strafe"]
+        },
+        {
+          "abschnitt": 3,
+          "artikel": 1,
+          "titel": "Nicht berechtigter Spieler zu weit vorn",
+          "text": "Bei einem Spielzug mit legalem Vorwärtspass ist es ein Foul, wenn der ganze Körper eines nicht berechtigten Offense-Spielers (auch eines Quarterbacks in T-Formation) mehr als einen Yard jenseits der Scrimmage-Linie ist, bevor der Pass geworfen wird. Ausnahme: Hat er innerhalb des ersten Yards Kontakt mit einem Gegner aufgenommen, darf er blockend oder geblockt weiter nach vorn gehen. Strafe: 5 Yards ab dem vorigen Spot.",
+          "stichwoerter": ["Ineligible Player Downfield", "Offensive Lineman", "mehr als ein Yard", "Strafe", "5 Yards"]
+        },
+        {
+          "abschnitt": 4,
+          "artikel": 2,
+          "titel": "Kontakt mit Receivern: Illegal Contact",
+          "text": "Innerhalb von fünf Yards hinter der Scrimmage-Linie darf ein Verteidiger einen Receiver vor ihm anrempeln (Chuck) und den Kontakt halten, solange der Receiver nicht auf gleicher Höhe oder weiter ist (8-4-1). Bleibt der Quarterback mit dem Ball in der Pocket, darf der Verteidiger den Receiver dort nicht zuerst von hinten berühren und den Kontakt nicht mehr halten, wenn der Receiver auf gleicher Höhe oder weiter ist. Jenseits der Fünf-Yard-Zone darf er keinen Kontakt mehr mit einem Receiver herstellen, der ihm auszuweichen versucht (8-4-3). Die Beschränkungen enden, wenn der Quarterback den Ball abgibt, wirft oder getackelt wird. Strafe für Illegal Contact: 5 Yards und automatischer First Down.",
+          "stichwoerter": ["Illegal Contact", "Chuck", "fünf Yards", "Five-Yard-Zone", "Cornerback", "automatischer First Down"]
+        },
+        {
+          "abschnitt": 5,
+          "artikel": 1,
+          "titel": "Pass Interference: Definition",
+          "text": "Pass Interference (PI) liegt vor, wenn irgendeine Aktion eines Spielers mehr als einen Yard jenseits der Scrimmage-Linie die Chance eines berechtigten Spielers, den Ball zu fangen, erheblich behindert. PI gibt es nur bei einem Vorwärtspass von hinter der Linie. Solange der Ball in der Luft ist, haben berechtigte Receiver beider Teams dasselbe Recht auf den Weg des Balls und unterliegen denselben Einschränkungen. Aktionen innerhalb des ersten Yards sind kein PI, können aber Holding sein (12-1-3 und 12-1-6). Defensive PI gilt vom Wurf bis zur ersten Berührung des Balls.",
+          "stichwoerter": ["Pass Interference", "PI", "DPI", "OPI", "Behinderung", "Fang"]
+        },
+        {
+          "abschnitt": 5,
+          "artikel": 2,
+          "titel": "Pass Interference: verbotene Handlungen",
+          "text": "Zu den Handlungen, die PI sind, zählen: Kontakt eines Spielers, der nicht auf den Ball spielt, der dem Gegner den Fang erschwert; durch den Rücken des Gegners auf den Ball spielen; den Arm des Gegners greifen; den Arm quer über den Körper des Gegners strecken, auch wenn man den Ball spielt; dem Gegner durch Kontakt den Weg abschneiden, ohne den Ball zu spielen; den Gegner so haken, dass sich sein Körper vor Ankunft des Balls dreht; und sich vom Gegner abstoßen, um Abstand zu schaffen. Erlaubt bleibt zufälliger Kontakt im Kampf um den Ball; bei Zweifel gilt: keine PI. Auch bei einem klar nicht fangbaren Pass gibt es in der Regel keine PI.",
+          "stichwoerter": ["Pass Interference", "Handlungen", "Push-off", "Haken", "Arm greifen", "nicht fangbar"]
+        },
+        {
+          "abschnitt": 5,
+          "titel": "Strafen bei Pass Interference",
+          "text": "Defensive PI: First Down für die Offense an der Stelle des Fouls. Ist die PI zugleich ein Personal Foul (Regel 12-2), wird auch dessen Strafe vollstreckt. Liegt die Stelle hinter der gegnerischen Goal Line, gibt es First Down an der 1-Yard-Linie, oder, wenn der vorige Spot innerhalb der 2-Yard-Linie lag, wird die Strecke zwischen vorigem Spot und Goal Line halbiert. Offensive PI: Verlust von 10 Yards ab dem vorigen Spot.",
+          "stichwoerter": ["Pass Interference", "Strafe", "automatischer First Down", "10 Yards", "Spot Foul"]
+        },
+        {
+          "abschnitt": 7,
+          "artikel": 1,
+          "titel": "Rückwärtspass",
+          "text": "Ein Ballträger darf jederzeit einen Rückwärtspass werfen. Spieler beider Teams dürfen nach dem Fangen oder der Recovery eines Rückwärtspasses vorrücken. Jeder Snap vom Center ist ein Rückwärtspass. Geht ein Rückwärtspass zwischen den Goal Lines ins Aus, ist der Ball tot und wird am Aus-Punkt wieder ins Spiel gebracht.",
+          "stichwoerter": ["Rückwärtspass", "Lateral", "Backward Pass", "Snap", "ins Aus"]
+        },
+        {
+          "abschnitt": 7,
+          "artikel": 3,
+          "titel": "Fumble",
+          "text": "Ein Fumble ist jede Handlung außer einem Pass oder Kick, bei der ein Spieler den Ballbesitz verliert. Jeder Spieler beider Teams darf einen Fumble sichern und vorrücken, vor oder nach dem Bodenkontakt (Ausnahmen: im vierten Down, nach der Two-Minute-Warning und beim Try). Geht ein nach hinten gefumbelter Ball ins Aus, setzt das zuletzt im Besitz gewesene Team am Aus-Punkt fort, geht er nach vorn ins Aus, am Ort des Fumbles. Fliegt ein in der eigenen Endzone gefumbelter Ball nach vorn ins Aus, ist es ein Safety, wenn das Team ihn dorthin gebracht hat, sonst ein Touchback. Wirft ein Ballträger den Ball absichtlich nach vorn, zählt das als Vorwärtspass.",
+          "stichwoerter": ["Fumble", "Ballverlust", "Recovery", "Aus", "Safety", "Touchback"]
+        },
+        {
+          "abschnitt": 7,
+          "artikel": 5,
+          "titel": "Fumble im vierten Down",
+          "text": "Bei einem Fumble im vierten Down darf die Defense den Ball vorrücken. Von der Offense darf nur der Spieler, der den Ball verloren hat, ihn sichern und vorrücken. Holt ein Mitspieler ihn vor einem Ballwechsel, ist der Ball tot, und der nächste Snap erfolgt am Ort des Fumbles (oder der Bergung, falls sie dahinter liegt).",
+          "stichwoerter": ["Fumble", "vierter Down", "Fourth Down", "Recovery", "Mitspieler"]
+        }
+      ]
+    }
+  ]
+}
