@@ -8,25 +8,25 @@
   --schrift: ui-rounded, 'SF Pro Rounded', 'Nunito', 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
   --schrift-titel: ui-rounded, 'SF Pro Rounded', 'Nunito', 'Varela Round', 'Trebuchet MS', 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
 
-  --blau: #1b62e0;
-  --blau-kante: #1047ad;
-  --blau-text: #1750c4;
-  --blau-flaeche: #e6efff;
-  --kopf-oben: #2f7bf5;
-  --kopf-mitte: #1b62e0;
-  --kopf-unten: #0f4bb8;
-  --kopf-kante: #0a3585;
-  --streifen: #d71f3b;
-  --rot-text: #b3132f;
-  --gold: #ffd84d;
+  --blau: #013369;
+  --blau-kante: #00214a;
+  --blau-text: #013369;
+  --blau-flaeche: #e8eef7;
+  --kopf-oben: #1a4a8c;
+  --kopf-mitte: #013369;
+  --kopf-unten: #012550;
+  --kopf-kante: #001a3d;
+  --streifen: #d50a0a;
+  --rot-text: #d50a0a;
+  --gold: #d50a0a;
 
-  --bg: #f1f5fc;
+  --bg: #f4f6fa;
   --karte: #ffffff;
-  --flaeche: #e6eefb;
+  --flaeche: #e8eef7;
   --text: #0e1a33;
-  --titel: #0b2a63;
+  --titel: #013369;
   --leise: #4a5a78;
-  --rand: #d6e2f6;
+  --rand: #d6dfee;
   --schatten: 0 1px 2px rgba(11, 42, 99, 0.07), 0 8px 20px rgba(11, 42, 99, 0.08);
 
   --hinweis-bg: #fff4c7;
@@ -154,7 +154,7 @@ h3 {
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: #4a3000;
+  color: #ffffff;
   background: var(--gold);
   border-radius: 99px;
 }
@@ -189,7 +189,8 @@ h1 {
 }
 
 h1 span {
-  color: var(--gold);
+  color: #ffffff;
+  opacity: 0.85;
 }
 
 .datum {
@@ -410,7 +411,7 @@ main {
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: #4a3000;
+  color: #ffffff;
   background: var(--gold);
   border-radius: 99px;
 }
@@ -718,14 +719,14 @@ main {
   border-radius: 999px;
   color: #fff;
 }
-.gruppe.afc { background: #c8102e; }
-.gruppe.nfc { background: #1b62e0; }
-.tabelle.afc { border-color: #c8102e; }
-.tabelle.nfc { border-color: #1b62e0; }
+.gruppe.afc { background: #d50a0a; }
+.gruppe.nfc { background: #013369; }
+.tabelle.afc { border-color: #d50a0a; }
+.tabelle.nfc { border-color: #013369; }
 .tabelle.afc th { background: #fde3e7; color: #8e0b21; }
-.tabelle.nfc th { background: #e0ebff; color: #0f3f9c; }
-.tabelle.afc a { color: #b3132f; }
-.tabelle.nfc a { color: #1750c4; }
+.tabelle.nfc th { background: #e0e8f4; color: #013369; }
+.tabelle.afc a { color: #d50a0a; }
+.tabelle.nfc a { color: #013369; }
 .tabelle.afc tr:nth-child(even) td { background: rgba(200, 16, 46, 0.05); }
 .tabelle.nfc tr:nth-child(even) td { background: rgba(27, 98, 224, 0.06); }
 @media (prefers-color-scheme: dark) {
