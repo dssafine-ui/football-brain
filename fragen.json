@@ -4313,6 +4313,406 @@
       "richtig": 3,
       "erklaerung": "ESPN hat das Total QBR 2011 eingeführt. Es bezieht alle Beiträge eines Quarterbacks ein, also Pässe, Läufe, Sacks, Strafen und Turnovers, und gewichtet jeden Spielzug nach Schwierigkeit und Spielstand. Die Skala reicht von 0 bis 100, ein durchschnittlicher Quarterback liegt bei etwa 50. Die genaue Formel hat ESPN nie vollständig veröffentlicht.",
       "quelle": { "text": "Total quarterback rating bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Total_quarterback_rating" }
+    },
+    {
+      "id": "q430", "stufe": 1, "kategorie": "Regeln",
+      "frage": "Ein Team hat einen Touchdown samt Extrapunkt erzielt. Wer tritt danach zum Kickoff an?",
+      "antworten": ["Der Gegner, der dann auch den Ball erhält", "Das Team, das gerade gepunktet hat, der Gegner erhält den Ball", "Das Team, das zuletzt den Münzwurf gewonnen hat", "Das Team mit dem höheren Zwischenstand"],
+      "richtig": 1,
+      "erklaerung": "Nach einem Try kickt immer das Team ab, das gerade gepunktet hat. Der Gegner bekommt den Ball. Nur zu Beginn jeder Halbzeit wird anders entschieden.",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 11-3-4 (Kickoff nach dem Try)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q431", "stufe": 1, "kategorie": "Regeln",
+      "frage": "Wann darf ein NFL-Team Spieler aus- und einwechseln?",
+      "antworten": ["Nur in der Halbzeitpause", "Nur nach einem Timeout", "Jederzeit, auch während des Spielzugs", "Nur solange der Ball tot ist, also zwischen den Spielzügen"],
+      "richtig": 3,
+      "erklaerung": "Gewechselt wird zwischen den Spielzügen. Sobald der Ball im Spiel ist, dürfen keine Spieler mehr hinein oder hinaus. Zu viele Spieler auf dem Feld sind ein Foul.",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 5-2-3 und 5-2-4 (Legal und Illegal Substitutions)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q432", "stufe": 2, "kategorie": "Regeln",
+      "frage": "Der Gewinner des Münzwurfs vor dem Spiel wählt „Defer“. Was bedeutet das?",
+      "antworten": ["Er verschiebt seine Wahl auf die zweite Halbzeit, in der ersten Halbzeit wählt der Gegner", "Er überlässt dem Gegner das Spiel kampflos", "Er verzichtet auf den Münzwurf in der zweiten Halbzeit", "Er darf das Feld nach dem ersten Viertel selbst wählen"],
+      "richtig": 0,
+      "erklaerung": "Mit Defer schiebt der Gewinner seine Wahl auf die zweite Halbzeit. Der Gegner wählt dann für die erste Halbzeit zwischen Ballbesitz, Spielrichtung oder Kickoff.",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 4-2-2 (Münzwurf)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q433", "stufe": 3, "kategorie": "Regeln",
+      "frage": "Ein Pass des Quarterbacks wird von einem Verteidiger berührt (abgefälscht). Wer aus der Offense darf den Ball danach fangen?",
+      "antworten": ["Nur die Wide Receiver", "Nur Spieler, die vor dem Snap als Receiver gemeldet waren", "Wide Receiver und Tight Ends, aber keine Running Backs", "Jeder Spieler der Offense, auch die Offensive Linemen"],
+      "richtig": 3,
+      "erklaerung": "Nach einer Berührung durch die Defense sind alle Offense-Spieler zum Fangen berechtigt, auch die Linemen. Ohne eine solche Berührung dürfen Linemen den Ball nicht fangen.",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 8-1-5 (Eligible Receivers)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q434", "stufe": 1, "kategorie": "Spielablauf und Strafen",
+      "frage": "Die Defense begeht ein Foul, doch die Offense hat den Spielzug trotzdem erfolgreich beendet. Welche Wahl hat das gefoulte Team?",
+      "antworten": ["Es muss die Strafe immer annehmen", "Der Spielzug wird in jedem Fall wiederholt", "Es kann die Strafe annehmen oder ablehnen (bei Ablehnung zählt das Ergebnis des Spielzugs)", "Es bekommt automatisch einen neuen ersten Versuch"],
+      "richtig": 2,
+      "erklaerung": "Das gefoulte Team entscheidet. Es nimmt die Strafe an oder lehnt sie ab, dann zählt das Ergebnis des Spielzugs. Meist wählt es, was für sein Team besser ist.",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 14-1-1 (Strafe ablehnen)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q435", "stufe": 2, "kategorie": "Spielablauf und Strafen",
+      "frage": "Im selben Spielzug begehen beide Teams ein Foul (Double Foul), ohne dass der Ballbesitz wechselt. Was passiert?",
+      "antworten": ["Das Team mit dem schwereren Foul wird bestraft", "Beide Strafen werden hintereinander abgezogen", "Der Ball geht an den Gegner", "Die Strafen heben sich auf und der Down wird an derselben Stelle wiederholt"],
+      "richtig": 3,
+      "erklaerung": "Bei Fouls beider Teams ohne Ballwechsel heben sich die Strafen auf. Der Down wird wiederholt, der Ball bleibt an der alten Stelle.",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 14-5-1 (Double Foul ohne Ballwechsel)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q436", "stufe": 3, "kategorie": "Spielablauf und Strafen",
+      "frage": "Die Offense steht an der eigenen 4-Yard-Linie und kassiert vor dem Snap ein Delay of Game (normalerweise 5 Yards). Wo steht der Ball danach?",
+      "antworten": ["An der eigenen 2-Yard-Linie, denn eine Strafe beträgt höchstens die halbe Distanz zur eigenen Torlinie", "An der eigenen 1-Yard-Linie", "An der eigenen 9-Yard-Linie", "Die Strafe entfällt in der Nähe der eigenen Endzone"],
+      "richtig": 0,
+      "erklaerung": "Bei Strafen gegen die Offense nahe der eigenen Torlinie gilt die Half-Distance-Regel: Es werden nur die Hälfte der Strecke zur Torlinie abgezogen. Von der 4 sind das 2 Yards.",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 14-2-1 (Half-Distance-Strafe)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q437", "stufe": 1, "kategorie": "Taktik und Positionen",
+      "frage": "Wo steht der Nose Tackle in der 3-4-Defense typischerweise?",
+      "antworten": ["Außen neben dem Tight End", "Direkt gegenüber dem Center, in der Mitte der Defensive Line", "Tief hinter den Linebackern", "Auf der blinden Seite des Quarterbacks"],
+      "richtig": 1,
+      "erklaerung": "Der Nose Tackle steht mittig, meist direkt vor dem Center. Er bindet oft zwei Blocker und schafft so Raum für die Linebacker.",
+      "quelle": { "text": "Nose tackle bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Nose_tackle" }
+    },
+    {
+      "id": "q438", "stufe": 2, "kategorie": "Taktik und Positionen",
+      "frage": "Manche Teams setzen zwei Kicker ein. Wofür ist der Kickoff Specialist zuständig?",
+      "antworten": ["Für Punts aus der eigenen Endzone", "Er tritt mit kräftigem Bein die Kickoffs, ein treffsicherer Placekicker übernimmt Field Goals und Extrapunkte", "Nur für Zwei-Punkte-Versuche", "Er hält den Ball beim Field Goal"],
+      "richtig": 1,
+      "erklaerung": "Der Kickoff Specialist braucht vor allem Kraft, der Placekicker vor allem Genauigkeit. Deshalb teilen manche Teams die Aufgaben auf.",
+      "quelle": { "text": "Football-Glossar der NFL Football Operations (Placekicker)", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q439", "stufe": 3, "kategorie": "Taktik und Positionen",
+      "frage": "In der 4-3-Defense gibt es die Linebacker Mike, Sam und Will. Welcher von ihnen steht dem Tight End gegenüber und muss ihn im Passspiel decken?",
+      "antworten": ["Der Mike-Linebacker in der Mitte", "Der Will-Linebacker (Weak Side)", "Der Sam-Linebacker (Strong Side)", "Keiner, das machen immer die Safeties"],
+      "richtig": 2,
+      "erklaerung": "Der Sam steht auf der starken Seite, also dort, wo der Tight End aufgestellt ist. Er soll ihn im Lauf- und im Passspiel stoppen.",
+      "quelle": { "text": "Football-Glossar der NFL Football Operations (Linebacker)", "url": "https://operations.nfl.com/rules-officiating/nfl-football-basics/football-terms" }
+    },
+    {
+      "id": "q440", "stufe": 1, "kategorie": "Geschichte und Liga",
+      "frage": "Wie heißt die Playoff-Runde direkt nach der Wild-Card-Runde?",
+      "antworten": ["Conference Championship", "Divisional Round", "Quarter Finals", "Super Bowl Qualifier"],
+      "richtig": 1,
+      "erklaerung": "Auf die Wild-Card-Runde folgt die Divisional Round, danach die Conference Championships und der Super Bowl.",
+      "quelle": { "text": "NFL playoffs bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_playoffs" }
+    },
+    {
+      "id": "q441", "stufe": 1, "kategorie": "Geschichte und Liga",
+      "frage": "In welcher Stadt steht das Arrowhead Stadium, die Heimat der Chiefs?",
+      "antworten": ["Kansas City (Missouri)", "Kansas City (Kansas)", "Saint Louis", "Omaha"],
+      "richtig": 0,
+      "erklaerung": "Das Arrowhead Stadium steht in Kansas City im Bundesstaat Missouri, trotz des Namens nicht in Kansas.",
+      "quelle": { "text": "Arrowhead Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Arrowhead_Stadium" }
+    },
+    {
+      "id": "q442", "stufe": 2, "kategorie": "Geschichte und Liga",
+      "frage": "In welchem Stadion spielen die Las Vegas Raiders seit ihrem Umzug 2020?",
+      "antworten": ["Sam Boyd Stadium", "MGM Stadium", "Caesars Dome", "Allegiant Stadium"],
+      "richtig": 3,
+      "erklaerung": "Die Raiders zogen 2020 von Oakland nach Las Vegas und spielen im Allegiant Stadium.",
+      "quelle": { "text": "Allegiant Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Allegiant_Stadium" }
+    },
+    {
+      "id": "q443", "stufe": 2, "kategorie": "Geschichte und Liga",
+      "frage": "Wie nennt man Spieler, die im NFL Draft nicht ausgewählt wurden und danach frei bei Teams unterschreiben dürfen?",
+      "antworten": ["Practice Rookies", "Waiver Players", "Undrafted Free Agents", "Reserve Draftees"],
+      "richtig": 2,
+      "erklaerung": "Wer in keiner der sieben Runden gewählt wurde, ist ein Undrafted Free Agent und kann sich ein Team aussuchen.",
+      "quelle": { "text": "NFL draft bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_draft" }
+    },
+    {
+      "id": "q444", "stufe": 2, "kategorie": "Liga und Rekorde",
+      "frage": "Wie viele Spiele werden in den NFL-Playoffs einschließlich des Super Bowls insgesamt ausgetragen?",
+      "antworten": ["11", "13", "15", "17"],
+      "richtig": 1,
+      "erklaerung": "Sechs Wild-Card-Spiele, vier Divisional-Spiele, zwei Conference Championships und der Super Bowl ergeben 13 Spiele.",
+      "quelle": { "text": "NFL playoffs bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_playoffs" }
+    },
+    {
+      "id": "q445", "stufe": 2, "kategorie": "Liga und Rekorde",
+      "frage": "Wie heißt die Trophäe für den Sieger der AFC-Meisterschaft (Conference Championship)?",
+      "antworten": ["George Halas Trophy", "Vince Lombardi Trophy", "Lamar Hunt Trophy", "Pete Rozelle Trophy"],
+      "richtig": 2,
+      "erklaerung": "Der AFC-Sieger erhält die Lamar Hunt Trophy, der NFC-Sieger die George Halas Trophy.",
+      "quelle": { "text": "Lamar Hunt Trophy bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Lamar_Hunt_Trophy" }
+    },
+    {
+      "id": "q446", "stufe": 2, "kategorie": "Geschichte und Liga",
+      "frage": "Mit welchem Ergebnis gewannen die Seattle Seahawks den Super Bowl XLVIII (Februar 2014) gegen die Denver Broncos?",
+      "antworten": ["43:8", "34:7", "27:17", "38:10"],
+      "richtig": 0,
+      "erklaerung": "Seattle siegte deutlich mit 43:8. Die starke Defense der Seahawks bremste die Offense von Denver.",
+      "quelle": { "text": "Super Bowl XLVIII bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_XLVIII" }
+    },
+    {
+      "id": "q447", "stufe": 3, "kategorie": "Geschichte und Liga",
+      "frage": "Der Super Bowl LIII (Februar 2019) gilt als der punkteärmste Super Bowl. Wie ging er aus?",
+      "antworten": ["Patriots 10:6 gegen die Rams", "Rams 13:3 gegen die Patriots", "Patriots 13:3 gegen die Rams", "Patriots 16:3 gegen die Rams"],
+      "richtig": 2,
+      "erklaerung": "Die New England Patriots gewannen 13:3 gegen die Los Angeles Rams. Mit 16 Punkten insgesamt war es der torärmste Super Bowl.",
+      "quelle": { "text": "Super Bowl LIII bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_LIII" }
+    },
+    {
+      "id": "q448", "stufe": 3, "kategorie": "Geschichte und Liga",
+      "frage": "Welcher Kicker der Buffalo Bills verfehlte im Super Bowl XXV (1991) in den Schlusssekunden ein Field Goal knapp rechts am Pfosten vorbei?",
+      "antworten": ["Steve Christie", "Adam Vinatieri", "Mike Vanderjagt", "Scott Norwood"],
+      "richtig": 3,
+      "erklaerung": "Scott Norwood verfehlte aus 47 Yards, die Giants gewannen 20:19. Der Fehlschuss ging als „Wide Right“ in die Geschichte ein.",
+      "quelle": { "text": "Super Bowl XXV bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Super_Bowl_XXV" }
+    },
+    {
+      "id": "q449", "stufe": 3, "kategorie": "Liga und Rekorde",
+      "frage": "Wie viel Zeit hat ein Team in der ersten Runde des NFL Drafts für seine Auswahl?",
+      "antworten": ["5 Minuten", "7 Minuten", "10 Minuten", "15 Minuten"],
+      "richtig": 2,
+      "erklaerung": "In der ersten Runde hat jedes Team 10 Minuten. In den späteren Runden wird die Zeit kürzer.",
+      "quelle": { "text": "NFL draft bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_draft" }
+    },
+    {
+      "id": "q450", "stufe": 1, "kategorie": "Geschichte und Liga",
+      "frage": "In welchem Bundesstaat steht das Gillette Stadium, die Heimat der New England Patriots?",
+      "antworten": ["Connecticut", "Massachusetts (in Foxborough)", "Rhode Island", "New Hampshire"],
+      "richtig": 1,
+      "erklaerung": "Das Gillette Stadium steht in Foxborough im Bundesstaat Massachusetts, südwestlich von Boston.",
+      "quelle": { "text": "Gillette Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Gillette_Stadium" }
+    },
+    {
+      "id": "q451", "stufe": 2, "kategorie": "Geschichte und Liga",
+      "frage": "Welche Rückennummer vergeben die Seattle Seahawks nicht mehr an Spieler, weil sie ihren Fans gewidmet ist?",
+      "antworten": ["Die 1", "Die 12 („12th Man“)", "Die 21", "Die 100"],
+      "richtig": 1,
+      "erklaerung": "Die 12 steht für den zwölften Mann, die Fans. Seattle hat sie 1984 aus dem Spielbetrieb genommen.",
+      "quelle": { "text": "12th Man bei Wikipedia", "url": "https://en.wikipedia.org/wiki/12th_man_(football)" }
+    },
+    {
+      "id": "q452", "stufe": 2, "kategorie": "Geschichte und Liga",
+      "frage": "Die Denver Broncos spielen im „Mile High“-Stadion. Woher kommt dieser Name?",
+      "antworten": ["Das Stadion ist eine Meile lang", "Die Zuschauerränge sind eine Meile vom Stadtzentrum entfernt", "Der erste Besitzer hieß Mile High", "Denver liegt rund eine Meile (etwa 1.600 Meter) über dem Meeresspiegel"],
+      "richtig": 3,
+      "erklaerung": "Denver heißt auch „Mile High City“, weil die Stadt etwa eine Meile hoch liegt. Die dünne Luft gilt als Heimvorteil.",
+      "quelle": { "text": "Empower Field at Mile High bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Empower_Field_at_Mile_High" }
+    },
+    {
+      "id": "q453", "stufe": 2, "kategorie": "Geschichte und Liga",
+      "frage": "Wie heißt seit 2022 das Heimstadion der Pittsburgh Steelers?",
+      "antworten": ["Acrisure Stadium", "Heinz Field", "Three Rivers Stadium", "PNC Park"],
+      "richtig": 0,
+      "erklaerung": "Das frühere Heinz Field heißt seit 2022 Acrisure Stadium. Das Three Rivers Stadium war das Vorgänger-Stadion.",
+      "quelle": { "text": "Acrisure Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Acrisure_Stadium" }
+    },
+    {
+      "id": "q454", "stufe": 1, "kategorie": "Geschichte und Liga",
+      "frage": "Welches Team spielt im Lucas Oil Stadium in Indianapolis?",
+      "antworten": ["Indianapolis Colts", "Cincinnati Bengals", "Cleveland Browns", "Chicago Bears"],
+      "richtig": 0,
+      "erklaerung": "Das Lucas Oil Stadium ist seit 2008 die Heimat der Indianapolis Colts.",
+      "quelle": { "text": "Lucas Oil Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Lucas_Oil_Stadium" }
+    },
+    {
+      "id": "q455", "stufe": 1, "kategorie": "Geschichte und Liga",
+      "frage": "Welches Team spielt im Nissan Stadium in Nashville?",
+      "antworten": ["Jacksonville Jaguars", "Houston Texans", "Atlanta Falcons", "Tennessee Titans"],
+      "richtig": 3,
+      "erklaerung": "Die Tennessee Titans spielen im Nissan Stadium in Nashville, Tennessee.",
+      "quelle": { "text": "Nissan Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Nissan_Stadium" }
+    },
+    {
+      "id": "q456", "stufe": 3, "kategorie": "Geschichte und Liga",
+      "frage": "Wie heißt der berühmte, für seine lautstarken Fans bekannte Tribünenblock der Cleveland Browns hinter der Endzone?",
+      "antworten": ["Dog Pit", "Dawg Pound", "Black Wall", "Browns Barn"],
+      "richtig": 1,
+      "erklaerung": "Der Dawg Pound ist die Ostseite des Stadions. Die Fans dort kommen oft mit Hundemasken.",
+      "quelle": { "text": "Dawg Pound bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Dawg_Pound" }
+    },
+    {
+      "id": "q457", "stufe": 1, "kategorie": "Geschichte und Liga",
+      "frage": "Welches NFL-Team trägt den Beinamen „America's Team“?",
+      "antworten": ["Green Bay Packers", "New England Patriots", "Dallas Cowboys", "Washington Commanders"],
+      "richtig": 2,
+      "erklaerung": "Die Dallas Cowboys werden wegen ihrer landesweiten Beliebtheit „America's Team“ genannt.",
+      "quelle": { "text": "Dallas Cowboys bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Dallas_Cowboys" }
+    },
+    {
+      "id": "q458", "stufe": 3, "kategorie": "Geschichte und Liga",
+      "frage": "In welchem Stadion mit einem Dach, das sich wie eine Kamerablende öffnet, spielen die Atlanta Falcons?",
+      "antworten": ["Mercedes-Benz Stadium", "Georgia Dome", "Truist Park", "Camping World Stadium"],
+      "richtig": 0,
+      "erklaerung": "Das Mercedes-Benz Stadium hat acht Dachsegmente, die sich wie eine Blende öffnen. Es wurde 2017 eröffnet.",
+      "quelle": { "text": "Mercedes-Benz Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Mercedes-Benz_Stadium" }
+    },
+    {
+      "id": "q459", "stufe": 3, "kategorie": "Geschichte und Liga",
+      "frage": "In welchem Stadion in Los Angeles spielten die Rams nach ihrer Rückkehr 2016, bevor das SoFi Stadium fertig war?",
+      "antworten": ["Rose Bowl", "Dodger Stadium", "Los Angeles Memorial Coliseum", "Angel Stadium"],
+      "richtig": 2,
+      "erklaerung": "Die Rams spielten von 2016 bis 2019 im Los Angeles Memorial Coliseum. 2020 zogen sie ins SoFi Stadium.",
+      "quelle": { "text": "Los Angeles Rams bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Los_Angeles_Rams" }
+    },
+    {
+      "id": "q460", "stufe": 1, "kategorie": "Regeln",
+      "frage": "Wie heißen die beschwerten Markierungen an den vier Ecken der Endzonen, an denen Goal Line und Seitenlinie aufeinandertreffen?",
+      "antworten": ["Flaggen", "Pylonen (Pylons)", "Hash Marks", "Torpfosten"],
+      "richtig": 1,
+      "erklaerung": "Die Pylonen sind kleine, gepolsterte Markierungen in den Ecken. Sie zeigen die Grenze der Endzone an.",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 1-2-3 (Goal Line und Pylonen)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q461", "stufe": 2, "kategorie": "Regeln",
+      "frage": "Wie breit ist die Goal Line im Vergleich zu den übrigen Linien auf dem Feld?",
+      "antworten": ["Gleich breit", "Halb so breit", "Dreimal so breit", "Doppelt so breit, nämlich acht Zoll (rund 20 Zentimeter)"],
+      "richtig": 3,
+      "erklaerung": "Die Goal Line ist acht Zoll breit und damit doppelt so breit wie die übrigen Linien.",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 1-2-3 (Goal Line und Pylonen)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q462", "stufe": 3, "kategorie": "Regeln",
+      "frage": "Wie weit ragen die senkrechten Torstangen (Uprights) mindestens über die Querlatte hinaus?",
+      "antworten": ["25 Fuß (rund 7,6 Meter)", "30 Fuß (rund 9,1 Meter)", "35 Fuß (rund 10,7 Meter)", "40 Fuß (rund 12,2 Meter)"],
+      "richtig": 2,
+      "erklaerung": "Die Uprights ragen 35 Fuß über die Querlatte hinaus. Die Querlatte selbst liegt 10 Fuß über dem Boden.",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 1-3-2 (Torstangen)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q463", "stufe": 2, "kategorie": "Spielablauf und Strafen",
+      "frage": "Wie viele Yards Strafe gibt es in der NFL für einen False Start?",
+      "antworten": ["5 Yards", "10 Yards", "15 Yards", "Keine, der Down wird nur wiederholt"],
+      "richtig": 0,
+      "erklaerung": "Für einen False Start der Offense gibt es 5 Yards Strafe. Der Spielzug zählt nicht, der Down wird nach dem Raumverlust wiederholt.",
+      "quelle": { "text": "Offside und False Start bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Offside_(gridiron_football)" }
+    },
+    {
+      "id": "q464", "stufe": 2, "kategorie": "Geschichte und Liga",
+      "frage": "Wie heißt die Regel, die begrenzt, wie viel Geld ein NFL-Team insgesamt für Spielergehälter ausgeben darf?",
+      "antworten": ["Salary Cap (Gehaltsobergrenze)", "Luxury Tax", "Draft Pick Limit", "Franchise Tag"],
+      "richtig": 0,
+      "erklaerung": "Der Salary Cap legt die Gesamtsumme der Gehälter je Team fest. Er soll für Chancengleichheit zwischen großen und kleinen Märkten sorgen.",
+      "quelle": { "text": "Salary cap bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Salary_cap" }
+    },
+    {
+      "id": "q465", "stufe": 1, "kategorie": "Geschichte und Liga",
+      "frage": "Welches Team spielt im Lincoln Financial Field in Philadelphia?",
+      "antworten": ["New York Giants", "Washington Commanders", "Pittsburgh Steelers", "Philadelphia Eagles"],
+      "richtig": 3,
+      "erklaerung": "Die Philadelphia Eagles spielen im Lincoln Financial Field, das seit 2003 ihre Heimat ist.",
+      "quelle": { "text": "Lincoln Financial Field bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Lincoln_Financial_Field" }
+    },
+    {
+      "id": "q466", "stufe": 3, "kategorie": "Geschichte und Liga",
+      "frage": "Wozu verpflichtet die „Rooney Rule“ die NFL-Teams?",
+      "antworten": ["Jedes Team muss einen Assistenztrainer aus dem eigenen College einstellen", "Bei der Besetzung von Head-Coach- und anderen Führungsposten müssen sie Kandidaten aus Minderheiten zum Vorstellungsgespräch einladen", "Jedes Team muss pro Draft einen Spieler aus Minderheiten wählen", "Spieler dürfen den Vertrag nach drei Jahren verlassen"],
+      "richtig": 1,
+      "erklaerung": "Die Rooney Rule ist nach Steelers-Besitzer Dan Rooney benannt. Sie verlangt Gespräche mit Kandidaten aus Minderheiten, garantiert aber keine Einstellung.",
+      "quelle": { "text": "Rooney Rule bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Rooney_Rule" }
+    },
+    {
+      "id": "q467", "stufe": 3, "kategorie": "Football in Europa",
+      "frage": "In welchem Londoner Stadion mit verschiebbarem Rasenfeld trägt die NFL seit 2019 Hauptrundenspiele aus?",
+      "antworten": ["Wembley Stadium", "Twickenham", "London Stadium", "Tottenham Hotspur Stadium"],
+      "richtig": 3,
+      "erklaerung": "Das Tottenham Hotspur Stadium hat einen Rasen, der eingefahren werden kann. Darunter liegt ein Kunstrasenfeld für die NFL.",
+      "quelle": { "text": "Tottenham Hotspur Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Tottenham_Hotspur_Stadium" }
+    },
+    {
+      "id": "q468", "stufe": 2, "kategorie": "Football in Europa",
+      "frage": "In welchem Stadion in Madrid trug die NFL 2025 ihr erstes Hauptrundenspiel in Spanien aus?",
+      "antworten": ["Metropolitano", "Estadio Santiago Bernabéu", "Camp Nou", "Vicente Calderón"],
+      "richtig": 1,
+      "erklaerung": "Im November 2025 spielten die Washington Commanders gegen die Miami Dolphins im Santiago Bernabéu, dem Stadion von Real Madrid.",
+      "quelle": { "text": "NFL International Series bei Wikipedia", "url": "https://en.wikipedia.org/wiki/NFL_International_Series" }
+    },
+    {
+      "id": "q469", "stufe": 1, "kategorie": "Regeln",
+      "frage": "Wie viele Yards tief ist jede der beiden Endzonen?",
+      "antworten": ["5 Yards", "10 Yards", "15 Yards", "20 Yards"],
+      "richtig": 1,
+      "erklaerung": "Jede Endzone ist 10 Yards tief. Zusammen mit den 100 Yards dazwischen ergibt das 120 Yards Gesamtlänge.",
+      "quelle": { "text": "NFL-Regelbuch 2026, Regel 1-1-1 (Spielfeld und Endzonen)", "url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook" }
+    },
+    {
+      "id": "q470", "stufe": 1, "kategorie": "Geschichte und Liga",
+      "frage": "Welches Team spielt im Hard Rock Stadium in Miami Gardens?",
+      "antworten": ["Miami Dolphins", "Jacksonville Jaguars", "Tampa Bay Buccaneers", "Atlanta Falcons"],
+      "richtig": 0,
+      "erklaerung": "Das Hard Rock Stadium ist die Heimat der Miami Dolphins. Dort wurden auch mehrere Super Bowls gespielt.",
+      "quelle": { "text": "Hard Rock Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Hard_Rock_Stadium" }
+    },
+    {
+      "id": "q471", "stufe": 1, "kategorie": "Geschichte und Liga",
+      "frage": "Welches Team spielt im Ford Field in Detroit?",
+      "antworten": ["Detroit Pistons", "Detroit Lions", "Chicago Bears", "Cleveland Browns"],
+      "richtig": 1,
+      "erklaerung": "Die Detroit Lions spielen seit 2002 im Ford Field, einer Halle im Stadtzentrum von Detroit.",
+      "quelle": { "text": "Ford Field bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Ford_Field" }
+    },
+    {
+      "id": "q472", "stufe": 2, "kategorie": "Geschichte und Liga",
+      "frage": "In welcher Stadt steht das U.S. Bank Stadium, die Heimat der Minnesota Vikings?",
+      "antworten": ["Saint Paul", "Duluth", "Milwaukee", "Minneapolis"],
+      "richtig": 3,
+      "erklaerung": "Das U.S. Bank Stadium steht in Minneapolis. Es wurde 2016 eröffnet.",
+      "quelle": { "text": "U.S. Bank Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/U.S._Bank_Stadium" }
+    },
+    {
+      "id": "q473", "stufe": 2, "kategorie": "Geschichte und Liga",
+      "frage": "Welches Team spielt im Levi's Stadium in Santa Clara, Kalifornien?",
+      "antworten": ["San Francisco 49ers", "Las Vegas Raiders", "Los Angeles Chargers", "Seattle Seahawks"],
+      "richtig": 0,
+      "erklaerung": "Die San Francisco 49ers spielen seit 2014 im Levi's Stadium in Santa Clara.",
+      "quelle": { "text": "Levi's Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Levi%27s_Stadium" }
+    },
+    {
+      "id": "q474", "stufe": 1, "kategorie": "Geschichte und Liga",
+      "frage": "Welches Team spielt im Raymond James Stadium in Tampa?",
+      "antworten": ["Miami Dolphins", "Carolina Panthers", "New Orleans Saints", "Tampa Bay Buccaneers"],
+      "richtig": 3,
+      "erklaerung": "Die Tampa Bay Buccaneers spielen seit 1998 im Raymond James Stadium.",
+      "quelle": { "text": "Raymond James Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Raymond_James_Stadium" }
+    },
+    {
+      "id": "q475", "stufe": 3, "kategorie": "Taktik und Positionen",
+      "frage": "Was versteht man im Football unter einem „Bootleg“?",
+      "antworten": ["Ein illegaler Block gegen die Beine", "Der Quarterback täuscht eine Übergabe, läuft dann in die Gegenrichtung des Laufspiels aus der Tasche und wirft oder läuft selbst", "Ein Kick, der absichtlich kurz geschossen wird", "Ein Pass direkt nach dem Snap auf den Tight End"],
+      "richtig": 1,
+      "erklaerung": "Beim Bootleg täuscht der Quarterback die Übergabe an und läuft dann entgegen der Laufrichtung aus der Tasche. Die Defense soll zum Laufspiel gelockt werden.",
+      "quelle": { "text": "Bootleg bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Bootleg_(American_football)" }
+    },
+    {
+      "id": "q476", "stufe": 2, "kategorie": "Geschichte und Liga",
+      "frage": "Welches Team spielt im M&T Bank Stadium in Baltimore?",
+      "antworten": ["Washington Commanders", "Pittsburgh Steelers", "Baltimore Ravens", "Philadelphia Eagles"],
+      "richtig": 2,
+      "erklaerung": "Die Baltimore Ravens spielen seit 1998 im heutigen M&T Bank Stadium.",
+      "quelle": { "text": "M&T Bank Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/M%26T_Bank_Stadium" }
+    },
+    {
+      "id": "q477", "stufe": 2, "kategorie": "Geschichte und Liga",
+      "frage": "Welches Team spielt im Paycor Stadium in Cincinnati?",
+      "antworten": ["Cleveland Browns", "Cincinnati Bengals", "Indianapolis Colts", "Pittsburgh Steelers"],
+      "richtig": 1,
+      "erklaerung": "Die Cincinnati Bengals spielen im Paycor Stadium am Ohio River.",
+      "quelle": { "text": "Paycor Stadium bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Paycor_Stadium" }
+    },
+    {
+      "id": "q478", "stufe": 3, "kategorie": "Taktik und Positionen",
+      "frage": "Was kennzeichnet die „Wildcat“-Formation?",
+      "antworten": ["Drei Quarterbacks stehen gleichzeitig auf dem Feld", "Der Quarterback steht direkt hinter dem Center", "Alle Receiver stehen auf einer Seite", "Ein Running Back erhält den Snap direkt, statt des Quarterbacks"],
+      "richtig": 3,
+      "erklaerung": "In der Wildcat nimmt ein Running Back den Snap entgegen. Der Quarterback läuft oft als zusätzlicher Receiver mit.",
+      "quelle": { "text": "Wildcat formation bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Wildcat_formation" }
+    },
+    {
+      "id": "q479", "stufe": 3, "kategorie": "Taktik und Positionen",
+      "frage": "Was kennzeichnet die „Pistol“-Formation?",
+      "antworten": ["Der Quarterback steht etwa 4 Yards hinter dem Center, ein Running Back direkt hinter ihm", "Der Quarterback steht 7 Yards hinter dem Center ohne Running Back", "Der Quarterback steht direkt hinter dem Center", "Zwei Quarterbacks stehen nebeneinander"],
+      "richtig": 0,
+      "erklaerung": "Die Pistol steht zwischen Shotgun und Unter-Center-Formation. Der Quarterback steht näher am Center, der Running Back direkt hinter ihm.",
+      "quelle": { "text": "Pistol formation bei Wikipedia", "url": "https://en.wikipedia.org/wiki/Pistol_formation" }
     }
   ]
 }

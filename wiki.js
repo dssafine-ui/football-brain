@@ -313,7 +313,7 @@
 
   function titelSetzen(text) {
     document.getElementById("thema-titel").textContent = text;
-    document.title = "Football Brain: Wiki · " + text;
+    document.title = "Football Brain: Lexikon · " + text;
   }
 
   function ladeProblem(datei) {
@@ -917,7 +917,7 @@
         seite.hidden = true;
         start.hidden = false;
         document.body.setAttribute("data-ansicht", "start");
-        document.title = "Football Brain: Wiki";
+        document.title = "Football Brain: Lexikon";
         letztesThema = null;
         window.scrollTo(0, 0);
       }
