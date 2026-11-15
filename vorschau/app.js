@@ -17,7 +17,7 @@
   const IN_VORSCHAU = /\/vorschau(\/|$)/.test(window.location.pathname);
   const SPEICHER_KEY = 'football-tagesquiz-fortschritt-v1' + (IN_VORSCHAU ? '-vorschau' : '');
   // Stand der App-Dateien (steht unten auf der Startseite, damit sich nach einem Upload nachprüfen lässt, ob die neue Fassung läuft).
-  const APP_STAND = '2026-11-12';
+  const APP_STAND = '2026-11-15';
   // Der Code zum Mitnehmen des Fortschritts beginnt immer so. Daran erkennt die App, ob ein eingefügter Text überhaupt ein Code ist.
   const CODE_KOPF = 'FB1:';
   const FRAGEN_PRO_RUNDE = 5;
