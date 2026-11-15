@@ -1,0 +1,96 @@
+/* Football Brain: Sleeper-Stil (15.11.2026). Wird NACH modern.css geladen und überschreibt Farben und Flächen.
+   Dunkler Grafit, NFL-Rot als Akzent, flache Karten, Listenzeilen. Elemente und Kennungen bleiben unverändert. */
+
+:root, :root:root {
+  --navy: #1a1d24;
+  --navy-2: #1a1d24;
+  --akzent: #d50a0a;
+  --akzent-dunkel: #ff4b4b;
+  --blau: #d50a0a;
+  --blau-kante: #d50a0a;
+  --blau-text: #ff6b6b;
+  --blau-flaeche: #232731;
+  --bg: #0d0f14;
+  --karte: #171a21;
+  --flaeche: #232731;
+  --rand: #262a33;
+  --text: #e9ebf0;
+  --titel: #ffffff;
+  --leise: #8a91a0;
+  --schatten: none;
+  --r-karte: 14px;
+  --r-gross: 18px;
+  --richtig-text: #7ee2a0;
+  --richtig-bg: #12261a;
+  --richtig-rand: #1f7a43;
+  --falsch-text: #ff9a9a;
+  --falsch-bg: #2a1417;
+  --falsch-rand: #a32626;
+  color-scheme: dark;
+}
+
+html, body { background: var(--bg); color: var(--text); }
+
+/* Kopf: schmal, flach, ohne Verlauf */
+.kopf, body[data-ansicht="start"] .kopf, body[data-ansicht="frage"] .kopf, body[data-ansicht="nachlesen"] .kopf {
+  background: var(--bg);
+  border-bottom: 1px solid var(--rand);
+  border-radius: 0;
+  box-shadow: none;
+}
+.kopf::after { height: 2px; background: var(--akzent); border-radius: 0; left: 0; right: 0; opacity: 0.9; }
+.kopf h1 { font-size: 1rem; letter-spacing: 0.14em; }
+.kopf h1 span { color: var(--akzent-dunkel); }
+.kopf .datum { color: var(--leise); }
+body[data-ansicht="start"] .logo { width: 2.6rem; filter: none; }
+.vorschau { background: var(--flaeche); border-color: var(--rand); color: var(--leise); }
+
+/* Karten: flach, ohne Schatten */
+.kennzahlen, .heute-karte, .quiz-karte, .info, .stufe, .antwort, .thema, .liste li, .nachlesen-liste li,
+.frage-bild, .treffer-eintrag, .eintrag, .artikel, .suche input, .filter button, .pille, #abbrechen, .neben {
+  background: var(--karte);
+  border-color: var(--rand);
+  box-shadow: none;
+}
+
+/* Knöpfe: flaches NFL-Rot */
+.haupt { background: var(--akzent); box-shadow: none; color: #fff; }
+.haupt:active { box-shadow: none; filter: brightness(0.92); }
+.rueckmeldung.ok .haupt, .rueckmeldung.nein .haupt { background: var(--akzent); }
+.neben { color: var(--text); }
+
+/* Fortschritt */
+.balken { background: var(--flaeche); height: 6px; }
+.balken > div { background: var(--akzent); }
+.ring-fuell { stroke: var(--akzent); }
+.ring-spur { stroke: var(--flaeche); }
+.wt.gespielt .wt-marke { background-color: var(--akzent); }
+.wt.heute .wt-marke { box-shadow: 0 0 0 2px var(--akzent); }
+
+/* Stufen */
+.stufe.aktiv { background: #2a1416; border-color: var(--akzent); color: #fff; box-shadow: none; }
+.stufe.aktiv::before, .stufe.aktiv[data-stufe]::before { background-color: var(--akzent-dunkel); }
+.stufe.zu { background: transparent; }
+
+/* Antworten wie Listenzeilen */
+.antwort { border-radius: 12px; min-height: 3.4rem; }
+.antwort:active:not(:disabled) { border-color: var(--akzent); }
+.buchstabe { background: var(--flaeche); color: var(--leise); border-radius: 8px; }
+.kategorie { color: var(--akzent-dunkel); background: rgba(213, 10, 10, 0.16); }
+.rueckmeldung { background: var(--karte); border-color: var(--rand); }
+
+/* Ergebnis */
+.punkte { background: var(--karte); border: 1px solid var(--rand); box-shadow: none; color: #fff; }
+.gewinn { background: rgba(213, 10, 10, 0.18); color: #ffb3b3; }
+
+/* Lexikon-Karte, Filter, Reiter */
+.wiki-karte, .quiz-karte.wiki-karte { background: var(--karte); border: 1px solid var(--rand); box-shadow: none; }
+.wiki-karte-pfeil { color: var(--akzent-dunkel); }
+.filter button[aria-pressed="true"] { background: var(--akzent); border-color: var(--akzent); color: #fff; }
+.hinweis { background: var(--flaeche); color: var(--text); }
+.suche input { color: var(--text); }
+.suche input:focus-visible, :focus-visible { outline-color: var(--akzent-dunkel); }
+
+@media (hover: hover) {
+  .antwort:hover:not(:disabled), .stufe:hover:not(:disabled):not(.aktiv):not(.zu), .thema:hover { border-color: var(--akzent); box-shadow: none; }
+}
