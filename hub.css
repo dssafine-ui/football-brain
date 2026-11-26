@@ -1,0 +1,56 @@
+/* Startseite: Auswahl "Wohin zuerst?" im Stil der App (Karten aus modern.css: Fläche, Rand, Orange als Akzent). */
+.hub {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+.hub-kachel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 3px;
+  min-height: 96px;
+  padding: 0.9rem 1rem 0.9rem 1.15rem;
+  border-radius: var(--r-karte, 14px);
+  background: var(--karte, #ffffff);
+  border: 1px solid var(--rand, #e0e6f2);
+  box-shadow: var(--schatten, 0 4px 14px rgba(10, 31, 77, 0.06));
+  color: var(--titel, #0a1f4d);
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Orange Leiste links, wie ein Akzent der App */
+.hub-kachel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--akzent, #ff7a1a);
+}
+.hub-kachel::after {
+  content: "›";
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--akzent, #ff7a1a);
+}
+.hub-kachel:active { transform: scale(0.98); }
+.hub-kachel:focus-visible { outline: 3px solid var(--akzent, #ff7a1a); outline-offset: 2px; }
+.hub-sym { display: block; width: 1.75rem; height: 1.75rem; margin-bottom: 0.45rem; color: var(--akzent, #ff7a1a); }
+.hub-sym svg { display: block; width: 100%; height: 100%; }
+.hub-titel { font-family: var(--schrift-titel, inherit); font-size: 1.15rem; font-weight: 800; line-height: 1.15; color: var(--titel, #0a1f4d); }
+.hub-zeile { font-family: var(--schrift, inherit); font-size: 0.85rem; line-height: 1.25; color: var(--leise, #5b6783); }
+/* Spielplan als wichtigste Kachel: Navy mit orangem Akzent */
+.hub-spielplan { background: var(--navy, #0a1f4d); border-color: var(--navy, #0a1f4d); }
+.hub-spielplan .hub-titel { color: #ffffff; }
+.hub-spielplan .hub-zeile { color: #c9d6f5; }
+@media (min-width: 560px) {
+  .hub { grid-template-columns: repeat(4, 1fr); }
+}

@@ -809,6 +809,116 @@ main {
   }
 }
 
+/* ---------- Spielplan hervorgehoben (26.11.2026) ---------- */
+
+.spielwoche-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: var(--r-klein, 14px);
+  background: linear-gradient(135deg, var(--kopf-oben, #1a4a8c), var(--kopf-unten, #012550));
+  color: #fff;
+  border-left: 6px solid var(--streifen, #d50a0a);
+}
+
+.spielwoche-nr {
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+}
+
+.spielwoche-text {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.spielplan-liste {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.spiel-karte {
+  position: relative;
+  padding: 0.8rem 1rem;
+  border-radius: var(--r-klein, 14px);
+  background: var(--karte, #fff);
+  border: 1px solid var(--rand, #d6dfee);
+  box-shadow: var(--schatten, none);
+}
+
+.spiel-karte.naechstes {
+  border: 2px solid var(--streifen, #d50a0a);
+  padding-top: 1.5rem;
+}
+
+.spiel-marke {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  transform: translateY(-50%);
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--streifen, #d50a0a);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.spiel-teams {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.spiel-team {
+  font-weight: 700;
+  color: var(--titel, #013369);
+  overflow-wrap: anywhere;
+}
+
+.spiel-team.gast { text-align: right; }
+.spiel-team.heim { text-align: left; }
+.spiel-team.sieg { color: var(--text, #0e1a33); font-weight: 900; }
+
+.spiel-stand,
+.spiel-zeit {
+  padding: 0.25rem 0.7rem;
+  border-radius: 10px;
+  background: var(--flaeche, #e8eef7);
+  color: var(--titel, #013369);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.spiel-stand .sieg { color: var(--streifen, #d50a0a); }
+
+.spiel-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2rem 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--leise, #4a5a78);
+}
+
+.spiel-info:empty { display: none; }
+
+.spiel-stadion::before { content: "\1F3DF\FE0F  "; }
+.spiel-stadion { text-align: center; }
+
+@media (max-width: 420px) {
+  .spiel-teams { grid-template-columns: minmax(0, 1fr); text-align: center; }
+  .spiel-team.gast, .spiel-team.heim { text-align: center; }
+  .spiel-stand, .spiel-zeit { justify-self: center; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

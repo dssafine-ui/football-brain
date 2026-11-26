@@ -810,8 +810,13 @@
     var teamAuswahl = el("select", { "aria-label": "Team wählen" });
     optionen(teamAuswahl, teamListe().map(function (t) { return { wert: t.kuerzel, text: t.name }; }), "Alle Teams", planFilter.team);
     inhalt.appendChild(el("div", { klasse: "filter filter-spieler" }, [wochenAuswahl, teamAuswahl]));
+    var banner = el("div", { klasse: "spielwoche-banner" }, [
+      el("span", { klasse: "spielwoche-nr", text: "Woche " + aktuell }),
+      el("span", { klasse: "spielwoche-text", text: "Aktuelle Spielwoche der Hauptrunde " + plan.saison })
+    ]);
+    inhalt.insertBefore(banner, inhalt.firstChild);
     var kopf = el("p", { klasse: "thema-info" });
-    var liste = el("div", { klasse: "eintraege" });
+    var liste = el("div", { klasse: "eintraege spielplan-liste" });
     inhalt.appendChild(kopf);
     inhalt.appendChild(liste);
 
@@ -828,16 +833,41 @@
         return (a.s.woche - b.s.woche) || (a.de.stempel - b.de.stempel);
       });
       var letzte = null;
+      // Das nächste Spiel: das erste ohne Ergebnis in der gezeigten Auswahl.
+      var naechstes = null;
+      for (var n = 0; n < treffer.length; n++) {
+        if (!hat(treffer[n].s.heimPunkte)) { naechstes = treffer[n].s; break; }
+      }
       treffer.forEach(function (eintrag) {
         var s = eintrag.s;
         var de = eintrag.de;
         var gruppe = "Woche " + s.woche + " · " + datumZeigen(de.datum);
         if (gruppe !== letzte) { liste.appendChild(el("h3", { klasse: "gruppe", text: gruppe })); letzte = gruppe; }
         var fertig = hat(s.heimPunkte) && hat(s.gastPunkte);
-        liste.appendChild(el("div", { klasse: "eintrag spiel" }, [
-          el("div", { klasse: "eintrag-text", style: "padding:10px 12px" }, [
-            el("span", { klasse: "eintrag-titel", text: teamName(s.gast) + " @ " + teamName(s.heim) }),
-            el("span", { klasse: "eintrag-zeile", text: fertig ? "Endstand " + s.gastPunkte + " : " + s.heimPunkte : (s.zeit ? de.zeit + (de.deutsch ? " Uhr" : " Uhr ET") : "Zeit offen") })
+        var heimTeam = teamListe().filter(function (x) { return x.kuerzel === s.heim; })[0];
+        var stadion = s.stadion || (heimTeam && heimTeam.stadion) || "";
+        var ort = heimTeam && heimTeam.stadionOrt && !s.stadion ? heimTeam.stadionOrt : "";
+        var istNaechstes = !fertig && naechstes && naechstes === s;
+        var gastGewinnt = fertig && s.gastPunkte > s.heimPunkte;
+        var heimGewinnt = fertig && s.heimPunkte > s.gastPunkte;
+        var klasse = "spiel-karte" + (fertig ? " fertig" : " offen") + (istNaechstes ? " naechstes" : "");
+        var mitte = fertig
+          ? el("span", { klasse: "spiel-stand" }, [
+              el("span", { klasse: gastGewinnt ? "sieg" : "", text: String(s.gastPunkte) }),
+              " : ",
+              el("span", { klasse: heimGewinnt ? "sieg" : "", text: String(s.heimPunkte) })
+            ])
+          : el("span", { klasse: "spiel-zeit", text: s.zeit ? de.zeit + (de.deutsch ? " Uhr" : " Uhr ET") : "Zeit offen" });
+        liste.appendChild(el("div", { klasse: klasse }, [
+          istNaechstes ? el("span", { klasse: "spiel-marke", text: "Nächstes Spiel" }) : null,
+          el("div", { klasse: "spiel-teams" }, [
+            el("span", { klasse: "spiel-team gast" + (gastGewinnt ? " sieg" : ""), text: teamName(s.gast) }),
+            mitte,
+            el("span", { klasse: "spiel-team heim" + (heimGewinnt ? " sieg" : ""), text: teamName(s.heim) })
+          ]),
+          el("div", { klasse: "spiel-info" }, [
+            fertig && s.zeit ? el("span", { klasse: "spiel-uhr", text: "Anpfiff " + de.zeit + (de.deutsch ? " Uhr" : " Uhr ET") }) : null,
+            stadion ? el("span", { klasse: "spiel-stadion", text: "Stadion: " + stadion + (ort ? ", " + ort : "") }) : null
           ])
         ]));
       });
@@ -949,6 +979,16 @@
       suchfeld.addEventListener("input", function () { suchen(suchfeld.value); });
       document.getElementById("suche-form").addEventListener("submit", function (ereignis) { ereignis.preventDefault(); });
       window.addEventListener("hashchange", zeigen);
+      // Ein Schritt zurück führt zur Hauptseite: Links im Lexikon ersetzen den Verlaufseintrag, statt neue anzulegen.
+      document.addEventListener("click", function (ereignis) {
+        var a = ereignis.target && ereignis.target.closest ? ereignis.target.closest("a[href^='#']") : null;
+        if (!a || ereignis.defaultPrevented || ereignis.button || ereignis.ctrlKey || ereignis.metaKey || ereignis.shiftKey) { return; }
+        var ziel = a.getAttribute("href");
+        if (ziel === location.hash || (ziel === "#" && !location.hash)) { return; }
+        ereignis.preventDefault();
+        history.replaceState(null, "", ziel === "#" ? location.pathname + location.search : ziel);
+        zeigen();
+      });
       zeigen();
     }).catch(function (problem) {
       document.getElementById("laden").hidden = true;

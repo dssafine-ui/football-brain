@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="design-neu.css">
   <link rel="stylesheet" href="modern.css">
+  <link rel="stylesheet" href="hub.css">
 </head>
 <body>
   <!-- Aussehen: style.css ist die Grundlage, design-neu.css (seit 26.10.2026) liegt darüber. app.js sucht die Elemente über ihre Kennungen, die müssen bleiben. -->
@@ -110,6 +111,13 @@
     </section>
 
     <section id="start" hidden>
+      <!-- Auswahl: wohin zuerst? Reine Links, kein Skript nötig. Spielplan und Statistik öffnen das Lexikon direkt im passenden Bereich. -->
+      <nav class="hub" aria-label="Wohin zuerst?">
+        <a class="hub-kachel hub-spielplan" href="wiki.html#spielplan"><span class="hub-sym" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="hub-titel">Spielplan</span></a>
+        <a class="hub-kachel hub-quiz" href="#heute-karte"><span class="hub-sym" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.6 9.5a2.4 2.4 0 1 1 3.4 2.2c-.7.4-1 .9-1 1.6M12 16.6v.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="hub-titel">Tagesquiz</span></a>
+        <a class="hub-kachel hub-statistik" href="wiki.html#statistik"><span class="hub-sym" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 20V12M12 20V5M19 20v-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><span class="hub-titel">Statistiken</span></a>
+        <a class="hub-kachel hub-lexikon" href="wiki.html"><span class="hub-sym" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 4.5h10a3 3 0 0 1 3 3V20H8a3 3 0 0 1-3-3V4.5zM5 17a3 3 0 0 1 3-3h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><span class="hub-titel">Lexikon</span></a>
+      </nav>
       <!-- Tagesring und Wochenleiste: app.js füllt Zahl, Ring und Zeile (tagesringZeigen) und baut die sieben Tage der Woche (wocheZeigen). -->
       <div class="heute-karte" id="heute-karte" data-zustand="offen">
         <div class="ring" id="ring" role="img" aria-label="Tagesquiz heute">
@@ -155,17 +163,6 @@
       <button class="haupt" id="tag-starten" type="button">Tagesquiz starten</button>
       <button class="neben" id="ueben-starten" type="button" hidden>Übungsrunde (alte Fragen wiederholen)</button>
       <button class="neben" id="nachlesen-starten" type="button" hidden>Beantwortete Fragen nachlesen</button>
-      <!-- Football-Wiki: eigene Karte unter den Quiz-Knöpfen. Sie öffnet den Abschnitt #wiki (app.js, Teil „Football-Wiki“). -->
-      <button class="quiz-karte wiki-karte" id="wiki-starten" type="button">
-        <span class="wiki-karte-bild" aria-hidden="true">
-          <svg viewBox="0 0 48 48" focusable="false"><rect x="5" y="9" width="38" height="30" rx="5" fill="#1d7a3a"/><path d="M12 9v30M19 9v30M26 9v30M33 9v30M40 9v30" stroke="#ffffff" stroke-width="1.2" opacity="0.45"/><path d="M5 24h38" stroke="#ffffff" stroke-width="1.6" opacity="0.8"/><g transform="translate(24 24) rotate(-30) scale(0.56)"><use href="#fr-ball"/></g></svg>
-        </span>
-        <span class="quiz-karte-text">
-          <span class="quiz-karte-titel">Football-Lexikon</span>
-          <span class="quiz-karte-zeile">Teams, Tabelle, Spieler, Statistik und Regeln der NFL.</span>
-        </span>
-        <span class="wiki-karte-pfeil" aria-hidden="true">›</span>
-      </button>
       <details class="info" id="installieren">
         <summary>Als App aufs Handy legen</summary>
         <p><strong>iPhone:</strong> In Safari unten auf das Teilen-Symbol tippen, dann „Zum Home-Bildschirm“. Danach nur noch über das neue Symbol öffnen.</p>
