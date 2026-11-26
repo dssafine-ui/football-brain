@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="design-neu.css">
   <link rel="stylesheet" href="modern.css">
+  <link rel="stylesheet" href="hub.css">
 </head>
 <body>
   <!-- Aussehen: style.css ist die Grundlage, design-neu.css (seit 26.10.2026) liegt darüber. app.js sucht die Elemente über ihre Kennungen, die müssen bleiben. -->
@@ -110,6 +111,13 @@
     </section>
 
     <section id="start" hidden>
+      <!-- Auswahl: wohin zuerst? Reine Links, kein Skript nötig. Spielplan und Statistik öffnen das Lexikon direkt im passenden Bereich. -->
+      <nav class="hub" aria-label="Wohin zuerst?">
+        <a class="hub-kachel hub-spielplan" href="wiki.html#spielplan"><span class="hub-titel">Spielplan</span><span class="hub-zeile">Spiele, Ergebnisse, Stadion</span></a>
+        <a class="hub-kachel hub-quiz" href="#heute-karte"><span class="hub-titel">Quiz</span><span class="hub-zeile">Tagesquiz und mehr</span></a>
+        <a class="hub-kachel hub-statistik" href="wiki.html#statistik"><span class="hub-titel">Statistiken</span><span class="hub-zeile">Passen, Laufen, Fangen</span></a>
+        <a class="hub-kachel hub-lexikon" href="wiki.html"><span class="hub-titel">Lexikon</span><span class="hub-zeile">Teams, Tabelle, Regeln</span></a>
+      </nav>
       <!-- Tagesring und Wochenleiste: app.js füllt Zahl, Ring und Zeile (tagesringZeigen) und baut die sieben Tage der Woche (wocheZeigen). -->
       <div class="heute-karte" id="heute-karte" data-zustand="offen">
         <div class="ring" id="ring" role="img" aria-label="Tagesquiz heute">

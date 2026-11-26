@@ -4,9 +4,9 @@
 // Dieselbe Datei läuft in der echten App und in der Vorschau (Unterordner /vorschau/ derselben Domain). Zwischenspeicher gelten je Domain.
 // Darum hat die Vorschau eigene Namen, und jede Seite räumt nur ihre eigenen alten Zwischenspeicher weg.
 const IN_VORSCHAU = self.location.pathname.indexOf('/vorschau/') !== -1;
-const CACHE = (IN_VORSCHAU ? 'football-brain-vorschau-v' : 'football-brain-v') + '12';
+const CACHE = (IN_VORSCHAU ? 'football-brain-vorschau-v' : 'football-brain-v') + '13';
 // Ohne diese Dateien startet die App nicht: Fehlt eine, wird der neue Service Worker nicht installiert.
-const DATEIEN = ['./', 'index.html', 'style.css', 'design-neu.css', 'modern.css', 'app.js', 'manifest.json', 'icon.svg'];
+const DATEIEN = ['./', 'index.html', 'style.css', 'design-neu.css', 'modern.css', 'hub.css', 'app.js', 'manifest.json', 'icon.svg'];
 // Die Fragenliste holt die App bei jedem Start ohnehin frisch. Hier ist sie nur ein Bonus für den ersten Start ohne Netz;
 // die Vorschau hat vielleicht keine eigene (sie nimmt dann die der echten App), das darf die Installation nicht verhindern.
 // Das Wiki (wiki.html und seine Daten) ist ebenfalls optional: Ohne diese Dateien läuft das Quiz trotzdem.

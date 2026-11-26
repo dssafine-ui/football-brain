@@ -1,0 +1,31 @@
+/* Startseite: Auswahl "Wohin zuerst?" (Spielplan, Quiz, Statistiken, Lexikon). */
+.hub {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0 0 18px;
+}
+.hub-kachel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  min-height: 104px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(8, 30, 80, 0.22);
+  -webkit-tap-highlight-color: transparent;
+}
+.hub-kachel:active { transform: scale(0.98); }
+.hub-kachel:focus-visible { outline: 3px solid #ffd84d; outline-offset: 2px; }
+.hub-titel { font-size: 1.25rem; font-weight: 800; line-height: 1.15; }
+.hub-zeile { font-size: 0.85rem; opacity: 0.92; line-height: 1.25; }
+.hub-spielplan { background: linear-gradient(145deg, #d71f3b, #9d1128); }
+.hub-quiz { background: linear-gradient(145deg, #2f7bf5, #0f4bb8); }
+.hub-statistik { background: linear-gradient(145deg, #1d9a4b, #0f6b32); }
+.hub-lexikon { background: linear-gradient(145deg, #f08a24, #b95a21); }
+@media (min-width: 560px) {
+  .hub { grid-template-columns: repeat(4, 1fr); }
+}
