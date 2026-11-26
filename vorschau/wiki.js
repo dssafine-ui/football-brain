@@ -979,6 +979,16 @@
       suchfeld.addEventListener("input", function () { suchen(suchfeld.value); });
       document.getElementById("suche-form").addEventListener("submit", function (ereignis) { ereignis.preventDefault(); });
       window.addEventListener("hashchange", zeigen);
+      // Ein Schritt zurück führt zur Hauptseite: Links im Lexikon ersetzen den Verlaufseintrag, statt neue anzulegen.
+      document.addEventListener("click", function (ereignis) {
+        var a = ereignis.target && ereignis.target.closest ? ereignis.target.closest("a[href^='#']") : null;
+        if (!a || ereignis.defaultPrevented || ereignis.button || ereignis.ctrlKey || ereignis.metaKey || ereignis.shiftKey) { return; }
+        var ziel = a.getAttribute("href");
+        if (ziel === location.hash || (ziel === "#" && !location.hash)) { return; }
+        ereignis.preventDefault();
+        history.replaceState(null, "", ziel === "#" ? location.pathname + location.search : ziel);
+        zeigen();
+      });
       zeigen();
     }).catch(function (problem) {
       document.getElementById("laden").hidden = true;
